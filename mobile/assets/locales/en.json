@@ -1,0 +1,26 @@
+{
+  "texts": {
+    "notification": "Notification",
+    "success": "Success",
+    "error_occur": "An error has occurred",
+    "email_address": "Email Address",
+    "password": "Password"
+  },
+  "button": {
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "root": {
+    "home": "Home",
+    "profile": "Profile",
+    "management": "Management"
+  },
+  "login": {
+    "welcome_back": "Nice to have you back!",
+    "sign_in": "Sign in"
+  },
+  "validator": {
+    "email_required": "Please enter your email",
+    "password_required": "Please enter your password"
+  }
+}

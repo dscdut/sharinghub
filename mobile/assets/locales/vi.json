@@ -1,0 +1,26 @@
+{
+  "texts": {
+    "notification": "Thông báo",
+    "success": "Thành công",
+    "error_occur": "Đã có lỗi xảy ra",
+    "email_address": "Email",
+    "password": "Mật khẩu"
+  },
+  "button": {
+    "cancel": "Hủy",
+    "confirm": "Xác nhận"
+  },
+  "root": {
+    "home": "Trang chủ",
+    "profile": "Cá nhân",
+    "management": "Quản lý"
+  },
+  "login": {
+    "welcome_back": "Rất vui khi được gặp lại bạn!",
+    "sign_in": "Đăng nhập"
+  },
+  "validator": {
+    "email_required": "Vui lòng nhập email",
+    "password_required": "Vui lòng nhập mật khẩu"
+  }
+}

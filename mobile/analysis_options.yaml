@@ -1,0 +1,29 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - '**.config.dart'
+    - '**.g.dart'
+    - '**.gen.dart'
+    - .bricks/
+
+linter:
+  rules:
+    # PREFER using lowerCamelCase for constant names.
+    constant_identifier_names: false
+    # DO use single quotes where they wouldn't require additional escapes.
+    prefer_single_quotes: true
+    # DO avoid relative imports for files in lib/.
+    always_use_package_imports: true
+    # DO use trailing commas for all function calls and declarations unless the function call or definition,
+    # from the start of the function name up to the closing parenthesis, fits in a single line.
+    require_trailing_commas: true
+    # DON'T declare arguments with values that match the defaults for the corresponding parameter.
+    avoid_redundant_argument_values: true
+    avoid_print: true
+    # cascade_invocations: true
+    # Don't use string interpolation if there's only a string expression in it.
+    unnecessary_string_interpolations: true
+    # PREFER using const for instantiating constant constructors.
+    prefer_const_constructors: true
+    unnecessary_null_checks: true

@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter Dev",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_dev.dart",
+      "flutterMode": "debug",
+      "args": ["--flavor", "dev", "--enable-software-rendering"]
+    },
+    {
+      "name": "Flutter QA",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_qa.dart",
+      "flutterMode": "debug",
+      "args": ["--flavor", "qa", "--enable-software-rendering"]
+    },
+    {
+      "name": "Flutter Staging",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main_staging.dart",
+      "flutterMode": "debug",
+      "args": ["--flavor", "staging", "--enable-software-rendering"]
+    }
+  ]
+}

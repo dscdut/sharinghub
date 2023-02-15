@@ -1,0 +1,5 @@
+part of '{{name.snakeCase()}}.bloc.dart';
+
+abstract class {{name.pascalCase()}}Event {
+  const {{name.pascalCase()}}Event();
+}
