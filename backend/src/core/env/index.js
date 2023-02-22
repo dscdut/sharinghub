@@ -11,3 +11,5 @@ export const { DATABASE_URL } = process.env;
 export const ROOT_DIR = process.env === 'production' ? `${process.cwd()}/dist` : `${process.cwd()}/src`;
 export const { CLOUDINARY_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
 export const SALT_ROUNDS = Number.parseInt(process.env.SALT_ROUNDS, 10);
+export const EMAIL = 'sharinghub.gdscdut@gmail.com';
+export const SENGRID_API_KEY = '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';
