@@ -1,10 +1,10 @@
 import nodemailer from 'nodemailer';
 import sendgridTransport from 'nodemailer-sendgrid-transport';
 import { logger } from '../../../../packages/logger';
-import { EMAIL, SENGRID_API_KEY } from '../../../env';
+import { EMAIL, SENDGRID_API_KEY } from '../../../env';
 
 class Nodemailer {
-    api_key = SENGRID_API_KEY;
+    api_key = SENDGRID_API_KEY;
 
     email = EMAIL;
 

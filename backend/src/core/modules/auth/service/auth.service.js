@@ -38,23 +38,18 @@ class Service {
         const [user] = await this.userRepository.findByEmail(registerDto.email);
         if (!user) {
             if (registerDto.password.toString() === registerDto.confirm_password.toString()) {
-                try {
-                    const password = this.bcryptService.hash(registerDto.password);
-                    await this.userRepository.createUser({
-                        full_name: registerDto.full_name,
-                        email: registerDto.email,
-                        password,
-                        role_id: registerDto.role_id
-                    });
-                    NodemailerService.sendMail(registerDto.email, MAIL.REGISTER_SUCCESS);
-                    return {
-                        message: MESSAGE.REGISTER_SUCCESS,
-                    };
-                } catch (error) {
-                    console.log(error);
-                }
+                const password = this.bcryptService.hash(registerDto.password, 12);
+                await this.userRepository.createUser({
+                    full_name: registerDto.full_name,
+                    email: registerDto.email,
+                    password,
+                    role_id: registerDto.role_id
+                });
+                return {
+                    message: 'created new user successfully',
+                };
             }
-            throw new DuplicateException('Password and confirmation password does not match');
+            throw new DuplicateException('password and confirmation password does not match');
         }
         throw new DuplicateException('This email is already existed');
     }
