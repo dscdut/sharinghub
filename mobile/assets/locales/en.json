@@ -15,12 +15,20 @@
     "profile": "Profile",
     "management": "Management"
   },
-  "login": {
+  "auth": {
     "welcome_back": "Nice to have you back!",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "login": "Login",
+    "sign_up": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "forgot_password": "Forgot password?"
   },
   "validator": {
     "email_required": "Please enter your email",
-    "password_required": "Please enter your password"
+    "password_required": "Please enter your password",
+    "email_error": "Email must be an email",
+    "password_error": "Password is not correct, please try again",
+    "password_length": "Password must be at least 8 characters"
   }
 }

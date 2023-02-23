@@ -15,12 +15,20 @@
     "profile": "Cá nhân",
     "management": "Quản lý"
   },
-  "login": {
+  "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
-    "sign_in": "Đăng nhập"
+    "sign_in": "Đăng nhập",
+    "login": "Đăng nhập",
+    "sign_up": "Đăng ký",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "forgot_password": "Quên mật khẩu?"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
-    "password_required": "Vui lòng nhập mật khẩu"
+    "password_required": "Vui lòng nhập mật khẩu",
+    "email_error": "Không đúng định dạng email",
+    "password_error": "Sai mật khẩu, xin vui lòng thử lại",
+    "password_length": "Mật khẩu phải có ít nhất 8 kí tự"
   }
 }

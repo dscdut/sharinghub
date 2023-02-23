@@ -14,11 +14,19 @@ abstract class  LocaleKeys {
   static const root_profile = 'root.profile';
   static const root_management = 'root.management';
   static const root = 'root';
-  static const login_welcome_back = 'login.welcome_back';
-  static const login_sign_in = 'login.sign_in';
-  static const login = 'login';
+  static const auth_welcome_back = 'auth.welcome_back';
+  static const auth_sign_in = 'auth.sign_in';
+  static const auth_login = 'auth.login';
+  static const auth_sign_up = 'auth.sign_up';
+  static const auth_email = 'auth.email';
+  static const auth_password = 'auth.password';
+  static const auth_forgot_password = 'auth.forgot_password';
+  static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
+  static const validator_email_error = 'validator.email_error';
+  static const validator_password_error = 'validator.password_error';
+  static const validator_password_length = 'validator.password_length';
   static const validator = 'validator';
 
 }

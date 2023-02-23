@@ -10,15 +10,18 @@ abstract class LoginState extends Equatable {
   });
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [emailError, passwordError];
 }
 
 class LoginInitial extends LoginState {}
 
-class LoginNotAllowed extends LoginState {
-  const LoginNotAllowed({super.emailError, super.passwordError});
-}
+class LoginLoading extends LoginState {}
 
 class LoginNotSuccess extends LoginState {
-  const LoginNotSuccess() : super(emailError: null, passwordError: null);
+  const LoginNotSuccess({
+    super.emailError,
+    super.passwordError,
+  });
 }
+
+class LoginSuccess extends LoginState {}

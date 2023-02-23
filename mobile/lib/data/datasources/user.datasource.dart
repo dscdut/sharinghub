@@ -1,7 +1,6 @@
 import 'package:mobile/common/constants/endpoints.dart';
 import 'package:mobile/common/helpers/dio/dio.helper.dart';
 import 'package:mobile/data/dtos/auth.dto.dart';
-import 'package:mobile/data/models/user.model.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
@@ -13,10 +12,12 @@ class UserDataSource {
     );
 
     return LoginResponseDTO(
-      user: UserModel.fromJson(response.body['data']['user']),
-      refreshToken: response.body['data']['token']['refreshToken'],
-      accessToken: response.body['data']['token']['accessToken'],
-      expiresIn: response.body['data']['token']['expiresIn'],
+      // user: UserModel.fromJson(response.body['user']),
+      email: response.body['email'],
+      password: response.body['password'],
+      // refreshToken: response.body['data']['token']['refreshToken'],
+      // accessToken: response.body['data']['token']['accessToken'],
+      // expiresIn: response.body['data']['token']['expiresIn'],
     );
   }
 }
