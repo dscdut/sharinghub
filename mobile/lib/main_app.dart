@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -30,10 +31,7 @@ class AppBlocObserver extends BlocObserver {
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     log(
-      'onStateTransition -- ${bloc.runtimeType}\n'
-      'ADD_EVENT: ${transition.event}\n'
-      'CURRENT_STATE: ${transition.currentState}\n'
-      'NEXT_STATE: ${transition.nextState}',
+      'onStateTransition -- ${bloc.runtimeType}\n',
       name: '${bloc.runtimeType}_TRANSITION',
     );
   }
@@ -93,11 +91,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(),
-      child: Listener(
-        onPointerDown: (_) {
+      create: (context) => AuthBloc(
+        userRepository: getIt.get<UserRepository>(),
+      ),
+      child: GestureDetector(
+        onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();
         },
+        behavior: HitTestBehavior.translucent,
         child: MaterialApp(
           navigatorKey: _navigatorKey,
           title: 'Flutter Demo',

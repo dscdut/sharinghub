@@ -18,16 +18,17 @@ class CodegenLoader extends AssetLoader{
   "texts": {
     "notification": "Notification",
     "success": "Success",
-    "error_occur": "An error has occurred",
-    "email_address": "Email Address",
+    "error_occur": "An error has occurred, please try again later",
+    "email_address": "Email",
     "password": "Password",
     "register": "Create a account",
-    "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "personal_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "organization_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "personal": "Personal",
     "organization": "Organization",
-    "fullName": "Full name",
-    "organizationName": "Organization name",
-    "organizationCEO": "Organization CEO"
+    "full_name": "Full Name",
+    "organization_name": "Organization Name",
+    "representative_name": "Representative Name"
   },
   "button": {
     "cancel": "Cancel",
@@ -41,36 +42,40 @@ class CodegenLoader extends AssetLoader{
   "auth": {
     "welcome_back": "Nice to have you back!",
     "sign_in": "Sign in",
-    "login": "Login",
-    "sign_up": "Sign up",
+    "login": "Log in",
+    "sign_up": "Sign Up",
     "email": "Email",
     "password": "Password",
     "forgot_password": "Forgot password?",
-    "confirm_password": "Confirm password"
+    "confirm_password": "Confirm password",
+    "already_have_account": "Already have an account?",
+    "have_not_account": "Don't have an account?"
   },
   "validator": {
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
-    "email_error": "Email must be an email",
-    "password_error": "Password is not correct, please try again",
-    "password_length": "Password must be at least 8 characters",
-    "empty": "This field is required"
+    "invalid_email": "Invalid email address",
+    "incorrect_email_password": "Incorrect email or password",
+    "invalid_password": "Password must be at least 8 characters",
+    "field_required": "This field is required",
+    "not_match_password": "Password and confirm password not match"
   }
 };
 static const Map<String,dynamic> vi = {
   "texts": {
     "notification": "Thông báo",
     "success": "Thành công",
-    "error_occur": "Đã có lỗi xảy ra",
+    "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
     "email_address": "Email",
     "password": "Mật khẩu",
     "register": "Đăng kí tài khoản",
-    "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "personal_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "organization_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "personal": "Cá nhân",
     "organization": "Tổ chức",
-    "fullName": "Họ và tên",
-    "organizationName": "Tên tổ chức",
-    "organizationCEO": "Tên người đứng đầu tổ chức"
+    "full_name": "Họ và tên",
+    "organization_name": "Tên tổ chức",
+    "representative_name": "Người đại diện"
   },
   "button": {
     "cancel": "Hủy",
@@ -89,15 +94,18 @@ static const Map<String,dynamic> vi = {
     "email": "Email",
     "password": "Mật khẩu",
     "forgot_password": "Quên mật khẩu?",
-    "confirm_password": "Xác nhận mật khẩu"
+    "confirm_password": "Xác nhận mật khẩu",
+    "already_have_account": "Đã có tài khoản?",
+    "have_not_account": "Chưa có tài khoản?"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
     "password_required": "Vui lòng nhập mật khẩu",
-    "email_error": "Không đúng định dạng email",
-    "password_error": "Sai mật khẩu, xin vui lòng thử lại",
-    "password_length": "Mật khẩu phải có ít nhất 8 kí tự",
-    "empty": "Không được để trống"
+    "invalid_email": "Không đúng định dạng email",
+    "incorrect_email_password": "Email hoặc mật khẩu không đúng",
+    "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
+    "field_required": "Không được để trống",
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

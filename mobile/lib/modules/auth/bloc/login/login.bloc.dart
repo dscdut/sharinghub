@@ -5,33 +5,36 @@ import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/data/dtos/auth.dto.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
+import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 
 part 'login.event.dart';
 part 'login.state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  // final AuthBloc _authBloc;
+  final AuthBloc _authBloc;
   final UserRepository _userRepository;
 
   LoginBloc({
     required UserRepository userRepository,
-    // required AuthBloc authBloc,
+    required AuthBloc authBloc,
   })  : _userRepository = userRepository,
-        // _authBloc = authBloc,
+        _authBloc = authBloc,
         super(LoginInitial()) {
-    on<LoginButtonPressed>(_onLoginButtonPressed);
+    on<LoginSubmit>(_onLoginSubmit);
   }
 
-  Future<void> _onLoginButtonPressed(
-    LoginButtonPressed event,
+  Future<void> _onLoginSubmit(
+    LoginSubmit event,
     Emitter<LoginState> emitter,
   ) async {
     emitter(LoginLoading());
 
     try {
-      await _userRepository.loginByEmail(
-        AuthenticationDTO(email: event.email, password: event.password),
+      final AuthResponseDTO loginResponse = await _userRepository.loginByEmail(
+        LoginDTO(email: event.email, password: event.password),
       );
+
+      _authBloc.add(AuthUserInfoSet(authResponse: loginResponse));
 
       // _authBloc.add(
       //   AuthSetUser(

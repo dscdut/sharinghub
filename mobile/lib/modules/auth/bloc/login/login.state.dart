@@ -1,16 +1,14 @@
 part of 'login.bloc.dart';
 
 abstract class LoginState extends Equatable {
-  final String? emailError;
-  final String? passwordError;
+  final String? error;
 
   const LoginState({
-    this.emailError,
-    this.passwordError,
+    this.error,
   });
 
   @override
-  List<Object?> get props => [emailError, passwordError];
+  List<Object?> get props => [error];
 }
 
 class LoginInitial extends LoginState {}
@@ -18,10 +16,7 @@ class LoginInitial extends LoginState {}
 class LoginLoading extends LoginState {}
 
 class LoginNotSuccess extends LoginState {
-  const LoginNotSuccess({
-    super.emailError,
-    super.passwordError,
-  });
+  const LoginNotSuccess({super.error});
 }
 
 class LoginSuccess extends LoginState {}

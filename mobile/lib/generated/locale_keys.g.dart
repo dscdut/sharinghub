@@ -7,12 +7,13 @@ abstract class  LocaleKeys {
   static const texts_email_address = 'texts.email_address';
   static const texts_password = 'texts.password';
   static const texts_register = 'texts.register';
-  static const texts_lorem = 'texts.lorem';
+  static const texts_personal_description = 'texts.personal_description';
+  static const texts_organization_description = 'texts.organization_description';
   static const texts_personal = 'texts.personal';
   static const texts_organization = 'texts.organization';
-  static const texts_fullName = 'texts.fullName';
-  static const texts_organizationName = 'texts.organizationName';
-  static const texts_organizationCEO = 'texts.organizationCEO';
+  static const texts_full_name = 'texts.full_name';
+  static const texts_organization_name = 'texts.organization_name';
+  static const texts_representative_name = 'texts.representative_name';
   static const texts = 'texts';
   static const button_cancel = 'button.cancel';
   static const button_confirm = 'button.confirm';
@@ -29,13 +30,16 @@ abstract class  LocaleKeys {
   static const auth_password = 'auth.password';
   static const auth_forgot_password = 'auth.forgot_password';
   static const auth_confirm_password = 'auth.confirm_password';
+  static const auth_already_have_account = 'auth.already_have_account';
+  static const auth_have_not_account = 'auth.have_not_account';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
-  static const validator_email_error = 'validator.email_error';
-  static const validator_password_error = 'validator.password_error';
-  static const validator_password_length = 'validator.password_length';
-  static const validator_empty = 'validator.empty';
+  static const validator_invalid_email = 'validator.invalid_email';
+  static const validator_incorrect_email_password = 'validator.incorrect_email_password';
+  static const validator_invalid_password = 'validator.invalid_password';
+  static const validator_field_required = 'validator.field_required';
+  static const validator_not_match_password = 'validator.not_match_password';
   static const validator = 'validator';
 
 }

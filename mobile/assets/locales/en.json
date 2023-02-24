@@ -2,16 +2,17 @@
   "texts": {
     "notification": "Notification",
     "success": "Success",
-    "error_occur": "An error has occurred",
-    "email_address": "Email Address",
+    "error_occur": "An error has occurred, please try again later",
+    "email_address": "Email",
     "password": "Password",
     "register": "Create a account",
-    "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "personal_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "organization_description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     "personal": "Personal",
     "organization": "Organization",
-    "fullName": "Full name",
-    "organizationName": "Organization name",
-    "organizationCEO": "Organization CEO"
+    "full_name": "Full Name",
+    "organization_name": "Organization Name",
+    "representative_name": "Representative Name"
   },
   "button": {
     "cancel": "Cancel",
@@ -25,19 +26,22 @@
   "auth": {
     "welcome_back": "Nice to have you back!",
     "sign_in": "Sign in",
-    "login": "Login",
-    "sign_up": "Sign up",
+    "login": "Log in",
+    "sign_up": "Sign Up",
     "email": "Email",
     "password": "Password",
     "forgot_password": "Forgot password?",
-    "confirm_password": "Confirm password"
+    "confirm_password": "Confirm password",
+    "already_have_account": "Already have an account?",
+    "have_not_account": "Don't have an account?"
   },
   "validator": {
     "email_required": "Please enter your email",
     "password_required": "Please enter your password",
-    "email_error": "Email must be an email",
-    "password_error": "Password is not correct, please try again",
-    "password_length": "Password must be at least 8 characters",
-    "empty": "This field is required"
+    "invalid_email": "Invalid email address",
+    "incorrect_email_password": "Incorrect email or password",
+    "invalid_password": "Password must be at least 8 characters",
+    "field_required": "This field is required",
+    "not_match_password": "Password and confirm password not match"
   }
 }

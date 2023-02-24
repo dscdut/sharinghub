@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/modules/auth/auth.dart';
-import 'package:mobile/modules/auth/views/register_choose_role.view.dart';
-import 'package:mobile/modules/auth/views/register_organization.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
@@ -11,8 +9,7 @@ abstract class AppRoutes {
 
   // Auth
   static const String login = '/login';
-  static const String registerPersonal = '/registerPersonal';
-  static const String registerOrganization = '/registerOrganization';
+  static const String register = '/register';
 
   // Root
   static const String root = '/root';
@@ -64,19 +61,17 @@ abstract class AppRoutes {
       case chooseRole:
         return MaterialPageRoute(
           builder: (_) {
-            return const ChooseRolePage();
+            return const ChooseRoleView();
           },
         );
-      case registerPersonal:
+      case register:
+        final bool isPersonal = settings.arguments as bool;
+
         return MaterialPageRoute(
           builder: (_) {
-            return const PersonalRegisterPage();
-          },
-        );
-      case registerOrganization:
-        return MaterialPageRoute(
-          builder: (_) {
-            return const OrganizationRegisterPage();
+            return RegisterPage(
+              isPersonal: isPersonal,
+            );
           },
         );
       case root:

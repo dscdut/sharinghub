@@ -1,71 +1,58 @@
-import 'package:mobile/data/models/organization.model.dart';
-import 'package:mobile/data/models/personal.model.dart';
 import 'package:mobile/data/models/user.model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'auth.dto.g.dart';
 
-@JsonSerializable(createToJson: false)
-class LoginResponseDTO {
+@JsonSerializable(
+  explicitToJson: true,
+)
+class AuthResponseDTO {
   final UserModel user;
   // final String accessToken;
   // final String refreshToken;
   // final String expiresIn;
 
-  LoginResponseDTO({
+  AuthResponseDTO({
     required this.user,
     // required this.accessToken,
     // required this.refreshToken,
     // required this.expiresIn,
   });
 
-  factory LoginResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseDTOFromJson(json);
+  factory AuthResponseDTO.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthResponseDTOToJson(this);
 }
 
 @JsonSerializable(createFactory: false)
-class AuthenticationDTO {
+class LoginDTO {
   final String email;
   final String password;
 
-  AuthenticationDTO({
+  LoginDTO({
     required this.email,
     required this.password,
   });
 
-  Map<String, dynamic> toJson() => _$AuthenticationDTOToJson(this);
+  Map<String, dynamic> toJson() => _$LoginDTOToJson(this);
 }
 
-@JsonSerializable(createFactory: false)
-class PersonalRegisterDTO {
-  final String fullName;
+@JsonSerializable(createFactory: false, includeIfNull: false)
+class RegisterDTO {
+  final String name;
+  final String? representativeName;
   final String email;
   final String password;
 
-  PersonalRegisterDTO({
-    required this.fullName,
+  RegisterDTO({
+    required this.name,
+    this.representativeName,
     required this.email,
     required this.password,
   });
 
-  Map<String, dynamic> toJson() => _$PersonalRegisterDTOToJson(this);
-}
-
-@JsonSerializable(createFactory: false)
-class OrganizationRegisterDTO {
-  final String organizationName;
-  final String organizationCEO;
-  final String email;
-  final String password;
-
-  OrganizationRegisterDTO({
-    required this.organizationName,
-    required this.organizationCEO,
-    required this.email,
-    required this.password,
-  });
-
-  Map<String, dynamic> toJson() => _$OrganizationRegisterDTOToJson(this);
+  Map<String, dynamic> toJson() => _$RegisterDTOToJson(this);
 }
 
 // @JsonSerializable()

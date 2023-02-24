@@ -1,34 +1,40 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
-import 'package:mobile/modules/auth/bloc/login/login.bloc.dart';
+import 'package:mobile/modules/auth/bloc/register/register.bloc.dart';
 import 'package:mobile/modules/auth/widgets/auth_navigate_option.widget.dart';
-import 'package:mobile/modules/auth/widgets/login/login_form.widget.dart';
 import 'package:mobile/modules/auth/widgets/login/option_and_submit_button.widget.dart';
+import 'package:mobile/modules/auth/widgets/register/register_form.widget.dart';
 import 'package:mobile/router/app_routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  final bool isPersonal;
 
-  void _listenLoginState(BuildContext context, LoginState state) {
-    if (state is LoginNotSuccess) {
+  const RegisterPage({
+    super.key,
+    required this.isPersonal,
+  });
+
+  void _listenRegisterState(
+    BuildContext context,
+    RegisterState state,
+  ) {
+    if (state.status == HandleStatus.error) {
       ToastUtil.showError(
         context,
       );
+    } else if (state.status == HandleStatus.success) {
+      ToastUtil.showSuccess(context);
+
       Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.root,
-        (route) => false,
-      );
-    } else if (state is LoginSuccess) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.root,
+        AppRoutes.login,
         (route) => false,
       );
     }
@@ -37,35 +43,44 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(
-        authBloc: context.read<AuthBloc>(),
+      create: (_) => RegisterBloc(
         userRepository: getIt.get<UserRepository>(),
       ),
-      child: BlocListener<LoginBloc, LoginState>(
-        listenWhen: (previous, current) => previous != current,
-        listener: (context, state) {
-          _listenLoginState(context, state);
-        },
-        child: _LoginView(),
+      child: BlocListener<RegisterBloc, RegisterState>(
+        listener: _listenRegisterState,
+        child: _RegisterView(
+          isPersonal,
+        ),
       ),
     );
   }
 }
 
-class _LoginView extends StatelessWidget {
+class _RegisterView extends StatelessWidget {
+  final bool isPersonal;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _nameEditingController = TextEditingController();
+  final TextEditingController _representativeNameEditingController =
+      TextEditingController();
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _passwordEditingController =
       TextEditingController();
+  final TextEditingController _confirmPasswordEditingController =
+      TextEditingController();
 
-  _LoginView();
+  _RegisterView(this.isPersonal);
 
-  void _onLoginButtonPressed(BuildContext context) {
+  void _onRegisterButtonPressed(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      context.read<LoginBloc>().add(
-            LoginSubmit(
+      context.read<RegisterBloc>().add(
+            RegisterSubmit(
+              name: _nameEditingController.text,
+              representativeName: _representativeNameEditingController.text,
               email: _emailEditingController.text,
               password: _passwordEditingController.text,
+              confirmPassword: _confirmPasswordEditingController.text,
             ),
           );
     }
@@ -88,30 +103,35 @@ class _LoginView extends StatelessWidget {
                 const Spacer(),
                 Align(
                   child: Text(
-                    LocaleKeys.auth_login.tr(),
+                    LocaleKeys.auth_sign_up.tr(),
                     style: TextStyles.regularText.copyWith(fontSize: 34),
                   ),
                 ),
                 const SizedBox(height: 40),
-                LoginForm(
+                RegisterForm(
                   formKey: _formKey,
+                  isPersonal: isPersonal,
+                  nameEditingController: _nameEditingController,
+                  representativeNameEditingController:
+                      _representativeNameEditingController,
                   emailEditingController: _emailEditingController,
                   passwordEditingController: _passwordEditingController,
+                  confirmPasswordEditingController:
+                      _confirmPasswordEditingController,
                 ),
-                BlocBuilder<LoginBloc, LoginState>(
+                BlocBuilder<RegisterBloc, RegisterState>(
                   builder: (context, state) {
                     return OptionsAndSubmitButton(
                       onSubmit: () {
-                        _onLoginButtonPressed(context);
+                        _onRegisterButtonPressed(context);
                       },
-                      isLoading: state is LoginLoading,
+                      isLoading: state.status == HandleStatus.loading,
+                      isLogin: false,
                     );
                   },
                 ),
                 const Spacer(),
-                const AuthNavigateOption(
-                  haveAccount: false,
-                ),
+                const AuthNavigateOption()
               ],
             ),
           ),
