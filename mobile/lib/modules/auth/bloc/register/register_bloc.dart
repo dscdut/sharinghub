@@ -28,69 +28,6 @@ class OrganizationRegisterBloc
   ) async {
     emitter(state.copyWith(loadingStatus: LoadingStatus.loading));
 
-    if (event.organizationName.isEmpty) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          organizationNameError: 'Organization name is required',
-        ),
-      );
-      return;
-    }
-    if (event.organizationCEO.isEmpty) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          organizationCEOError: 'Organization CEO is required',
-        ),
-      );
-      return;
-    }
-    if (event.email.isEmpty) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          emailError: 'Email is required',
-        ),
-      );
-      return;
-    }
-    if (event.password.isEmpty) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          passwordError: 'Password is required',
-        ),
-      );
-      return;
-    }
-    if (event.confirmPassword.isEmpty) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          confirmPasswordError: 'Confirm password is required',
-        ),
-      );
-      return;
-    }
-    if (event.password.length < 8) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          passwordError: 'Password must be at least 8 characters',
-        ),
-      );
-      return;
-    }
-    if (event.password != event.confirmPassword) {
-      emitter(
-        state.copyWith(
-          loadingStatus: LoadingStatus.error,
-          confirmPasswordError: 'Passwords do not match',
-        ),
-      );
-      return;
-    }
     try {
       await _organizationRepository.registerByEmail(
         OrganizationRegisterDTO(
@@ -105,7 +42,7 @@ class OrganizationRegisterBloc
       emitter(
         state.copyWith(
           loadingStatus: LoadingStatus.error,
-          emailError: error.response?.data['message'].toString(),
+          emailError: error.toString(),
         ),
       );
       log(error.toString());
@@ -122,7 +59,7 @@ class PersonalRegisterBloc extends Bloc<RegisterEvent, PersonalRegisterState> {
         super(const PersonalRegisterState()) {
     on<PersonalRegisterButtonPressed>(_onPersonalRegisterButtonPressed);
   }
-  
+
   Future<void> _onPersonalRegisterButtonPressed(
     PersonalRegisterButtonPressed event,
     Emitter<PersonalRegisterState> emitter,
@@ -196,7 +133,6 @@ class PersonalRegisterBloc extends Bloc<RegisterEvent, PersonalRegisterState> {
       emitter(
         state.copyWith(
           loadingStatus: LoadingStatus.error,
-          emailError: error.response?.data['message'].toString(),
         ),
       );
       log(error.toString());

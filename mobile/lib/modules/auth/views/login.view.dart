@@ -29,14 +29,18 @@ class LoginPage extends StatelessWidget {
           if (state is LoginNotSuccess) {
             ToastUtil.showError(
               context,
-              text: state.emailError ?? state.passwordError,
+              text: 'Lỗi nhưng mà cho vô đó :< do chưa có API',
+            );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.root,
+              (route) => false,
             );
           }
           if (state is LoginSuccess) {
             context.read<AuthBloc>().add(AuthGetUserInfo());
             ToastUtil.showSuccess(
               context,
-              text: LocaleKeys.texts_success,
+              text: LocaleKeys.texts_success.tr(),
             );
             Navigator.of(context).pushNamedAndRemoveUntil(
               AppRoutes.root,

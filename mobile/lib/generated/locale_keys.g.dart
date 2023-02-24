@@ -35,6 +35,7 @@ abstract class  LocaleKeys {
   static const validator_email_error = 'validator.email_error';
   static const validator_password_error = 'validator.password_error';
   static const validator_password_length = 'validator.password_length';
+  static const validator_empty = 'validator.empty';
   static const validator = 'validator';
 
 }

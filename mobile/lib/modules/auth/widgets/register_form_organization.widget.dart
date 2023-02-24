@@ -32,6 +32,13 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
   bool _isObscure = true;
   bool _isObscureRe = true;
 
+  String? _validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return LocaleKeys.validator_empty.tr();
+    }
+    return null;
+  }
+
   String? _validateEmail(String? value) {
     if (value != null) {
       final bool emailValid = RegExp(
@@ -40,6 +47,26 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
 
       if (!emailValid) {
         return LocaleKeys.validator_email_error.tr();
+      }
+    }
+
+    return null;
+  }
+
+  String? _validatePassword(String? value) {
+    if (value != null) {
+      if (value.length < 8) {
+        return LocaleKeys.validator_password_length.tr();
+      }
+    }
+
+    return null;
+  }
+
+  String? _validateRePassword(String? value) {
+    if (value != null) {
+      if (value != widget.passwordEditingController.text) {
+        return LocaleKeys.auth_confirm_password.tr();
       }
     }
 
@@ -55,7 +82,7 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppTextFormField(
-              errorText: state.organizationNameError,
+              validator: _validateName,
               textController: widget.organizationNameEditingController,
               borderRadius: 10,
               borderColor: Colors.black26,
@@ -65,7 +92,7 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
             ),
             const SizedBox(height: 15),
             AppTextFormField(
-              errorText: state.organizationCEOError,
+              validator: _validateName,
               textController: widget.organizationCEOEditingController,
               borderRadius: 10,
               borderColor: Colors.black26,
@@ -86,6 +113,7 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
             ),
             const SizedBox(height: 15),
             AppTextFormField(
+              validator: _validatePassword,
               errorText: state.passwordError,
               textController: widget.passwordEditingController,
               borderRadius: 10,
@@ -103,12 +131,14 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
             ),
             const SizedBox(height: 15),
             AppTextFormField(
+              validator: _validateRePassword,
               errorText: state.confirmPasswordError,
               textController: widget.rePasswordEditingController,
               borderRadius: 10,
               borderColor: Colors.black26,
               keyboardType: TextInputType.text,
-              suffixIcon: _isObscureRe ? Icons.visibility_off : Icons.visibility,
+              suffixIcon:
+                  _isObscureRe ? Icons.visibility_off : Icons.visibility,
               onTapSuffixIcon: () {
                 setState(() {
                   _isObscureRe = !_isObscureRe;
@@ -118,7 +148,6 @@ class _OrganizationRegisterFormState extends State<OrganizationRegisterForm> {
               hintText: LocaleKeys.auth_confirm_password.tr(),
               hintColor: Colors.black26,
             ),
-            const SizedBox(height: 15),
           ],
         ),
       ),

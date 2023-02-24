@@ -53,7 +53,8 @@ class CodegenLoader extends AssetLoader{
     "password_required": "Please enter your password",
     "email_error": "Email must be an email",
     "password_error": "Password is not correct, please try again",
-    "password_length": "Password must be at least 8 characters"
+    "password_length": "Password must be at least 8 characters",
+    "empty": "This field is required"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -95,7 +96,8 @@ static const Map<String,dynamic> vi = {
     "password_required": "Vui lòng nhập mật khẩu",
     "email_error": "Không đúng định dạng email",
     "password_error": "Sai mật khẩu, xin vui lòng thử lại",
-    "password_length": "Mật khẩu phải có ít nhất 8 kí tự"
+    "password_length": "Mật khẩu phải có ít nhất 8 kí tự",
+    "empty": "Không được để trống"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

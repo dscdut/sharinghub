@@ -7,7 +7,7 @@ import 'package:mobile/modules/auth/bloc/register/register_bloc.dart';
 
 class PersonalRegisterForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
-  final TextEditingController fullNameEditingController;
+  final TextEditingController personalNameEditingController;
   final TextEditingController emailEditingController;
   final TextEditingController passwordEditingController;
   final TextEditingController rePasswordEditingController;
@@ -15,19 +15,27 @@ class PersonalRegisterForm extends StatefulWidget {
   const PersonalRegisterForm({
     super.key,
     required this.formKey,
-    required this.fullNameEditingController,
+    required this.personalNameEditingController,
     required this.emailEditingController,
     required this.passwordEditingController,
     required this.rePasswordEditingController,
   });
 
   @override
-  State<PersonalRegisterForm> createState() => _PersonalRegisterFormState();
+  State<PersonalRegisterForm> createState() =>
+      _PersonalRegisterFormState();
 }
 
 class _PersonalRegisterFormState extends State<PersonalRegisterForm> {
   bool _isObscure = true;
   bool _isObscureRe = true;
+
+  String? _validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      return LocaleKeys.validator_empty.tr();
+    }
+    return null;
+  }
 
   String? _validateEmail(String? value) {
     if (value != null) {
@@ -43,6 +51,26 @@ class _PersonalRegisterFormState extends State<PersonalRegisterForm> {
     return null;
   }
 
+  String? _validatePassword(String? value) {
+    if (value != null) {
+      if (value.length < 8) {
+        return LocaleKeys.validator_password_length.tr();
+      }
+    }
+
+    return null;
+  }
+
+  String? _validateRePassword(String? value) {
+    if (value != null) {
+      if (value != widget.passwordEditingController.text) {
+        return LocaleKeys.auth_confirm_password.tr();
+      }
+    }
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PersonalRegisterBloc, PersonalRegisterState>(
@@ -52,8 +80,8 @@ class _PersonalRegisterFormState extends State<PersonalRegisterForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AppTextFormField(
-              errorText: state.fullNameError,
-              textController: widget.fullNameEditingController,
+              validator: _validateName,
+              textController: widget.personalNameEditingController,
               borderRadius: 10,
               borderColor: Colors.black26,
               keyboardType: TextInputType.name,
@@ -73,6 +101,7 @@ class _PersonalRegisterFormState extends State<PersonalRegisterForm> {
             ),
             const SizedBox(height: 15),
             AppTextFormField(
+              validator: _validatePassword,
               errorText: state.passwordError,
               textController: widget.passwordEditingController,
               borderRadius: 10,
@@ -90,12 +119,14 @@ class _PersonalRegisterFormState extends State<PersonalRegisterForm> {
             ),
             const SizedBox(height: 15),
             AppTextFormField(
+              validator: _validateRePassword,
               errorText: state.confirmPasswordError,
               textController: widget.rePasswordEditingController,
               borderRadius: 10,
               borderColor: Colors.black26,
               keyboardType: TextInputType.text,
-              suffixIcon: _isObscureRe ? Icons.visibility_off : Icons.visibility,
+              suffixIcon:
+                  _isObscureRe ? Icons.visibility_off : Icons.visibility,
               onTapSuffixIcon: () {
                 setState(() {
                   _isObscureRe = !_isObscureRe;
@@ -105,7 +136,6 @@ class _PersonalRegisterFormState extends State<PersonalRegisterForm> {
               hintText: LocaleKeys.auth_confirm_password.tr(),
               hintColor: Colors.black26,
             ),
-            const SizedBox(height: 15),
           ],
         ),
       ),

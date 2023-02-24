@@ -31,7 +31,6 @@ class _LoginFormState extends State<LoginForm> {
       final bool emailValid = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
       ).hasMatch(value);
-
       if (!emailValid) {
         return LocaleKeys.validator_email_error.tr();
       }
@@ -46,6 +45,7 @@ class _LoginFormState extends State<LoginForm> {
         return LocaleKeys.validator_password_length.tr();
       }
     }
+
     return null;
   }
 
@@ -86,7 +86,6 @@ class _LoginFormState extends State<LoginForm> {
               hintColor: Colors.black26,
             ),
           ),
-          const SizedBox(height: 15),
         ],
       ),
     );

@@ -25,7 +25,7 @@ class AppFlavor {
   static String get apiBaseUrl {
     switch (appFlavor) {
       case Flavor.DEV:
-        return 'https://63f1fdebaab7d09125ff7117.mockapi.io';
+        return 'dev.sharinghub.com';
       case Flavor.QA:
         return 'QA';
       case Flavor.STAGING:

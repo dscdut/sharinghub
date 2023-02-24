@@ -37,6 +37,7 @@
     "password_required": "Vui lòng nhập mật khẩu",
     "email_error": "Không đúng định dạng email",
     "password_error": "Sai mật khẩu, xin vui lòng thử lại",
-    "password_length": "Mật khẩu phải có ít nhất 8 kí tự"
+    "password_length": "Mật khẩu phải có ít nhất 8 kí tự",
+    "empty": "Không được để trống"
   }
 }

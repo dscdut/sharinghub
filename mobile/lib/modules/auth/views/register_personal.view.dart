@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
+import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/data/repositories/personal.repository.dart';
 import 'package:mobile/di/di.dart';
@@ -20,14 +21,34 @@ class PersonalRegisterPage extends StatelessWidget {
       create: (_) => PersonalRegisterBloc(
         personalRepository: getIt.get<PersonalRepository>(),
       ),
-      child: _PersonalRegisterView(),
+      child: BlocListener<PersonalRegisterBloc, PersonalRegisterState>(
+        listener: (context, state) {
+          if (state.loadingStatus == LoadingStatus.error) {
+            ToastUtil.showError(
+              context,
+              text: 'Lỗi nên là qua đăng nhập đi :< do chưa có API',
+            );
+          }
+          if (state.loadingStatus == LoadingStatus.done) {
+            ToastUtil.showSuccess(
+              context,
+              text: LocaleKeys.texts_success.tr(),
+            );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.login,
+              (route) => false,
+            );
+          }
+        },
+        child: _PersonalRegisterView(),
+      ),
     );
   }
 }
 
 class _PersonalRegisterView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _fullNameEditingController =
+  final TextEditingController _personalNameEditingController =
       TextEditingController();
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _passwordEditingController =
@@ -41,7 +62,7 @@ class _PersonalRegisterView extends StatelessWidget {
     if (_formKey.currentState!.validate()) {
       context.read<PersonalRegisterBloc>().add(
             PersonalRegisterButtonPressed(
-              fullName: _fullNameEditingController.text,
+              fullName: _personalNameEditingController.text,
               email: _emailEditingController.text,
               password: _passwordEditingController.text,
               confirmPassword: _rePasswordEditingController.text,
@@ -72,7 +93,8 @@ class _PersonalRegisterView extends StatelessWidget {
                   const SizedBox(height: 40),
                   PersonalRegisterForm(
                     formKey: _formKey,
-                    fullNameEditingController: _fullNameEditingController,
+                    personalNameEditingController:
+                        _personalNameEditingController,
                     emailEditingController: _emailEditingController,
                     passwordEditingController: _passwordEditingController,
                     rePasswordEditingController: _rePasswordEditingController,

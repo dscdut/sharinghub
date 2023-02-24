@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
+import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/data/repositories/organization.repository.dart';
 import 'package:mobile/di/di.dart';
@@ -20,7 +21,27 @@ class OrganizationRegisterPage extends StatelessWidget {
       create: (_) => OrganizationRegisterBloc(
         organizationRepository: getIt.get<OrganizationRepository>(),
       ),
-      child: _OrganizationRegisterView(),
+      child: BlocListener<OrganizationRegisterBloc, OrganizationRegisterState>(
+        listener: (context, state) {
+          if (state.loadingStatus == LoadingStatus.error) {
+            ToastUtil.showError(
+              context,
+              text: 'Lỗi nên là qua đăng nhập đi :< do chưa có API',
+            );
+          }
+          if (state.loadingStatus == LoadingStatus.done) {
+            ToastUtil.showSuccess(
+              context,
+              text: LocaleKeys.texts_success.tr(),
+            );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.login,
+              (route) => false,
+            );
+          }
+        },
+        child: _OrganizationRegisterView(),
+      ),
     );
   }
 }
@@ -75,8 +96,10 @@ class _OrganizationRegisterView extends StatelessWidget {
                   const SizedBox(height: 40),
                   OrganizationRegisterForm(
                     formKey: _formKey,
-                    organizationNameEditingController: _organizationNameEditingController,
-                    organizationCEOEditingController: _organizationCEOEditingController,
+                    organizationNameEditingController:
+                        _organizationNameEditingController,
+                    organizationCEOEditingController:
+                        _organizationCEOEditingController,
                     emailEditingController: _emailEditingController,
                     passwordEditingController: _passwordEditingController,
                     rePasswordEditingController: _rePasswordEditingController,
@@ -97,7 +120,8 @@ class _OrganizationRegisterView extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 50),
-                  BlocBuilder<OrganizationRegisterBloc, OrganizationRegisterState>(
+                  BlocBuilder<OrganizationRegisterBloc,
+                      OrganizationRegisterState>(
                     builder: (context, state) {
                       return AppRoundedButton(
                         onPressed: () {
