@@ -5,7 +5,7 @@ import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/auth.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
 
   final TextEditingController emailEditingController;
@@ -19,6 +19,13 @@ class LoginForm extends StatelessWidget {
     required this.passwordEditingController,
   });
 
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool isObscure = true;
+
   String? _validateEmail(String? value) {
     if (value != null) {
       final bool emailValid = RegExp(
@@ -28,9 +35,8 @@ class LoginForm extends StatelessWidget {
       if (!emailValid) {
         return LocaleKeys.validator_email_error.tr();
       }
-    } else {
-      return LocaleKeys.validator_email_required.tr();
     }
+
     return null;
   }
 
@@ -39,8 +45,6 @@ class LoginForm extends StatelessWidget {
       if (value.length < 8) {
         return LocaleKeys.validator_password_length.tr();
       }
-    } else {
-      return LocaleKeys.validator_password_required.tr();
     }
     return null;
   }
@@ -48,13 +52,13 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: widget.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AppTextFormField(
             validator: _validateEmail,
-            textController: emailEditingController,
+            textController: widget.emailEditingController,
             borderRadius: 10,
             borderColor: Colors.black26,
             keyboardType: TextInputType.emailAddress,
@@ -66,12 +70,18 @@ class LoginForm extends StatelessWidget {
             builder: (_, state) => AppTextFormField(
               //   focusNode: controller.passwordFocusNode,
               validator: _validatePassword,
-              textController: passwordEditingController,
+              textController: widget.passwordEditingController,
               borderRadius: 10,
+              suffixIcon: isObscure ? Icons.visibility_off : Icons.visibility,
+              onTapSuffixIcon: () {
+                setState(() {
+                  isObscure = !isObscure;
+                });
+              },
               borderColor: Colors.black26,
               keyboardType: TextInputType.text,
               errorText: state.passwordError,
-              isObscure: true,
+              isObscure: isObscure,
               hintText: LocaleKeys.auth_password.tr(),
               hintColor: Colors.black26,
             ),

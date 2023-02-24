@@ -9,32 +9,21 @@ enum AuthenticationStatus {
 class AuthState extends Equatable {
   const AuthState._({
     this.status = AuthenticationStatus.unknown,
-    this.email,
-    this.password,
+    this.user,
   });
 
   const AuthState.unknown() : this._();
 
   const AuthState.authenticated({
-    required String email,
-    required String password,
-  }) : this._(
-          status: AuthenticationStatus.authenticated,
-          email: email,
-          password: password,
-        );
+    required UserModel user,
+  }) : this._(status: AuthenticationStatus.authenticated, user: user);
 
   const AuthState.unauthenticated()
       : this._(status: AuthenticationStatus.unauthenticated);
 
   final AuthenticationStatus status;
-  final String? email;
-  final String? password;
+  final UserModel? user;
 
   @override
-  List<Object?> get props => [
-        status,
-        email,
-        password,
-      ];
+  List<Object?> get props => [status, user];
 }

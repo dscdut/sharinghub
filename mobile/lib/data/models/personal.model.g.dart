@@ -1,11 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.model.dart';
+part of 'personal.model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
+PersonalModel _$PersonalModelFromJson(Map<String, dynamic> json) =>
+    PersonalModel(
+      fullName: json['fullName'] as String,
       email: json['email'] as String,
     );

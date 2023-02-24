@@ -3,67 +3,48 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
-import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
-import 'package:mobile/data/repositories/user.repository.dart';
+import 'package:mobile/data/repositories/personal.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
-import 'package:mobile/modules/auth/bloc/login/login.bloc.dart';
-import 'package:mobile/modules/auth/widgets/login_form.widget.dart';
+import 'package:mobile/modules/auth/bloc/register/register_bloc.dart';
+import 'package:mobile/modules/auth/widgets/register_form_personal.widget.dart';
 import 'package:mobile/router/app_routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class PersonalRegisterPage extends StatelessWidget {
+  const PersonalRegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(
-        // authBloc: context.read<AuthBloc>(),
-        userRepository: getIt.get<UserRepository>(),
+      create: (_) => PersonalRegisterBloc(
+        personalRepository: getIt.get<PersonalRepository>(),
       ),
-      child: BlocListener<LoginBloc, LoginState>(
-        listenWhen: (previous, current) => previous != current,
-        listener: (context, state) {
-          if (state is LoginNotSuccess) {
-            ToastUtil.showError(
-              context,
-              text: state.emailError ?? state.passwordError,
-            );
-          }
-          if (state is LoginSuccess) {
-            context.read<AuthBloc>().add(AuthGetUserInfo());
-            ToastUtil.showSuccess(
-              context,
-              text: LocaleKeys.texts_success,
-            );
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.root,
-              (route) => false,
-            );
-          }
-        },
-        child: _LoginView(),
-      ),
+      child: _PersonalRegisterView(),
     );
   }
 }
 
-class _LoginView extends StatelessWidget {
+class _PersonalRegisterView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _fullNameEditingController =
+      TextEditingController();
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _passwordEditingController =
       TextEditingController();
+  final TextEditingController _rePasswordEditingController =
+      TextEditingController();
 
-  _LoginView();
+  _PersonalRegisterView();
 
-  void _onLoginButtonPressed(BuildContext context) {
+  void _onRegisterButtonPressed(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      context.read<LoginBloc>().add(
-            LoginButtonPressed(
+      context.read<PersonalRegisterBloc>().add(
+            PersonalRegisterButtonPressed(
+              fullName: _fullNameEditingController.text,
               email: _emailEditingController.text,
               password: _passwordEditingController.text,
+              confirmPassword: _rePasswordEditingController.text,
             ),
           );
     }
@@ -84,43 +65,43 @@ class _LoginView extends StatelessWidget {
                 children: [
                   Align(
                     child: Text(
-                      LocaleKeys.auth_sign_in.tr(),
+                      LocaleKeys.auth_sign_up.tr(),
                       style: TextStyles.regularText.copyWith(fontSize: 34),
                     ),
                   ),
                   const SizedBox(height: 40),
-                  LoginForm(
+                  PersonalRegisterForm(
                     formKey: _formKey,
+                    fullNameEditingController: _fullNameEditingController,
                     emailEditingController: _emailEditingController,
                     passwordEditingController: _passwordEditingController,
+                    rePasswordEditingController: _rePasswordEditingController,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
                         onTap: () {
                           Navigator.pushNamed(
                             context,
-                            AppRoutes.chooseRole,
+                            AppRoutes.login,
                           );
                         },
                         child: Text(
-                          LocaleKeys.auth_sign_up.tr(),
+                          LocaleKeys.auth_sign_in.tr(),
                         ),
                       ),
-                      Text(LocaleKeys.auth_forgot_password.tr())
                     ],
                   ),
                   const SizedBox(height: 50),
-                  BlocBuilder<LoginBloc, LoginState>(
+                  BlocBuilder<PersonalRegisterBloc, PersonalRegisterState>(
                     builder: (context, state) {
                       return AppRoundedButton(
                         onPressed: () {
-                          _onLoginButtonPressed(context);
+                          _onRegisterButtonPressed(context);
                         },
-                        content: LocaleKeys.auth_login.tr(),
+                        content: LocaleKeys.auth_sign_up.tr(),
                         width: double.infinity,
-                        isLoading: state is LoginLoading,
+                        isLoading: state.loadingStatus == LoadingStatus.loading,
                       );
                     },
                   ),

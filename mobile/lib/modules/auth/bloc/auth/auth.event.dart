@@ -10,20 +10,12 @@ abstract class AuthEvent extends Equatable {
 class AuthGetUserInfo extends AuthEvent {}
 
 class AuthSetUser extends AuthEvent {
-  // final UserModel? currentUser;
-  final String? currentEmail;
-  final String? password;
+  final UserModel? currentUser;
 
-  const AuthSetUser({
-    required this.currentEmail,
-    required this.password,
-  });
+  const AuthSetUser({required this.currentUser});
 
   @override
-  List<Object?> get props => [
-        currentEmail,
-        password,
-      ];
+  List<Object?> get props => [currentUser];
 }
 
 // class AuthSetTokens extends AuthEvent {

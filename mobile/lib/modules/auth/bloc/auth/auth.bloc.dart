@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/hive_keys.dart';
 import 'package:mobile/common/helpers/hive/hive.helper.dart';
+import 'package:mobile/data/models/user.model.dart';
 part 'auth.event.dart';
 part 'auth.state.dart';
 
@@ -24,16 +25,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (accessToken == null) {
       emitter(const AuthState.unauthenticated());
     } else {
-      emitter(const AuthState.authenticated(email: '', password: ''));
+      emitter(AuthState.authenticated(user: UserModel(email: '')));
     }
   }
 
   void _onSetUser(AuthSetUser event, Emitter<AuthState> emitter) {
-    if (event.currentEmail == null || event.password == null) {
+    if (event.currentUser == null) {
       emitter(const AuthState.unauthenticated());
     } else {
-      emitter(AuthState.authenticated(
-          email: event.currentEmail!, password: event.password!));
+      emitter(
+        AuthState.authenticated(
+          user: event.currentUser!,
+        ),
+      );
     }
   }
 

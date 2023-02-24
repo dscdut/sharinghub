@@ -1,11 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.model.dart';
+part of 'organization.model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
+OrganizationModel _$OrganizationModelFromJson(Map<String, dynamic> json) =>
+    OrganizationModel(
+      organizationName: json['organizationName'] as String,
+      organizationCEO: json['organizationCEO'] as String,
       email: json['email'] as String,
     );

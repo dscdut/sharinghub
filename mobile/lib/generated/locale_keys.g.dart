@@ -6,6 +6,13 @@ abstract class  LocaleKeys {
   static const texts_error_occur = 'texts.error_occur';
   static const texts_email_address = 'texts.email_address';
   static const texts_password = 'texts.password';
+  static const texts_register = 'texts.register';
+  static const texts_lorem = 'texts.lorem';
+  static const texts_personal = 'texts.personal';
+  static const texts_organization = 'texts.organization';
+  static const texts_fullName = 'texts.fullName';
+  static const texts_organizationName = 'texts.organizationName';
+  static const texts_organizationCEO = 'texts.organizationCEO';
   static const texts = 'texts';
   static const button_cancel = 'button.cancel';
   static const button_confirm = 'button.confirm';
@@ -21,6 +28,7 @@ abstract class  LocaleKeys {
   static const auth_email = 'auth.email';
   static const auth_password = 'auth.password';
   static const auth_forgot_password = 'auth.forgot_password';
+  static const auth_confirm_password = 'auth.confirm_password';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';

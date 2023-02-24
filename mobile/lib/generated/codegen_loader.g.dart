@@ -20,7 +20,14 @@ class CodegenLoader extends AssetLoader{
     "success": "Success",
     "error_occur": "An error has occurred",
     "email_address": "Email Address",
-    "password": "Password"
+    "password": "Password",
+    "register": "Create a account",
+    "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "personal": "Personal",
+    "organization": "Organization",
+    "fullName": "Full name",
+    "organizationName": "Organization name",
+    "organizationCEO": "Organization CEO"
   },
   "button": {
     "cancel": "Cancel",
@@ -38,7 +45,8 @@ class CodegenLoader extends AssetLoader{
     "sign_up": "Sign up",
     "email": "Email",
     "password": "Password",
-    "forgot_password": "Forgot password?"
+    "forgot_password": "Forgot password?",
+    "confirm_password": "Confirm password"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -54,7 +62,14 @@ static const Map<String,dynamic> vi = {
     "success": "Thành công",
     "error_occur": "Đã có lỗi xảy ra",
     "email_address": "Email",
-    "password": "Mật khẩu"
+    "password": "Mật khẩu",
+    "register": "Đăng kí tài khoản",
+    "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "personal": "Cá nhân",
+    "organization": "Tổ chức",
+    "fullName": "Họ và tên",
+    "organizationName": "Tên tổ chức",
+    "organizationCEO": "Tên người đứng đầu tổ chức"
   },
   "button": {
     "cancel": "Hủy",
@@ -72,7 +87,8 @@ static const Map<String,dynamic> vi = {
     "sign_up": "Đăng ký",
     "email": "Email",
     "password": "Mật khẩu",
-    "forgot_password": "Quên mật khẩu?"
+    "forgot_password": "Quên mật khẩu?",
+    "confirm_password": "Xác nhận mật khẩu"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",

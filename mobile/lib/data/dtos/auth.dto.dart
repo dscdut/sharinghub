@@ -1,3 +1,5 @@
+import 'package:mobile/data/models/organization.model.dart';
+import 'package:mobile/data/models/personal.model.dart';
 import 'package:mobile/data/models/user.model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -5,17 +7,13 @@ part 'auth.dto.g.dart';
 
 @JsonSerializable(createToJson: false)
 class LoginResponseDTO {
-  // final UserModel user;
-  final String email;
-  final String password;
+  final UserModel user;
   // final String accessToken;
   // final String refreshToken;
   // final String expiresIn;
 
   LoginResponseDTO({
-    // required this.user,
-    required this.email,
-    required this.password,
+    required this.user,
     // required this.accessToken,
     // required this.refreshToken,
     // required this.expiresIn,
@@ -36,6 +34,38 @@ class AuthenticationDTO {
   });
 
   Map<String, dynamic> toJson() => _$AuthenticationDTOToJson(this);
+}
+
+@JsonSerializable(createFactory: false)
+class PersonalRegisterDTO {
+  final String fullName;
+  final String email;
+  final String password;
+
+  PersonalRegisterDTO({
+    required this.fullName,
+    required this.email,
+    required this.password,
+  });
+
+  Map<String, dynamic> toJson() => _$PersonalRegisterDTOToJson(this);
+}
+
+@JsonSerializable(createFactory: false)
+class OrganizationRegisterDTO {
+  final String organizationName;
+  final String organizationCEO;
+  final String email;
+  final String password;
+
+  OrganizationRegisterDTO({
+    required this.organizationName,
+    required this.organizationCEO,
+    required this.email,
+    required this.password,
+  });
+
+  Map<String, dynamic> toJson() => _$OrganizationRegisterDTOToJson(this);
 }
 
 // @JsonSerializable()

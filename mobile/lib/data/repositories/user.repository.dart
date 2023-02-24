@@ -9,7 +9,7 @@ class UserRepository {
   UserRepository({required UserDataSource dataSource})
       : _dataSource = dataSource;
 
-  Future<LoginResponseDTO> loginByEmail(AuthenticationDTO params) {
+  Future<void> loginByEmail(AuthenticationDTO params) {
     return _dataSource.loginByEmail(params);
   }
 }

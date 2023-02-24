@@ -3,67 +3,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
-import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
-import 'package:mobile/data/repositories/user.repository.dart';
+import 'package:mobile/data/repositories/organization.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
-import 'package:mobile/modules/auth/bloc/login/login.bloc.dart';
-import 'package:mobile/modules/auth/widgets/login_form.widget.dart';
+import 'package:mobile/modules/auth/bloc/register/register_bloc.dart';
+import 'package:mobile/modules/auth/widgets/register_form_organization.widget.dart';
 import 'package:mobile/router/app_routes.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class OrganizationRegisterPage extends StatelessWidget {
+  const OrganizationRegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => LoginBloc(
-        // authBloc: context.read<AuthBloc>(),
-        userRepository: getIt.get<UserRepository>(),
+      create: (_) => OrganizationRegisterBloc(
+        organizationRepository: getIt.get<OrganizationRepository>(),
       ),
-      child: BlocListener<LoginBloc, LoginState>(
-        listenWhen: (previous, current) => previous != current,
-        listener: (context, state) {
-          if (state is LoginNotSuccess) {
-            ToastUtil.showError(
-              context,
-              text: state.emailError ?? state.passwordError,
-            );
-          }
-          if (state is LoginSuccess) {
-            context.read<AuthBloc>().add(AuthGetUserInfo());
-            ToastUtil.showSuccess(
-              context,
-              text: LocaleKeys.texts_success,
-            );
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.root,
-              (route) => false,
-            );
-          }
-        },
-        child: _LoginView(),
-      ),
+      child: _OrganizationRegisterView(),
     );
   }
 }
 
-class _LoginView extends StatelessWidget {
+class _OrganizationRegisterView extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _organizationNameEditingController =
+      TextEditingController();
+  final TextEditingController _organizationCEOEditingController =
+      TextEditingController();
   final TextEditingController _emailEditingController = TextEditingController();
   final TextEditingController _passwordEditingController =
       TextEditingController();
+  final TextEditingController _rePasswordEditingController =
+      TextEditingController();
 
-  _LoginView();
+  _OrganizationRegisterView();
 
-  void _onLoginButtonPressed(BuildContext context) {
+  void _onRegisterButtonPressed(BuildContext context) {
     if (_formKey.currentState!.validate()) {
-      context.read<LoginBloc>().add(
-            LoginButtonPressed(
+      context.read<OrganizationRegisterBloc>().add(
+            OrganizationRegisterButtonPressed(
+              organizationName: _organizationNameEditingController.text,
+              organizationCEO: _organizationCEOEditingController.text,
               email: _emailEditingController.text,
               password: _passwordEditingController.text,
+              confirmPassword: _rePasswordEditingController.text,
             ),
           );
     }
@@ -84,43 +68,44 @@ class _LoginView extends StatelessWidget {
                 children: [
                   Align(
                     child: Text(
-                      LocaleKeys.auth_sign_in.tr(),
+                      LocaleKeys.auth_sign_up.tr(),
                       style: TextStyles.regularText.copyWith(fontSize: 34),
                     ),
                   ),
                   const SizedBox(height: 40),
-                  LoginForm(
+                  OrganizationRegisterForm(
                     formKey: _formKey,
+                    organizationNameEditingController: _organizationNameEditingController,
+                    organizationCEOEditingController: _organizationCEOEditingController,
                     emailEditingController: _emailEditingController,
                     passwordEditingController: _passwordEditingController,
+                    rePasswordEditingController: _rePasswordEditingController,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
                         onTap: () {
                           Navigator.pushNamed(
                             context,
-                            AppRoutes.chooseRole,
+                            AppRoutes.login,
                           );
                         },
                         child: Text(
-                          LocaleKeys.auth_sign_up.tr(),
+                          LocaleKeys.auth_sign_in.tr(),
                         ),
                       ),
-                      Text(LocaleKeys.auth_forgot_password.tr())
                     ],
                   ),
                   const SizedBox(height: 50),
-                  BlocBuilder<LoginBloc, LoginState>(
+                  BlocBuilder<OrganizationRegisterBloc, OrganizationRegisterState>(
                     builder: (context, state) {
                       return AppRoundedButton(
                         onPressed: () {
-                          _onLoginButtonPressed(context);
+                          _onRegisterButtonPressed(context);
                         },
-                        content: LocaleKeys.auth_login.tr(),
+                        content: LocaleKeys.auth_sign_up.tr(),
                         width: double.infinity,
-                        isLoading: state is LoginLoading,
+                        isLoading: state.loadingStatus == LoadingStatus.loading,
                       );
                     },
                   ),

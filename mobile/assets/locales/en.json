@@ -4,7 +4,14 @@
     "success": "Success",
     "error_occur": "An error has occurred",
     "email_address": "Email Address",
-    "password": "Password"
+    "password": "Password",
+    "register": "Create a account",
+    "lorem": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "personal": "Personal",
+    "organization": "Organization",
+    "fullName": "Full name",
+    "organizationName": "Organization name",
+    "organizationCEO": "Organization CEO"
   },
   "button": {
     "cancel": "Cancel",
@@ -22,7 +29,8 @@
     "sign_up": "Sign up",
     "email": "Email",
     "password": "Password",
-    "forgot_password": "Forgot password?"
+    "forgot_password": "Forgot password?",
+    "confirm_password": "Confirm password"
   },
   "validator": {
     "email_required": "Please enter your email",

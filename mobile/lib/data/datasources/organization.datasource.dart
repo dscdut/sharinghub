@@ -4,10 +4,10 @@ import 'package:mobile/data/dtos/auth.dto.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class UserDataSource {
-  Future<void> loginByEmail(AuthenticationDTO params) async {
+class OrganizationDataSource {
+  Future<void> registerByEmail(OrganizationRegisterDTO params) async {
     await DioHelper.post(
-      Endpoints.login,
+      Endpoints.register,
       data: params.toJson(),
     );
   }
