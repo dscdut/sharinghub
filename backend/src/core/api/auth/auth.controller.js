@@ -3,7 +3,7 @@ import {
     LoginDto,
     RegisterDto,
     ForgotPasswordDto,
-    NewPasswordDto
+    UpdatePasswordDto
 } from '../../modules/auth';
 import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
 
@@ -33,7 +33,7 @@ class Controller {
     }
 
     newPassword = async req => {
-        const data = await this.service.newPassword(NewPasswordDto(req.body));
+        const data = await this.service.updatePassword(UpdatePasswordDto(req.body));
         return ValidHttpResponse.toOkResponse(data);
     }
 }

@@ -1,3 +1,5 @@
+import { URL } from '../../../env';
+
 export const MAIL = {
     REGISTER_SUCCESS: {
         subject: 'Welcome to SharingHub!',
@@ -6,7 +8,7 @@ export const MAIL = {
     FORGOT_PASSWORD(token) {
         return {
             subject: 'Reset password request',
-            html: `<p>Click this <a href="http://localhost:3000/reset-password/${token}">link</a> to reset your password<p>`
+            html: `<p>Click this <a href="${URL}/reset-password/${token}">link</a> to reset your password<p>`
         };
     },
     PASSWORD_UPDATE: {

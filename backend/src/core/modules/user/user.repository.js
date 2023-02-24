@@ -55,22 +55,21 @@ class Repository extends DataRepository {
 
     findByResetToken(token) {
         const now = new Date().toISOString();
-        // console.log(now);
         return this.query()
+            .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
+            .innerJoin('roles', 'roles.id', 'users_roles.role_id')
+            .whereNull('users.deleted_at')
             .where('reset_token', '=', token)
             .where('reset_token_expiration_date', '>', now)
             .select(
-                // '*'
                 'users.id',
                 'users.email',
-                // { fullName: 'users.full_name' },
-                // { role: 'roles.name' },
-                { resetToken: 'users.reset_token' },
-                // { createdAt: 'users.created_at' },
-                // { updatedAt: 'users.updated_at' },
-                // { deletedAt: 'users.deleted_at' },
-            )
-            .from('users');
+                { fullName: 'users.full_name' },
+                { role: 'roles.name' },
+                { createdAt: 'users.created_at' },
+                { updatedAt: 'users.updated_at' },
+                { deletedAt: 'users.deleted_at' },
+            );
     }
 
     updatePassword(email, password) {

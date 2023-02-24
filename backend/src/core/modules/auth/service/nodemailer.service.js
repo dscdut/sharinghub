@@ -22,12 +22,12 @@ class Nodemailer {
         );
     }
 
-    sendMail(email, mailType) {
+    sendMail(email, { subject, html }) {
         return this.createTransport().sendMail({
             to: email,
             from: this.email,
-            subject: mailType.subject,
-            html: mailType.html
+            subject,
+            html
         });
     }
 }
