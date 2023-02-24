@@ -125,7 +125,7 @@ class _MyAppState extends State<MyApp> {
                     break;
                   case AuthenticationStatus.unauthenticated:
                     _navigator.pushNamedAndRemoveUntil(
-                      AppRoutes.login,
+                      AppRoutes.root,
                       (route) => false,
                     );
                     break;
