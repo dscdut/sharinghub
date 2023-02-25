@@ -8,7 +8,7 @@ import { NodemailerService } from './nodemailer.service';
 import { CryptoService } from './crypto.service';
 import { UserService } from './user.service';
 import { UserRepository } from '../../user/user.repository';
-import { UnAuthorizedException, DuplicateException, BadRequestException } from '../../../../packages/httpException';
+import { UnAuthorizedException, BadRequestException } from '../../../../packages/httpException';
 import { MESSAGE } from './message.enum';
 import { MAIL } from './mail.enum';
 import { logger } from '../../../../packages/logger';
@@ -38,23 +38,14 @@ class Service {
     }
 
     async register(registerDto) {
-        const [user] = await this.userRepository.findByEmail(registerDto.email);
-        if (!user) {
-            if (registerDto.password.toString() === registerDto.confirm_password.toString()) {
-                const password = this.bcryptService.hash(registerDto.password, 12);
-                await this.userRepository.createUser({
-                    full_name: registerDto.full_name,
-                    email: registerDto.email,
-                    password,
-                    role_id: registerDto.role_id
-                });
-                return {
-                    message: 'created new user successfully',
-                };
-            }
-            throw new BadRequestException('Password and confirmation password does not match');
-        }
-        throw new DuplicateException('This email is already existed');
+        await UserService.findByEmail(registerDto.email);
+        await this.UserService.createUser(registerDto);
+
+        NodemailerService.sendMail(registerDto.email, MAIL.REGISTER_SUCCESS);
+
+        return {
+            message: MESSAGE.REGISTER_SUCCESS
+        };
     }
 
     async forgotPassword(forgotPasswordDto) {
