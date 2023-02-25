@@ -47,7 +47,7 @@ jspm_packages/
 # dotenv environment variables file
 .env
 .env.test
-
+config.env
 # FuseBox cache
 .fusebox/
 

@@ -11,6 +11,8 @@ exports.up = async knex => {
         table.string('full_name');
         table.string('email').unique().notNullable();
         table.string('password').defaultTo(DEFAULT_PASSWORD);
+        table.string('reset_token').defaultTo(null);
+        table.dateTime('reset_token_expiration_date').defaultTo(null);
         table.dateTime('deleted_at').defaultTo(null);
         table.timestamps(false, true);
     });
