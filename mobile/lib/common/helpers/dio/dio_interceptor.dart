@@ -1,10 +1,6 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:mobile/common/constants/hive_keys.dart';
-import 'package:mobile/common/helpers/hive/hive.helper.dart';
-import 'package:mobile/data/dtos/auth.dto.dart';
 
 class DioInterceptor extends QueuedInterceptor {
   @override
@@ -14,18 +10,18 @@ class DioInterceptor extends QueuedInterceptor {
   ) async {
     log('REQUEST[${options.method}] => PATH: ${options.path}');
 
-    await _checkTokenExpired();
+    // await _checkTokenExpired();
 
-    final String? accessToken = await HiveHelper.get(
-      boxName: HiveKeys.authBox,
-      keyValue: HiveKeys.accessToken,
-    );
+    // final String? accessToken = await HiveHelper.get(
+    //   boxName: HiveKeys.authBox,
+    //   keyValue: HiveKeys.accessToken,
+    // );
 
-    if (accessToken != null) {
-      options.headers.addAll({
-        HttpHeaders.authorizationHeader: 'Bearer $accessToken',
-      });
-    }
+    // if (accessToken != null) {
+    //   options.headers.addAll({
+    //     HttpHeaders.authorizationHeader: 'Bearer $accessToken',
+    //   });
+    // }
 
     return super.onRequest(options, handler);
   }
@@ -54,43 +50,43 @@ class DioInterceptor extends QueuedInterceptor {
     return handler.next(err);
   }
 
-  Future<void> _checkTokenExpired() async {
-    final String? expiredTime = await HiveHelper.get(
-      boxName: HiveKeys.authBox,
-      keyValue: HiveKeys.expiresIn,
-    );
+  // Future<void> _checkTokenExpired() async {
+  //   final String? expiredTime = await HiveHelper.get(
+  //     boxName: HiveKeys.authBox,
+  //     keyValue: HiveKeys.expiresIn,
+  //   );
 
-    if (expiredTime != null &&
-        DateTime.parse(expiredTime)
-            .isBefore(DateTime.now().add(const Duration(seconds: 3)))) {
-      _refreshToken();
-    }
-  }
+  //   if (expiredTime != null &&
+  //       DateTime.parse(expiredTime)
+  //           .isBefore(DateTime.now().add(const Duration(seconds: 3)))) {
+  //     _refreshToken();
+  //   }
+  // }
 
-  Future<void> _refreshToken() async {
-    final String? refreshToken = await HiveHelper.get(
-      boxName: HiveKeys.authBox,
-      keyValue: HiveKeys.refreshToken,
-    );
+  // Future<void> _refreshToken() async {
+  //   final String? refreshToken = await HiveHelper.get(
+  //     boxName: HiveKeys.authBox,
+  //     keyValue: HiveKeys.refreshToken,
+  //   );
 
-    if (refreshToken == null || refreshToken.isEmpty) {
-      // TODO: navigate to login screen
-      return;
-    }
+  //   if (refreshToken == null || refreshToken.isEmpty) {
+  //     // TODO: navigate to login screen
+  //     return;
+  //   }
 
-    log('--[REFRESH TOKEN]--: $refreshToken');
+  //   log('--[REFRESH TOKEN]--: $refreshToken');
 
-    final Dio tokenDio = Dio();
+  //   final Dio tokenDio = Dio();
 
-    try {
-      final Response response = await tokenDio.get('');
+  //   try {
+  //     final Response response = await tokenDio.get('');
 
-      final RefreshTokenDTO refreshTokenDTO =
-          RefreshTokenDTO.fromJson(response.data);
+  //     final RefreshTokenDTO refreshTokenDTO =
+  //         RefreshTokenDTO.fromJson(response.data);
 
-      // TODO: handle set token to local data source
-    } catch (err) {
-      // TODO: logout
-    }
-  }
+  //     // TODO: handle set token to local data source
+  //   } catch (err) {
+  //     // TODO: logout
+  //   }
+  // }
 }

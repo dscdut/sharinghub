@@ -62,7 +62,7 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIconColor,
     this.suffixIcon,
     this.prefixIcon,
-    this.keyboardType,
+    this.keyboardType = TextInputType.text,
     this.validator,
     this.onTap,
     this.onChanged,

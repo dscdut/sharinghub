@@ -46,19 +46,38 @@ class Repository extends DataRepository {
             .into('users')
             .returning('id');
         return this.query().insert({ user_id: id, role_id: user.role_id }).into('users_roles');
+    }
 
-        // try {
-        //     const result = await this.query.getTransaction(async (trx) => {
-        //         // insert a row into the users table and get the user ID
-        //         const [userId] = await trx('users').insert(user).returning('id');
-        //         // insert a row into the posts table with the user ID as the foreign key
-        //         await trx('posts').insert({ ...post, user_id: userId });
-        //         return 'Data inserted successfully';
-        //     });
-        //     console.log(result);
-        // } catch (error) {
-        //     console.error(error);
-        // }
+    setResetToken(email, token) {
+        const now = new Date();
+        return this.query().where('email', '=', email).update({ reset_token: token, reset_token_expiration_date: new Date(now.getTime() + 60 * 60 * 1000) }).into('users');
+    }
+
+    findByResetToken(token) {
+        const now = new Date().toISOString();
+        return this.query()
+            .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
+            .innerJoin('roles', 'roles.id', 'users_roles.role_id')
+            .whereNull('users.deleted_at')
+            .where('reset_token', '=', token)
+            .where('reset_token_expiration_date', '>', now)
+            .select(
+                'users.id',
+                'users.email',
+                { fullName: 'users.full_name' },
+                { role: 'roles.name' },
+                { createdAt: 'users.created_at' },
+                { updatedAt: 'users.updated_at' },
+                { deletedAt: 'users.deleted_at' },
+            );
+    }
+
+    updatePassword(email, password) {
+        return this.query().where('email', '=', email).update({
+            password,
+            reset_token: null,
+            reset_token_expiration_date: null,
+        }).into('users');
     }
 }
 

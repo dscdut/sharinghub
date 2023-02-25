@@ -57,7 +57,7 @@ abstract class DialogUtil {
   }) async {
     return await showDialog(
       context: context,
-      barrierDismissible: true,
+      barrierDismissible: barrierDismissible,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text(
