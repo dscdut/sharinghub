@@ -33,7 +33,7 @@ class AppRoundedButton extends StatelessWidget {
     required this.onPressed,
     this.width,
     this.height = 48,
-    this.borderRadius = 7,
+    this.borderRadius = 10,
     this.elevation = 0,
     this.backgroundColor = ColorStyles.blue400,
     this.disableBackgroundColor = ColorStyles.gray300,
@@ -47,7 +47,7 @@ class AppRoundedButton extends StatelessWidget {
     this.child,
     this.borderSide,
   })  : textStyle =
-            textStyle ?? TextStyles.s14BoldText.copyWith(color: Colors.white),
+            textStyle ?? TextStyles.regularBody14.copyWith(color: Colors.white),
         super(key: key);
 
   @override
