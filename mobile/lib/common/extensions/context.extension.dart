@@ -6,6 +6,8 @@ extension ContextExtention on BuildContext {
 
   double get height => mediaQuerySize.height;
 
+  double get heightWithSafeArea => height - (paddingTop + paddingBottom);
+
   double get width => mediaQuerySize.width;
 
   ThemeData get theme => Theme.of(this);
