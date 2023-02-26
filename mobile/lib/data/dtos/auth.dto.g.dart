@@ -6,30 +6,34 @@ part of 'auth.dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginResponseDTO _$LoginResponseDTOFromJson(Map<String, dynamic> json) =>
-    LoginResponseDTO(
+AuthResponseDTO _$AuthResponseDTOFromJson(Map<String, dynamic> json) =>
+    AuthResponseDTO(
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
-      accessToken: json['accessToken'] as String,
-      refreshToken: json['refreshToken'] as String,
-      expiresIn: json['expiresIn'] as String,
     );
 
-Map<String, dynamic> _$AuthenticationDTOToJson(AuthenticationDTO instance) =>
+Map<String, dynamic> _$AuthResponseDTOToJson(AuthResponseDTO instance) =>
     <String, dynamic>{
+      'user': instance.user.toJson(),
+    };
+
+Map<String, dynamic> _$LoginDTOToJson(LoginDTO instance) => <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
     };
 
-RefreshTokenDTO _$RefreshTokenDTOFromJson(Map<String, dynamic> json) =>
-    RefreshTokenDTO(
-      accessToken: json['accessToken'] as String,
-      refreshToken: json['refreshToken'] as String,
-      expiresIn: json['expiresIn'] as String,
-    );
+Map<String, dynamic> _$RegisterDTOToJson(RegisterDTO instance) {
+  final val = <String, dynamic>{
+    'name': instance.name,
+  };
 
-Map<String, dynamic> _$RefreshTokenDTOToJson(RefreshTokenDTO instance) =>
-    <String, dynamic>{
-      'accessToken': instance.accessToken,
-      'refreshToken': instance.refreshToken,
-      'expiresIn': instance.expiresIn,
-    };
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('representativeName', instance.representativeName);
+  val['email'] = instance.email;
+  val['password'] = instance.password;
+  return val;
+}

@@ -116,7 +116,6 @@ flutter:
     - assets/fonts/
     - assets/icons/
     - assets/icons/launcher/
-    - assets/images/
     - assets/locales/
 
   # An image asset can refer to one or more resolution-specific "variants", see

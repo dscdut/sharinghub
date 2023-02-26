@@ -17,10 +17,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   Future<void> _onSplashStarted(
     SplashStarted event,
-    Emitter<SplashState> emiiter,
+    Emitter<SplashState> emitter,
   ) async {
     await Future.delayed(const Duration(milliseconds: 600));
 
-    _authBloc.add(AuthGetUserInfo());
+    _authBloc.add(AuthUserInfoChecked());
   }
 }
