@@ -41,5 +41,7 @@ abstract class  LocaleKeys {
   static const validator_field_required = 'validator.field_required';
   static const validator_not_match_password = 'validator.not_match_password';
   static const validator = 'validator';
+  static const home_search = 'home.search';
+  static const home = 'home';
 
 }
