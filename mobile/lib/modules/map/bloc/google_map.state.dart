@@ -12,17 +12,27 @@ class GoogleMapState extends Equatable {
 
   const GoogleMapState.initial()
       : this(
-          myLocation: const LatLng(20, 20),
+          myLocation: const LatLng(18.635370, 105.737148),
           marker: const {},
         );
 
-  const GoogleMapState.located({
-    required LatLng location,
-  }) : this(myLocation: location);
+  GoogleMapState copyWith({
+    LatLng? myLocation,
+    Set<Marker>? marker,
+  }) {
+    return GoogleMapState(
+      myLocation: myLocation ?? this.myLocation,
+      marker: marker ?? this.marker,
+    );
+  }
 
-  const GoogleMapState.marked({
-    required Set<Marker> marker,
-  }) : this(marker: marker);
+  // const GoogleMapState.located({
+  //   required LatLng location,
+  // }) : this(myLocation: location);
+
+  // const GoogleMapState.marked({
+  //   required Set<Marker> marker,
+  // }) : this(marker: marker);
 
   @override
   List<Object?> get props => [myLocation];

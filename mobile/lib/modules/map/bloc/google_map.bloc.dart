@@ -32,7 +32,11 @@ class GoogleMapBloc extends Bloc<GoogleMapEvent, GoogleMapState> {
     if (await Permission.location.request().isDenied) {
       _requestPermission(event, emiiter);
     } else {
-      emiiter(GoogleMapState.located(location: await _getMyLocation()));
+      emiiter(
+        state.copyWith(
+          myLocation: await _getMyLocation(),
+        ),
+      );
     }
   }
 
@@ -41,15 +45,12 @@ class GoogleMapBloc extends Bloc<GoogleMapEvent, GoogleMapState> {
     Emitter<GoogleMapState> emiiter,
   ) async {
     Set<Marker> marker = {
-      Marker(
-        markerId: const MarkerId('value'),
-        position: const LatLng(20, 20),
-        onTap: () {
-          print('marker');
-        },
+      const Marker(
+        markerId: MarkerId('value'),
+        position: LatLng(18.635370, 105.737148),
       ),
-      const Marker(markerId: MarkerId('value'), position: LatLng(20.05, 20.05)),
+      const Marker(markerId: MarkerId('value2'), position: LatLng(18.6, 105.8)),
     };
-    emiiter(GoogleMapState.marked(marker: marker));
+    emiiter(state.copyWith(marker: marker));
   }
 }

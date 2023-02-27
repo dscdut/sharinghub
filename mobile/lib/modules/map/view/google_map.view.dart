@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/modules/map/bloc/google_map.bloc.dart';
 import 'package:mobile/modules/map/bloc/google_map.state.dart';
+import 'package:mobile/modules/map/view/map_bottom_sheet.view.dart';
 
 class GoogleMapPage extends StatelessWidget {
   GoogleMapPage({super.key});
@@ -17,7 +18,7 @@ class GoogleMapPage extends StatelessWidget {
       child: BlocListener<GoogleMapBloc, GoogleMapState>(
         listener: (context, state) async {
           GoogleMapController googleMapController = await controller.future;
-          googleMapController.moveCamera(
+          googleMapController.animateCamera(
             CameraUpdate.newLatLngZoom(
               state.myLocation ?? const LatLng(20, 20),
               16,
@@ -43,22 +44,6 @@ class _GoogleMapView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Map'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          showModalBottomSheet(
-            context: context,
-            useRootNavigator: true,
-            builder: (ccontext) {
-              return Container(
-                width: double.infinity,
-                height: 200,
-                color: Colors.red,
-              );
-            },
-          );
-        },
-        child: const Icon(Icons.add),
-      ),
       body: BlocBuilder<GoogleMapBloc, GoogleMapState>(
         builder: (bcontext, state) => GoogleMap(
           initialCameraPosition: const CameraPosition(
@@ -68,10 +53,33 @@ class _GoogleMapView extends StatelessWidget {
           onMapCreated: (gController) {
             controller.complete(gController);
           },
-          myLocationButtonEnabled: false,
-          markers: state.marker ?? const {},
+          myLocationEnabled: true,
+          markers: state.marker
+                  ?.map((e) => Marker(
+                        markerId: e.markerId,
+                        position: e.position,
+                        onTap: () {
+                          _onClickMarker(context);
+                        },
+                      ))
+                  .toSet() ??
+              const {},
         ),
       ),
+    );
+  }
+
+  void _onClickMarker(BuildContext context) {
+    showBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (ccontext) {
+        return const MapBottomSheetView();
+      },
     );
   }
 }

@@ -15,3 +15,10 @@ class GoogleMapGetMarkers extends GoogleMapEvent {
   @override
   List<Object?> get props => [];
 }
+
+class GoogleMapGetProject extends GoogleMapEvent {
+  const GoogleMapGetProject();
+
+  @override
+  List<Object?> get props => [];
+}
