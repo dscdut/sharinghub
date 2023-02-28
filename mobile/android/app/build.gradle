@@ -21,6 +21,11 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def MAPS_API_KEY = localProperties.getProperty("MAPS_API_KEY")
+if(MAPS_API_KEY == null) {
+    throw new GradleException("MAPS_API_KEY not found. Define location with MAPS_API_KEY in the local.properties file.")
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
@@ -71,10 +76,13 @@ android {
         applicationId "com.gdscdut.sharinghub"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders = [
+            MAPS_API_KEY : MAPS_API_KEY
+        ]
     }
 
     buildTypes {

@@ -4,6 +4,7 @@ import 'package:mobile/modules/core/bloc/root.bloc.dart';
 import 'package:mobile/modules/core/widgets/app_bottom_navigation_bar.widget.dart';
 import 'package:mobile/modules/core/widgets/custom_lazy_indexed_stack.widget.dart';
 import 'package:mobile/modules/home/home.dart';
+import 'package:mobile/modules/map/map.dart';
 import 'package:mobile/modules/notification/notification.dart';
 import 'package:mobile/modules/profile/profile.dart';
 
@@ -32,7 +33,12 @@ class _RootView extends StatelessWidget {
         ) {
           return SlideIndexedStack(
             index: state.currentIndex,
-            children: const [HomePage(), NotificationPage(), ProfilePage()],
+            children: [
+              const HomePage(),
+              const NotificationPage(),
+              MapPage(),
+              const ProfilePage(),
+            ],
           );
         },
         buildWhen: (previous, current) {
