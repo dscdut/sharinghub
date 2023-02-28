@@ -6,6 +6,7 @@ import 'package:mobile/modules/core/widgets/custom_lazy_indexed_stack.widget.dar
 import 'package:mobile/modules/home/home.dart';
 import 'package:mobile/modules/notification/notification.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/campaign/view/campaign.view.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
@@ -32,7 +33,12 @@ class _RootView extends StatelessWidget {
         ) {
           return SlideIndexedStack(
             index: state.currentIndex,
-            children: const [HomePage(), NotificationPage(), ProfilePage()],
+            children: const [
+              HomePage(),
+              CampaignPage(isCreate: true),
+              NotificationPage(),
+              ProfilePage(),
+            ],
           );
         },
         buildWhen: (previous, current) {

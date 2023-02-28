@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
+import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
   static const String splash = '/';
   static const String chooseRole = '/chooseRole';
+
+  // Campaign
+  static const String setCampaign = '/setCampaign';
 
   // Auth
   static const String login = '/login';
@@ -71,6 +75,16 @@ abstract class AppRoutes {
           builder: (_) {
             return RegisterPage(
               isPersonal: isPersonal,
+            );
+          },
+        );
+      case setCampaign:
+        final bool isCreate = settings.arguments as bool;
+
+        return MaterialPageRoute(
+          builder: (_) {
+            return CampaignPage(
+              isCreate: isCreate,
             );
           },
         );
