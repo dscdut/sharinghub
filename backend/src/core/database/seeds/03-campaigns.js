@@ -15,33 +15,44 @@ const randomOrganizationId = async knex => {
     return organizationIdArr[randomIndex];
 };
 
-const randomCity = () => {
-    let city = ['Đà nẵng', 'Huế', 'Quảng Bình', 'Quảng Trị', 'Quảng Nam', 'Quảng Ngãi'];
-
-    return city[Math.floor(Math.random() * city.length)];
+const point = (longitude, latitude) => {
+    return `${longitude}, ${latitude}`;
 };
 
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
     await knex(tableName).del();
 
-    let data = [];
-    for (let i = 0; i < 10; i++) {
-        const province = randomCity();
-        const address = `${faker.address.streetAddress(false)}, ${province}`;
-
-        data.push({
-            name: faker.company.name(),
-            province,
-            address,
-            start_date: faker.date.between('2023-01-01', '2023-12-31'),
-            end_date: faker.date.between('2023-01-01', '2023-12-31'),
-            description: faker.lorem.paragraph(),
+    await knex(tableName).insert([
+        {
+            name: 'Hỗ trợ trẻ em bị bệnh ung thư',
+            province: 'Đà Nẵng',
+            district: 'Hải Châu',
+            ward: 'Hòa Minh',
+            address:
+                'Số 1, Đường 2, Khu phố 3, Phường Hòa Minh, Quận Hải Châu, Thành phố Đà Nẵng',
+            start_date: '2023-03-01',
+            end_date: '2023-07-30',
+            description:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptas veniam incidunt doloribus amet maxime sint! Optio soluta aliquam expedita dicta voluptatum perferendis a labore? Labore quo harum animi saepe!',
             donation_method: 1,
-            // eslint-disable-next-line no-await-in-loop
             organization_id: await randomOrganizationId(knex),
-        });
-    }
-
-    await knex(tableName).insert(data);
+            // location: '10.823099, 106.629664',
+            location: point(106.629664, 10.823099),
+        },
+        {
+            name: 'Hỗ trợ trẻ em bị bỏ rơi',
+            province: 'Huế',
+            district: 'Phong Điền',
+            ward: 'Phong Điền',
+            address: 'Đường 3/2, Phường Phong Điền, Thành phố Huế, Thừa Thiên Huế',
+            start_date: '2023-03-01',
+            end_date: '2023-07-30',
+            description:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptas veniam incidunt doloribus amet maxime sint! Optio soluta aliquam expedita dicta voluptatum perferendis a labore? Labore quo harum animi saepe!',
+            donation_method: 1,
+            organization_id: await randomOrganizationId(knex),
+            location: point(107.573, 16.463),
+        },
+    ]);
 };

@@ -9,9 +9,10 @@ exports.up = async knex => {
         table.increments('id').unsigned().primary();
         table.string('name').unique().notNullable();
         table.string('province').notNullable();
-        table.string('district').nullable();
-        table.string('ward').nullable();
+        table.string('district').notNullable();
+        table.string('ward').notNullable();
         table.string('address').notNullable();
+        table.point('location');
         table.datetime('start_date').notNullable();
         table.datetime('end_date').notNullable();
         table.text('description').notNullable();
