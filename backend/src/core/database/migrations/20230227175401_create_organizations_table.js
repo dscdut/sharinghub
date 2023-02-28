@@ -9,6 +9,7 @@ exports.up = async knex => {
         table.increments('id').unsigned().primary();
         table.string('name').unique().notNullable();
         table.string('address').notNullable();
+        table.string('phone_number').notNullable();
         table.text('description').nullable();
         table.string('avatar').nullable();
         table
