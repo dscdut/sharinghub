@@ -1,19 +1,21 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:mobile/modules/map/bloc/google_map.event.dart';
-import 'package:mobile/modules/map/bloc/google_map.state.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
 
-class GoogleMapBloc extends Bloc<GoogleMapEvent, GoogleMapState> {
-  GoogleMapBloc()
+part 'map.state.dart';
+part 'map.event.dart';
+
+class MapBloc extends Bloc<MapEvent, MapState> {
+  MapBloc()
       : super(
-          const GoogleMapState.initial(),
+          const MapState.initial(),
         ) {
-    on<GoogleMapRequetPermission>(_requestPermission);
-    on<GoogleMapGetMarkers>(_getMarkers);
-    add(GoogleMapRequetPermission());
-    add(const GoogleMapGetMarkers());
+    on<MapPermissionRequest>(_requestPermission);
+    on<MapMarkersGet>(_getMarkers);
+    add(MapPermissionRequest());
+    add(const MapMarkersGet());
   }
 
   Future<LatLng> _getMyLocation() async =>
@@ -26,31 +28,32 @@ class GoogleMapBloc extends Bloc<GoogleMapEvent, GoogleMapState> {
       });
 
   Future<void> _requestPermission(
-    GoogleMapRequetPermission event,
-    Emitter<GoogleMapState> emiiter,
+    MapPermissionRequest event,
+    Emitter<MapState> emiiter,
   ) async {
     if (await Permission.location.request().isDenied) {
       _requestPermission(event, emiiter);
     } else {
       emiiter(
-        state.copyWith(
+        MapGetLocationSuccess(
           myLocation: await _getMyLocation(),
+          markers: state.markers ?? const {},
         ),
       );
     }
   }
 
   Future<void> _getMarkers(
-    GoogleMapGetMarkers event,
-    Emitter<GoogleMapState> emiiter,
+    MapMarkersGet event,
+    Emitter<MapState> emiiter,
   ) async {
-    Set<Marker> marker = {
+    Set<Marker> markers = {
       const Marker(
         markerId: MarkerId('value'),
         position: LatLng(18.635370, 105.737148),
       ),
       const Marker(markerId: MarkerId('value2'), position: LatLng(18.6, 105.8)),
     };
-    emiiter(state.copyWith(marker: marker));
+    emiiter(state.copyWith(markers: markers));
   }
 }

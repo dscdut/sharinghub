@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
-import 'package:mobile/modules/map/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
-import 'package:mobile/modules/map/bottom_sheet_bloc/map_bottom_sheet.state.dart';
+import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 
 class MapBottomSheetView extends StatelessWidget {
   const MapBottomSheetView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => MapBottomsheetBloc(),
-      child: BlocListener<MapBottomsheetBloc, MapBottomsheetState>(
-        listener: (context, state) {},
-        child: const _MapBottomSheetView(),
-      ),
+    return BlocListener<MapBottomsheetBloc, MapBottomsheetState>(
+      listener: (context, state) {},
+      child: const _MapBottomSheetView(),
     );
   }
 }

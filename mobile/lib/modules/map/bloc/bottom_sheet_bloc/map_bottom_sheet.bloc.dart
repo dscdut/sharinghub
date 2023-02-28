@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:mobile/modules/map/bottom_sheet_bloc/map_bottom_sheet.event.dart';
-import 'package:mobile/modules/map/bottom_sheet_bloc/map_bottom_sheet.state.dart';
+import 'package:equatable/equatable.dart';
+import 'package:mobile/common/constants/handle_status.enum.dart';
+
+part 'map_bottom_sheet.event.dart';
+part 'map_bottom_sheet.state.dart';
 
 class MapBottomsheetBloc
     extends Bloc<MapBottomsheetEvent, MapBottomsheetState> {

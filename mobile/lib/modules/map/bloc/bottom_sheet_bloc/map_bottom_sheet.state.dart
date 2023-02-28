@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:mobile/common/constants/handle_status.enum.dart';
+part of 'map_bottom_sheet.bloc.dart';
 
 class MapBottomsheetState extends Equatable {
   final HandleStatus? status;

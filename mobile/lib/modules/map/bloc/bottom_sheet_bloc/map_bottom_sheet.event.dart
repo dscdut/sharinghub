@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'map_bottom_sheet.bloc.dart';
 
 abstract class MapBottomsheetEvent extends Equatable {
   const MapBottomsheetEvent();

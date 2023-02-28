@@ -4,7 +4,7 @@ import 'package:mobile/modules/core/bloc/root.bloc.dart';
 import 'package:mobile/modules/core/widgets/app_bottom_navigation_bar.widget.dart';
 import 'package:mobile/modules/core/widgets/custom_lazy_indexed_stack.widget.dart';
 import 'package:mobile/modules/home/home.dart';
-import 'package:mobile/modules/map/google_map.dart';
+import 'package:mobile/modules/map/map.dart';
 import 'package:mobile/modules/notification/notification.dart';
 import 'package:mobile/modules/profile/profile.dart';
 
@@ -36,7 +36,7 @@ class _RootView extends StatelessWidget {
             children: [
               const HomePage(),
               const NotificationPage(),
-              GoogleMapPage(),
+              MapPage(),
               const ProfilePage(),
             ],
           );
