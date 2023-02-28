@@ -9,13 +9,14 @@ exports.up = async knex => {
         table.increments('id').unsigned().primary();
         table.string('name').unique().notNullable();
         table.string('province').notNullable();
-        table.string('district').notNullable();
+        table.string('district').nullable();
         table.string('ward').nullable();
         table.string('address').notNullable();
         table.datetime('start_date').notNullable();
         table.datetime('end_date').notNullable();
+        table.text('description').notNullable();
         table.string('register_link').nullable();
-        table.smallint('donation_method').notNullable();
+        table.smallint('donation_method').defaultTo(1);
         table.integer('organization_id').unsigned().notNullable();
         table
             .foreign('organization_id')
