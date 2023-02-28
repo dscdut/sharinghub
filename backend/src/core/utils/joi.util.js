@@ -58,4 +58,10 @@ export class JoiUtils {
             this.objectId()
         );
     }
+
+    static requiredBoolean() {
+        return Joi
+            .boolean()
+            .required();
+    }
 }

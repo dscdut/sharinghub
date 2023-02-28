@@ -1,7 +1,6 @@
 import { pick } from 'lodash';
 import { JwtPayload } from 'core/modules/auth/dto/jwt-sign.dto';
 import { UserDataService } from 'core/modules/user/services/userData.service';
-import { joinUserRoles } from 'core/utils/userFilter';
 import { BcryptService } from './bcrypt.service';
 import { JwtService } from './jwt.service';
 import { NodemailerService } from './nodemailer.service';
@@ -24,21 +23,21 @@ class Service {
     }
 
     async login(loginDto) {
-        const user = await this.userRepository.findByEmail(loginDto.email);
-        if (user.length > 0) {
-            const foundUser = joinUserRoles(user);
-            if (this.bcryptService.compare(loginDto.password, user[0].password)) {
+        const user = await this.UserService.findByEmail(loginDto.email);
+
+        if (user) {
+            if (this.bcryptService.compare(loginDto.password, user.password)) {
                 return {
-                    user: foundUser,
-                    accessToken: this.jwtService.sign(JwtPayload(foundUser)),
+                    message: MESSAGE.LOGIN_SUCCESS,
+                    accessToken: this.jwtService.sign(JwtPayload(user)),
                 };
             }
         }
+
         throw new UnAuthorizedException('Email or password is incorrect');
     }
 
     async register(registerDto) {
-        await UserService.findByEmail(registerDto.email);
         await this.UserService.createUser(registerDto);
 
         NodemailerService.sendMail(registerDto.email, MAIL.REGISTER_SUCCESS);
