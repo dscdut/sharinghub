@@ -1,0 +1,36 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env"
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "@babel/proposal-class-properties",
+      {
+        "legacy": true
+      }
+    ],
+    "@babel/syntax-dynamic-import",
+    "@babel/transform-async-to-generator",
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "core": "./src/core",
+        "src": "./src",
+        "packages": "./src/packages"
+      }
+    }]
+  ],
+  "ignore": [
+    "public",
+    "resources"
+  ]
+}

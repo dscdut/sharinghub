@@ -3,7 +3,7 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/widgets/loading_dot.widget.dart';
 
-class AppRoundedButton extends StatefulWidget {
+class AppRoundedButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final double? width;
@@ -33,7 +33,7 @@ class AppRoundedButton extends StatefulWidget {
     required this.onPressed,
     this.width,
     this.height = 48,
-    this.borderRadius = 7,
+    this.borderRadius = 10,
     this.elevation = 0,
     this.backgroundColor = ColorStyles.blue400,
     this.disableBackgroundColor = ColorStyles.gray300,
@@ -47,37 +47,32 @@ class AppRoundedButton extends StatefulWidget {
     this.child,
     this.borderSide,
   })  : textStyle =
-            textStyle ?? TextStyles.s14BoldText.copyWith(color: Colors.white),
+            textStyle ?? TextStyles.regularBody14.copyWith(color: Colors.white),
         super(key: key);
 
   @override
-  State<AppRoundedButton> createState() => _AppRoundedButtonState();
-}
-
-class _AppRoundedButtonState extends State<AppRoundedButton> {
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width,
-      height: widget.height,
+      width: width,
+      height: height,
       child: Theme(
         data: ThemeData(
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all<Color>(
-                widget.isDisable
-                    ? widget.disableBackgroundColor
-                    : widget.backgroundColor,
+                isDisable
+                    ? disableBackgroundColor
+                    : backgroundColor,
               ),
               foregroundColor: MaterialStateProperty.all<Color>(
-                widget.isDisable
-                    ? widget.disableBackgroundColor
-                    : widget.backgroundColor,
+                isDisable
+                    ? disableBackgroundColor
+                    : backgroundColor,
               ),
               backgroundColor: MaterialStateProperty.all<Color>(
-                widget.isDisable
-                    ? widget.disableBackgroundColor
-                    : widget.backgroundColor,
+                isDisable
+                    ? disableBackgroundColor
+                    : backgroundColor,
               ),
               elevation: MaterialStateProperty.resolveWith<double>(
                 (Set<MaterialState> states) {
@@ -85,7 +80,7 @@ class _AppRoundedButtonState extends State<AppRoundedButton> {
                     return 0;
                   }
 
-                  return widget.elevation;
+                  return elevation;
                 },
               ),
             ),
@@ -93,48 +88,48 @@ class _AppRoundedButtonState extends State<AppRoundedButton> {
         ),
         child: ElevatedButton(
           onPressed:
-              (widget.isLoading || widget.isDisable) ? null : widget.onPressed,
+              (isLoading || isDisable) ? null : onPressed,
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(widget.borderRadius),
-              side: widget.borderSide ?? BorderSide.none,
+              borderRadius: BorderRadius.circular(borderRadius),
+              side: borderSide ?? BorderSide.none,
             ),
-            shadowColor: widget.shadowColor,
+            shadowColor: shadowColor,
             splashFactory: NoSplash.splashFactory,
             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            disabledBackgroundColor: widget.disableBackgroundColor,
-            disabledForegroundColor: widget.disableBackgroundColor,
+            disabledBackgroundColor: disableBackgroundColor,
+            disabledForegroundColor: disableBackgroundColor,
             enableFeedback: false,
           ),
-          child: widget.isLoading
+          child: isLoading
               ? const LoadingDot()
-              : (widget.child ??
+              : (child ??
                   FittedBox(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (widget.prefixIcon != null)
+                        if (prefixIcon != null)
                           Row(
                             children: [
-                              widget.prefixIcon!,
+                              prefixIcon!,
                               const SizedBox(
                                 width: 15,
                               ),
                             ],
                           ),
                         Text(
-                          widget.content,
-                          style: widget.textStyle,
+                          content,
+                          style: textStyle,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        if (widget.suffixIcon != null)
+                        if (suffixIcon != null)
                           Row(
                             children: [
                               const SizedBox(
                                 width: 15,
                               ),
-                              widget.suffixIcon!
+                              suffixIcon!
                             ],
                           ),
                       ],

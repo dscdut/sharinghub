@@ -1,62 +1,82 @@
-import 'package:mobile/common/constants/hive_keys.dart';
 import 'package:mobile/data/models/user.model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'auth.dto.g.dart';
 
-@JsonSerializable(createToJson: false)
-class LoginResponseDTO {
+@JsonSerializable(
+  explicitToJson: true,
+)
+class AuthResponseDTO {
   final UserModel user;
-  final String accessToken;
-  final String refreshToken;
-  final String expiresIn;
+  // final String accessToken;
+  // final String refreshToken;
+  // final String expiresIn;
 
-  LoginResponseDTO({
+  AuthResponseDTO({
     required this.user,
-    required this.accessToken,
-    required this.refreshToken,
-    required this.expiresIn,
+    // required this.accessToken,
+    // required this.refreshToken,
+    // required this.expiresIn,
   });
 
-  factory LoginResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseDTOFromJson(json);
+  factory AuthResponseDTO.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthResponseDTOToJson(this);
 }
 
 @JsonSerializable(createFactory: false)
-class AuthenticationDTO {
+class LoginDTO {
   final String email;
   final String password;
 
-  AuthenticationDTO({
+  LoginDTO({
     required this.email,
     required this.password,
   });
 
-  Map<String, dynamic> toJson() => _$AuthenticationDTOToJson(this);
+  Map<String, dynamic> toJson() => _$LoginDTOToJson(this);
 }
 
-@JsonSerializable()
-class RefreshTokenDTO {
-  final String accessToken;
-  final String refreshToken;
-  final String expiresIn;
+@JsonSerializable(createFactory: false, includeIfNull: false)
+class RegisterDTO {
+  final String name;
+  final String? representativeName;
+  final String email;
+  final String password;
 
-  RefreshTokenDTO({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.expiresIn,
+  RegisterDTO({
+    required this.name,
+    this.representativeName,
+    required this.email,
+    required this.password,
   });
 
-  factory RefreshTokenDTO.fromJson(Map<String, dynamic> json) =>
-      _$RefreshTokenDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RefreshTokenDTOToJson(this);
-
-  Map<String, String> toLocalJson() {
-    return {
-      HiveKeys.accessToken: accessToken,
-      HiveKeys.refreshToken: refreshToken,
-      HiveKeys.expiresIn: expiresIn,
-    };
-  }
+  Map<String, dynamic> toJson() => _$RegisterDTOToJson(this);
 }
+
+// @JsonSerializable()
+// class RefreshTokenDTO {
+//   final String accessToken;
+//   final String refreshToken;
+//   final String expiresIn;
+
+//   RefreshTokenDTO({
+//     required this.accessToken,
+//     required this.refreshToken,
+//     required this.expiresIn,
+//   });
+
+//   factory RefreshTokenDTO.fromJson(Map<String, dynamic> json) =>
+//       _$RefreshTokenDTOFromJson(json);
+
+//   Map<String, dynamic> toJson() => _$RefreshTokenDTOToJson(this);
+
+//   Map<String, String> toLocalJson() {
+//     return {
+//       HiveKeys.accessToken: accessToken,
+//       HiveKeys.refreshToken: refreshToken,
+//       HiveKeys.expiresIn: expiresIn,
+//     };
+//   }
+// }
