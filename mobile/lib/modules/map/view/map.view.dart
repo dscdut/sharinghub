@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mobile/common/constants/constants.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 import 'package:mobile/modules/map/bloc/map/map.bloc.dart';
 import 'package:mobile/modules/map/widgets/map_bottom_sheet.view.dart';
@@ -23,7 +24,7 @@ class MapPage extends StatelessWidget {
         )
       ],
       child: BlocListener<MapBloc, MapState>(
-        listener: (context, state) => _blocListener(context, state),
+        listener: (context, state) => _listenMapStateChanged(context, state),
         child: _MapView(
           controller: controller,
         ),
@@ -31,17 +32,16 @@ class MapPage extends StatelessWidget {
     );
   }
 
-  Future<void> _blocListener(BuildContext context, MapState state) async {
+  Future<void> _listenMapStateChanged(
+    BuildContext context,
+    MapState state,
+  ) async {
     if (state is MapGetLocationSuccess) {
       GoogleMapController googleMapController = await controller.future;
       googleMapController.animateCamera(
         CameraUpdate.newLatLngZoom(
-          state.myLocation ??
-              const LatLng(
-                17.108585,
-                106.937425,
-              ),
-          5,
+          state.myLocation ?? defaultLocation,
+          9,
         ),
       );
     }
@@ -62,13 +62,15 @@ class _MapView extends StatelessWidget {
       body: BlocBuilder<MapBloc, MapState>(
         builder: (bcontext, state) => GoogleMap(
           initialCameraPosition: const CameraPosition(
-            target: LatLng(17.108585, 106.937425),
+            target: defaultLocation,
             zoom: 5,
           ),
           onMapCreated: (gController) {
             controller.complete(gController);
           },
+          mapToolbarEnabled: false,
           myLocationEnabled: true,
+          zoomControlsEnabled: false,
           markers: state.markers
                   ?.map(
                     (e) => Marker(
@@ -97,7 +99,7 @@ class _MapView extends StatelessWidget {
       builder: (ccontext) {
         return BlocProvider.value(
           value: context.read<MapBottomsheetBloc>(),
-          child: const MapBottomSheetView(),
+          child: const CampaignBottomSheet(),
         );
       },
     );

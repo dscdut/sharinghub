@@ -48,8 +48,10 @@ dependencies:
   go_router: ^6.0.3
   equatable: ^2.0.5
 
-  #google map 
+  #google map
   google_maps_flutter: 2.2.1
+  google_maps_flutter_platform_interface: ^2.2.6
+  google_maps_flutter_android: ^2.4.6
   permission_handler: 10.2.0
   geolocator: 9.0.2
 
