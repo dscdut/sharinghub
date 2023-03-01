@@ -61,7 +61,10 @@ class CodegenLoader extends AssetLoader{
     "not_match_password": "Password and confirm password not match"
   },
   "home": {
-    "search": "Search"
+    "search": "Search",
+    "sort_by": "Sort by: ",
+    "newest": "Newest",
+    "nearest": "Nearest"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -111,7 +114,10 @@ static const Map<String,dynamic> vi = {
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
   },
   "home": {
-    "search": "Tìm kiếm"
+    "search": "Tìm kiếm",
+    "sort_by": "Sắp xếp theo: ",
+    "newest": "Mới nhất",
+    "nearest": "Gần nhất"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

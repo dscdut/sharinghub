@@ -45,6 +45,9 @@
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
   },
   "home": {
-    "search": "Tìm kiếm"
+    "search": "Tìm kiếm",
+    "sort_by": "Sắp xếp theo: ",
+    "newest": "Mới nhất",
+    "nearest": "Gần nhất"
   }
 }

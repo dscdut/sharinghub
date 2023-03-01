@@ -7,4 +7,13 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class HomeGetList extends HomeEvent {}
+class HomeListCampainsGet extends HomeEvent {}
+
+class HomeSortTypeChange extends HomeEvent {
+  final SortType sortType;
+
+  const HomeSortTypeChange(this.sortType);
+
+  @override
+  List<Object> get props => [sortType];
+}

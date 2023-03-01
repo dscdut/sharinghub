@@ -9,6 +9,10 @@ class CampaignRepository {
   CampaignRepository({required CampaignDataSource dataSource})
       : _dataSource = dataSource;
 
+  Future<List<CampaignModel>> getHomeProject() {
+    return _dataSource.getHomeProject();
+  }
+
   Future<CampaignModel> setCampaign(CampaignModel params) {
     return _dataSource.setCampaign(params);
   }

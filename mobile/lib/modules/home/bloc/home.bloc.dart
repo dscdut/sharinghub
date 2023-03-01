@@ -1,29 +1,49 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
-import 'package:mobile/data/models/home_module/home_project.model.dart';
-import 'package:mobile/data/repositories/project.repository.dart';
+import 'package:mobile/data/models/campaign.model.dart';
+import 'package:mobile/data/repositories/campaign.repository.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
 
 part 'home.event.dart';
 part 'home.state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final ProjectRepository _repository;
+  final CampaignRepository _repository;
 
   HomeBloc({
-    required ProjectRepository repository,
+    required CampaignRepository repository,
   })  : _repository = repository,
         super(const HomeState()) {
     on<HomeEvent>((event, emit) {});
-    on<HomeGetList>(_getHomeList);
-    add(HomeGetList());
+    on<HomeListCampainsGet>(_getHomeList);
+    on<HomeSortTypeChange>(_changeSortType);
+    add(HomeListCampainsGet());
   }
   Future<void> _getHomeList(
-    HomeGetList event,
+    HomeListCampainsGet event,
     Emitter<HomeState> emitter,
   ) async {
-    emitter(const HomeState.loading());
+    emitter(
+      HomeState.loading(
+        sortType: state.sortType,
+      ),
+    );
     final result = await _repository.getHomeProject();
-    emitter(HomeState.getSuccess(items: result));
+    emitter(
+      HomeState.getSuccess(
+        campaigns: result,
+        sortType: state.sortType,
+      ),
+    );
+  }
+
+  Future<void> _changeSortType(
+    HomeSortTypeChange event,
+    Emitter<HomeState> emitter,
+  ) async {
+    emitter(state.copyWith(sortType: event.sortType));
+    add(HomeListCampainsGet());
   }
 }

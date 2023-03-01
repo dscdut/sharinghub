@@ -8,11 +8,9 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:mobile/data/datasources/campaign.datasource.dart' as _i3;
-import 'package:mobile/data/datasources/project.datasource.dart' as _i5;
-import 'package:mobile/data/datasources/user.datasource.dart' as _i7;
+import 'package:mobile/data/datasources/user.datasource.dart' as _i5;
 import 'package:mobile/data/repositories/campaign.repository.dart' as _i4;
-import 'package:mobile/data/repositories/project.repository.dart' as _i6;
-import 'package:mobile/data/repositories/user.repository.dart' as _i8;
+import 'package:mobile/data/repositories/user.repository.dart' as _i6;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -30,11 +28,8 @@ _i1.GetIt initGetIt(
   gh.lazySingleton<_i3.CampaignDataSource>(() => _i3.CampaignDataSource());
   gh.lazySingleton<_i4.CampaignRepository>(
       () => _i4.CampaignRepository(dataSource: gh<_i3.CampaignDataSource>()));
-  gh.lazySingleton<_i5.ProjectDataSource>(() => _i5.ProjectDataSource());
-  gh.lazySingleton<_i6.ProjectRepository>(
-      () => _i6.ProjectRepository(dataSource: gh<_i5.ProjectDataSource>()));
-  gh.lazySingleton<_i7.UserDataSource>(() => _i7.UserDataSource());
-  gh.lazySingleton<_i8.UserRepository>(
-      () => _i8.UserRepository(dataSource: gh<_i7.UserDataSource>()));
+  gh.lazySingleton<_i5.UserDataSource>(() => _i5.UserDataSource());
+  gh.lazySingleton<_i6.UserRepository>(
+      () => _i6.UserRepository(dataSource: gh<_i5.UserDataSource>()));
   return getIt;
 }
