@@ -59,6 +59,12 @@ class CodegenLoader extends AssetLoader{
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match"
+  },
+  "home": {
+    "search": "Search",
+    "sort_by": "Sort by: ",
+    "newest": "Newest",
+    "nearest": "Nearest"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -106,6 +112,12 @@ static const Map<String,dynamic> vi = {
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+  },
+  "home": {
+    "search": "Tìm kiếm",
+    "sort_by": "Sắp xếp theo: ",
+    "newest": "Mới nhất",
+    "nearest": "Gần nhất"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

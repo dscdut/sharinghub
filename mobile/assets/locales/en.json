@@ -43,5 +43,11 @@
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match"
+  },
+  "home": {
+    "search": "Search",
+    "sort_by": "Sort by: ",
+    "newest": "Newest",
+    "nearest": "Nearest"
   }
 }
