@@ -1,7 +1,7 @@
 import { ApiDocument } from 'core/config/swagger.config';
 import { SwaggerDocument } from 'packages/swagger';
 
-ApiDocument.addModel('NewPasswordDto',
+ApiDocument.addModel('UpdatePasswordDto',
     {
         password: SwaggerDocument.ApiProperty({ type: 'string' }),
         confirmPassword: SwaggerDocument.ApiProperty({ type: 'string' }),
