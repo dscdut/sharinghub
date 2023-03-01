@@ -7,6 +7,7 @@ import 'package:mobile/modules/home/home.dart';
 import 'package:mobile/modules/map/map.dart';
 import 'package:mobile/modules/notification/notification.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/campaign/view/campaign.view.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
@@ -35,9 +36,9 @@ class _RootView extends StatelessWidget {
             index: state.currentIndex,
             children: [
               const HomePage(),
-              const NotificationPage(),
+              const CampaignPage(isCreate: true),
               MapPage(),
-              const ProfilePage(),
+              const ProfilePage()
             ],
           );
         },
