@@ -1,20 +1,32 @@
-/**
- * @param {import("knex")} knex
- */
+import { faker } from '@faker-js/faker/locale/vi';
 
-exports.seed = knex => knex('users')
-    .del()
-    .then(() => knex('users').insert([
-        {
-            full_name: 'Super Admin',
-            email: 'spadmin@gmail.com',
-        },
-        {
-            full_name: 'Admin',
-            email: 'admin@gmail.com',
-        },
-        {
-            full_name: 'User',
-            email: 'user@gmail.com',
-        },
-    ]));
+/**
+ * @param { import("knex").Knex } knex
+ */
+const tableName = 'users';
+// 123456
+const DEFAULT_PASSWORD = '$2b$10$4WxWKojNnKfDAicVsveh7.ogkWOBMV1cvRUSPCXwxA05NRX18F0QW';
+
+function randomBool() {
+    return Math.random() < 0.5;
+}
+
+exports.seed = async knex => {
+    // Deletes ALL existing entries
+    await knex(tableName).del();
+
+    let data = [];
+    for (let i = 0; i < 20; i++) {
+        data.push({
+            full_name: faker.name.fullName(),
+            gender: randomBool(),
+            birthday: faker.date.birthdate(),
+            email: faker.internet.email(),
+            phone_number: faker.phone.number(),
+            address: faker.address.streetAddress(),
+            password: DEFAULT_PASSWORD,
+        });
+    }
+
+    await knex(tableName).insert(data);
+};
