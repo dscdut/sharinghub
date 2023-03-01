@@ -19,6 +19,7 @@ class CampaignModel {
   final bool haveArtifactDonate;
   final String? artifactRequirement;
   final String? otherInfo;
+  final String? imageURL;
 
   CampaignModel({
     this.id,
@@ -32,6 +33,7 @@ class CampaignModel {
     required this.haveArtifactDonate,
     this.artifactRequirement,
     this.otherInfo,
+    this.imageURL,
   });
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) =>

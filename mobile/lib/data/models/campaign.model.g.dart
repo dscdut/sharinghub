@@ -20,6 +20,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       haveArtifactDonate: json['haveArtifactDonate'] as bool,
       artifactRequirement: json['artifactRequirement'] as String?,
       otherInfo: json['otherInfo'] as String?,
+      imageURL: json['imageURL'] as String?,
     );
 
 Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
@@ -42,5 +43,6 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   val['haveArtifactDonate'] = instance.haveArtifactDonate;
   val['artifactRequirement'] = instance.artifactRequirement;
   val['otherInfo'] = instance.otherInfo;
+  val['imageURL'] = instance.imageURL;
   return val;
 }
