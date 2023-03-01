@@ -28,7 +28,14 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_search.png
+  AssetGenImage get icSearch =>
+      const AssetGenImage('assets/icons/ic_search.png');
+
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+
+  /// List of all assets
+  List<AssetGenImage> get values => [icSearch];
 }
 
 class $AssetsLocalesGen {
