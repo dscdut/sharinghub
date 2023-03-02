@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
@@ -79,12 +80,12 @@ abstract class AppRoutes {
           },
         );
       case setCampaign:
-        final bool isCreate = settings.arguments as bool;
+        final CampaignModel? campaign = settings.arguments as CampaignModel?;
 
         return MaterialPageRoute(
           builder: (_) {
             return CampaignPage(
-              isCreate: isCreate,
+              campaign: campaign,
             );
           },
         );

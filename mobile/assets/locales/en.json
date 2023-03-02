@@ -42,7 +42,8 @@
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "validator_invalid_date_end": "End date must be later than start date"
   },
   "home": {
     "search": "Search",

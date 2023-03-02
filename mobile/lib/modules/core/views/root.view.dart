@@ -5,7 +5,6 @@ import 'package:mobile/modules/core/widgets/app_bottom_navigation_bar.widget.dar
 import 'package:mobile/modules/core/widgets/custom_lazy_indexed_stack.widget.dart';
 import 'package:mobile/modules/home/home.dart';
 import 'package:mobile/modules/map/map.dart';
-import 'package:mobile/modules/notification/notification.dart';
 import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/campaign/view/campaign.view.dart';
 
@@ -36,9 +35,9 @@ class _RootView extends StatelessWidget {
             index: state.currentIndex,
             children: [
               const HomePage(),
-              const CampaignPage(isCreate: true),
+              const CampaignPage(),
               MapPage(),
-              const ProfilePage()
+              const ProfilePage(),
             ],
           );
         },

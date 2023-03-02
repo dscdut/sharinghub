@@ -4,21 +4,27 @@ import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/dialog.util.dart';
-import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
-import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
+import 'package:mobile/data/models/campaign.model.dart';
+import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
+import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/router/app_routes.dart';
 
-class CampaignPage extends StatelessWidget {
-  final bool isCreate;
+class CampaignPage extends StatefulWidget {
+  final CampaignModel? campaign;
 
   const CampaignPage({
     super.key,
-    required this.isCreate,
+    this.campaign,
   });
 
+  @override
+  State<CampaignPage> createState() => _CampaignPageState();
+}
+
+class _CampaignPageState extends State<CampaignPage> {
   _listenCampaignState(BuildContext context, CampaignState state) {
     if (state.status == HandleStatus.error) {
       DialogUtil.showCustomDialog(
@@ -31,12 +37,15 @@ class CampaignPage extends StatelessWidget {
       DialogUtil.showCustomDialog(
         context,
         title: 'Success',
-        content: isCreate ? 'Tạo dự án thành công!' : 'Đã cập nhật',
+        isConfirmDialog: true,
+        content: widget.campaign == null
+            ? 'Tạo dự án thành công'
+            : 'Cập nhật dự án thành công',
         confirmButtonText: 'Tạo dự án mới',
         confirmAction: () {
           Navigator.of(context).pushNamedAndRemoveUntil(
             AppRoutes.setCampaign,
-            arguments: true,
+            arguments: null,
             (route) => route.settings.name == AppRoutes.root,
           );
         },
@@ -59,18 +68,46 @@ class CampaignPage extends StatelessWidget {
       ),
       child: BlocListener<CampaignBloc, CampaignState>(
         listener: _listenCampaignState,
-        child: _CampaignView(isCreate),
+        child: _CampaignView(widget.campaign),
       ),
     );
   }
 }
 
-class _CampaignView extends StatelessWidget {
-  final bool isCreate;
+class _CampaignView extends StatefulWidget {
+  final CampaignModel? campaign;
+
+  const _CampaignView(this.campaign);
+
+  @override
+  State<_CampaignView> createState() => _CampaignViewState();
+}
+
+class _CampaignViewState extends State<_CampaignView> {
+  bool isChecked = false;
+
+  final UserRepository _userRepository = getIt.get<UserRepository>();
+
+  late UserModel user;
+  Future<void> _getUserInfo() async {
+    user = await _userRepository.getUserInfo();
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  _CampaignView(this.isCreate);
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final String _province = '';
+  final String _district = '';
+  final String _ward = '';
+  final TextEditingController _specificAddressController =
+      TextEditingController();
+  final TextEditingController _startDateController = TextEditingController();
+  final TextEditingController _endDateController = TextEditingController();
+  final TextEditingController _registerLinkController = TextEditingController();
+  final TextEditingController _otherInfoController = TextEditingController();
+  final TextEditingController _actifactRequirementController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -79,14 +116,19 @@ class _CampaignView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              isCreate ? 'Tạo dự án mới' : 'Chỉnh sửa dự án',
+              widget.campaign == null ? 'Tạo dự án mới' : 'Chỉnh sửa dự án',
               style: TextStyles.mediumText.copyWith(
                 color: Colors.black,
                 fontSize: 20,
               ),
             ),
             centerTitle: true,
-            leading: const BackButton(color: Color(0xFF62877A)),
+            leading: BackButton(
+              color: const Color(0xFF62877A),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
             backgroundColor: const Color(0xFFDEF5E5),
             elevation: 0,
             actionsIconTheme: const IconThemeData(color: Color(0xFF62877A)),
@@ -115,140 +157,22 @@ class _CampaignView extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 19),
-                    Form(
-                      key: _formKey,
-                      child: Column(
-                        children: [
-                          const AppTextFormField(
-                            hintText: 'Tên dự án',
-                            borderRadius: 10,
-                          ),
-                          const AppTextFormField(
-                            hintText: 'Mô tả',
-                            borderRadius: 10,
-                          ),
-                          Wrap(
-                            children: [
-                              DropdownButtonFormField(
-                                hint: const Text('Tỉnh/Thành phố'),
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 12,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                items: const [
-                                  DropdownMenuItem(
-                                    value: 'Đà Nẵng',
-                                    child: Text('Đà Nẵng'),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'Huế',
-                                    child: Text('Huế'),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'Hà Nội',
-                                    child: Text('Hà Nội'),
-                                  ),
-                                ],
-                                onChanged: (value) {},
-                              ),
-                              DropdownButtonFormField(
-                                hint: const Text('Quận/Huyện'),
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 12,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                items: const [
-                                  DropdownMenuItem(
-                                    value: 'Liên Chiểu',
-                                    child: Text('Liên Chiểu'),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'Hải Châu',
-                                    child: Text('Hải Châu'),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'Ba Đình',
-                                    child: Text('Ba Đình'),
-                                  ),
-                                ],
-                                onChanged: (value) {},
-                              ),
-                              DropdownButtonFormField(
-                                hint: const Text('Phường/Xã'),
-                                decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 16,
-                                    vertical: 12,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                items: const [
-                                  DropdownMenuItem(
-                                    value: 'Hòa Khánh Bắc',
-                                    child: Text('Hòa Khánh Bắc'),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: 'Hòa Khánh Nam',
-                                    child: Text('Hòa Khánh Bắc'),
-                                  ),
-                                ],
-                                onChanged: (value) {},
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 19),
-                          const AppTextFormField(
-                            hintText: 'Địa chỉ cụ thể',
-                          ),
-                          const SizedBox(height: 19),
-                          InputDatePickerFormField(
-                            fieldHintText: 'Ngày bắt đầu',
-                            firstDate: DateTime(2022),
-                            lastDate: DateTime(2023),
-                          ),
-                          const SizedBox(height: 19),
-                          InputDatePickerFormField(
-                            fieldHintText: 'Ngày kết thúc',
-                            firstDate: DateTime(2022),
-                            lastDate: DateTime(2023),
-                          ),
-                          const SizedBox(height: 19),
-                          const AppTextFormField(
-                            hintText: 'Form đăng kí TNV (nếu có)',
-                          ),
-                          const SizedBox(height: 19),
-                          CheckboxListTile(
-                            value: false,
-                            onChanged: (value) {},
-                            title: const Text(
-                              'Dự án có nhận quyên góp bằng hiện vật không?',
-                            ),
-                          ),
-                          const SizedBox(height: 19),
-                          const AppTextFormField(
-                            hintText: 'Yêu cầu về hiện vật quyên góp',
-                          ),
-                          const AppTextFormField(
-                            hintText: 'Thông tin khác',
-                          ),
-                          AppRoundedButton(
-                            onPressed: () {},
-                            content: 'Hoàn thành',
-                          )
-                        ],
-                      ),
+                    CampaignForm(
+                      formKey: _formKey,
+                      userRepository: _userRepository,
+                      getUserInfo: _getUserInfo,
+                      nameController: _nameController,
+                      descriptionController: _descriptionController,
+                      province: _province,
+                      district: _district,
+                      ward: _ward,
+                      specificAddressController: _specificAddressController,
+                      startDateController: _startDateController,
+                      endDateController: _endDateController,
+                      registerLinkController: _registerLinkController,
+                      otherInfoController: _otherInfoController,
+                      actifactRequirementController:
+                          _actifactRequirementController,
                     ),
                   ],
                 ),
