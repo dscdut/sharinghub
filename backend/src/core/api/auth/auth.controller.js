@@ -32,7 +32,7 @@ class Controller {
         return ValidHttpResponse.toOkResponse(data);
     }
 
-    newPassword = async req => {
+    updatePassword = async req => {
         const data = await this.service.updatePassword(UpdatePasswordDto(req.body));
         return ValidHttpResponse.toOkResponse(data);
     }
