@@ -3,15 +3,18 @@ import { ValidHttpResponse } from 'packages/handler/response/validHttp.response'
 import { CreateCampaignDto } from '../../modules/campaign/dto';
 
 class Controller {
-    constructor() {
-        this.service = CampaignService;
-    }
+  constructor() {
+    this.service = CampaignService;
+  }
 
-    createOne = async req => {
-        const data = await this.service.createOne(CreateCampaignDto(req.body));
+  createOne = async req => {
+    const data = await this.service.createOne(CreateCampaignDto(req.body));
 
-        return ValidHttpResponse.toOkResponse(data);
-    };
+    return ValidHttpResponse.toOkResponse({
+      message: 'Campaign created successfully',
+      data,
+    });
+  };
 }
 
 export const CampaignController = new Controller();
