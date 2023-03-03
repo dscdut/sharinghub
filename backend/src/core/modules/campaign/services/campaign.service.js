@@ -1,10 +1,10 @@
 import { getTransaction } from 'core/database';
-import { MESSAGE } from 'core/modules/auth/service/message.enum';
 import { logger, Optional } from 'core/utils';
 import {
     DuplicateException,
     InternalServerException,
 } from 'packages/httpException';
+import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../campaign.repository';
 
 class Service {
@@ -47,7 +47,7 @@ class Service {
 
         trx.commit();
         return {
-            message: MESSAGE.CAMPAIGN_CREATED_SUCCESS,
+            message: MESSAGE.CREATE_CAMPAIGN_SUCCESS,
             id: createdCampaign[0].id,
         };
     }
