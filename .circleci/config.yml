@@ -6,6 +6,7 @@ jobs:
       - image: circleci/node:16
         # If you need the Docker CLI, you can include the following line:
         # - image: docker:stable
+    working_directory: ~/sharinghub
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -15,18 +16,16 @@ jobs:
       #     command: |
       #       ssh -o "StrictHostKeyChecking no" kiemtran.dev@35.223.139.196 "npm install -g npm@latest"
       - run:
-          name: Install dependencies
-          command: |
-            npm install
+          name: Build packages
+          command: cd ~/sharinghub/backend && npm install
       - run:
           name: Build packages
-          command: |
-            npm run build
+          command: cd ~/sharinghub/backend && npm run build
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
       - run: apt install rsync
       - run:
           name: send file to server
-          command: ls && rsync -vr --delete --progress dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
+          command: ls && rsync -vr --delete --progress ./backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
 
 # Define the workflows that will run in your pipeline
 workflows:
