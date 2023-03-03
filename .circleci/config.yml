@@ -18,8 +18,13 @@ jobs:
           name: Install Git
           command: sudo apt install git
       - run:
-          name: Clone repo
-          command: git clone git@github.com:dscdut/sharinghub.git
+          name: Clone repository
+          command: |
+            mkdir -p ~/.ssh
+            echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git clone git@github.com:dscdut/sharinghub.git
       - run:
           name: Test
           command: ls -la
