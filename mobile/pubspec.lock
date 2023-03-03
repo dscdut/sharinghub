@@ -185,6 +185,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  cross_file:
+    dependency: transitive
+    description:
+      name: cross_file
+      sha256: "0b0036e8cccbfbe0555fd83c1d31a6f30b77a96b598b35a5d36dd41f718695e9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.3+4"
   crypto:
     dependency: transitive
     description:
@@ -485,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: "6aa2946395183537c8b880962d935877325d6a09a2867c3970c05c0fed6ac482"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.5"
   http_multi_server:
     dependency: transitive
     description:
@@ -509,6 +525,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.0"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      sha256: "715d68a53d6bcc2eae26005097dc74c375a04c0d7c0e657da84deebbbbbf51ed"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.6+4"
+  image_picker_android:
+    dependency: transitive
+    description:
+      name: image_picker_android
+      sha256: "845f793834d5d3af887ce39e3c97186996928cd43c8350a23e5499268398cc16"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.5+8"
+  image_picker_for_web:
+    dependency: transitive
+    description:
+      name: image_picker_for_web
+      sha256: "66fc6e3877bbde82c33d122f3588777c3784ac5bd7d1cdd79213ef7aecb85b34"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.11"
+  image_picker_ios:
+    dependency: transitive
+    description:
+      name: image_picker_ios
+      sha256: "93b4403350b54f45a5061632721ee29a563c8b45b1e22feda9049b8329bd1337"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.7"
+  image_picker_platform_interface:
+    dependency: transitive
+    description:
+      name: image_picker_platform_interface
+      sha256: "1991219d9dbc42a99aff77e663af8ca51ced592cd6685c9485e3458302d3d4f8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.6.3"
   injectable:
     dependency: "direct main"
     description:

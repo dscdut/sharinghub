@@ -3,6 +3,7 @@
 abstract class  LocaleKeys {
   static const texts_notification = 'texts.notification';
   static const texts_success = 'texts.success';
+  static const texts_error = 'texts.error';
   static const texts_error_occur = 'texts.error_occur';
   static const texts_email_address = 'texts.email_address';
   static const texts_password = 'texts.password';
@@ -47,5 +48,27 @@ abstract class  LocaleKeys {
   static const home_newest = 'home.newest';
   static const home_nearest = 'home.nearest';
   static const home = 'home';
+  static const campaign_create = 'campaign.create';
+  static const campaign_edit = 'campaign.edit';
+  static const campaign_create_success = 'campaign.create_success';
+  static const campaign_update_success = 'campaign.update_success';
+  static const campaign_back_home = 'campaign.back_home';
+  static const campaign_finish = 'campaign.finish';
+  static const campaign_update = 'campaign.update';
+  static const campaign_take_photo = 'campaign.take_photo';
+  static const campaign_choose_photo = 'campaign.choose_photo';
+  static const campaign_campaign_name = 'campaign.campaign_name';
+  static const campaign_campaign_description = 'campaign.campaign_description';
+  static const campaign_province = 'campaign.province';
+  static const campaign_district = 'campaign.district';
+  static const campaign_ward = 'campaign.ward';
+  static const campaign_address = 'campaign.address';
+  static const campaign_start_date = 'campaign.start_date';
+  static const campaign_end_date = 'campaign.end_date';
+  static const campaign_register_link = 'campaign.register_link';
+  static const campaign_have_artifact_donate = 'campaign.have_artifact_donate';
+  static const campaign_artifact_requirement = 'campaign.artifact_requirement';
+  static const campaign_other_info = 'campaign.other_info';
+  static const campaign = 'campaign';
 
 }

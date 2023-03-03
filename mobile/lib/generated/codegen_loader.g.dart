@@ -18,6 +18,7 @@ class CodegenLoader extends AssetLoader{
   "texts": {
     "notification": "Notification",
     "success": "Success",
+    "error": "Error",
     "error_occur": "An error has occurred, please try again later",
     "email_address": "Email",
     "password": "Password",
@@ -66,12 +67,36 @@ class CodegenLoader extends AssetLoader{
     "sort_by": "Sort by: ",
     "newest": "Newest",
     "nearest": "Nearest"
+  },
+  "campaign": {
+    "create": "Create new campaign",
+    "edit": "Edit campaign",
+    "create_success": "Success create campaign",
+    "update_success": "Success update campaign",
+    "back_home": "Back to home",
+    "finish": "Finish",
+    "update": "Update",
+    "take_photo": "Take photo",
+    "choose_photo": "Choose photo",
+    "campaign_name": "Campaign name",
+    "campaign_description": "Description",
+    "province": "Province",
+    "district": "District",
+    "ward": "Ward",
+    "address": "Specific address",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "register_link": "Register link (optional)",
+    "have_artifact_donate": "Have campaign received artifact donation?",
+    "artifact_requirement": "Artifact requirement",
+    "other_info": "Other information"
   }
 };
 static const Map<String,dynamic> vi = {
   "texts": {
     "notification": "Thông báo",
     "success": "Thành công",
+    "error": "Lỗi",
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
     "email_address": "Email",
     "password": "Mật khẩu",
@@ -120,6 +145,29 @@ static const Map<String,dynamic> vi = {
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
     "nearest": "Gần nhất"
+  },
+  "campaign": {
+    "create": "Tạo dự án",
+    "edit": "Chỉnh sửa dự án",
+    "create_success": "Tạo dự án thành công",
+    "update_success": "Cập nhật dự án thành công",
+    "back_home": "Quay lại trang chủ",
+    "finish": "Hoàn thành",
+    "update": "Cập nhật",
+    "take_photo": "Chụp ảnh",
+    "choose_photo": "Chọn ảnh",
+    "campaign_name": "Tên dự án",
+    "campaign_description": "Mô tả",
+    "province": "Tỉnh/Thành phố",
+    "district": "Quận/Huyện",
+    "ward": "Phường/Xã",
+    "address": "Địa chỉ cụ thể",
+    "start_date": "Thời gian bắt đầu",
+    "end_date": "Thời gian kết thúc",
+    "register_link": "Form đăng kí TNV (nếu có)",
+    "have_artifact_donate": "Dự án có nhận quyên góp bằng hiện vật không?",
+    "artifact_requirement": "Yêu cầu về hiện vật quyên góp",
+    "other_info": "Thông tin khác"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

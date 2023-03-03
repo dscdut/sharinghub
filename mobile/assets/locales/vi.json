@@ -2,6 +2,7 @@
   "texts": {
     "notification": "Thông báo",
     "success": "Thành công",
+    "error": "Lỗi",
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
     "email_address": "Email",
     "password": "Mật khẩu",
@@ -50,5 +51,28 @@
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
     "nearest": "Gần nhất"
+  },
+  "campaign": {
+    "create": "Tạo dự án",
+    "edit": "Chỉnh sửa dự án",
+    "create_success": "Tạo dự án thành công",
+    "update_success": "Cập nhật dự án thành công",
+    "back_home": "Quay lại trang chủ",
+    "finish": "Hoàn thành",
+    "update": "Cập nhật",
+    "take_photo": "Chụp ảnh",
+    "choose_photo": "Chọn ảnh",
+    "campaign_name": "Tên dự án",
+    "campaign_description": "Mô tả",
+    "province": "Tỉnh/Thành phố",
+    "district": "Quận/Huyện",
+    "ward": "Phường/Xã",
+    "address": "Địa chỉ cụ thể",
+    "start_date": "Thời gian bắt đầu",
+    "end_date": "Thời gian kết thúc",
+    "register_link": "Form đăng kí TNV (nếu có)",
+    "have_artifact_donate": "Dự án có nhận quyên góp bằng hiện vật không?",
+    "artifact_requirement": "Yêu cầu về hiện vật quyên góp",
+    "other_info": "Thông tin khác"
   }
 }

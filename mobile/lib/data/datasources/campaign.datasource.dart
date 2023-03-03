@@ -9,7 +9,13 @@ class CampaignDataSource {
     return CampaignMock.getCampains();
   }
 
+  Future<CampaignModel> getCampaignById(int id) async {
+    await Future.delayed(const Duration(seconds: 3));
+    return CampaignMock.getCampains()[id];
+  }
+
   Future<CampaignModel> setCampaign(CampaignModel params) async {
+    await Future.delayed(const Duration(seconds: 3));
     return CampaignMock.setCampaign(params);
   }
 }

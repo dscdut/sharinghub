@@ -2,6 +2,7 @@
   "texts": {
     "notification": "Notification",
     "success": "Success",
+    "error": "Error",
     "error_occur": "An error has occurred, please try again later",
     "email_address": "Email",
     "password": "Password",
@@ -50,5 +51,28 @@
     "sort_by": "Sort by: ",
     "newest": "Newest",
     "nearest": "Nearest"
+  },
+  "campaign": {
+    "create": "Create new campaign",
+    "edit": "Edit campaign",
+    "create_success": "Success create campaign",
+    "update_success": "Success update campaign",
+    "back_home": "Back to home",
+    "finish": "Finish",
+    "update": "Update",
+    "take_photo": "Take photo",
+    "choose_photo": "Choose photo",
+    "campaign_name": "Campaign name",
+    "campaign_description": "Description",
+    "province": "Province",
+    "district": "District",
+    "ward": "Ward",
+    "address": "Specific address",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "register_link": "Register link (optional)",
+    "have_artifact_donate": "Have campaign received artifact donation?",
+    "artifact_requirement": "Artifact requirement",
+    "other_info": "Other information"
   }
 }

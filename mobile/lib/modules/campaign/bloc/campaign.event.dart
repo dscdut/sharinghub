@@ -8,10 +8,10 @@ abstract class CampaignEvent extends Equatable {
 }
 
 class CampaignSubmit extends CampaignEvent {
-  final CampaignModel project;
+  final CampaignModel campaign;
 
-  const CampaignSubmit({required this.project});
+  const CampaignSubmit({required this.campaign});
 
   @override
-  List<Object> get props => [project];
+  List<Object> get props => [campaign];
 }

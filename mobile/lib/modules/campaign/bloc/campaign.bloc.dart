@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -10,10 +11,10 @@ part 'campaign.event.dart';
 part 'campaign.state.dart';
 
 class CampaignBloc extends Bloc<CampaignEvent, CampaignState> {
-  final CampaignRepository _projectRepository;
+  final CampaignRepository _campaignRepository;
 
-  CampaignBloc({required CampaignRepository projectRepository})
-      : _projectRepository = projectRepository,
+  CampaignBloc({required CampaignRepository campaignRepository})
+      : _campaignRepository = campaignRepository,
         super(const CampaignState()) {
     on<CampaignSubmit>(_onCampaignSubmit);
   }
@@ -25,7 +26,11 @@ class CampaignBloc extends Bloc<CampaignEvent, CampaignState> {
     emitter(state.copyWith(status: HandleStatus.loading));
 
     try {
-      await _projectRepository.setCampaign(event.project);
+      log(
+        name: 'sendCampaign',
+        event.campaign.toJson().toString(),
+      );
+      await _campaignRepository.setCampaign(event.campaign);
 
       emitter(state.copyWith(status: HandleStatus.success));
     } catch (_) {

@@ -13,7 +13,11 @@ class CampaignRepository {
     return _dataSource.getHomeProject();
   }
 
-  Future<CampaignModel> setCampaign(CampaignModel params) {
+  Future<CampaignModel> getCampaignById(int id) async {
+    return _dataSource.getCampaignById(id);
+  }
+
+  Future<CampaignModel> setCampaign(CampaignModel params) async {
     return _dataSource.setCampaign(params);
   }
 }

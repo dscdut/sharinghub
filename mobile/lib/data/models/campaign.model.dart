@@ -15,7 +15,7 @@ class CampaignModel {
   final DateTime endDate;
   final String description;
   final String? registerLink;
-  final UserModel organizationId;
+  final UserModel organization;
   final bool haveArtifactDonate;
   final String? artifactRequirement;
   final String? otherInfo;
@@ -23,7 +23,7 @@ class CampaignModel {
 
   CampaignModel({
     this.id,
-    required this.organizationId,
+    required this.organization,
     required this.name,
     required this.description,
     required this.address,
