@@ -4,7 +4,8 @@ jobs:
   build-and-deploy:
     docker:
       - image: circleci/node:16
-      - image: docker:17.09.1-ce-git
+        # If you need the Docker CLI, you can include the following line:
+        # - image: docker:stable
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -12,8 +13,26 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+            ssh $SSH_USER@$SSH_HOST "sudo npm install -g npm@latest"
+      - run:
+          name: Install dependencies
+          command: |
+            npm install
+      - run:
+          name: Build packages
+          command: |
+            npm run build
+      - save_cache:
+          key: v1-dependencies-{{ checksum "~/sharinghub/backend/package.json" }}
+          paths:
+            - ~/sharinghub/backend/node_modules
+      - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      - run: sudo apt install rsync
+      - run:
+          name: send file to server
+          command: ls && rsync -vr --delete --progress dist $SSH_USER@$SSH_HOST:/home/sharinghub/backend
 
+# Define the workflows that will run in your pipeline
 workflows:
   build-and-deploy:
     jobs:
