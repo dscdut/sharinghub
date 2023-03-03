@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  build:
+  #...
+  deploy:
+  machine:
+    enabled: true
+  steps:
+    - add_ssh_keys:
+        fingerprints:
+          - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
+    - run:
+        name: Deploy Over SSH
+        command: |
+          ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build # only deploy once build job has completed
+          filters:
+            branches:
+              only: develop # only deploy on the develop branch
