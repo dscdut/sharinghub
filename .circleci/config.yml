@@ -10,10 +10,10 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ssh -o "StrictHostKeyChecking no" kiemtran.dev@35.223.139.196 "sudo npm install -g npm@latest"
+      # - run:
+      #     name: Deploy Over SSH
+      #     command: |
+      #       ssh -o "StrictHostKeyChecking no" kiemtran.dev@35.223.139.196 "npm install -g npm@latest"
       - run:
           name: Install dependencies
           command: |
@@ -22,15 +22,11 @@ jobs:
           name: Build packages
           command: |
             npm run build
-      - save_cache:
-          key: v1-dependencies-{{ checksum "~/sharinghub/backend/package.json" }}
-          paths:
-            - ~/sharinghub/backend/node_modules
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-      - run: sudo apt install rsync
+      - run: apt install rsync
       - run:
           name: send file to server
-          command: ls && rsync -vr --delete --progress dist $SSH_USER@$SSH_HOST:/home/sharinghub/backend
+          command: ls && rsync -vr --delete --progress dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
 
 # Define the workflows that will run in your pipeline
 workflows:
