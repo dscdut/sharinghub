@@ -12,11 +12,23 @@
     "organization": "Organization",
     "full_name": "Full Name",
     "organization_name": "Organization Name",
-    "representative_name": "Representative Name"
+    "representative_name": "Representative Name",
+    "error_get_campaigns": "An error has occurred, campaign data cannot be get",
+    "read_more": "Read More",
+    "hide_info": "Hide Information",
+    "rate": "Rate"
+  },
+  "campaign": {
+    "ongoing": "Ongoing",
+    "ended": "Ended",
+    "has_ended": "The campaign has ended",
+    "artifact_type": "Artifact Types",
+    "obtained_results": "Obtained Results"
   },
   "button": {
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "join": "Join"
   },
   "root": {
     "home": "Home",
@@ -43,5 +55,11 @@
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match"
+  },
+  "home": {
+    "search": "Search",
+    "sort_by": "Sort by: ",
+    "newest": "Newest",
+    "nearest": "Nearest"
   }
 }

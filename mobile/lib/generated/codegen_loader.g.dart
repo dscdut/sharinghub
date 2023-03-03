@@ -28,11 +28,23 @@ class CodegenLoader extends AssetLoader{
     "organization": "Organization",
     "full_name": "Full Name",
     "organization_name": "Organization Name",
-    "representative_name": "Representative Name"
+    "representative_name": "Representative Name",
+    "error_get_campaigns": "An error has occurred, campaign data cannot be get",
+    "read_more": "Read More",
+    "hide_info": "Hide Information",
+    "rate": "Rate"
+  },
+  "campaign": {
+    "ongoing": "Ongoing",
+    "ended": "Ended",
+    "has_ended": "The campaign has ended",
+    "artifact_type": "Artifact Types",
+    "obtained_results": "Obtained Results"
   },
   "button": {
     "cancel": "Cancel",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "join": "Join"
   },
   "root": {
     "home": "Home",
@@ -59,6 +71,12 @@ class CodegenLoader extends AssetLoader{
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match"
+  },
+  "home": {
+    "search": "Search",
+    "sort_by": "Sort by: ",
+    "newest": "Newest",
+    "nearest": "Nearest"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -75,11 +93,23 @@ static const Map<String,dynamic> vi = {
     "organization": "Tổ chức",
     "full_name": "Họ và tên",
     "organization_name": "Tên tổ chức",
-    "representative_name": "Người đại diện"
+    "representative_name": "Người đại diện",
+    "error_get_campaigns": "Đã có lỗi xảy ra, hiện không thể truy xuất dữ liệu",
+    "read_more": "Xem thêm",
+    "hide_info": "Ẩn thông tin",
+    "rate": "Đánh giá"
+  },
+  "campaign": {
+    "ongoing": "Đang diễn ra",
+    "ended": "Đã kết thúc",
+    "has_ended": "Dự án đã kết thúc",
+    "obtained_results": "Kết quả thu được",
+    "artifact_type": "Hiện vật cần quyên góp"
   },
   "button": {
     "cancel": "Hủy",
-    "confirm": "Xác nhận"
+    "confirm": "Xác nhận",
+    "join": "Đăng ký tham gia"
   },
   "root": {
     "home": "Trang chủ",
@@ -106,6 +136,12 @@ static const Map<String,dynamic> vi = {
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+  },
+  "home": {
+    "search": "Tìm kiếm",
+    "sort_by": "Sắp xếp theo: ",
+    "newest": "Mới nhất",
+    "nearest": "Gần nhất"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

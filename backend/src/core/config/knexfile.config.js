@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { join } from 'path';
 
-dotenv.config({ path: join(__dirname, '../../../config.env') });
+dotenv.config({ path: join(__dirname, '../../../.env') });
 
 module.exports = {
     development: {
@@ -31,6 +31,9 @@ module.exports = {
             password: process.env.DB_PASS,
             database: process.env.DB_NAME,
             charset: 'utf8',
+            ssl: {
+                rejectUnauthorized: false,
+            },
         },
         migrations: {
             directory: `${__dirname}/../database/migrations`,

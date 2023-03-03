@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
@@ -126,7 +128,7 @@ class _MyAppState extends State<MyApp> {
                     break;
                   case AuthenticationStatus.unauthenticated:
                     _navigator.pushNamedAndRemoveUntil(
-                      AppRoutes.login,
+                      AppRoutes.root,
                       (route) => false,
                     );
                     break;
@@ -148,6 +150,12 @@ Future<void> initializeApp() async {
   configureDependencies();
 
   await Hive.initFlutter();
+
+  final GoogleMapsFlutterPlatform mapsImplementation =
+      GoogleMapsFlutterPlatform.instance;
+  if (mapsImplementation is GoogleMapsFlutterAndroid) {
+    mapsImplementation.useAndroidViewSurface = false;
+  }
 
   Bloc.observer = AppBlocObserver();
 }
