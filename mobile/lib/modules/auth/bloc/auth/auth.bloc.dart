@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emitter,
   ) async {
     try {
-      final UserModel user = await _userRepository.getUserInfo();
+      final BaseUserModel user = await _userRepository.getUserInfo();
 
       emitter(AuthState.authenticated(user: user));
     } catch (err) {
@@ -62,7 +62,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       emitter(
         AuthState.authenticated(
-          user: event.authResponse!.user,
+          user: event.authResponse!.user.toModel(),
         ),
       );
     }

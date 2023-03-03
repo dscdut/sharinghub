@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
+import 'package:mobile/data/repositories/campaign.repository.dart';
+import 'package:mobile/di/di.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 import 'package:mobile/modules/map/bloc/map/map.bloc.dart';
-import 'package:mobile/modules/map/widgets/map_bottom_sheet.view.dart';
+import 'package:mobile/modules/map/widgets/map_bottom_sheet.widget.dart';
 
 class MapPage extends StatelessWidget {
   MapPage({super.key});
@@ -20,7 +22,9 @@ class MapPage extends StatelessWidget {
           create: (context) => MapBloc(),
         ),
         BlocProvider(
-          create: (context) => MapBottomsheetBloc(),
+          create: (context) => MapBottomsheetBloc(
+            campaignRepository: getIt.get<CampaignRepository>(),
+          ),
         )
       ],
       child: BlocListener<MapBloc, MapState>(
@@ -60,45 +64,50 @@ class _MapView extends StatelessWidget {
         title: const Text('Map'),
       ),
       body: BlocBuilder<MapBloc, MapState>(
-        builder: (bcontext, state) => GoogleMap(
-          initialCameraPosition: const CameraPosition(
-            target: defaultLocation,
-            zoom: 5,
-          ),
-          onMapCreated: (gController) {
-            controller.complete(gController);
-          },
-          mapToolbarEnabled: false,
-          myLocationEnabled: true,
-          zoomControlsEnabled: false,
-          markers: state.markers
-                  ?.map(
-                    (e) => Marker(
-                      markerId: e.markerId,
-                      position: e.position,
-                      onTap: () {
-                        _onClickMarker(context);
-                      },
-                    ),
-                  )
-                  .toSet() ??
-              const {},
-        ),
+        builder: (bcontext, state) {
+          return GoogleMap(
+            initialCameraPosition: const CameraPosition(
+              target: defaultLocation,
+              zoom: 5,
+            ),
+            onMapCreated: (gController) {
+              controller.complete(gController);
+            },
+            mapToolbarEnabled: false,
+            myLocationEnabled: true,
+            zoomControlsEnabled: false,
+            buildingsEnabled: false,
+            markers: state.markers
+                    ?.map(
+                      (e) => Marker(
+                        markerId: e.markerId,
+                        position: e.position,
+                        onTap: () {
+                          _onClickMarker(context, e.position);
+                        },
+                      ),
+                    )
+                    .toSet() ??
+                const {},
+          );
+        },
       ),
     );
   }
 
-  void _onClickMarker(BuildContext context) {
-    showBottomSheet(
+  void _onClickMarker(BuildContext context, LatLng wardLocation) {
+    showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(20),
         ),
       ),
+      isScrollControlled: true,
       builder: (ccontext) {
         return BlocProvider.value(
-          value: context.read<MapBottomsheetBloc>(),
+          value: context.read<MapBottomsheetBloc>()
+            ..add(MapBottomSheetGetCampaigns(wardLocation: wardLocation)),
           child: const CampaignBottomSheet(),
         );
       },

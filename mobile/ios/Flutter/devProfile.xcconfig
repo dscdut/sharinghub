@@ -1,7 +1,0 @@
-#include "Generated.xcconfig"
-
-FLUTTER_TARGET=lib/main_dev.dart
-ASSET_PREFIX=dev
-BUNDLE_NAME=SharingHub DEV
-BUNDLE_DISPLAY_NAME=SharingHub DEV
-GOOGLE_MAPS_API_KEY=AIzaSyBO3Eyu8oDfGZi5uBGqczJQs80aZMt3Bi0

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';

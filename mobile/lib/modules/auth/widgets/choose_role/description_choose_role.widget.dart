@@ -28,7 +28,6 @@ class DescriptionChooseRole extends StatelessWidget {
           child: AppRoundedButton(
             onPressed: onPressed,
             content: buttonContent,
-            borderRadius: 10,
             width: double.infinity,
           ),
         ),

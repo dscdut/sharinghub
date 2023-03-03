@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 
 abstract class TextStyles {
+  // TODO: Delete them in the future
   // Regular
   static const TextStyle regularText = TextStyle(
     color: ColorStyles.zodiacBlue,
@@ -64,6 +65,8 @@ abstract class TextStyles {
     fontWeight: FontWeight.w700,
     fontSize: 17,
   );
+
+  ///
 
   static const TextStyle regularHeading96 = TextStyle(
     color: ColorStyles.zodiacBlue,

@@ -1,7 +1,0 @@
-#include "Generated.xcconfig"
-
-FLUTTER_TARGET=lib/main_qa.dart
-ASSET_PREFIX=qa
-BUNDLE_NAME=SharingHub QA
-BUNDLE_DISPLAY_NAME=SharingHub QA
-GOOGLE_MAPS_API_KEY=AIzaSyBO3Eyu8oDfGZi5uBGqczJQs80aZMt3Bi0
