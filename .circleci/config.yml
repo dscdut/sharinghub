@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "sudo npm install -g npm@latest"
+            ssh kiemtran.dev@35.223.139.196 "sudo npm install -g npm@latest"
       - run:
           name: Install dependencies
           command: |
