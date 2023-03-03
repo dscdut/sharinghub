@@ -12,19 +12,25 @@ jobs:
           fingerprints:
             - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
       - run:
+          name: Install Git
+          command: apt install git
+      - run:
+          name: Clone repo
+          command: git clone git@github.com:dscdut/sharinghub.git
+      - run:
           name: Test
           command: ls -la
-      # - run:
-      #     name: Build packages
-      #     command: cd ~/sharinghub/backend && npm install
-      # - run:
-      #     name: Build packages
-      #     command: cd ~/sharinghub/backend && npm run build
-      # - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-      # - run: apt install rsync
-      # - run:
-      #     name: send file to server
-      #     command: ls && rsync -vr --delete --progress ./backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
+      - run:
+          name: Build packages
+          command: cd ~/sharinghub/backend && npm install
+      - run:
+          name: Build packages
+          command: cd ~/sharinghub/backend && npm run build
+      - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      - run: apt install rsync
+      - run:
+          name: send file to server
+          command: ls && rsync -vr --delete --progress ./backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
 
 # Define the workflows that will run in your pipeline
 workflows:
