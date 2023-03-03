@@ -7,7 +7,7 @@ const tableName = 'campaigns';
 exports.up = async knex => {
     await knex.schema.createTable(tableName, table => {
         table.increments('id').unsigned().primary();
-        table.string('name').unique().notNullable();
+        table.string('name').notNullable();
         table.string('province').notNullable();
         table.string('district').notNullable();
         table.string('ward').notNullable();
