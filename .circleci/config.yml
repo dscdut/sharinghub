@@ -37,8 +37,11 @@ jobs:
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
       - run: sudo apt-get update && sudo apt-get install -y rsync
       - run:
+          name: Test
+          command: ls -la
+      - run:
           name: send file to server
-          command: ls && rsync -vr --delete --progress ./backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
+          command: ls && rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
 
 # Define the workflows that will run in your pipeline
 workflows:
