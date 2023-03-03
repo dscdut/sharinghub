@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/data/models/address.model.dart';
 
 import 'package:mobile/data/models/user.model.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
 
 part 'campaign.model.g.dart';
 
@@ -15,15 +18,24 @@ class CampaignModel {
   final DateTime endDate;
   final String description;
   final String? registerLink;
-  final UserModel organizationId;
+  @JsonKey(includeFromJson: true, includeToJson: false)
+  final OrganizationModel organization;
   final bool haveArtifactDonate;
   final String? artifactRequirement;
   final String? otherInfo;
   final String? imageURL;
 
+  bool get isOngoing => DateTime.now().isBeforeOrEqualTo(endDate);
+
+  String get statusContent => isOngoing
+      ? LocaleKeys.campaign_ongoing.tr()
+      : LocaleKeys.campaign_ended.tr();
+
+  String get fullDate => '${startDate.toDisplay} - ${endDate.toDisplay}';
+
   CampaignModel({
     this.id,
-    required this.organizationId,
+    required this.organization,
     required this.name,
     required this.description,
     required this.address,

@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import '../../../../common/constants/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -18,29 +21,34 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     add(const MapMarkersGet());
   }
 
-  Future<LatLng> _getMyLocation() async =>
-      Geolocator.getCurrentPosition().then((postion) async {
-        await Future.delayed(const Duration(milliseconds: 2000));
-        return LatLng(
-          postion.latitude,
-          postion.longitude,
-        );
-      });
+  Future<LatLng> _getMyLocation() async {
+    try {
+      final Position userPosition = await Geolocator.getCurrentPosition();
+
+      return LatLng(userPosition.latitude, userPosition.longitude);
+    } catch (err) {
+      log('Error in get user location');
+
+      return defaultLocation;
+    }
+  }
 
   Future<void> _requestPermission(
     MapPermissionRequest event,
     Emitter<MapState> emiiter,
   ) async {
-    if (await Permission.location.request().isDenied) {
-      _requestPermission(event, emiiter);
-    } else {
-      emiiter(
-        MapGetLocationSuccess(
-          myLocation: await _getMyLocation(),
-          markers: state.markers ?? const {},
-        ),
-      );
+    final bool isGranted = await Permission.location.isGranted;
+
+    if (!isGranted) {
+      await Permission.location.request();
     }
+
+    emiiter(
+      MapGetLocationSuccess(
+        myLocation: await _getMyLocation(),
+        markers: state.markers ?? const {},
+      ),
+    );
   }
 
   Future<void> _getMarkers(

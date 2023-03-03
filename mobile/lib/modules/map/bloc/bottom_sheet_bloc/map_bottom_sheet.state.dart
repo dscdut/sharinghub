@@ -1,20 +1,30 @@
 part of 'map_bottom_sheet.bloc.dart';
 
-class MapBottomsheetState extends Equatable {
-  final HandleStatus? status;
+class MapBottomSheetState extends Equatable {
+  final HandleStatus status;
+  final List<CampaignModel> campaigns;
   final String? error;
 
-  const MapBottomsheetState()
-      : status = HandleStatus.loading,
-        error = null;
+  const MapBottomSheetState._({
+    this.status = HandleStatus.initial,
+    this.error,
+    this.campaigns = const [],
+  });
 
-  const MapBottomsheetState.success()
-      : status = HandleStatus.success,
-        error = null;
+  const MapBottomSheetState.initial() : this._(status: HandleStatus.initial);
 
-  const MapBottomsheetState.error({
-    required String this.error,
-  }) : status = HandleStatus.error;
+  const MapBottomSheetState.loading() : this._(status: HandleStatus.loading);
+
+  const MapBottomSheetState.success({
+    required List<CampaignModel> campaigns,
+  }) : this._(status: HandleStatus.success, campaigns: campaigns);
+
+  const MapBottomSheetState.error({
+    required String error,
+  }) : this._(
+          status: HandleStatus.error,
+          error: error,
+        );
 
   @override
   List<Object?> get props => [status, error];

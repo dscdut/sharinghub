@@ -5,9 +5,76 @@ part 'auth.dto.g.dart';
 
 @JsonSerializable(
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
+)
+class BaseUserDTO {
+  final int? organizationId;
+  final int? userId;
+  final String? fullName;
+  final String? name;
+  final bool? gender;
+  final DateTime? birthDay;
+  final String? avatar;
+  final String? phoneNumber;
+  final String email;
+  final String? address;
+  final String? description;
+
+  BaseUserDTO({
+    this.organizationId,
+    this.userId,
+    this.fullName,
+    this.name,
+    this.gender,
+    this.birthDay,
+    this.avatar,
+    this.phoneNumber,
+    required this.email,
+    this.address,
+    this.description,
+  });
+
+  UserModel toUser() {
+    return UserModel(
+      id: userId!,
+      name: fullName!,
+      address: address,
+      avatar: avatar,
+      email: email,
+      phoneNumber: phoneNumber,
+      gender: gender,
+      birthDay: birthDay,
+    );
+  }
+
+  OrganizationModel toOrganization() {
+    return OrganizationModel(
+      organizationId: organizationId!,
+      name: name!,
+      address: address,
+      avatar: avatar,
+      email: email,
+      phoneNumber: phoneNumber,
+      description: description,
+      userId: userId,
+    );
+  }
+
+  BaseUserModel toModel() {
+    return organizationId == null ? toUser() : toOrganization();
+  }
+
+  factory BaseUserDTO.fromJson(Map<String, dynamic> json) =>
+      _$BaseUserDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$BaseUserDTOToJson(this);
+}
+
+@JsonSerializable(
+  explicitToJson: true,
 )
 class AuthResponseDTO {
-  final UserModel user;
+  final BaseUserDTO user;
   // final String accessToken;
   // final String refreshToken;
   // final String expiresIn;
@@ -26,33 +93,33 @@ class AuthResponseDTO {
 }
 
 @JsonSerializable(createFactory: false)
-class LoginDTO {
+class SubmitLoginDTO {
   final String email;
   final String password;
 
-  LoginDTO({
+  SubmitLoginDTO({
     required this.email,
     required this.password,
   });
 
-  Map<String, dynamic> toJson() => _$LoginDTOToJson(this);
+  Map<String, dynamic> toJson() => _$SubmitLoginDTOToJson(this);
 }
 
 @JsonSerializable(createFactory: false, includeIfNull: false)
-class RegisterDTO {
+class SubmitRegisterDTO {
   final String name;
   final String? representativeName;
   final String email;
   final String password;
 
-  RegisterDTO({
+  SubmitRegisterDTO({
     required this.name,
     this.representativeName,
     required this.email,
     required this.password,
   });
 
-  Map<String, dynamic> toJson() => _$RegisterDTOToJson(this);
+  Map<String, dynamic> toJson() => _$SubmitRegisterDTOToJson(this);
 }
 
 // @JsonSerializable()

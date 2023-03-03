@@ -27,7 +27,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     try {
       await _userRepository.registerByEmail(
-        RegisterDTO(
+        SubmitRegisterDTO(
           name: event.name,
           representativeName: event.representativeName,
           email: event.email,

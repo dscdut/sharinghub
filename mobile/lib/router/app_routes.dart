@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
+import 'package:mobile/modules/campaign/view/campaign_detail.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/splash/splash.dart';
@@ -10,6 +12,7 @@ abstract class AppRoutes {
 
   // Campaign
   static const String setCampaign = '/setCampaign';
+  static const String campaignDetail = '/campaignDetail';
 
   // Auth
   static const String login = '/login';
@@ -85,6 +88,14 @@ abstract class AppRoutes {
           builder: (_) {
             return CampaignPage(
               isCreate: isCreate,
+            );
+          },
+        );
+      case campaignDetail:
+        return MaterialPageRoute(
+          builder: (_) {
+            return CampaignDetailPage(
+              campaign: settings.arguments as CampaignModel,
             );
           },
         );
