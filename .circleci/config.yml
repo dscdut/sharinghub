@@ -12,8 +12,11 @@ jobs:
           fingerprints:
             - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
       - run:
+          name: Update apt
+          command: sudo apt update
+      - run:
           name: Install Git
-          command: apt install git
+          command: sudo apt install git
       - run:
           name: Clone repo
           command: git clone git@github.com:dscdut/sharinghub.git
