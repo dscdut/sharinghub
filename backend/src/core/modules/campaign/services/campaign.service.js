@@ -1,6 +1,10 @@
 import { getTransaction } from 'core/database';
+import { MESSAGE } from 'core/modules/auth/service/message.enum';
 import { logger, Optional } from 'core/utils';
-import { DuplicateException, InternalServerException } from 'packages/httpException';
+import {
+    DuplicateException,
+    InternalServerException,
+} from 'packages/httpException';
 import { CampaignRepository } from '../campaign.repository';
 
 class Service {
@@ -10,21 +14,26 @@ class Service {
 
     async createOne(createCampaignDto) {
         const trx = await getTransaction();
-        Optional.of(await this.repository.findByName(createCampaignDto.name)).throwIfPresent(
-            new DuplicateException('Campaign name is being used'),
-        );
+        Optional.of(
+            await this.repository.findByName(createCampaignDto.name),
+        ).throwIfPresent(new DuplicateException('Campaign name is being used'));
 
         // check if start date is before end date
-        if (new Date(createCampaignDto.start_date) > new Date(createCampaignDto.end_date)) {
+        if (
+            new Date(createCampaignDto.start_date)
+      > new Date(createCampaignDto.end_date)
+        ) {
             throw new InternalServerException('Start date must be before end date');
         }
 
         // check if start date and end date is before today
         if (
             new Date(createCampaignDto.start_date) < new Date()
-            || new Date(createCampaignDto.end_date) < new Date()
+      || new Date(createCampaignDto.end_date) < new Date()
         ) {
-            throw new InternalServerException('Start date and end date must be after today');
+            throw new InternalServerException(
+                'Start date and end date must be after today',
+            );
         }
 
         let createdCampaign;
@@ -37,7 +46,10 @@ class Service {
         }
 
         trx.commit();
-        return createdCampaign[0];
+        return {
+            message: MESSAGE.CAMPAIGN_CREATED_SUCCESS,
+            id: createdCampaign[0].id,
+        };
     }
 }
 
