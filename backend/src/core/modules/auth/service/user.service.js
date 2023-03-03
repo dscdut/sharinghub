@@ -23,9 +23,20 @@ class Service {
         }
     }
 
+    async findByPhoneNumber(phoneNumber) {
+        try {
+            const data = await this.repository.findByPhoneNumber(phoneNumber);
+
+            return data[0];
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
+
     async createUser(registerDto) {
-        Optional.of(await this.repository.findByEmail(registerDto.email)).throwIfPresent(new DuplicateException('This email is already existed'));
-        Optional.of(await this.repository.findByPhoneNumber(registerDto.phone_number)).throwIfPresent(new DuplicateException('This phone is already existed'));
+        Optional.of(await this.findByEmail(registerDto.email)).throwIfPresent(new DuplicateException('This email is already existed'));
+        Optional.of(await this.findByPhoneNumber(registerDto.phone_number)).throwIfPresent(new DuplicateException('This phone is already existed'));
 
         if (registerDto.password !== registerDto.confirm_password) {
             throw new BadRequestException('Password does not match');
