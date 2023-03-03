@@ -35,7 +35,7 @@ jobs:
           name: Build packages
           command: cd sharinghub/backend && npm run build
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-      - run: apt install rsync
+      - run: sudo apt install rsync
       - run:
           name: send file to server
           command: ls && rsync -vr --delete --progress ./backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
