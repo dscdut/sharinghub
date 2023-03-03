@@ -1,9 +1,6 @@
 import { getTransaction } from 'core/database';
-import { logger, Optional } from 'core/utils';
-import {
-    DuplicateException,
-    InternalServerException,
-} from 'packages/httpException';
+import { logger } from 'core/utils';
+import { InternalServerException } from 'packages/httpException';
 import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../campaign.repository';
 
@@ -14,9 +11,6 @@ class Service {
 
     async createOne(createCampaignDto) {
         const trx = await getTransaction();
-        Optional.of(
-            await this.repository.findByName(createCampaignDto.name),
-        ).throwIfPresent(new DuplicateException('Campaign name is being used'));
 
         // check if start date is before end date
         if (
