@@ -1,27 +1,23 @@
 version: 2.1
 
 jobs:
-  build:
-  #...
-  deploy:
-  machine:
-    enabled: true
-  steps:
-    - add_ssh_keys:
-        fingerprints:
-          - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
-    - run:
-        name: Deploy Over SSH
-        command: |
-          ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+  build-and-deploy:
+    docker:
+      - image: circleci/node:16
+      - image: docker:17.09.1-ce-git
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
 
 workflows:
   build-and-deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build # only deploy once build job has completed
+      - build-and-deploy:
           filters:
             branches:
               only: develop # only deploy on the develop branch
