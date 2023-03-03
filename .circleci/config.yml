@@ -30,10 +30,10 @@ jobs:
           command: ls -la
       - run:
           name: Build packages
-          command: cd ~/sharinghub/backend && npm install
+          command: cd sharinghub/backend && npm install
       - run:
           name: Build packages
-          command: cd ~/sharinghub/backend && npm run build
+          command: cd sharinghub/backend && npm run build
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
       - run: apt install rsync
       - run:
