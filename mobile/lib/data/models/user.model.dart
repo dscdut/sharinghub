@@ -2,14 +2,62 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'user.model.g.dart';
 
-@JsonSerializable()
-class UserModel {
-  final String email;
+abstract class BaseUserModel {
+  final int id;
   final String name;
+  final String? address;
+  final String? avatar;
+  final String email;
+  final String? phoneNumber;
+
+  BaseUserModel({
+    required this.id,
+    required this.name,
+    this.address,
+    this.avatar,
+    required this.email,
+    this.phoneNumber,
+  });
+}
+
+@JsonSerializable(
+  createToJson: false,
+  fieldRename: FieldRename.snake,
+)
+class OrganizationModel extends BaseUserModel {
+  final String? description;
+  final int? userId;
+  final int organizationId;
+
+  OrganizationModel({
+    required this.organizationId,
+    required super.name,
+    super.address,
+    super.avatar,
+    required super.email,
+    super.phoneNumber,
+    this.description,
+    this.userId,
+  }) : super(id: organizationId);
+
+  factory OrganizationModel.fromJson(Map<String, dynamic> json) =>
+      _$OrganizationModelFromJson(json);
+}
+
+@JsonSerializable()
+class UserModel extends BaseUserModel {
+  final bool? gender;
+  final DateTime? birthDay;
 
   UserModel({
-    required this.email,
-    required this.name,
+    required super.id,
+    required super.name,
+    super.address,
+    super.avatar,
+    required super.email,
+    super.phoneNumber,
+    this.gender,
+    this.birthDay,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

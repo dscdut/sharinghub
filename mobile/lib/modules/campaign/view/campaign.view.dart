@@ -21,8 +21,9 @@ import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/auth/auth.dart';
-import 'package:mobile/modules/campaign/campaign.dart';
+import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
+import 'package:mobile/modules/campaign/bloc/campaign/campaign.bloc.dart';
+import 'package:mobile/modules/campaign/widgets/campaign_form.widget.dart';
 import 'package:mobile/router/app_routes.dart';
 
 class CampaignPage extends StatefulWidget {
@@ -398,7 +399,7 @@ class _CampaignViewState extends State<_CampaignView> {
               campaign: CampaignModel(
                 id: widget.campaign != null ? widget.campaign!.id : null,
                 // organization: context.read<AuthBloc>().state.user!,
-                organization: UserMock.getUserInfo(),
+                organization: UserMock.getOrganization(),
                 name: _nameController.text,
                 description: _descriptionController.text,
                 address: AddressModel(

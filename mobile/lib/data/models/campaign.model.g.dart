@@ -9,8 +9,13 @@ part of 'campaign.model.dart';
 CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
     CampaignModel(
       id: json['id'] as int?,
+<<<<<<< HEAD
       organization:
           UserModel.fromJson(json['organization'] as Map<String, dynamic>),
+=======
+      organization: OrganizationModel.fromJson(
+          json['organization'] as Map<String, dynamic>),
+>>>>>>> develop
       name: json['name'] as String,
       description: json['description'] as String,
       address: AddressModel.fromJson(json['address'] as Map<String, dynamic>),
@@ -39,7 +44,10 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   val['endDate'] = instance.endDate.toIso8601String();
   val['description'] = instance.description;
   val['registerLink'] = instance.registerLink;
+<<<<<<< HEAD
   val['organization'] = instance.organization.toJson();
+=======
+>>>>>>> develop
   val['haveArtifactDonate'] = instance.haveArtifactDonate;
   val['artifactRequirement'] = instance.artifactRequirement;
   val['otherInfo'] = instance.otherInfo;
