@@ -43,10 +43,10 @@ export const AuthResolver = Module.builder()
             controller: AuthController.getResetPassword
         },
         {
-            route: '/new-password',
+            route: '/update-password',
             method: 'post',
             interceptors: [NewPasswordInterceptor],
-            body: 'NewPasswordDto',
-            controller: AuthController.newPassword
+            body: 'UpdatePasswordDto',
+            controller: AuthController.updatePassword
         },
     ]);
