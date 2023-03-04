@@ -11,7 +11,7 @@ export const CampaignResolver = Module.builder()
     })
     .register([
         {
-            route: '/create',
+            route: '/',
             method: 'post',
             interceptors: [CreateCampaignInterceptor],
             body: 'CreateCampaignDto',
