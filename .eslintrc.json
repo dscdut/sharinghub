@@ -13,8 +13,8 @@
     "plugins": ["prettier"],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 2018,
         "requireConfigFile": false,
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
     "rules": {
@@ -33,7 +33,6 @@
         "no-tabs": 0,
         "dot-notation": 0,
         "default-case": 0,
-        "import/no-import-module-exports": "off",
         "class-methods-use-this": 0,
         "import/prefer-default-export": "off",
         "no-param-reassign":"off",

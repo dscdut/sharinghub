@@ -7,7 +7,7 @@ import { faker } from '@faker-js/faker/locale/vi';
 const tableName = 'organizations';
 
 const randomUserId = async knex => {
-    //get id column from users table
+    // get id column from users table
     const userIdArr = await knex.table('users').pluck('id');
 
     // Randomly pick an id from userIdArr
@@ -19,8 +19,8 @@ exports.seed = async knex => {
     // Deletes ALL existing entries
     await knex(tableName).del();
 
-    let data = [];
-    for (let i = 0; i < 10; i++) {
+    const data = [];
+    for (let i = 0; i < 10; i += 1) {
         data.push({
             name: faker.company.name(),
             address: faker.address.streetAddress(),
