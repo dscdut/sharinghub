@@ -1,8 +1,11 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 
 class Repository extends DataRepository {
-    createCampaign(campaign) {
-        return this.query().insert(campaign).into('campaigns');
+    createCampaign(campaign, trx = null) {
+        const queryBuilder = this.query().insert(campaign, 'id');
+
+        if (trx) queryBuilder.transacting(trx);
+        return queryBuilder;
     }
 
     findByName(name) {

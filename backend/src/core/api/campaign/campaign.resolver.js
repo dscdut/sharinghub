@@ -5,13 +5,13 @@ import { CampaignController } from './campaign.controller';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/v1/campaigns',
+        prefixPath: '/v1/organizations',
         tag: 'campaigns',
         module: 'CampaignModule',
     })
     .register([
         {
-            route: '/',
+            route: '/:organization_id/campaigns',
             method: 'post',
             interceptors: [CreateCampaignInterceptor],
             body: 'CreateCampaignDto',
