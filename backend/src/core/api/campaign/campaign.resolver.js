@@ -5,7 +5,7 @@ import { CampaignController } from './campaign.controller';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/campaigns',
+        prefixPath: '/v1/campaigns',
         tag: 'campaigns',
         module: 'CampaignModule',
     })
