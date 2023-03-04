@@ -3,49 +3,44 @@ import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repos
 class Repository extends DataRepository {
     findByEmail(email) {
         return this.query()
-            .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
-            .innerJoin('roles', 'roles.id', 'users_roles.role_id')
             .whereNull('users.deleted_at')
             .where('users.email', '=', email)
             .select(
                 'users.id',
                 'users.email',
                 'users.password',
-                { role: 'roles.name' },
-                { fullName: 'users.full_name' },
-                { createdAt: 'users.created_at' },
-                { updatedAt: 'users.updated_at' },
-                { deletedAt: 'users.deleted_at' },
+                { phoneNumber: 'users.phone_number' },
             );
+    }
+
+    findByPhoneNumber(phoneNumber) {
+        return this.query()
+            .whereNull('users.deleted_at')
+            .where('users.phone_number', '=', phoneNumber)
+            .select(
+                'users.id',
+                'users.email',
+                'users.password',
+                { phoneNumber: 'users.full_name' },
+            );
+    }
+
+    createUser(user) {
+        return this.query().insert(user).into('users');
     }
 
     findById(id) {
         return this.query()
-            .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
-            .innerJoin('roles', 'roles.id', 'users_roles.role_id')
             .whereNull('users.deleted_at')
             .where('users.id', '=', id)
             .select(
                 'users.id',
                 'users.email',
                 { fullName: 'users.full_name' },
-                { role: 'roles.name' },
                 { createdAt: 'users.created_at' },
                 { updatedAt: 'users.updated_at' },
                 { deletedAt: 'users.deleted_at' },
             );
-    }
-
-    findRoles(id) {
-        return this.query().innerJoin('users_roles', 'users_roles.user_id', 'users.id').where('users.id', '=', id).select('roles.name');
-    }
-
-    async createUser(user) {
-        const [{ id }] = await this.query()
-            .insert({ full_name: user.full_name, email: user.email, password: user.password })
-            .into('users')
-            .returning('id');
-        return this.query().insert({ user_id: id, role_id: user.role_id }).into('users_roles');
     }
 
     setResetToken(email, token) {
@@ -56,8 +51,6 @@ class Repository extends DataRepository {
     findByResetToken(token) {
         const now = new Date().toISOString();
         return this.query()
-            .innerJoin('users_roles', 'users_roles.user_id', 'users.id')
-            .innerJoin('roles', 'roles.id', 'users_roles.role_id')
             .whereNull('users.deleted_at')
             .where('reset_token', '=', token)
             .where('reset_token_expiration_date', '>', now)
@@ -65,7 +58,6 @@ class Repository extends DataRepository {
                 'users.id',
                 'users.email',
                 { fullName: 'users.full_name' },
-                { role: 'roles.name' },
                 { createdAt: 'users.created_at' },
                 { updatedAt: 'users.updated_at' },
                 { deletedAt: 'users.deleted_at' },

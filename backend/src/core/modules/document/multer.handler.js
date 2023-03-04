@@ -4,7 +4,7 @@ import path from 'path';
 import fs from 'fs';
 
 export class MulterUploader {
-    #destinationPath
+    #destinationPath;
 
     #allowedExtensions;
 
@@ -28,7 +28,7 @@ export class MulterUploader {
 
             return cb(null, true);
         },
-    }
+    };
 
     constructor(extensions, keyName, fileQuantity = 1, destinationPath = `${ROOT_DIR}/core/uploads`) {
         this.validateParams(extensions, destinationPath, keyName, fileQuantity);

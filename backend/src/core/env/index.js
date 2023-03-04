@@ -17,4 +17,3 @@ export const { CLOUDINARY_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = pr
 export const SALT_ROUNDS = Number.parseInt(process.env.SALT_ROUNDS, 10);
 export const { EMAIL } = process.env;
 export const { SENDGRID_API_KEY } = process.env;
-export const { URL } = process.env;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { faker } from '@faker-js/faker/locale/vi';
 
 /**
@@ -7,7 +8,7 @@ import { faker } from '@faker-js/faker/locale/vi';
 const tableName = 'campaigns';
 
 const randomOrganizationId = async knex => {
-    //get id column from users table
+    // get id column from users table
     const organizationIdArr = await knex.table('organizations').pluck('id');
 
     // Randomly pick an id from userIdArr
@@ -15,10 +16,9 @@ const randomOrganizationId = async knex => {
     return organizationIdArr[randomIndex];
 };
 
-const point = (longitude, latitude) => {
-    return `${longitude}, ${latitude}`;
-};
+const point = (longitude, latitude) => `${longitude}, ${latitude}`;
 
+// eslint-disable-next-line func-names
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
     await knex(tableName).del();
