@@ -28,10 +28,11 @@ class Service {
 
         if (user) {
             if (this.bcryptService.compare(loginDto.password, user.password)) {
-                const orgs = (await this.OrgRepositoryService.findUsersOrgsById(user.id)).map(org => org.id);
+                const organization_ids = (await this.OrgRepositoryService.findUsersOrgsById(user.id)).map(org => org.id);
+
                 return {
                     message: MESSAGE.LOGIN_SUCCESS,
-                    accessToken: this.jwtService.sign({ id: user.id, orgs }),
+                    accessToken: this.jwtService.sign({ id: user.id, organization_ids }),
                 };
             }
         }

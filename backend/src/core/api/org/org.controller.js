@@ -8,7 +8,7 @@ class Controller {
     }
 
     createOrg = async req => {
-        const data = await this.service.createOrg(CreateOrgDto(req.body), req.user.payload);
+        const data = await this.service.updateOrgTable(CreateOrgDto(req.body), req.user.payload);
         return ValidHttpResponse.toOkResponse(data);
     }
 
@@ -18,7 +18,12 @@ class Controller {
     }
 
     getOrgById = async req => {
-        const data = await this.service.getOrgById(req.user.payload, req.params);
+        const data = await this.service.getOrgById(req.user.payload, req.params.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    putEditOrg = async req => {
+        const data = await this.service.updateOrgTable(CreateOrgDto(req.body), req.user.payload, req.params.id);
         return ValidHttpResponse.toOkResponse(data);
     }
 }

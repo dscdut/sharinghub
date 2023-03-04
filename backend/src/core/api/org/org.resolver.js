@@ -11,7 +11,7 @@ export const OrgResolver = Module.builder()
     })
     .register([
         {
-            route: '/create-organization',
+            route: '/',
             method: 'post',
             interceptors: [CreateOrgInterceptor],
             body: 'CreateOrgDto',
@@ -30,5 +30,14 @@ export const OrgResolver = Module.builder()
             params: [orgId],
             controller: OrgController.getOrgById,
             preAuthorization: true,
+        },
+        {
+            route: '/:id',
+            method: 'put',
+            interceptors: [CreateOrgInterceptor],
+            body: 'CreateOrgDto',
+            controller: OrgController.putEditOrg,
+            preAuthorization: true,
         }
+
     ]);

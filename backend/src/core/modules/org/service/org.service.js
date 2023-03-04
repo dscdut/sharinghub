@@ -1,14 +1,32 @@
 import { OrgRepositoryService } from './org-repository.service';
+import { JwtService } from '../../auth/service/jwt.service';
+import { MESSAGE } from './message.enum';
+import { ForbiddenException } from '../../../../packages/httpException';
 
 class Service {
     constructor() {
         this.OrgRepositoryService = OrgRepositoryService;
+        this.JwtService = JwtService;
     }
 
-    async createOrg(orgDto, user) {
-        await this.OrgRepositoryService.createOrg({ ...orgDto, user_id: user.id });
+    async updateOrgTable(orgDto, user, orgId) {
+        if (orgId && !user.organization_ids.includes(Number(orgId))) {
+            throw new ForbiddenException('You don\'t have permission to edit this organization');
+        }
+        const [{ id }] = await this.OrgRepositoryService.updateOrgTable({ ...orgDto, user_id: user.id, id: orgId });
+
+        if (!user.organization_ids.includes(id)) {
+            user.organization_ids.push(id);
+
+            user = { id: user.id, organization_ids: user.organization_ids };
+
+            return {
+                message: MESSAGE.CREATE_ORG_SUCCESS,
+                accessToken: this.JwtService.sign(user),
+            };
+        }
         return {
-            message: 'Organization created successfully',
+            message: MESSAGE.UPDATE_ORG_SUCCESS,
         };
     }
 
@@ -17,11 +35,9 @@ class Service {
     }
 
     async getOrgById(user, orgId) {
-        const data = await this.OrgRepositoryService.findOrgById(orgId.id);
-
+        const data = await this.OrgRepositoryService.findOrgById(orgId);
         let editable = false;
-
-        if (data.user_id === user.id) {
+        if (user.organization_ids.includes(Number(orgId))) {
             editable = true;
         }
         return { ...data, editable };

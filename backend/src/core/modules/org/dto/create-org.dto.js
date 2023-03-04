@@ -4,7 +4,7 @@ import { SwaggerDocument } from 'packages/swagger';
 ApiDocument.addModel('CreateOrgDto', {
     name: SwaggerDocument.ApiProperty({ type: 'string' }),
     address: SwaggerDocument.ApiProperty({ type: 'string' }),
-    phoneNumber: SwaggerDocument.ApiProperty({ type: 'string' }),
+    phoneNumber: SwaggerDocument.ApiProperty({ type: 'string', example: '0923456789' }),
     description: SwaggerDocument.ApiProperty({ type: 'string' }),
 });
 
