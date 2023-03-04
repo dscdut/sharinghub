@@ -9,21 +9,23 @@ class Service {
         this.repository = CampaignRepository;
     }
 
-    async createOne(createCampaignDto) {
+    async createOne(createCampaignDto, organization_id) {
         const trx = await getTransaction();
 
         // check if start date is before end date
         if (
-            new Date(createCampaignDto.start_date)
-      > new Date(createCampaignDto.end_date)
+            new Date(createCampaignDto.start_date) >
+            new Date(createCampaignDto.end_date)
         ) {
-            throw new InternalServerException('Start date must be before end date');
+            throw new InternalServerException(
+                'Start date must be before end date',
+            );
         }
 
         // check if start date and end date is before today
         if (
-            new Date(createCampaignDto.start_date) < new Date()
-      || new Date(createCampaignDto.end_date) < new Date()
+            new Date(createCampaignDto.start_date) < new Date() ||
+            new Date(createCampaignDto.end_date) < new Date()
         ) {
             throw new InternalServerException(
                 'Start date and end date must be after today',
@@ -32,7 +34,9 @@ class Service {
 
         let createdCampaign;
         try {
-            createdCampaign = await this.repository.insert(createCampaignDto, trx);
+            const data = { ...createCampaignDto, organization_id };
+
+            createdCampaign = await this.repository.insert(data, trx);
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
