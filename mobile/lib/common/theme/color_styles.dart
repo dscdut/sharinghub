@@ -49,4 +49,6 @@ abstract class ColorStyles {
   static const Color secondary2 = Color(0xffEBECED);
   static const Color secondary3 = Color(0xffEBECED);
   static const Color secondary4 = Color(0xffC2C3C7);
+
+  static const Color disableColor = Color(0xffC2C3C7);
 }

@@ -4,7 +4,17 @@ import 'package:mobile/data/models/campaign.model.dart';
 
 @lazySingleton
 class CampaignDataSource {
-  Future<List<CampaignModel>> getHomeProject() async {
+  Future<List<CampaignModel>> getCampaigns() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return CampaignMock.getCampains();
+  }
+
+  Future<List<CampaignModel>> searchCampaigns(
+    int? provinceCode,
+    int? districtCode,
+    int? wardCode,
+    String keyword,
+  ) async {
     await Future.delayed(const Duration(seconds: 3));
     return CampaignMock.getCampains();
   }

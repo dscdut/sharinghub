@@ -30,7 +30,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         sortType: state.sortType,
       ),
     );
-    final result = await _repository.getHomeProject();
+    final result = await _repository.getCampaigns();
     emitter(
       HomeState.getSuccess(
         campaigns: result,
