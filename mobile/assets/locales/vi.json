@@ -12,11 +12,23 @@
     "organization": "Tổ chức",
     "full_name": "Họ và tên",
     "organization_name": "Tên tổ chức",
-    "representative_name": "Người đại diện"
+    "representative_name": "Người đại diện",
+    "error_get_campaigns": "Đã có lỗi xảy ra, hiện không thể truy xuất dữ liệu",
+    "read_more": "Xem thêm",
+    "hide_info": "Ẩn thông tin",
+    "rate": "Đánh giá"
+  },
+  "campaign": {
+    "ongoing": "Đang diễn ra",
+    "ended": "Đã kết thúc",
+    "has_ended": "Dự án đã kết thúc",
+    "obtained_results": "Kết quả thu được",
+    "artifact_type": "Hiện vật cần quyên góp"
   },
   "button": {
     "cancel": "Hủy",
-    "confirm": "Xác nhận"
+    "confirm": "Xác nhận",
+    "join": "Đăng ký tham gia"
   },
   "root": {
     "home": "Trang chủ",

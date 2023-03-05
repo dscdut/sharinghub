@@ -26,12 +26,12 @@ export class JwtAuthAdapter {
         if (this.#userDetail) {
             req[AUTH_CONTEXT.KEY_AUTH_CONTEXT] = this.#userDetail;
         }
-    }
+    };
 
     #applyPreAuthorizationToUserDetail = () => {
         this.#userDetail.toRoles();
         this.#userDetail.toPermissions();
-    }
+    };
 
     collectRequest(req) {
         this.#token = req.headers[AUTH_CONTEXT.AUTHORIZATION_HEADER];

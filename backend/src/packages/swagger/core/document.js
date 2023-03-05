@@ -56,7 +56,7 @@ export class SwaggerDocument {
             $ref: `#/components/schemas/${dtoModel}`,
             ...params
         }),
-    }
+    };
 
     /**
      *

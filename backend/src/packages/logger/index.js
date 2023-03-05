@@ -16,7 +16,8 @@ const logger = createLogger({
         new transports.Console({
             level: 'info',
             format: combine(
-                simple(), splat(),
+                simple(),
+                splat(),
                 timestamp({
                     format: 'DD-MM-YYYY HH:mm:ss',
                 }),

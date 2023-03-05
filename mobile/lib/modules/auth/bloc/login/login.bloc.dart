@@ -31,7 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     try {
       final AuthResponseDTO loginResponse = await _userRepository.loginByEmail(
-        LoginDTO(email: event.email, password: event.password),
+        SubmitLoginDTO(email: event.email, password: event.password),
       );
 
       _authBloc.add(AuthUserInfoSet(authResponse: loginResponse));

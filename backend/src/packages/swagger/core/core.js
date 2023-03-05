@@ -21,7 +21,7 @@ export class SwaggerBuilder {
                 },
             } : '',
         },
-    })
+    });
 
     #toErrors = errors => {
         const responses = {};
@@ -35,7 +35,7 @@ export class SwaggerBuilder {
             };
         });
         return responses;
-    }
+    };
 
     addConfig(options) {
         const {

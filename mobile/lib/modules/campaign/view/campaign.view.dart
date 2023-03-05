@@ -5,7 +5,7 @@ import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/dialog.util.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
-import 'package:mobile/modules/campaign/campaign.dart';
+import 'package:mobile/modules/campaign/bloc/campaign/campaign.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
 
 class CampaignPage extends StatelessWidget {

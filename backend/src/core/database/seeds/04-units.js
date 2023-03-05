@@ -4,6 +4,7 @@
 
 const tableName = 'units';
 
+// eslint-disable-next-line func-names
 exports.seed = async function (knex) {
     // Deletes ALL existing entries
     await knex(tableName).del();

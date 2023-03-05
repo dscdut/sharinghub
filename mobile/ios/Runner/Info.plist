@@ -52,5 +52,11 @@
       <string>en</string>
       <string>vi</string>
     </array>
+    <key>googleMapsApiKey</key>
+    <string>$(GOOGLE_MAPS_API_KEY)</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>SharingHub needs access to your location so it can show charity campaigns around you</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>SharingHub needs access to your location so it can show charity campaigns around you when it in background</string>
   </dict>
 </plist>
