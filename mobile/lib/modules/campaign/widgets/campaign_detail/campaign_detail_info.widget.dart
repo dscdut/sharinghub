@@ -23,7 +23,7 @@ class CampaignDetailInfo extends StatelessWidget {
         children: [
           IconTitle(
             icon: Icons.fmd_good_outlined,
-            title: campaign.address.fullAddress,
+            title: campaign.address,
           ),
           const SizedBox(
             height: 5,
@@ -48,7 +48,7 @@ class CampaignDetailInfo extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: campaign.artifactRequirement,
+                  text: campaign.artifactTypes,
                   style: TextStyles.s14RegularText,
                 ),
               ],

@@ -18,6 +18,7 @@ class CodegenLoader extends AssetLoader{
   "texts": {
     "notification": "Notification",
     "success": "Success",
+    "error": "Error",
     "error_occur": "An error has occurred, please try again later",
     "email_address": "Email",
     "password": "Password",
@@ -32,19 +33,18 @@ class CodegenLoader extends AssetLoader{
     "error_get_campaigns": "An error has occurred, campaign data cannot be get",
     "read_more": "Read More",
     "hide_info": "Hide Information",
-    "rate": "Rate"
-  },
-  "campaign": {
-    "ongoing": "Ongoing",
-    "ended": "Ended",
-    "has_ended": "The campaign has ended",
-    "artifact_type": "Artifact Types",
-    "obtained_results": "Obtained Results"
+    "rate": "Rate",
+    "galerry": "Galerry",
+    "camera": "Camera",
+    "upload_photo": "Upload photo",
+    "location_search": "Tìm kiếm địa điểm"
   },
   "button": {
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "join": "Join"
+    "join": "Join",
+    "finish": "Finish",
+    "update": "Update"
   },
   "root": {
     "home": "Home",
@@ -77,12 +77,35 @@ class CodegenLoader extends AssetLoader{
     "sort_by": "Sort by: ",
     "newest": "Newest",
     "nearest": "Nearest"
+  },
+  "campaign": {
+    "create": "Create new campaign",
+    "update": "Update campaign",
+    "create_success": "Success create campaign",
+    "update_success": "Success update campaign",
+    "back_home": "Back to home",
+    "campaign_name": "Campaign name",
+    "campaign_description": "Description",
+    "ward_district_province": "Ward, district, province, ...",
+    "address": "Specific address",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "form_link": "Volunteer registration form link",
+    "artifact_donate": "Artifacts to donate",
+    "other_info": "Other information",
+    "ongoing": "Ongoing",
+    "ended": "Ended",
+    "has_ended": "The campaign has ended",
+    "artifact_type": "Artifact Types",
+    "obtained_results": "Obtained Results",
+    "image_uploaded": "The campaign image must be uploaded"
   }
 };
 static const Map<String,dynamic> vi = {
   "texts": {
     "notification": "Thông báo",
     "success": "Thành công",
+    "error": "Lỗi",
     "error_occur": "Đã có lỗi xảy ra, vui lòng thử lại sau",
     "email_address": "Email",
     "password": "Mật khẩu",
@@ -97,19 +120,18 @@ static const Map<String,dynamic> vi = {
     "error_get_campaigns": "Đã có lỗi xảy ra, hiện không thể truy xuất dữ liệu",
     "read_more": "Xem thêm",
     "hide_info": "Ẩn thông tin",
-    "rate": "Đánh giá"
-  },
-  "campaign": {
-    "ongoing": "Đang diễn ra",
-    "ended": "Đã kết thúc",
-    "has_ended": "Dự án đã kết thúc",
-    "obtained_results": "Kết quả thu được",
-    "artifact_type": "Hiện vật cần quyên góp"
+    "rate": "Đánh giá",
+    "galerry": "Thư viện",
+    "camera": "Camera",
+    "upload_photo": "Tải ảnh lên",
+    "location_search": "Location Search"
   },
   "button": {
     "cancel": "Hủy",
     "confirm": "Xác nhận",
-    "join": "Đăng ký tham gia"
+    "join": "Đăng ký tham gia",
+    "finish": "Hoàn Thành",
+    "update": "Cập Nhật"
   },
   "root": {
     "home": "Trang chủ",
@@ -142,6 +164,28 @@ static const Map<String,dynamic> vi = {
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
     "nearest": "Gần nhất"
+  },
+  "campaign": {
+    "create": "Tạo dự án",
+    "update": "Cập nhật dự án",
+    "create_success": "Tạo dự án thành công",
+    "update_success": "Cập nhật dự án thành công",
+    "back_home": "Quay lại trang chủ",
+    "name": "Tên dự án",
+    "description": "Mô tả",
+    "ward_district_province": "Phường/xã, quận/huyện, thành phố/tỉnh ...",
+    "address": "Địa chỉ cụ thể",
+    "start_date": "Ngày bắt đầu",
+    "end_date": "Ngày kết thúc",
+    "form_link": "Link đăng tuyển tình nguyện viên",
+    "artifact_donate": "Hiện vật cần quyên góp",
+    "other_info": "Thông tin khác",
+    "ongoing": "Đang diễn ra",
+    "ended": "Đã kết thúc",
+    "has_ended": "Dự án đã kết thúc",
+    "artifact_type": "Hiện vật cần quyên góp",
+    "obtained_results": "Kết quả thu được",
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

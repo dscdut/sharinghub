@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
-import 'package:mobile/modules/campaign/view/campaign_detail.view.dart';
+import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/splash/splash.dart';
@@ -13,6 +13,7 @@ abstract class AppRoutes {
   // Campaign
   static const String setCampaign = '/setCampaign';
   static const String campaignDetail = '/campaignDetail';
+  static const String locationSearch = '/locationSearch';
 
   // Auth
   static const String login = '/login';
@@ -82,12 +83,12 @@ abstract class AppRoutes {
           },
         );
       case setCampaign:
-        final bool isCreate = settings.arguments as bool;
+        final CampaignModel? campaign = settings.arguments as CampaignModel?;
 
         return MaterialPageRoute(
           builder: (_) {
-            return CampaignPage(
-              isCreate: isCreate,
+            return SetCampaignPage(
+              campaign: campaign,
             );
           },
         );
@@ -97,6 +98,12 @@ abstract class AppRoutes {
             return CampaignDetailPage(
               campaign: settings.arguments as CampaignModel,
             );
+          },
+        );
+      case locationSearch:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const LocationSearchPage();
           },
         );
       case root:

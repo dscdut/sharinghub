@@ -1,6 +1,7 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 
 @lazySingleton
@@ -14,8 +15,12 @@ class CampaignRepository {
     return _dataSource.getHomeProject();
   }
 
-  Future<CampaignModel> setCampaign(CampaignModel params) {
-    return _dataSource.setCampaign(params);
+  Future<CampaignModel> getCampaignById(int id) async {
+    return _dataSource.getCampaignById(id);
+  }
+
+  Future<CampaignModel> setCampaign(SetCampaignDTO setCampaignParams) async {
+    return _dataSource.setCampaign(setCampaignParams);
   }
 
   Future<List<CampaignModel>> getCampainsByLocation(LatLng wardLocation) async {

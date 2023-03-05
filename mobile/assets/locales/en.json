@@ -2,6 +2,7 @@
   "texts": {
     "notification": "Notification",
     "success": "Success",
+    "error": "Error",
     "error_occur": "An error has occurred, please try again later",
     "email_address": "Email",
     "password": "Password",
@@ -16,19 +17,18 @@
     "error_get_campaigns": "An error has occurred, campaign data cannot be get",
     "read_more": "Read More",
     "hide_info": "Hide Information",
-    "rate": "Rate"
-  },
-  "campaign": {
-    "ongoing": "Ongoing",
-    "ended": "Ended",
-    "has_ended": "The campaign has ended",
-    "artifact_type": "Artifact Types",
-    "obtained_results": "Obtained Results"
+    "rate": "Rate",
+    "galerry": "Galerry",
+    "camera": "Camera",
+    "upload_photo": "Upload photo",
+    "location_search": "Tìm kiếm địa điểm"
   },
   "button": {
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "join": "Join"
+    "join": "Join",
+    "finish": "Finish",
+    "update": "Update"
   },
   "root": {
     "home": "Home",
@@ -61,5 +61,27 @@
     "sort_by": "Sort by: ",
     "newest": "Newest",
     "nearest": "Nearest"
+  },
+  "campaign": {
+    "create": "Create new campaign",
+    "update": "Update campaign",
+    "create_success": "Success create campaign",
+    "update_success": "Success update campaign",
+    "back_home": "Back to home",
+    "campaign_name": "Campaign name",
+    "campaign_description": "Description",
+    "ward_district_province": "Ward, district, province, ...",
+    "address": "Specific address",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "form_link": "Volunteer registration form link",
+    "artifact_donate": "Artifacts to donate",
+    "other_info": "Other information",
+    "ongoing": "Ongoing",
+    "ended": "Ended",
+    "has_ended": "The campaign has ended",
+    "artifact_type": "Artifact Types",
+    "obtained_results": "Obtained Results",
+    "image_uploaded": "The campaign image must be uploaded"
   }
 }
