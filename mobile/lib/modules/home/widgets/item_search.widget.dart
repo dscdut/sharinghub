@@ -44,7 +44,6 @@ class ItemSearchWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         item.name,
@@ -64,7 +63,7 @@ class ItemSearchWidget extends StatelessWidget {
                         color: Colors.transparent,
                       ),
                       Text(
-                        '${item.address.specificAddress}, ${item.address.ward}, ${item.address.district}, ${item.address.province}',
+                        '${item.specificAddress}, ${item.address}',
                         style: TextStyles.regularCaption12,
                       ),
                       const Divider(

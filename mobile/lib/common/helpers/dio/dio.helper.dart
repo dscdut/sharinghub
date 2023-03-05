@@ -22,6 +22,31 @@ class HttpRequestResponse<T> {
 abstract class DioHelper {
   static final Dio _dio = Dio()..interceptors.add(DioInterceptor());
 
+  static FormData _mapToFormData(Map<String, dynamic> map) {
+    final formData = FormData.fromMap(map);
+    final FormData newData = FormData();
+
+    for (var element in formData.fields) {
+      newData.fields.add(MapEntry(element.key, element.value));
+    }
+
+    for (var element in formData.files) {
+      if (element.key.contains('[') || element.key.contains(']')) {
+        final newKey =
+            element.key.replaceAllMapped(RegExp('([+[a-zA-Z]+])'), (m) {
+          return '${m[0]}'.replaceAll('[', '.').replaceAll(']', '');
+        });
+        final newValue = element.value;
+        final newEntry = MapEntry(newKey, newValue);
+        newData.files.add(newEntry);
+      } else {
+        newData.files.add(element);
+      }
+    }
+
+    return newData;
+  }
+
   static Future<HttpRequestResponse> get(
     String url, {
     Map<String, dynamic>? queryParameters,
@@ -51,6 +76,10 @@ abstract class DioHelper {
     Map<String, dynamic>? formData,
     Function(int count, int total)? onSendProgress,
   }) async {
+    if (formData != null) {
+      data = _mapToFormData(formData);
+    }
+
     final Response response = await _dio.post(
       url,
       data: data,

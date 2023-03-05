@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/hive_keys.dart';
@@ -46,6 +48,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } else {
       await _getUserInfo(emitter);
     }
+
+    log('user: $user');
   }
 
   Future<void> _onUserInfoSet(

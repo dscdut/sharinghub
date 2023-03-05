@@ -18,9 +18,12 @@
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
     <meta-data android:name="flutterEmbedding" android:value="2"/>
     <!-- Add your Google Maps API Key here -->
-<meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="${MAPS_API_KEY}"/>
-
+    <meta-data android:name="com.google.android.geo.API_KEY"
+                  android:value="${MAPS_API_KEY}"/>
+    <activity
+      android:name="com.yalantis.ucrop.UCropActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
 
   </application>
 </manifest>

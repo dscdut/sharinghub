@@ -31,7 +31,6 @@ class _AuthTextFormFieldState extends State<AuthTextFormField> {
     return AppTextFormField(
       validator: widget.validator,
       textController: widget.textController,
-      borderRadius: 10,
       borderColor: Colors.black26,
       suffixIcon: widget.isPasswordField
           ? (_isObscure ? Icons.visibility_off : Icons.visibility)
