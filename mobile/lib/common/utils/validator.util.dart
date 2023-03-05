@@ -41,20 +41,4 @@ abstract class ValidatorUtil {
 
     return null;
   }
-
-  static String? validateDateEnd(String? value, String dateStart) {
-    if (value != null) {
-      if (value.isEmpty) {
-        return LocaleKeys.validator_field_required.tr();
-      } else if (DateFormat('dd/MM/yyyy')
-          .parse(value)
-          .isBefore(DateFormat('dd/MM/yyyy').parse(dateStart))) {
-        return LocaleKeys.validator_validator_invalid_date_end.tr();
-      } else if (value.isEmpty) {
-        return LocaleKeys.validator_field_required.tr();
-      }
-    }
-
-    return null;
-  }
 }

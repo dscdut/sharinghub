@@ -38,7 +38,7 @@ class HomeItem extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(8)),
                     ),
                     child: Text(
-                      item.artifactRequirement ?? '',
+                      item.artifactTypes ?? '',
                       style: TextStyles.regularBody14,
                     ),
                   ),
@@ -61,7 +61,7 @@ class HomeItem extends StatelessWidget {
             // color: Colors.transparent,
           ),
           Text(
-            '${item.address.specificAddress}, ${item.address.ward}, ${item.address.district}, ${item.address.province}',
+            '',
             style: TextStyles.regularBody14.copyWith(
               color: ColorStyles.zodiacBlue,
             ),

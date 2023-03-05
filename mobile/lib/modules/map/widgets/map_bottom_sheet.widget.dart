@@ -4,7 +4,7 @@ import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/conditional_render.util.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
-import 'package:mobile/modules/map/widgets/bottom_sheet_header.widget.dart';
+import 'package:mobile/common/widgets/bottom_sheet_header.widget.dart';
 import 'package:mobile/modules/map/widgets/list_campaigns.widget.dart';
 
 class CampaignBottomSheet extends StatelessWidget {

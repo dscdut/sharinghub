@@ -8,6 +8,10 @@ class CampaignTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? errorText;
   final Function()? onTap;
+  final int maxLines;
+  final EdgeInsetsGeometry contentPadding;
+  final bool readOnly;
+  final bool enabled;
 
   const CampaignTextFormField({
     super.key,
@@ -17,6 +21,10 @@ class CampaignTextFormField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.errorText,
     this.onTap,
+    this.maxLines = 1,
+    this.contentPadding = const EdgeInsets.symmetric(horizontal: 20),
+    this.readOnly = false,
+    this.enabled = true,
   });
 
   @override
@@ -24,18 +32,19 @@ class CampaignTextFormField extends StatelessWidget {
     return Column(
       children: [
         AppTextFormField(
+          readOnly: readOnly,
           validator: validator,
           textController: textController,
-          borderRadius: 10,
-          borderColor: Colors.black26,
           hintText: hintText,
-          hintColor: Colors.black26,
           keyboardType: keyboardType,
           errorText: errorText,
           extendField: false,
           onTap: onTap,
+          maxLines: maxLines,
+          contentPadding: contentPadding,
+          enabled: enabled,
         ),
-        const SizedBox(height: 19),
+        const SizedBox(height: 12),
       ],
     );
   }

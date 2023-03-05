@@ -33,19 +33,18 @@ class CodegenLoader extends AssetLoader{
     "error_get_campaigns": "An error has occurred, campaign data cannot be get",
     "read_more": "Read More",
     "hide_info": "Hide Information",
-    "rate": "Rate"
-  },
-  "campaign": {
-    "ongoing": "Ongoing",
-    "ended": "Ended",
-    "has_ended": "The campaign has ended",
-    "artifact_type": "Artifact Types",
-    "obtained_results": "Obtained Results"
+    "rate": "Rate",
+    "galerry": "Galerry",
+    "camera": "Camera",
+    "upload_photo": "Upload photo",
+    "location_search": "Tìm kiếm địa điểm"
   },
   "button": {
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "join": "Join"
+    "join": "Join",
+    "finish": "Finish",
+    "update": "Update"
   },
   "root": {
     "home": "Home",
@@ -71,8 +70,7 @@ class CodegenLoader extends AssetLoader{
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match",
-    "validator_invalid_date_end": "End date must be later than start date"
+    "not_match_password": "Password and confirm password not match"
   },
   "home": {
     "search": "Search",
@@ -82,26 +80,25 @@ class CodegenLoader extends AssetLoader{
   },
   "campaign": {
     "create": "Create new campaign",
-    "edit": "Edit campaign",
+    "update": "Update campaign",
     "create_success": "Success create campaign",
     "update_success": "Success update campaign",
     "back_home": "Back to home",
-    "finish": "Finish",
-    "update": "Update",
-    "take_photo": "Take photo",
-    "choose_photo": "Choose photo",
     "campaign_name": "Campaign name",
     "campaign_description": "Description",
-    "province": "Province",
-    "district": "District",
-    "ward": "Ward",
+    "ward_district_province": "Ward, district, province, ...",
     "address": "Specific address",
     "start_date": "Start date",
     "end_date": "End date",
-    "register_link": "Register link (optional)",
-    "have_artifact_donate": "Have campaign received artifact donation?",
-    "artifact_requirement": "Artifact requirement",
-    "other_info": "Other information"
+    "form_link": "Volunteer registration form link",
+    "artifact_donate": "Artifacts to donate",
+    "other_info": "Other information",
+    "ongoing": "Ongoing",
+    "ended": "Ended",
+    "has_ended": "The campaign has ended",
+    "artifact_type": "Artifact Types",
+    "obtained_results": "Obtained Results",
+    "image_uploaded": "The campaign image must be uploaded"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -123,19 +120,18 @@ static const Map<String,dynamic> vi = {
     "error_get_campaigns": "Đã có lỗi xảy ra, hiện không thể truy xuất dữ liệu",
     "read_more": "Xem thêm",
     "hide_info": "Ẩn thông tin",
-    "rate": "Đánh giá"
-  },
-  "campaign": {
-    "ongoing": "Đang diễn ra",
-    "ended": "Đã kết thúc",
-    "has_ended": "Dự án đã kết thúc",
-    "obtained_results": "Kết quả thu được",
-    "artifact_type": "Hiện vật cần quyên góp"
+    "rate": "Đánh giá",
+    "galerry": "Thư viện",
+    "camera": "Camera",
+    "upload_photo": "Tải ảnh lên",
+    "location_search": "Location Search"
   },
   "button": {
     "cancel": "Hủy",
     "confirm": "Xác nhận",
-    "join": "Đăng ký tham gia"
+    "join": "Đăng ký tham gia",
+    "finish": "Hoàn Thành",
+    "update": "Cập Nhật"
   },
   "root": {
     "home": "Trang chủ",
@@ -161,8 +157,7 @@ static const Map<String,dynamic> vi = {
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
-    "not_match_password": "Mật khẩu xác nhận không trùng khớp",
-    "validator_invalid_date_end": "Ngày kết thúc phải sau hơn ngày bắt đầu"
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
   },
   "home": {
     "search": "Tìm kiếm",
@@ -172,26 +167,25 @@ static const Map<String,dynamic> vi = {
   },
   "campaign": {
     "create": "Tạo dự án",
-    "edit": "Chỉnh sửa dự án",
+    "update": "Cập nhật dự án",
     "create_success": "Tạo dự án thành công",
     "update_success": "Cập nhật dự án thành công",
     "back_home": "Quay lại trang chủ",
-    "finish": "Hoàn thành",
-    "update": "Cập nhật",
-    "take_photo": "Chụp ảnh",
-    "choose_photo": "Chọn ảnh",
-    "campaign_name": "Tên dự án",
-    "campaign_description": "Mô tả",
-    "province": "Tỉnh/Thành phố",
-    "district": "Quận/Huyện",
-    "ward": "Phường/Xã",
+    "name": "Tên dự án",
+    "description": "Mô tả",
+    "ward_district_province": "Phường/xã, quận/huyện, thành phố/tỉnh ...",
     "address": "Địa chỉ cụ thể",
-    "start_date": "Thời gian bắt đầu",
-    "end_date": "Thời gian kết thúc",
-    "register_link": "Form đăng kí TNV (nếu có)",
-    "have_artifact_donate": "Dự án có nhận quyên góp bằng hiện vật không?",
-    "artifact_requirement": "Yêu cầu về hiện vật quyên góp",
-    "other_info": "Thông tin khác"
+    "start_date": "Ngày bắt đầu",
+    "end_date": "Ngày kết thúc",
+    "form_link": "Link đăng tuyển tình nguyện viên",
+    "artifact_donate": "Hiện vật cần quyên góp",
+    "other_info": "Thông tin khác",
+    "ongoing": "Đang diễn ra",
+    "ended": "Đã kết thúc",
+    "has_ended": "Dự án đã kết thúc",
+    "artifact_type": "Hiện vật cần quyên góp",
+    "obtained_results": "Kết quả thu được",
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};
