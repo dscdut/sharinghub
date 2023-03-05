@@ -56,6 +56,15 @@
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
   },
+  "search": {
+    "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
+    "all": "Tất cả",
+    "province": "Tỉnh/Thành phố",
+    "district": "Quận/Huyện",
+    "ward": "Phường/Xã",
+    "empty_result": "Không tìm thấy kết quả nào",
+    "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
+  },
   "home": {
     "search": "Tìm kiếm",
     "sort_by": "Sắp xếp theo: ",

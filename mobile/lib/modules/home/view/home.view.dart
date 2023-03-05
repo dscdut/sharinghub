@@ -9,8 +9,9 @@ import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/home/bloc/home.bloc.dart';
+import 'package:mobile/modules/home/bloc/home/home.bloc.dart';
 import 'package:mobile/modules/home/widgets/home_item.widget.dart';
+import 'package:mobile/router/app_routes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -99,7 +100,11 @@ class _HomeView extends StatelessWidget {
                       width: double.infinity,
                       content: LocaleKeys.home_search.tr(),
                       backgroundColor: ColorStyles.primary1,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(
+                          AppRoutes.search,
+                        );
+                      },
                       prefixIcon:
                           Assets.icons.icSearch.image(width: AppSize.iconSize),
                     ),

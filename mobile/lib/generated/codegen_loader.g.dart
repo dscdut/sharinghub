@@ -72,6 +72,15 @@ class CodegenLoader extends AssetLoader{
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match"
   },
+  "search": {
+    "search_input_placeholder": "Enter organization name or campaign name",
+    "all": "All",
+    "province": "Province",
+    "district": "District",
+    "ward": "Ward",
+    "empty_result": "No result found",
+    "init_placeholder": "Some text like Enter keyword to Search"
+  },
   "home": {
     "search": "Search",
     "sort_by": "Sort by: ",
@@ -158,6 +167,15 @@ static const Map<String,dynamic> vi = {
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+  },
+  "search": {
+    "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
+    "all": "Tất cả",
+    "province": "Tỉnh/Thành phố",
+    "district": "Quận/Huyện",
+    "ward": "Phường/Xã",
+    "empty_result": "Không tìm thấy kết quả nào",
+    "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
   },
   "home": {
     "search": "Tìm kiếm",

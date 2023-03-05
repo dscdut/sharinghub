@@ -53,6 +53,14 @@ abstract class  LocaleKeys {
   static const validator_field_required = 'validator.field_required';
   static const validator_not_match_password = 'validator.not_match_password';
   static const validator = 'validator';
+  static const search_search_input_placeholder = 'search.search_input_placeholder';
+  static const search_all = 'search.all';
+  static const search_province = 'search.province';
+  static const search_district = 'search.district';
+  static const search_ward = 'search.ward';
+  static const search_empty_result = 'search.empty_result';
+  static const search_init_placeholder = 'search.init_placeholder';
+  static const search = 'search';
   static const home_search = 'home.search';
   static const home_sort_by = 'home.sort_by';
   static const home_newest = 'home.newest';

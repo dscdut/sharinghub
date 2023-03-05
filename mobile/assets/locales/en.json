@@ -56,6 +56,15 @@
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match"
   },
+  "search": {
+    "search_input_placeholder": "Enter organization name or campaign name",
+    "all": "All",
+    "province": "Province",
+    "district": "District",
+    "ward": "Ward",
+    "empty_result": "No result found",
+    "init_placeholder": "Some text like Enter keyword to Search"
+  },
   "home": {
     "search": "Search",
     "sort_by": "Sort by: ",

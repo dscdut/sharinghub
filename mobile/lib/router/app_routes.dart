@@ -4,11 +4,14 @@ import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
+import 'package:mobile/modules/home/view/search.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
   static const String splash = '/';
   static const String chooseRole = '/chooseRole';
+
+  static const String search = '/search';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -90,6 +93,12 @@ abstract class AppRoutes {
             return SetCampaignPage(
               campaign: campaign,
             );
+          },
+        );
+      case search:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const SearchPage();
           },
         );
       case campaignDetail:
