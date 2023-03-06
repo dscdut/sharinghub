@@ -5,6 +5,7 @@ import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/home/view/search.view.dart';
+import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
@@ -12,6 +13,9 @@ abstract class AppRoutes {
   static const String chooseRole = '/chooseRole';
 
   static const String search = '/search';
+
+  //Profile
+  static const String profileOrganization = '/profileOrganization';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -83,6 +87,12 @@ abstract class AppRoutes {
             return RegisterPage(
               isPersonal: isPersonal,
             );
+          },
+        );
+      case profileOrganization:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const ProfileOrganizationPage();
           },
         );
       case setCampaign:

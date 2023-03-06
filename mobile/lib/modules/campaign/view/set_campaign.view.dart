@@ -63,9 +63,14 @@ class SetCampaignPage extends StatelessWidget {
         },
         cancelButtonText: LocaleKeys.campaign_back_home.tr(),
         cancelAction: () {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            AppRoutes.root,
-            (route) => route.settings.name == AppRoutes.root,
+          // Navigator.of(context).pushNamedAndRemoveUntil(
+          //   AppRoutes.root,
+          //   (route) => route.settings.name == AppRoutes.root,
+          // );
+
+          //TODO: test organization profile
+          Navigator.of(context).pushNamed(
+            AppRoutes.profileOrganization,
           );
         },
       );
