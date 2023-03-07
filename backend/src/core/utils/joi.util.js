@@ -7,6 +7,8 @@ const DATE_YYYY_MM_DD_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 // Required from 6-30 char, contains special char
 const PWD_FORMAT = /^[a-zA-Z0-9\d@$!%*?&]{6,30}$/;
 
+// Vietnam phone number validation
+const PHONE_NUMBER_FORMAT = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/;
 export class JoiUtils {
     static objectId() {
         return Joi.string().regex(MONGOOSE_ID_OBJECT_FORMAT);
@@ -63,5 +65,9 @@ export class JoiUtils {
         return Joi
             .boolean()
             .required();
+    }
+
+    static phoneNumber() {
+        return Joi.string().regex(PHONE_NUMBER_FORMAT);
     }
 }
