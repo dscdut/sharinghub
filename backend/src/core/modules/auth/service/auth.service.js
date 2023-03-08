@@ -1,6 +1,6 @@
 import { pick } from 'lodash';
-import { JwtPayload } from 'core/modules/auth/dto/jwt-sign.dto';
 import { UserDataService } from 'core/modules/user/services/userData.service';
+import { OrgRepositoryService } from 'core/modules/org/service/org-repository.service';
 import { BcryptService } from './bcrypt.service';
 import { JwtService } from './jwt.service';
 import { NodemailerService } from './nodemailer.service';
@@ -20,6 +20,7 @@ class Service {
         this.userDataService = UserDataService;
         this.NodemailerService = NodemailerService;
         this.UserService = UserService;
+        this.OrgRepositoryService = OrgRepositoryService;
     }
 
     async login(loginDto) {
@@ -27,10 +28,11 @@ class Service {
 
         if (user) {
             if (this.bcryptService.compare(loginDto.password, user.password)) {
+                const organization_ids = (await this.OrgRepositoryService.findUsersOrgsById(user.id)).map(org => org.id);
+
                 return {
                     message: MESSAGE.LOGIN_SUCCESS,
-                    userID: user.id,
-                    accessToken: this.jwtService.sign(JwtPayload(user)),
+                    accessToken: this.jwtService.sign({ id: user.id, organization_ids }),
                 };
             }
         }

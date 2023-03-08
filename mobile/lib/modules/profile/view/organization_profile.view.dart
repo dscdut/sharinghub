@@ -68,51 +68,46 @@ class _OrganizationProfileViewState extends State<_OrganizationProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OrganizationProfileBloc, OrganizationProfileState>(
-      builder: (context, state) {
-        return Scaffold(
-          body: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            padding: EdgeInsets.fromLTRB(
-              AppSize.horizontalSpace,
-              AppSize.topSpace + context.paddingTop,
-              AppSize.horizontalSpace,
-              context.paddingBottom,
-            ),
-            child:
-                BlocBuilder<OrganizationProfileBloc, OrganizationProfileState>(
-              builder: (context, state) {
-                return ConditionalRenderUtil.single(
-                  context,
-                  value: state.status,
-                  caseBuilders: _caseBuilers,
-                  fallbackBuilder: (_) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        HeaderProfile(
-                          rating: _rating,
-                          organization: state.organization!,
-                        ),
-                        heightSpace,
-                        const Divider(
-                          color: Color(0xFFABB0BC),
-                          thickness: 1,
-                        ),
-                        heightSpace,
-                        BodyProfile(
-                          organization: state.organization!,
-                          heightSpace: heightSpace,
-                        ),
-                      ],
-                    );
-                  },
+    return Scaffold(
+      body: SingleChildScrollView(
+        physics: const ClampingScrollPhysics(),
+        padding: EdgeInsets.fromLTRB(
+          AppSize.horizontalSpace,
+          AppSize.topSpace + context.paddingTop,
+          AppSize.horizontalSpace,
+          context.paddingBottom,
+        ),
+        child: BlocBuilder<OrganizationProfileBloc, OrganizationProfileState>(
+          builder: (context, state) {
+            return ConditionalRenderUtil.single(
+              context,
+              value: state.status,
+              caseBuilders: _caseBuilers,
+              fallbackBuilder: (_) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeaderProfile(
+                      rating: _rating,
+                      organization: state.organization!,
+                    ),
+                    heightSpace,
+                    const Divider(
+                      color: Color(0xFFABB0BC),
+                      thickness: 1,
+                    ),
+                    heightSpace,
+                    BodyProfile(
+                      organization: state.organization!,
+                      heightSpace: heightSpace,
+                    ),
+                  ],
                 );
               },
-            ),
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 }

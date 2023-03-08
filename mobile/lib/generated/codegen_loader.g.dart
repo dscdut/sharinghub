@@ -114,7 +114,7 @@ class CodegenLoader extends AssetLoader{
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",
     "campaigns_done": "Campaigns done",
-    "comments": "Comments"
+    "reviews": "Reviews"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -217,7 +217,7 @@ static const Map<String,dynamic> vi = {
     "contact_info": "Thông tin liên hệ",
     "campaigns_doing": "Dự án đang thực hiện",
     "campaigns_done": "Dự án đã hoàn thành",
-    "comments": "Đánh giá"
+    "reviews": "Đánh giá"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

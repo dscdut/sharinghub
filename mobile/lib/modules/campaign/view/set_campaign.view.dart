@@ -71,7 +71,7 @@ class SetCampaignPage extends StatelessWidget {
 
           //TODO: test organization profile
           Navigator.of(context).pushNamed(
-            AppRoutes.OrganizationProfile,
+            AppRoutes.organizationProfile,
             arguments: UserMock.getOrganizations()[0],
           );
         },

@@ -45,7 +45,7 @@ class BodyProfile extends StatelessWidget {
           heightSpace: heightSpace,
         ),
         TitleInfoProfile(
-          title: LocaleKeys.profile_comments.tr(),
+          title: LocaleKeys.profile_reviews.tr(),
           heightSpace: heightSpace,
         ),
       ],

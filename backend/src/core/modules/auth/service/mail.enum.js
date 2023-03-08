@@ -1,4 +1,4 @@
-import { HOST } from '../../../env';
+import { URL } from '../../../env';
 
 export const MAIL = {
     REGISTER_SUCCESS: {
@@ -8,7 +8,7 @@ export const MAIL = {
     FORGOT_PASSWORD(token) {
         return {
             subject: 'Reset password request',
-            html: `<p>Click this <a href="${HOST}/reset-password/${token}">link</a> to reset your password<p>`
+            html: `<p>Click this <a href="${URL}/reset-password/${token}">link</a> to reset your password<p>`
         };
     },
     PASSWORD_UPDATE: {

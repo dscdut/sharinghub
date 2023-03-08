@@ -16,7 +16,7 @@ abstract class AppRoutes {
   static const String search = '/search';
 
   //Profile
-  static const String OrganizationProfile = '/OrganizationProfile';
+  static const String organizationProfile = '/organizationProfile';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -90,7 +90,7 @@ abstract class AppRoutes {
             );
           },
         );
-      case OrganizationProfile:
+      case organizationProfile:
         return MaterialPageRoute(
           builder: (_) {
             return OrganizationProfilePage(

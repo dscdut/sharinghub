@@ -91,7 +91,7 @@ abstract class  LocaleKeys {
   static const profile_contact_info = 'profile.contact_info';
   static const profile_campaigns_doing = 'profile.campaigns_doing';
   static const profile_campaigns_done = 'profile.campaigns_done';
-  static const profile_comments = 'profile.comments';
+  static const profile_reviews = 'profile.reviews';
   static const profile = 'profile';
 
 }

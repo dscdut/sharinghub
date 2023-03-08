@@ -35,8 +35,7 @@ class StarRating extends StatelessWidget {
       );
     }
     return InkResponse(
-      onTap:
-          onRatingChanged == null ? null : () => onRatingChanged!(index + 1.0),
+      onTap: () => onRatingChanged?.call(index + 1.0),
       child: icon,
     );
   }
