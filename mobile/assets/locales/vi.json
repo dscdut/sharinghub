@@ -92,5 +92,12 @@
     "artifact_type": "Hiện vật cần quyên góp",
     "obtained_results": "Kết quả thu được",
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
+  },
+  "profile": {
+    "rate": "Đánh giá:",
+    "contact_info": "Thông tin liên hệ",
+    "campaigns_doing": "Dự án đang thực hiện",
+    "campaigns_done": "Dự án đã hoàn thành",
+    "reviews": "Đánh giá"
   }
 }

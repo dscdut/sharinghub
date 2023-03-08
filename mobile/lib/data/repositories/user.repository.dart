@@ -14,11 +14,15 @@ class UserRepository {
     return _dataSource.loginByEmail(params);
   }
 
+  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) {
+    return _dataSource.registerByEmail(params);
+  }
+
   Future<BaseUserModel> getUserInfo() {
     return _dataSource.getUserInfo();
   }
 
-  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) {
-    return _dataSource.registerByEmail(params);
+  Future<OrganizationModel> getOrganizationInfoById(int organizationId) {
+    return _dataSource.getOrganizationInfoById(organizationId);
   }
 }

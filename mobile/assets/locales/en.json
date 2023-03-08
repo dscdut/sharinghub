@@ -92,5 +92,12 @@
     "artifact_type": "Artifact Types",
     "obtained_results": "Obtained Results",
     "image_uploaded": "The campaign image must be uploaded"
+  },
+  "profile": {
+    "rate": "Rate:",
+    "contact_info": "Contact information",
+    "campaigns_doing": "Campaigns doing",
+    "campaigns_done": "Campaigns done",
+    "reviews": "Reviews"
   }
 }
