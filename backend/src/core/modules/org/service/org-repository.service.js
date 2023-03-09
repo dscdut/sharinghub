@@ -79,6 +79,14 @@ class Service {
             throw new InternalServerException();
         }
     }
+    async deleteOrgById(id) {
+        try {
+            return this.repository.deleteOrgById(id);
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
 }
 
 export const OrgRepositoryService = new Service();

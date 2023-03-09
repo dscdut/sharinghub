@@ -109,6 +109,15 @@ class Repository extends DataRepository {
                 'organizations.description',
             );
     }
+
+    deleteOrgById(id) {
+        return this.query()
+            .where('id', '=', id)
+            .update({
+                deleted_at: new Date(),
+            })
+            .into('organizations')
+    }
 }
 
 export const OrgRepository = new Repository('organizations');

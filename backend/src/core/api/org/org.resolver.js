@@ -35,8 +35,16 @@ export const OrgResolver = Module.builder()
             route: '/:id',
             method: 'put',
             interceptors: [CreateOrgInterceptor],
+            params: [orgId],
             body: 'CreateOrgDto',
             controller: OrgController.putEditOrg,
+            preAuthorization: true,
+        }, 
+        {
+            route: '/:id',
+            params: [orgId],
+            method: 'delete',
+            controller: OrgController.deleteOrg,
             preAuthorization: true,
         }
 
