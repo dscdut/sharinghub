@@ -96,6 +96,11 @@
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
   },
   "profile": {
-    "setting": "Cài đặt"
+    "setting": "Cài đặt",
+    "rate": "Đánh giá:",
+    "contact_info": "Thông tin liên hệ",
+    "campaigns_doing": "Dự án đang thực hiện",
+    "campaigns_done": "Dự án đã hoàn thành",
+    "reviews": "Đánh giá"
   }
 }

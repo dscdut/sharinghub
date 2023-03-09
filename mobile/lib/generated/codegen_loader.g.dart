@@ -112,7 +112,12 @@ class CodegenLoader extends AssetLoader{
     "image_uploaded": "The campaign image must be uploaded"
   },
   "profile": {
-    "setting": "Setting"
+    "setting": "Setting",
+    "rate": "Rate:",
+    "contact_info": "Contact information",
+    "campaigns_doing": "Campaigns doing",
+    "campaigns_done": "Campaigns done",
+    "reviews": "Reviews"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -213,7 +218,12 @@ static const Map<String,dynamic> vi = {
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
   },
   "profile": {
-    "setting": "Cài đặt"
+    "setting": "Cài đặt",
+    "rate": "Đánh giá:",
+    "contact_info": "Thông tin liên hệ",
+    "campaigns_doing": "Dự án đang thực hiện",
+    "campaigns_done": "Dự án đã hoàn thành",
+    "reviews": "Đánh giá"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

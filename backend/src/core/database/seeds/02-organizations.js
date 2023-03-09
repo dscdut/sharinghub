@@ -25,7 +25,7 @@ exports.seed = async knex => {
             name: faker.company.name(),
             address: faker.address.streetAddress(),
             description: faker.lorem.paragraph(),
-            phone_number: faker.phone.number(),
+            phone_number: faker.phone.number('09########'),
             // eslint-disable-next-line no-await-in-loop
             user_id: await randomUserId(knex),
         });

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/data/models/campaign.model.dart';
+import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/view/explore.view.dart';
+import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
@@ -12,6 +14,9 @@ abstract class AppRoutes {
   static const String chooseRole = '/chooseRole';
 
   static const String search = '/search';
+
+  //Profile
+  static const String organizationProfile = '/organizationProfile';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -82,6 +87,14 @@ abstract class AppRoutes {
           builder: (_) {
             return RegisterPage(
               isPersonal: isPersonal,
+            );
+          },
+        );
+      case organizationProfile:
+        return MaterialPageRoute(
+          builder: (_) {
+            return OrganizationProfilePage(
+              organization: settings.arguments as OrganizationModel,
             );
           },
         );

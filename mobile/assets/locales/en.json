@@ -96,6 +96,11 @@
     "image_uploaded": "The campaign image must be uploaded"
   },
   "profile": {
-    "setting": "Setting"
+    "setting": "Setting",
+    "rate": "Rate:",
+    "contact_info": "Contact information",
+    "campaigns_doing": "Campaigns doing",
+    "campaigns_done": "Campaigns done",
+    "reviews": "Reviews"
   }
 }

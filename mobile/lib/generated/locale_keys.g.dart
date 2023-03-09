@@ -90,6 +90,11 @@ abstract class  LocaleKeys {
   static const campaign_image_uploaded = 'campaign.image_uploaded';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
+  static const profile_rate = 'profile.rate';
+  static const profile_contact_info = 'profile.contact_info';
+  static const profile_campaigns_doing = 'profile.campaigns_doing';
+  static const profile_campaigns_done = 'profile.campaigns_done';
+  static const profile_reviews = 'profile.reviews';
   static const profile = 'profile';
 
 }
