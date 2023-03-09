@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
+import 'package:mobile/modules/campaign/view/campaign_register.view.dart';
 import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
@@ -15,6 +16,7 @@ abstract class AppRoutes {
 
   // Campaign
   static const String setCampaign = '/setCampaign';
+  static const String campaignRegister = '/campaignRegister';
   static const String campaignDetail = '/campaignDetail';
   static const String locationSearch = '/locationSearch';
 
@@ -92,6 +94,15 @@ abstract class AppRoutes {
           builder: (_) {
             return SetCampaignPage(
               campaign: campaign,
+            );
+          },
+        );
+
+      case campaignRegister:
+        return MaterialPageRoute(
+          builder: (_) {
+            return CampaignRegisterFormPage(
+              formLink: settings.arguments as String,
             );
           },
         );

@@ -57,6 +57,7 @@ class _CampaignDetailView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: campaign.name,
+        backgroundColor: ColorStyles.primary1,
       ),
       backgroundColor: ColorStyles.gray100,
       body: BlocBuilder<CampaignDetailBloc, CampaignDetailState>(
