@@ -47,9 +47,11 @@ class CodegenLoader extends AssetLoader{
     "update": "Update"
   },
   "root": {
-    "home": "Home",
-    "profile": "Profile",
-    "management": "Management"
+    "map": "Map",
+    "explore": "Explore",
+    "management": "Management",
+    "notification": "Notification",
+    "profile": "Profile"
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
@@ -110,6 +112,7 @@ class CodegenLoader extends AssetLoader{
     "image_uploaded": "The campaign image must be uploaded"
   },
   "profile": {
+    "setting": "Setting",
     "rate": "Rate:",
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",
@@ -150,9 +153,11 @@ static const Map<String,dynamic> vi = {
     "update": "Cập Nhật"
   },
   "root": {
-    "home": "Trang chủ",
-    "profile": "Cá nhân",
-    "management": "Quản lý"
+    "map": "Bản đồ",
+    "explore": "Khám phá",
+    "management": "Quản lý",
+    "notification": "Thông báo",
+    "profile": "Cá nhân"
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
@@ -213,6 +218,7 @@ static const Map<String,dynamic> vi = {
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
   },
   "profile": {
+    "setting": "Cài đặt",
     "rate": "Đánh giá:",
     "contact_info": "Thông tin liên hệ",
     "campaigns_doing": "Dự án đang thực hiện",

@@ -31,9 +31,11 @@
     "update": "Cập Nhật"
   },
   "root": {
-    "home": "Trang chủ",
-    "profile": "Cá nhân",
-    "management": "Quản lý"
+    "map": "Bản đồ",
+    "explore": "Khám phá",
+    "management": "Quản lý",
+    "notification": "Thông báo",
+    "profile": "Cá nhân"
   },
   "auth": {
     "welcome_back": "Rất vui khi được gặp lại bạn!",
@@ -94,6 +96,7 @@
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
   },
   "profile": {
+    "setting": "Cài đặt",
     "rate": "Đánh giá:",
     "contact_info": "Thông tin liên hệ",
     "campaigns_doing": "Dự án đang thực hiện",

@@ -1,4 +1,4 @@
-part of 'home.bloc.dart';
+part of 'explore.bloc.dart';
 
 enum SortType {
   newest,
@@ -16,44 +16,44 @@ enum SortType {
   }
 }
 
-class HomeState extends Equatable {
+class ExploreState extends Equatable {
   final HandleStatus status;
   final String? error;
   final List<CampaignModel>? campaigns;
   final SortType? sortType;
 
-  const HomeState({
+  const ExploreState({
     this.status = HandleStatus.initial,
     this.error,
     this.campaigns,
     this.sortType = SortType.newest,
   });
 
-  const HomeState.loading({
+  const ExploreState.loading({
     this.error,
     this.campaigns,
     this.sortType,
   }) : status = HandleStatus.loading;
 
-  const HomeState.getSuccess({
+  const ExploreState.getSuccess({
     required this.campaigns,
     this.sortType,
   })  : status = HandleStatus.success,
         error = null;
 
-  const HomeState.getFailure(
+  const ExploreState.getFailure(
     this.sortType, {
     required this.error,
   })  : status = HandleStatus.error,
         campaigns = const [];
 
-  HomeState copyWith({
+  ExploreState copyWith({
     HandleStatus? status,
     String? error,
     List<CampaignModel>? campaigns,
     SortType? sortType,
   }) {
-    return HomeState(
+    return ExploreState(
       status: status ?? this.status,
       error: error ?? this.error,
       campaigns: campaigns ?? this.campaigns,

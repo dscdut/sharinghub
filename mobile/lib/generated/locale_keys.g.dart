@@ -30,9 +30,11 @@ abstract class  LocaleKeys {
   static const button_finish = 'button.finish';
   static const button_update = 'button.update';
   static const button = 'button';
-  static const root_home = 'root.home';
-  static const root_profile = 'root.profile';
+  static const root_map = 'root.map';
+  static const root_explore = 'root.explore';
   static const root_management = 'root.management';
+  static const root_notification = 'root.notification';
+  static const root_profile = 'root.profile';
   static const root = 'root';
   static const auth_welcome_back = 'auth.welcome_back';
   static const auth_sign_in = 'auth.sign_in';
@@ -87,6 +89,7 @@ abstract class  LocaleKeys {
   static const campaign_obtained_results = 'campaign.obtained_results';
   static const campaign_image_uploaded = 'campaign.image_uploaded';
   static const campaign = 'campaign';
+  static const profile_setting = 'profile.setting';
   static const profile_rate = 'profile.rate';
   static const profile_contact_info = 'profile.contact_info';
   static const profile_campaigns_doing = 'profile.campaigns_doing';
