@@ -3,8 +3,8 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 
-class HomeItem extends StatelessWidget {
-  const HomeItem({
+class ExploreItem extends StatelessWidget {
+  const ExploreItem({
     super.key,
     required this.item,
   });

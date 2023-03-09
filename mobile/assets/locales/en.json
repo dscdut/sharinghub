@@ -31,9 +31,11 @@
     "update": "Update"
   },
   "root": {
-    "home": "Home",
-    "profile": "Profile",
-    "management": "Management"
+    "map": "Map",
+    "explore": "Explore",
+    "management": "Management",
+    "notification": "Notification",
+    "profile": "Profile"
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
@@ -92,5 +94,8 @@
     "artifact_type": "Artifact Types",
     "obtained_results": "Obtained Results",
     "image_uploaded": "The campaign image must be uploaded"
+  },
+  "profile": {
+    "setting": "Setting"
   }
 }

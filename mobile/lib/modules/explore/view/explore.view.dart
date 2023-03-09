@@ -9,20 +9,20 @@ import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/home/bloc/home/home.bloc.dart';
-import 'package:mobile/modules/home/widgets/home_item.widget.dart';
+import 'package:mobile/modules/explore/bloc/home/explore.bloc.dart';
+import 'package:mobile/modules/explore/widgets/explore_item.widget.dart';
 import 'package:mobile/router/app_routes.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class ExplorePage extends StatelessWidget {
+  const ExplorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeBloc(
+      create: (_) => ExploreBloc(
         repository: getIt.get<CampaignRepository>(),
       ),
-      child: BlocListener<HomeBloc, HomeState>(
+      child: BlocListener<ExploreBloc, ExploreState>(
         listener: (context, state) {},
         child: const _HomeView(),
       ),
@@ -35,7 +35,7 @@ class _HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeBloc, HomeState>(
+    return BlocBuilder<ExploreBloc, ExploreState>(
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
@@ -90,7 +90,7 @@ class _HomeView extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: RefreshIndicator(
               onRefresh: () async {
-                context.read<HomeBloc>().add(HomeListCampainsGet());
+                context.read<ExploreBloc>().add(ExploreListCampainsGet());
               },
               child: SingleChildScrollView(
                 child: Column(
@@ -119,8 +119,8 @@ class _HomeView extends StatelessWidget {
                               .copyWith(color: ColorStyles.primary1),
                         ),
                         DropdownButton(
-                          onChanged: (value) => context.read<HomeBloc>().add(
-                                HomeSortTypeChange(
+                          onChanged: (value) => context.read<ExploreBloc>().add(
+                                ExploreSortTypeChange(
                                   value!,
                                 ),
                               ),
@@ -160,7 +160,7 @@ class _HomeView extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) =>
-                                HomeItem(item: state.campaigns![index]),
+                                ExploreItem(item: state.campaigns![index]),
                             separatorBuilder: (context, index) => const Divider(
                               height: 10,
                               color: Colors.transparent,

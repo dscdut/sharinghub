@@ -14,9 +14,9 @@ import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/home/bloc/search/search.bloc.dart';
-import 'package:mobile/modules/home/widgets/item_search.widget.dart';
-import 'package:mobile/modules/home/widgets/search_input.widget.dart';
+import 'package:mobile/modules/explore/bloc/search/search.bloc.dart';
+import 'package:mobile/modules/explore/widgets/item_search.widget.dart';
+import 'package:mobile/modules/explore/widgets/search_input.widget.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});

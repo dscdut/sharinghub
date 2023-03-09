@@ -11,8 +11,9 @@ import 'package:mobile/modules/map/bloc/map/map.bloc.dart';
 import 'package:mobile/modules/map/widgets/map_bottom_sheet.widget.dart';
 
 class MapPage extends StatelessWidget {
-  MapPage({super.key});
   final Completer<GoogleMapController> controller = Completer();
+
+  MapPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,10 +54,12 @@ class MapPage extends StatelessWidget {
 }
 
 class _MapView extends StatelessWidget {
+  final Completer<GoogleMapController> controller;
+
   const _MapView({
     required this.controller,
   });
-  final Completer<GoogleMapController> controller;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
