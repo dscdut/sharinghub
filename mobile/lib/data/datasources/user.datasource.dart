@@ -13,10 +13,6 @@ class UserDataSource {
     // );
   }
 
-  Future<BaseUserModel> getUserInfo() async {
-    return UserMock.getUserInfo().toModel();
-  }
-
   Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) async {
     return UserMock.loginByEmail();
 
@@ -24,5 +20,13 @@ class UserDataSource {
     //   Endpoints.register,
     //   data: params.toJson(),
     // );
+  }
+
+  Future<BaseUserModel> getUserInfo() async {
+    return UserMock.getUserInfo().toModel();
+  }
+
+  Future<OrganizationModel> getOrganizationInfoById(int organizationId) async {
+    return UserMock.getOrganizations()[0];
   }
 }

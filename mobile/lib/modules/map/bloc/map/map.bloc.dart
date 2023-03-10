@@ -15,8 +15,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       : super(
           const MapState.initial(),
         ) {
-    on<MapPermissionRequest>(_requestPermission);
-    on<MapMarkersGet>(_getMarkers);
+    on<MapPermissionRequest>(_onRequestPermission);
+    on<MapMarkersGet>(_onGetMarkers);
     add(MapPermissionRequest());
     add(const MapMarkersGet());
   }
@@ -33,7 +33,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
   }
 
-  Future<void> _requestPermission(
+  Future<void> _onRequestPermission(
     MapPermissionRequest event,
     Emitter<MapState> emiiter,
   ) async {
@@ -51,7 +51,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     );
   }
 
-  Future<void> _getMarkers(
+  Future<void> _onGetMarkers(
     MapMarkersGet event,
     Emitter<MapState> emiiter,
   ) async {

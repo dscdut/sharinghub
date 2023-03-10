@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/data/models/campaign.model.dart';
+import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/view/campaign_register.view.dart';
 import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
-import 'package:mobile/modules/home/view/search.view.dart';
+import 'package:mobile/modules/explore/view/explore.view.dart';
+import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
@@ -13,6 +15,9 @@ abstract class AppRoutes {
   static const String chooseRole = '/chooseRole';
 
   static const String search = '/search';
+
+  //Profile
+  static const String organizationProfile = '/organizationProfile';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -87,6 +92,14 @@ abstract class AppRoutes {
             );
           },
         );
+      case organizationProfile:
+        return MaterialPageRoute(
+          builder: (_) {
+            return OrganizationProfilePage(
+              organization: settings.arguments as OrganizationModel,
+            );
+          },
+        );
       case setCampaign:
         final CampaignModel? campaign = settings.arguments as CampaignModel?;
 
@@ -109,7 +122,7 @@ abstract class AppRoutes {
       case search:
         return MaterialPageRoute(
           builder: (_) {
-            return const SearchPage();
+            return const ExplorePage();
           },
         );
       case campaignDetail:
