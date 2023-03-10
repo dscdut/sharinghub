@@ -31,9 +31,11 @@
     "update": "Update"
   },
   "root": {
-    "home": "Home",
-    "profile": "Profile",
-    "management": "Management"
+    "map": "Map",
+    "explore": "Explore",
+    "management": "Management",
+    "notification": "Notification",
+    "profile": "Profile"
   },
   "auth": {
     "welcome_back": "Nice to have you back!",
@@ -94,6 +96,7 @@
     "image_uploaded": "The campaign image must be uploaded"
   },
   "profile": {
+    "setting": "Setting",
     "rate": "Rate:",
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",

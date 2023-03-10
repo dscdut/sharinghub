@@ -5,7 +5,7 @@ import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
-import 'package:mobile/modules/home/view/search.view.dart';
+import 'package:mobile/modules/explore/view/explore.view.dart';
 import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
@@ -111,7 +111,7 @@ abstract class AppRoutes {
       case search:
         return MaterialPageRoute(
           builder: (_) {
-            return const SearchPage();
+            return const ExplorePage();
           },
         );
       case campaignDetail:

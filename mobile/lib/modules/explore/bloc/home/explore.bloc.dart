@@ -6,33 +6,33 @@ import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
-part 'home.event.dart';
-part 'home.state.dart';
+part 'explore.event.dart';
+part 'explore.state.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class ExploreBloc extends Bloc<ExploreEvent, ExploreState> {
   final CampaignRepository _repository;
 
-  HomeBloc({
+  ExploreBloc({
     required CampaignRepository repository,
   })  : _repository = repository,
-        super(const HomeState()) {
-    on<HomeEvent>((event, emit) {});
-    on<HomeListCampainsGet>(_getHomeList);
-    on<HomeSortTypeChange>(_changeSortType);
-    add(HomeListCampainsGet());
+        super(const ExploreState()) {
+    on<ExploreEvent>((event, emit) {});
+    on<ExploreListCampainsGet>(_getHomeList);
+    on<ExploreSortTypeChange>(_changeSortType);
+    add(ExploreListCampainsGet());
   }
   Future<void> _getHomeList(
-    HomeListCampainsGet event,
-    Emitter<HomeState> emitter,
+    ExploreListCampainsGet event,
+    Emitter<ExploreState> emitter,
   ) async {
     emitter(
-      HomeState.loading(
+      ExploreState.loading(
         sortType: state.sortType,
       ),
     );
     final result = await _repository.getCampaigns();
     emitter(
-      HomeState.getSuccess(
+      ExploreState.getSuccess(
         campaigns: result,
         sortType: state.sortType,
       ),
@@ -40,10 +40,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> _changeSortType(
-    HomeSortTypeChange event,
-    Emitter<HomeState> emitter,
+    ExploreSortTypeChange event,
+    Emitter<ExploreState> emitter,
   ) async {
     emitter(state.copyWith(sortType: event.sortType));
-    add(HomeListCampainsGet());
+    add(ExploreListCampainsGet());
   }
 }
