@@ -32,6 +32,17 @@ abstract class UserMock {
     );
   }
 
+  static UserProfileModel getUserProfile() => UserProfileModel(
+        name: 'Kieu Thanh Duc',
+        id: 1232312,
+        email: 'gdscdut@gmil.com',
+        avatarURL:
+            'https://i1.sndcdn.com/avatars-000340222160-d547n2-t500x500.jpg',
+        projectPending: 12,
+        projectCompleted: 5,
+        projectOnGoing: 6,
+      );
+
   static List<OrganizationModel> getOrganizations() {
     return [
       OrganizationModel(

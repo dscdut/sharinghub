@@ -22,6 +22,10 @@ class UserRepository {
     return _dataSource.getUserInfo();
   }
 
+  Future<UserProfileModel> getUserProfile() {
+    return _dataSource.getUserProfile();
+  }
+
   Future<OrganizationModel> getOrganizationInfoById(int organizationId) {
     return _dataSource.getOrganizationInfoById(organizationId);
   }

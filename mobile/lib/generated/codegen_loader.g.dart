@@ -114,7 +114,19 @@ class CodegenLoader extends AssetLoader{
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",
     "campaigns_done": "Campaigns done",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "profile": "Profile",
+    "pending": "Pending",
+    "ongoing": "Ongoing",
+    "feedback": " Feedbacks",
+    "preferences": "Preferences",
+    "setting": "Setting",
+    "about_us": "About us",
+    "logout": "Log out",
+    "share_this_app": "Share this app",
+    "help_center": "Help center",
+    "switch_account": "Switch account",
+    "delete_account": "Delete account"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -217,7 +229,19 @@ static const Map<String,dynamic> vi = {
     "contact_info": "Thông tin liên hệ",
     "campaigns_doing": "Dự án đang thực hiện",
     "campaigns_done": "Dự án đã hoàn thành",
-    "reviews": "Đánh giá"
+    "reviews": "Đánh giá",
+    "profile": "Hồ sơ cá nhân",
+    "pending": "Chờ duyệt",
+    "ongoing": "Đang diễn ra",
+    "feedback": " Đánh giá",
+    "preferences": "Tùy chọn",
+    "setting": "Cài đặt",
+    "about_us": "Về chúng tôi",
+    "logout": "Đăng xuất",
+    "share_this_app": "Chia sẻ ứng dụng",
+    "help_center": "Trung tâm trợ giúp",
+    "switch_account": "Đổi tài khoản",
+    "delete_account": "Xoá tài khoản"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

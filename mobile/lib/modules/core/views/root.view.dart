@@ -7,6 +7,7 @@ import 'package:mobile/modules/core/widgets/custom_lazy_indexed_stack.widget.dar
 import 'package:mobile/modules/home/home.dart';
 import 'package:mobile/modules/map/map.dart';
 import 'package:mobile/modules/campaign/view/set_campaign.view.dart';
+import 'package:mobile/modules/profile/profile.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
@@ -37,9 +38,10 @@ class _RootView extends StatelessWidget {
               const HomePage(),
               const SetCampaignPage(),
               MapPage(),
-              SetCampaignPage(
-                campaign: CampaignMock.getCampains()[0],
-              ),
+              // SetCampaignPage(
+              //   campaign: CampaignMock.getCampains()[0],
+              // ),
+              const ProfilePage()
             ],
           );
         },
