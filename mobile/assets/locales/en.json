@@ -93,7 +93,10 @@
     "has_ended": "The campaign has ended",
     "artifact_type": "Artifact Types",
     "obtained_results": "Obtained Results",
-    "image_uploaded": "The campaign image must be uploaded"
+    "image_uploaded": "The campaign image must be uploaded",
+    "volunteer": "Volunteer",
+    "complete": "Complete",
+    "volunteer_register": "Register Volunteer"
   },
   "profile": {
     "setting": "Setting",

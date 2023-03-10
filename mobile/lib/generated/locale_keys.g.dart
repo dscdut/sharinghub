@@ -88,6 +88,9 @@ abstract class  LocaleKeys {
   static const campaign_artifact_type = 'campaign.artifact_type';
   static const campaign_obtained_results = 'campaign.obtained_results';
   static const campaign_image_uploaded = 'campaign.image_uploaded';
+  static const campaign_volunteer = 'campaign.volunteer';
+  static const campaign_complete = 'campaign.complete';
+  static const campaign_volunteer_register = 'campaign.volunteer_register';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
   static const profile_rate = 'profile.rate';

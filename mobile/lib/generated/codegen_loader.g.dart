@@ -109,7 +109,10 @@ class CodegenLoader extends AssetLoader{
     "has_ended": "The campaign has ended",
     "artifact_type": "Artifact Types",
     "obtained_results": "Obtained Results",
-    "image_uploaded": "The campaign image must be uploaded"
+    "image_uploaded": "The campaign image must be uploaded",
+    "volunteer": "Volunteer",
+    "complete": "Complete",
+    "volunteer_register": "Register Volunteer"
   },
   "profile": {
     "setting": "Setting",
@@ -215,7 +218,10 @@ static const Map<String,dynamic> vi = {
     "has_ended": "Dự án đã kết thúc",
     "artifact_type": "Hiện vật cần quyên góp",
     "obtained_results": "Kết quả thu được",
-    "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "volunteer": "Tình nguyện viên",
+    "complete": "Hoàn thành",
+    "volunteer_register": "Đăng kí tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",

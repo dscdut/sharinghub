@@ -93,7 +93,10 @@
     "has_ended": "Dự án đã kết thúc",
     "artifact_type": "Hiện vật cần quyên góp",
     "obtained_results": "Kết quả thu được",
-    "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "volunteer": "Tình nguyện viên",
+    "complete": "Hoàn thành",
+    "volunteer_register": "Đăng kí tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
