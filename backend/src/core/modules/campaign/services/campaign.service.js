@@ -9,6 +9,18 @@ class Service {
         this.repository = CampaignRepository;
     }
 
+    async findOneById(id) {
+        let campaign;
+        try {
+            campaign = await this.repository.findOneById(id);
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return campaign;
+    }
+
     async findAllByOrgId(organization_id) {
         let campaigns;
         try {
@@ -158,6 +170,30 @@ class Service {
         }
 
         trx.commit();
+    }
+
+    async searchByName(name) {
+        let campaigns;
+        try {
+            campaigns = await this.repository.searchByName(name);
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return campaigns;
+    }
+
+    async searchByCoordinate(lng, lat) {
+        let campaigns;
+        try {
+            campaigns = await this.repository.searchByCoordinate(lng, lat);
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return campaigns;
     }
 }
 

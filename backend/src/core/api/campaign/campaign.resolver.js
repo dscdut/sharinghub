@@ -1,8 +1,9 @@
 import { Module } from 'packages/handler/Module';
 
-import { CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
+import { CoordinateCampaignInterceptor, CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
 import { CampaignController } from './campaign.controller';
-import { orgCampaignId, campaignId } from '../../common/swagger';
+import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../common/swagger';
+import { RecordIdInterceptor } from '../../modules/interceptor/recordId/record-id.interceptor';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({
@@ -48,5 +49,19 @@ export const CampaignResolver = Module.builder()
             params: [orgCampaignId, campaignId],
             controller: CampaignController.deleteOne,
             preAuthorization: true,
+        },
+        {
+            route: '/campaigns/:id',
+            method: 'get',
+            params: [RecordId],
+            interceptors: [RecordIdInterceptor],
+            controller: CampaignController.findOneById,
+        },
+        {
+            route: '/campaigns',
+            method: 'get',
+            params: [NameQuery, LongitudeQuery, LatitudeQuery],
+            interceptors: [CoordinateCampaignInterceptor],
+            controller: CampaignController.searchByQuery,
         }
     ]);

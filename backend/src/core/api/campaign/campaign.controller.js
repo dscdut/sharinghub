@@ -10,6 +10,16 @@ class Controller {
         this.service = CampaignService;
     }
 
+    findOneById = async req => {
+        const data = await this.service.findOneById(req.params.id);
+
+        if (!data) {
+            throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_ID);
+        }
+
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
     findAllByOrgId = async req => {
         const { organization_ids } = req.user.payload;
 
@@ -92,6 +102,22 @@ class Controller {
         );
 
         return ValidHttpResponse.toNoContentResponse();
+    }
+
+    searchByQuery = async req => {
+        const { name, lng, lat } = req.query;
+
+        let data = [];
+        if (name && !lng && !lat) {
+            data = await this.service.searchByName(name);
+        } else if (!name && lng && lat) {
+            data = await this.service.searchByCoordinate(lng, lat);
+        }
+        else if (!name && !lng && !lat) {
+            data = await this.service.searchByName(name);
+        }
+
+        return ValidHttpResponse.toOkResponse(data);
     }
 }
 

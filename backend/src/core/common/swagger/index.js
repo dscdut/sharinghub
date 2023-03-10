@@ -5,3 +5,6 @@ export * from './reset-token';
 export * from './org-id';
 export * from './org-campaign-id';
 export * from './campaign-id';
+export * from './name-query';
+export * from './longitude-query';
+export * from './latitude-query';
