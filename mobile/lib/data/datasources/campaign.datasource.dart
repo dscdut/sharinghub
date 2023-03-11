@@ -7,7 +7,6 @@ import 'package:mobile/data/models/campaign.model.dart';
 @lazySingleton
 class CampaignDataSource {
   Future<List<CampaignModel>> getCampaigns() async {
-    await Future.delayed(const Duration(seconds: 3));
     return CampaignMock.getCampains();
   }
 
@@ -17,18 +16,15 @@ class CampaignDataSource {
     int? wardCode,
     String keyword,
   ) async {
-    await Future.delayed(const Duration(seconds: 3));
-    return CampaignMock.getCampains();
+    return await CampaignMock.getCampains();
   }
 
   Future<CampaignModel> getCampaignById(int id) async {
-    await Future.delayed(const Duration(seconds: 3));
-    return CampaignMock.getCampains()[id];
+    return (await CampaignMock.getCampains())[id];
   }
 
   Future<CampaignModel> setCampaign(SetCampaignDTO setCampaignParams) async {
-    await Future.delayed(const Duration(seconds: 2));
-    return CampaignMock.setCampaign(setCampaignParams);
+    return await CampaignMock.setCampaign(setCampaignParams);
   }
 
   Future<List<CampaignModel>> getCampainsByLocation(LatLng wardLocation) async {
@@ -36,7 +32,7 @@ class CampaignDataSource {
   }
 
   Future<CampaignModel> getCampaignDetail(int campaignId) async {
-    return CampaignMock.getCampains()[0];
+    return (await CampaignMock.getCampains())[0];
   }
 
   Future<void> joinCampaign(int campaignId) async {}

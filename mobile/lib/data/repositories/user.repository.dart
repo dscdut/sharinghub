@@ -18,11 +18,7 @@ class UserRepository {
     return _dataSource.registerByEmail(params);
   }
 
-  Future<BaseUserModel> getUserInfo() {
+  Future<UserModel> getUserInfo() {
     return _dataSource.getUserInfo();
-  }
-
-  Future<OrganizationModel> getOrganizationInfoById(int organizationId) {
-    return _dataSource.getOrganizationInfoById(organizationId);
   }
 }

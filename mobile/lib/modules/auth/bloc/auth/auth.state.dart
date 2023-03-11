@@ -8,7 +8,7 @@ enum AuthenticationStatus {
 
 class AuthState extends Equatable {
   final AuthenticationStatus status;
-  final BaseUserModel? user;
+  final UserModel? user;
 
   const AuthState._({
     this.status = AuthenticationStatus.unknown,
@@ -18,7 +18,7 @@ class AuthState extends Equatable {
   const AuthState.unknown() : this._();
 
   const AuthState.authenticated({
-    required BaseUserModel user,
+    required UserModel user,
   }) : this._(status: AuthenticationStatus.authenticated, user: user);
 
   const AuthState.unauthenticated()

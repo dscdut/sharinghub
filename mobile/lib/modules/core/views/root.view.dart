@@ -5,7 +5,7 @@ import 'package:mobile/modules/core/bloc/root.bloc.dart';
 import 'package:mobile/modules/core/widgets/app_bottom_navigation_bar.widget.dart';
 import 'package:mobile/modules/core/widgets/custom_lazy_indexed_stack.widget.dart';
 import 'package:mobile/modules/explore/view/explore.view.dart';
-import 'package:mobile/modules/management/view/management.view.dart';
+import 'package:mobile/modules/management/view/organization_management.view.dart';
 import 'package:mobile/modules/map/map.dart';
 import 'package:mobile/modules/campaign/view/set_campaign.view.dart';
 import 'package:mobile/modules/notification/notification.dart';
@@ -39,7 +39,7 @@ class _RootView extends StatelessWidget {
             children: [
               MapPage(),
               const ExplorePage(),
-              const ManagementPage(),
+              const OrganizationManagementPage(),
               const NotificationPage(),
               const ProfilePage()
             ],

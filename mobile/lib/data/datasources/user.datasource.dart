@@ -22,11 +22,7 @@ class UserDataSource {
     // );
   }
 
-  Future<BaseUserModel> getUserInfo() async {
-    return UserMock.getUserInfo().toModel();
-  }
-
-  Future<OrganizationModel> getOrganizationInfoById(int organizationId) async {
-    return UserMock.getOrganizations()[0];
+  Future<UserModel> getUserInfo() async {
+    return UserMock.getUserInfo();
   }
 }
