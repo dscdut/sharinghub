@@ -26,8 +26,11 @@ jobs:
             ssh-keyscan github.com >> ~/.ssh/known_hosts
             git clone git@github.com:dscdut/sharinghub.git
       - run:
-          name: Test
-          command: ls -la
+          name: Checkout develop
+          command: git checkout develop
+      - run:
+          name: Pull develop
+          command: git pull origin develop
       - run:
           name: Build packages
           command: cd sharinghub/backend && npm install
