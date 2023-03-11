@@ -24,7 +24,7 @@ jobs:
             echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
             ssh-keyscan github.com >> ~/.ssh/known_hosts
-            git clone git@github.com:dscdut/sharinghub.git
+            git clone -b develop git@github.com:dscdut/sharinghub.git
       - run:
           name: Test
           command: ls -la
@@ -41,7 +41,7 @@ jobs:
           command: ls -la
       - run:
           name: send file to server
-          command: ls && rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
+          command: ls && rsync -vr --delete --progress sharinghub $SSH_USER@$SSH_HOST:/home/kiemtran.dev/source
 
 # Define the workflows that will run in your pipeline
 workflows:

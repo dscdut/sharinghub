@@ -41,6 +41,10 @@ class AppTextFormField extends StatelessWidget {
 
   final FocusNode? focusNode;
 
+  final int maxLines;
+
+  final EdgeInsetsGeometry contentPadding;
+
   const AppTextFormField({
     Key? key,
     this.textController,
@@ -53,8 +57,8 @@ class AppTextFormField extends StatelessWidget {
     this.errorText,
     this.labelText,
     this.initialValue,
-    this.borderRadius = 6,
-    this.borderColor = ColorStyles.gray100,
+    this.borderRadius = 10,
+    this.borderColor = ColorStyles.gray200,
     this.focusedBorderColor = ColorStyles.blue400,
     this.fillColor = Colors.transparent,
     this.hintColor = ColorStyles.gray200,
@@ -70,6 +74,8 @@ class AppTextFormField extends StatelessWidget {
     this.onTapSuffixIcon,
     this.labelStyle = TextStyles.s14MediumText,
     this.focusNode,
+    this.maxLines = 1,
+    this.contentPadding = const EdgeInsets.symmetric(horizontal: 20),
   }) : super(key: key);
 
   @override
@@ -99,6 +105,7 @@ class AppTextFormField extends StatelessWidget {
           enabled: enabled,
           keyboardType: keyboardType,
           initialValue: initialValue,
+          maxLines: maxLines,
           style:
               TextStyles.regularBody14.copyWith(color: ColorStyles.zodiacBlue),
           textAlign: isCenterText ? TextAlign.center : TextAlign.start,
@@ -138,7 +145,7 @@ class AppTextFormField extends StatelessWidget {
             // isDense: true,
             filled: true,
             fillColor: fillColor,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+            contentPadding: contentPadding,
             prefixIcon: prefixIcon != null
                 ? GestureDetector(
                     onTap: onTapPrefixIcon,

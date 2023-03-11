@@ -1,0 +1,61 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "plugins": ["prettier"],
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "requireConfigFile": false,
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "rules": {
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "linebreak-style": 0,
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "consistent-return": 0,
+        "no-underscore-dangle": 0,
+        "no-tabs": 0,
+        "dot-notation": 0,
+        "default-case": 0,
+        "class-methods-use-this": 0,
+        "import/prefer-default-export": "off",
+        "no-param-reassign":"off",
+        "camelcase":"off",
+        "import/no-unresolved": "off",
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "comma-dangle": [
+            "error",
+            "only-multiline"
+        ],
+        "no-trailing-spaces": [
+            "error", 
+            { "ignoreComments": true }
+        ],
+        "max-len": ["error", 150, 2, {
+            "ignoreUrls": true,
+            "ignoreComments": true,
+            "ignoreRegExpLiterals": true,
+            "ignoreStrings": true,
+            "ignoreTemplateLiterals": true
+        }]
+    }
+}

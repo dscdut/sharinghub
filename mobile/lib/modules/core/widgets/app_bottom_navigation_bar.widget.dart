@@ -30,11 +30,15 @@ class AppBottomNavigationBar extends StatelessWidget {
             showUnselectedLabels: false,
             items: [
               BottomNavigationBarItem(
-                icon: const Icon(Icons.home_outlined),
-                label: LocaleKeys.root_home.tr(),
+                icon: const Icon(Icons.fmd_good_outlined),
+                label: LocaleKeys.root_map.tr(),
               ),
               BottomNavigationBarItem(
-                icon: const Icon(Icons.manage_accounts_outlined),
+                icon: const Icon(Icons.travel_explore_outlined),
+                label: LocaleKeys.root_explore.tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.manage_search_outlined),
                 label: LocaleKeys.root_management.tr(),
               ),
               BottomNavigationBarItem(

@@ -12,15 +12,18 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       organization: OrganizationModel.fromJson(
           json['organization'] as Map<String, dynamic>),
       name: json['name'] as String,
+      address: json['address'] as String,
+      specificAddress: json['specificAddress'] as String?,
       description: json['description'] as String,
-      address: AddressModel.fromJson(json['address'] as Map<String, dynamic>),
       startDate: DateTime.parse(json['startDate'] as String),
       endDate: DateTime.parse(json['endDate'] as String),
-      registerLink: json['registerLink'] as String?,
-      haveArtifactDonate: json['haveArtifactDonate'] as bool,
-      artifactRequirement: json['artifactRequirement'] as String?,
-      otherInfo: json['otherInfo'] as String?,
+      formLink: json['formLink'] as String?,
+      artifactTypes: json['artifactTypes'] as String?,
+      otherInformation: json['otherInformation'] as String?,
       imageURL: json['imageURL'] as String?,
+      geometry: (json['geometry'] as Map<String, dynamic>).map(
+        (k, e) => MapEntry(k, (e as num).toDouble()),
+      ),
     );
 
 Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
@@ -33,15 +36,16 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   }
 
   writeNotNull('id', instance.id);
+  val['imageURL'] = instance.imageURL;
   val['name'] = instance.name;
-  val['address'] = instance.address.toJson();
+  val['description'] = instance.description;
+  val['address'] = instance.address;
+  val['specificAddress'] = instance.specificAddress;
   val['startDate'] = instance.startDate.toIso8601String();
   val['endDate'] = instance.endDate.toIso8601String();
-  val['description'] = instance.description;
-  val['registerLink'] = instance.registerLink;
-  val['haveArtifactDonate'] = instance.haveArtifactDonate;
-  val['artifactRequirement'] = instance.artifactRequirement;
-  val['otherInfo'] = instance.otherInfo;
-  val['imageURL'] = instance.imageURL;
+  val['formLink'] = instance.formLink;
+  val['artifactTypes'] = instance.artifactTypes;
+  val['otherInformation'] = instance.otherInformation;
+  val['geometry'] = instance.geometry;
   return val;
 }
