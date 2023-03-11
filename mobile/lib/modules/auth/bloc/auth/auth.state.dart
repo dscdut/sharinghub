@@ -7,6 +7,9 @@ enum AuthenticationStatus {
 }
 
 class AuthState extends Equatable {
+  final AuthenticationStatus status;
+  final BaseUserModel? user;
+
   const AuthState._({
     this.status = AuthenticationStatus.unknown,
     this.user,
@@ -15,14 +18,11 @@ class AuthState extends Equatable {
   const AuthState.unknown() : this._();
 
   const AuthState.authenticated({
-    required UserModel user,
+    required BaseUserModel user,
   }) : this._(status: AuthenticationStatus.authenticated, user: user);
 
   const AuthState.unauthenticated()
       : this._(status: AuthenticationStatus.unauthenticated);
-
-  final AuthenticationStatus status;
-  final UserModel? user;
 
   @override
   List<Object?> get props => [status, user];

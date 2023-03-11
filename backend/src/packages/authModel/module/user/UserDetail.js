@@ -1,19 +1,19 @@
 export class UserDetail {
-  payload;
+    payload;
 
-  roles;
+    roles;
 
-  permissions;
+    permissions;
 
-  constructor(payload) {
-      this.payload = payload;
-  }
+    constructor(payload) {
+        this.payload = payload;
+    }
 
-  toRoles() {
-      this.roles = this.payload?.roles ?? [];
-  }
+    toRoles() {
+        this.roles = this.payload?.roles ?? [];
+    }
 
-  toPermissions() {
-      this.permissions = this.payload?.permissions ?? [];
-  }
+    toPermissions() {
+        this.permissions = this.payload?.permissions ?? [];
+    }
 }

@@ -5,7 +5,7 @@ import 'package:mobile/data/models/user.model.dart';
 
 @lazySingleton
 class UserDataSource {
-  Future<AuthResponseDTO> loginByEmail(LoginDTO params) async {
+  Future<AuthResponseDTO> loginByEmail(SubmitLoginDTO params) async {
     return UserMock.loginByEmail();
     // await DioHelper.post(
     //   Endpoints.login,
@@ -13,16 +13,20 @@ class UserDataSource {
     // );
   }
 
-  Future<UserModel> getUserInfo() async {
-    return UserMock.getUserInfo();
-  }
-
-  Future<AuthResponseDTO> registerByEmail(RegisterDTO params) async {
+  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) async {
     return UserMock.loginByEmail();
 
     // await DioHelper.post(
     //   Endpoints.register,
     //   data: params.toJson(),
     // );
+  }
+
+  Future<BaseUserModel> getUserInfo() async {
+    return UserMock.getUserInfo().toModel();
+  }
+
+  Future<OrganizationModel> getOrganizationInfoById(int organizationId) async {
+    return UserMock.getOrganizations()[0];
   }
 }

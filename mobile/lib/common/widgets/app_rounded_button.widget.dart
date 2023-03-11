@@ -60,19 +60,13 @@ class AppRoundedButton extends StatelessWidget {
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               overlayColor: MaterialStateProperty.all<Color>(
-                isDisable
-                    ? disableBackgroundColor
-                    : backgroundColor,
+                isDisable ? disableBackgroundColor : backgroundColor,
               ),
               foregroundColor: MaterialStateProperty.all<Color>(
-                isDisable
-                    ? disableBackgroundColor
-                    : backgroundColor,
+                isDisable ? disableBackgroundColor : backgroundColor,
               ),
               backgroundColor: MaterialStateProperty.all<Color>(
-                isDisable
-                    ? disableBackgroundColor
-                    : backgroundColor,
+                isDisable ? disableBackgroundColor : backgroundColor,
               ),
               elevation: MaterialStateProperty.resolveWith<double>(
                 (Set<MaterialState> states) {
@@ -87,8 +81,7 @@ class AppRoundedButton extends StatelessWidget {
           ),
         ),
         child: ElevatedButton(
-          onPressed:
-              (isLoading || isDisable) ? null : onPressed,
+          onPressed: (isLoading || isDisable) ? null : onPressed,
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),

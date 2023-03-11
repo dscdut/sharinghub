@@ -10,15 +10,19 @@ class UserRepository {
   UserRepository({required UserDataSource dataSource})
       : _dataSource = dataSource;
 
-  Future<AuthResponseDTO> loginByEmail(LoginDTO params) {
+  Future<AuthResponseDTO> loginByEmail(SubmitLoginDTO params) {
     return _dataSource.loginByEmail(params);
   }
 
-  Future<UserModel> getUserInfo() {
+  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) {
+    return _dataSource.registerByEmail(params);
+  }
+
+  Future<BaseUserModel> getUserInfo() {
     return _dataSource.getUserInfo();
   }
 
-  Future<AuthResponseDTO> registerByEmail(RegisterDTO params) {
-    return _dataSource.registerByEmail(params);
+  Future<OrganizationModel> getOrganizationInfoById(int organizationId) {
+    return _dataSource.getOrganizationInfoById(organizationId);
   }
 }

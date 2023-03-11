@@ -1,5 +1,7 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 
 @lazySingleton
@@ -9,7 +11,41 @@ class CampaignRepository {
   CampaignRepository({required CampaignDataSource dataSource})
       : _dataSource = dataSource;
 
-  Future<CampaignModel> setCampaign(CampaignModel params) {
-    return _dataSource.setCampaign(params);
+  Future<List<CampaignModel>> getCampaigns() {
+    return _dataSource.getCampaigns();
+  }
+
+  Future<List<CampaignModel>> searchCampaigns(
+    int? provinceCode,
+    int? districtCode,
+    int? wardCode,
+    String keyword,
+  ) {
+    return _dataSource.searchCampaigns(
+      provinceCode,
+      districtCode,
+      wardCode,
+      keyword,
+    );
+  }
+
+  Future<CampaignModel> getCampaignById(int id) async {
+    return _dataSource.getCampaignById(id);
+  }
+
+  Future<CampaignModel> setCampaign(SetCampaignDTO setCampaignParams) async {
+    return _dataSource.setCampaign(setCampaignParams);
+  }
+
+  Future<List<CampaignModel>> getCampainsByLocation(LatLng wardLocation) async {
+    return _dataSource.getCampainsByLocation(wardLocation);
+  }
+
+  Future<CampaignModel> getCampaignDetail(int campaignId) async {
+    return _dataSource.getCampaignDetail(campaignId);
+  }
+
+  Future<void> joinCampaign(int campaignId) async {
+    return _dataSource.joinCampaign(campaignId);
   }
 }

@@ -16,6 +16,8 @@ class AddressModel {
     required this.specificAddress,
   });
 
+  String get fullAddress => '$specificAddress, $ward, $district, $province';
+
   factory AddressModel.fromJson(Map<String, dynamic> json) =>
       _$AddressModelFromJson(json);
 

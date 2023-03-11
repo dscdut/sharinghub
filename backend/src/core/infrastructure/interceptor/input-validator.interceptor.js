@@ -26,5 +26,5 @@ export class AbstractInputValidatorInterceptor {
         } catch (error) {
             return this.getResponseErrorHandler(res, error);
         }
-    }
+    };
 }

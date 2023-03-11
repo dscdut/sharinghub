@@ -78,7 +78,7 @@ export class Module {
 
             return next();
         };
-    }
+    };
 
     static #produceInterceptor = interceptorClass => {
         if (!interceptorClass['intercept']) {
