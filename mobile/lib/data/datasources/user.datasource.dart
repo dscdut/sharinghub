@@ -26,6 +26,11 @@ class UserDataSource {
     return UserMock.getUserInfo().toModel();
   }
 
+  Future<UserProfileModel> getUserProfile() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return UserMock.getUserProfile();
+  }
+
   Future<OrganizationModel> getOrganizationInfoById(int organizationId) async {
     return UserMock.getOrganizations()[0];
   }

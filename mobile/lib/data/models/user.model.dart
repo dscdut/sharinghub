@@ -65,3 +65,26 @@ class UserModel extends BaseUserModel {
 
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }
+
+@JsonSerializable()
+class UserProfileModel extends BaseUserModel {
+  final String? avatarURL;
+  final int projectPending;
+  final int projectCompleted;
+  final int projectOnGoing;
+
+  UserProfileModel({
+    required super.id,
+    required super.name,
+    required super.email,
+    this.avatarURL,
+    required this.projectPending,
+    required this.projectCompleted,
+    required this.projectOnGoing,
+  });
+
+  factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
+      _$UserProfileModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserProfileModelToJson(this);
+}

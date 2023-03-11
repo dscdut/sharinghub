@@ -95,6 +95,18 @@ abstract class  LocaleKeys {
   static const profile_campaigns_doing = 'profile.campaigns_doing';
   static const profile_campaigns_done = 'profile.campaigns_done';
   static const profile_reviews = 'profile.reviews';
+  static const profile_profile = 'profile.profile';
+  static const profile_pending = 'profile.pending';
+  static const profile_ongoing = 'profile.ongoing';
+  static const profile_feedback = 'profile.feedback';
+  static const profile_preferences = 'profile.preferences';
+  static const profile_setting = 'profile.setting';
+  static const profile_about_us = 'profile.about_us';
+  static const profile_logout = 'profile.logout';
+  static const profile_share_this_app = 'profile.share_this_app';
+  static const profile_help_center = 'profile.help_center';
+  static const profile_switch_account = 'profile.switch_account';
+  static const profile_delete_account = 'profile.delete_account';
   static const profile = 'profile';
 
 }
