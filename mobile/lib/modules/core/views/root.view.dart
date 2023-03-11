@@ -39,7 +39,7 @@ class _RootView extends StatelessWidget {
               const ExplorePage(),
               const ManagementPage(),
               const NotificationPage(),
-              const ProfilePage()
+              const ProfilePage(),
             ],
           );
         },
