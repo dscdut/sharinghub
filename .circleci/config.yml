@@ -49,7 +49,7 @@ jobs:
           name: Deploy via ssh
           command: |
             echo Starting to deploy server
-            ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout fix/setup-cicd && git pull && chmod 777 ./deploy.sh && ./deploy.sh'
+            ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout develop && git pull && chmod 777 ./deploy.sh && ./deploy.sh'
 workflows:
   version: 2
   build-and-deploy:
@@ -62,4 +62,3 @@ workflows:
             branches:
               only:
                 - develop
-                - fix/setup-cicd

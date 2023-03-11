@@ -4,5 +4,5 @@ export const RecordId = SwaggerDocument.ApiParams({
   name: 'id',
   paramsIn: 'path',
   type: 'integer',
-  description: 'Record Id to find.',
+  description: 'Record Id to find',
 });
