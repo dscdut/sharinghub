@@ -103,7 +103,6 @@ abstract class  LocaleKeys {
   static const profile_ongoing = 'profile.ongoing';
   static const profile_feedback = 'profile.feedback';
   static const profile_preferences = 'profile.preferences';
-  static const profile_setting = 'profile.setting';
   static const profile_about_us = 'profile.about_us';
   static const profile_logout = 'profile.logout';
   static const profile_share_this_app = 'profile.share_this_app';
