@@ -16,6 +16,11 @@ class Controller {
         const data = await this.service.findById(req.user.payload.id);
         return ValidHttpResponse.toOkResponse(data);
     };
+
+    findVoluntaryCampaignsByUserId = async req => {
+        const data = await this.service.findVoluntaryCampaignsByUserId(req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const UserController = new Controller();

@@ -23,4 +23,10 @@ export const UserResolver = Module.builder()
             controller: UserController.updateOne,
             preAuthorization: true,
         },
+        {
+            route: '/my-voluntary-campaigns',
+            method: 'get',
+            controller: UserController.findVoluntaryCampaignsByUserId,
+            preAuthorization: true,
+        }
     ]);

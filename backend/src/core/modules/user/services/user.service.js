@@ -5,11 +5,13 @@ import { Optional } from '../../../utils';
 import { NotFoundException, DuplicateException, BadRequestException } from '../../../../packages/httpException';
 import { UserRepository } from '../user.repository';
 import { MESSAGE } from './message.enum';
+import { CampaignRepository } from '../../../modules/campaign/campaign.repository';
 
 class Service {
     constructor() {
         this.repository = UserRepository;
         this.userRoleRepository = UserRoleRepository;
+        this.campaignRepository = CampaignRepository;
         this.bcryptService = BcryptService;
     }
 
@@ -55,7 +57,6 @@ class Service {
         let data;
         try {
             data = await this.repository.updateUser(id, UpdateUserDto, trx);
-            console.log(data);
         } catch (error) {
             await trx.rollback();
             this.logger.error(error.message);
@@ -67,6 +68,11 @@ class Service {
             message: MESSAGE.UPDATE_USER_SUCCESS,
             id: data[0].id,
         };
+    }
+
+    async findVoluntaryCampaignsByUserId(id) {
+        const data = await this.campaignRepository.findVoluntaryCampaignsByUserId(id);
+        return data;
     }
 }
 
