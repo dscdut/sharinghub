@@ -113,8 +113,8 @@ class Controller {
         } else if (!name && lng && lat) {
             data = await this.service.searchByCoordinate(lng, lat);
         }
-        else if (!name && !lng && !lat) {
-            data = await this.service.searchByName(name);
+        else {
+            throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT);
         }
 
         return ValidHttpResponse.toOkResponse(data);
