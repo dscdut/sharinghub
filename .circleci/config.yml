@@ -24,25 +24,13 @@ jobs:
             echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
             ssh-keyscan github.com >> ~/.ssh/known_hosts
-            git clone git@github.com:dscdut/sharinghub.git
+            git clone -b develop git@github.com:dscdut/sharinghub.git
       - run:
-          name: Setup user
-          command: git config --global user.name "kiemtran.dev" && git config --global user.email "kiemtran.dev@gmail.com" && git config --global --unset credential.helper
-      - run:
-          name: Init git
-          command: git init && git remote add origin https://github.com/dscdut/sharinghub.git && git fetch
-      - run:
-          name: Checkout develop
-          command: git checkout develop
-      - run:
-          name: Pull develop
-          command: git pull origin develop
-      - run:
-          name: Navigate source backend
-          command: cd sharinghub/backend
+          name: Test
+          command: ls -la
       - run:
           name: Build packages
-          command: npm install
+          command: cd sharinghub/backend && npm install
       - run:
           name: Build packages
           command: cd sharinghub/backend && npm run build
