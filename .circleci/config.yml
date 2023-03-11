@@ -41,7 +41,7 @@ jobs:
           command: ls -la
       - run:
           name: send file to server
-          command: ls && rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/sharinghub/
+          command: ls && rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/sharinghub/backend
       - run:
           name: Access vm and restart server
           command: ssh SSH_USER@$SSH_HOST && pm2 restart all
