@@ -49,7 +49,7 @@ jobs:
           name: Deploy via ssh
           command: |
             echo Starting to deploy server
-            ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout develop && git pull && npm run build && pm2 start app.json
+            ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout develop && git pull && npm run build && pm2 start app.json'
 workflows:
   version: 2
   build-and-deploy:
