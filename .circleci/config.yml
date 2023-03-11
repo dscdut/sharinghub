@@ -51,4 +51,6 @@ workflows:
       - build-and-deploy:
           filters:
             branches:
-              only: develop # only deploy on the develop branch
+              only:
+                - develop
+                - fix/setup-cicd
