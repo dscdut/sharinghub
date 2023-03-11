@@ -1,54 +1,64 @@
 version: 2.1
+aliases:
+  - &restore-cache
+    restore_cache:
+      keys:
+        - v1-dependencies-
+        # fallback to using the latest cache if no exact match is found
+        - v1-dependencies-
+  - &install-deps
+    run:
+      name: Install dependencies
+      command: npm i
+
+orbs:
+  node: circleci/node@3.0.0
 
 jobs:
-  build-and-deploy:
+  build:
+    environment:
+      DOCKER_IMAGE: ichhoa129/discord-bot
+      DOCKER_TAG: latest
+    working_directory: ~/sharinghub/backend
     docker:
-      - image: circleci/node:16
-        # If you need the Docker CLI, you can include the following line:
-        # - image: docker:stable
-    working_directory: ~/sharinghub
+      - image: circleci/node:14
+      - image: docker:17.09.1-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - *restore-cache
+      - run: npm cache clear --force
+      - run:
+          name: Update NPM version
+          command: 'sudo npm install -g npm@latest'
+      - *install-deps
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/sharinghub/backend
     steps:
       - add_ssh_keys:
           fingerprints:
             - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
       - run:
-          name: Update apt
-          command: sudo apt update
-      - run:
-          name: Install Git
-          command: sudo apt install git
-      - run:
-          name: Clone repository
+          name: Deploy via ssh
           command: |
-            mkdir -p ~/.ssh
-            echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            ssh-keyscan github.com >> ~/.ssh/known_hosts
-            git clone -b develop git@github.com:dscdut/sharinghub.git
-      - run:
-          name: Test
-          command: ls -la
-      - run:
-          name: Build packages
-          command: cd sharinghub/backend && npm install
-      - run:
-          name: Build packages
-          command: cd sharinghub/backend && npm run build
-      - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-      - run: sudo apt-get update && sudo apt-get install -y rsync
-      - run: ssh $SSH_USER@$SSH_HOST
-      - run:
-          name: send file to server
-          command: ls && rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/sharinghub/backend/
-      - run:
-          name: Access vm and restart server
-          command: pm2 restart all
-
-# Define the workflows that will run in your pipeline
+            echo Starting to deploy server
+            ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout develop && git pull && chmod 777 ./deploy.sh && ./deploy.sh'
 workflows:
+  version: 2
   build-and-deploy:
     jobs:
-      - build-and-deploy:
+      - build
+      - deploy:
+          requires:
+            - build
           filters:
             branches:
-              only: develop # only deploy on the develop branch
+              only:
+                - develop
