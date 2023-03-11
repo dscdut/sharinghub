@@ -42,6 +42,20 @@ class Service {
         }
         return { ...data, editable };
     }
+    
+    async deleteOrg(user, orgId) {
+        if (!user.organization_ids.includes(Number(orgId))) {
+            throw new ForbiddenException('You don\'t have permission to delete this organization or the organization doesn\'t exist');
+        }
+        await this.OrgRepositoryService.deleteOrgById(orgId);
+
+        user = { id: user.id, organization_ids: user.organization_ids.filter(org => org != orgId) };
+
+        return {
+            message: MESSAGE.DELETE_ORG_SUCCESS,
+            accessToken: this.JwtService.sign(user),
+        };
+    }
 }
 
 export const OrgService = new Service();

@@ -104,6 +104,18 @@
     "contact_info": "Thông tin liên hệ",
     "campaigns_doing": "Dự án đang thực hiện",
     "campaigns_done": "Dự án đã hoàn thành",
-    "reviews": "Đánh giá"
+    "reviews": "Đánh giá",
+    "profile": "Hồ sơ cá nhân",
+    "pending": "Chờ duyệt",
+    "ongoing": "Đang diễn ra",
+    "feedback": " Đánh giá",
+    "preferences": "Tùy chọn",
+    "setting": "Cài đặt",
+    "about_us": "Về chúng tôi",
+    "logout": "Đăng xuất",
+    "share_this_app": "Chia sẻ ứng dụng",
+    "help_center": "Trung tâm trợ giúp",
+    "switch_account": "Đổi tài khoản",
+    "delete_account": "Xoá tài khoản"
   }
 }

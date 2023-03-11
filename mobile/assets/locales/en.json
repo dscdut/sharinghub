@@ -104,6 +104,18 @@
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",
     "campaigns_done": "Campaigns done",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "profile": "Profile",
+    "pending": "Pending",
+    "ongoing": "Ongoing",
+    "feedback": " Feedbacks",
+    "preferences": "Preferences",
+    "setting": "Setting",
+    "about_us": "About us",
+    "logout": "Log out",
+    "share_this_app": "Share this app",
+    "help_center": "Help center",
+    "switch_account": "Switch account",
+    "delete_account": "Delete account"
   }
 }
