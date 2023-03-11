@@ -13,7 +13,9 @@ abstract class UserMock {
     );
   }
 
-  static UserModel getUserInfo() {
+  static Future<UserModel> getUserInfo() async {
+    await Future.delayed(const Duration(seconds: 3));
+
     return UserModel(
       id: 100,
       email: 'beobiebom@gmail.com',
@@ -31,6 +33,21 @@ abstract class UserMock {
           'https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-dsc/chapter_banners/238560151_611157220289705_5018897076969677410_n.jpg',
       address: '',
       phoneNumber: '0905123123',
+    );
+  }
+
+  static Future<UserProfileModel> getUserProfile() async {
+    await Future.delayed(const Duration(seconds: 3));
+
+    return UserProfileModel(
+      id: 1232312,
+      email: 'gdscdut@gmil.com',
+      avatarURL:
+          'https://i1.sndcdn.com/avatars-000340222160-d547n2-t500x500.jpg',
+      projectPending: 12,
+      projectCompleted: 5,
+      projectOnGoing: 6,
+      fullName: 'Kieu Thanh Duc',
     );
   }
 

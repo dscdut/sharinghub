@@ -29,3 +29,25 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'address': instance.address,
       'avatar': instance.avatar,
     };
+
+UserProfileModel _$UserProfileModelFromJson(Map<String, dynamic> json) =>
+    UserProfileModel(
+      id: json['id'] as int,
+      email: json['email'] as String,
+      avatarURL: json['avatarURL'] as String?,
+      projectPending: json['projectPending'] as int,
+      projectCompleted: json['projectCompleted'] as int,
+      projectOnGoing: json['projectOnGoing'] as int,
+      fullName: json['fullName'] as String,
+    );
+
+Map<String, dynamic> _$UserProfileModelToJson(UserProfileModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'fullName': instance.fullName,
+      'email': instance.email,
+      'avatarURL': instance.avatarURL,
+      'projectPending': instance.projectPending,
+      'projectCompleted': instance.projectCompleted,
+      'projectOnGoing': instance.projectOnGoing,
+    };

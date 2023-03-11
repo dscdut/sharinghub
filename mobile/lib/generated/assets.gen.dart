@@ -30,24 +30,63 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_logout.png
+  AssetGenImage get icLogout =>
+      const AssetGenImage('assets/icons/ic_logout.png');
+
+  /// File path: assets/icons/ic_remove_user.png
+  AssetGenImage get icRemoveUser =>
+      const AssetGenImage('assets/icons/ic_remove_user.png');
+
   /// File path: assets/icons/ic_search.png
   AssetGenImage get icSearch =>
       const AssetGenImage('assets/icons/ic_search.png');
 
+  /// File path: assets/icons/ic_setting.png
+  AssetGenImage get icSetting =>
+      const AssetGenImage('assets/icons/ic_setting.png');
+
+  /// File path: assets/icons/ic_share.png
+  AssetGenImage get icShare => const AssetGenImage('assets/icons/ic_share.png');
+
+  /// File path: assets/icons/ic_star.png
+  AssetGenImage get icStar => const AssetGenImage('assets/icons/ic_star.png');
+
+  /// File path: assets/icons/ic_support.png
+  AssetGenImage get icSupport =>
+      const AssetGenImage('assets/icons/ic_support.png');
+
+  /// File path: assets/icons/ic_switch.png
+  AssetGenImage get icSwitch =>
+      const AssetGenImage('assets/icons/ic_switch.png');
+
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [icSearch];
+  List<AssetGenImage> get values => [
+        icLogout,
+        icRemoveUser,
+        icSearch,
+        icSetting,
+        icShare,
+        icStar,
+        icSupport,
+        icSwitch
+      ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/img_defaut_avatar.png
+  AssetGenImage get imgDefautAvatar =>
+      const AssetGenImage('assets/images/img_defaut_avatar.png');
+
   /// File path: assets/images/not_found.svg
   SvgGenImage get notFound => const SvgGenImage('assets/images/not_found.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [notFound];
+  List<dynamic> get values => [imgDefautAvatar, notFound];
 }
 
 class $AssetsLocalesGen {

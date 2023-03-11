@@ -120,7 +120,11 @@ class CodegenLoader extends AssetLoader{
     "ended": "Ended",
     "has_ended": "The campaign has ended",
     "artifact_type": "Artifact Types",
-    "obtained_results": "Obtained Results"
+    "obtained_results": "Obtained Results",
+    "image_uploaded": "The campaign image must be uploaded",
+    "volunteer": "Volunteer",
+    "complete": "Complete",
+    "volunteer_register": "Register Volunteer"
   },
   "profile": {
     "setting": "Setting",
@@ -128,7 +132,18 @@ class CodegenLoader extends AssetLoader{
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",
     "campaigns_done": "Campaigns done",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "profile": "Profile",
+    "pending": "Pending",
+    "ongoing": "Ongoing",
+    "feedback": " Feedbacks",
+    "preferences": "Preferences",
+    "about_us": "About us",
+    "logout": "Log out",
+    "share_this_app": "Share this app",
+    "help_center": "Help center",
+    "switch_account": "Switch account",
+    "delete_account": "Delete account"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -237,7 +252,11 @@ static const Map<String,dynamic> vi = {
     "ended": "Đã kết thúc",
     "has_ended": "Dự án đã kết thúc",
     "artifact_type": "Hiện vật cần quyên góp",
-    "obtained_results": "Kết quả thu được"
+    "obtained_results": "Kết quả thu được",
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "volunteer": "Tình nguyện viên",
+    "complete": "Hoàn thành",
+    "volunteer_register": "Đăng kí tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
@@ -245,7 +264,18 @@ static const Map<String,dynamic> vi = {
     "contact_info": "Thông tin liên hệ",
     "campaigns_doing": "Dự án đang thực hiện",
     "campaigns_done": "Dự án đã hoàn thành",
-    "reviews": "Đánh giá"
+    "reviews": "Đánh giá",
+    "profile": "Hồ sơ cá nhân",
+    "pending": "Chờ duyệt",
+    "ongoing": "Đang diễn ra",
+    "feedback": " Đánh giá",
+    "preferences": "Tùy chọn",
+    "about_us": "Về chúng tôi",
+    "logout": "Đăng xuất",
+    "share_this_app": "Chia sẻ ứng dụng",
+    "help_center": "Trung tâm trợ giúp",
+    "switch_account": "Đổi tài khoản",
+    "delete_account": "Xoá tài khoản"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

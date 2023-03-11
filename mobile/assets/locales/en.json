@@ -104,7 +104,11 @@
     "ended": "Ended",
     "has_ended": "The campaign has ended",
     "artifact_type": "Artifact Types",
-    "obtained_results": "Obtained Results"
+    "obtained_results": "Obtained Results",
+    "image_uploaded": "The campaign image must be uploaded",
+    "volunteer": "Volunteer",
+    "complete": "Complete",
+    "volunteer_register": "Register Volunteer"
   },
   "profile": {
     "setting": "Setting",
@@ -112,6 +116,17 @@
     "contact_info": "Contact information",
     "campaigns_doing": "Campaigns doing",
     "campaigns_done": "Campaigns done",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "profile": "Profile",
+    "pending": "Pending",
+    "ongoing": "Ongoing",
+    "feedback": " Feedbacks",
+    "preferences": "Preferences",
+    "about_us": "About us",
+    "logout": "Log out",
+    "share_this_app": "Share this app",
+    "help_center": "Help center",
+    "switch_account": "Switch account",
+    "delete_account": "Delete account"
   }
 }

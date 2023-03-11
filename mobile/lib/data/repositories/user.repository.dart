@@ -21,4 +21,8 @@ class UserRepository {
   Future<UserModel> getUserInfo() {
     return _dataSource.getUserInfo();
   }
+
+  Future<UserProfileModel> getUserProfile() {
+    return _dataSource.getUserProfile();
+  }
 }

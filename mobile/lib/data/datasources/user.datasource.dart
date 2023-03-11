@@ -23,6 +23,10 @@ class UserDataSource {
   }
 
   Future<UserModel> getUserInfo() async {
-    return UserMock.getUserInfo();
+    return await UserMock.getUserInfo();
+  }
+
+  Future<UserProfileModel> getUserProfile() async {
+    return UserMock.getUserProfile();
   }
 }
