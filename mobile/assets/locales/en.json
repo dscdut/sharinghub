@@ -28,7 +28,8 @@
     "confirm": "Confirm",
     "join": "Join",
     "finish": "Finish",
-    "update": "Update"
+    "update": "Update",
+    "create": "Create"
   },
   "root": {
     "map": "Map",
@@ -56,7 +57,9 @@
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
+    "organization_avatar_uploaded": "The organization avatar must be uploaded"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -72,6 +75,15 @@
     "sort_by": "Sort by: ",
     "newest": "Newest",
     "nearest": "Nearest"
+  },
+  "organization": {
+    "list_empty": "You don't have any organizations, let's try creating new one!",
+    "create": "Create a new organization",
+    "update": "Update organization info",
+    "phone_number": "Phone Number",
+    "address": "Address",
+    "description": "Description",
+    "management": "Organization Management"
   },
   "campaign": {
     "create": "Create new campaign",
@@ -110,7 +122,6 @@
     "ongoing": "Ongoing",
     "feedback": " Feedbacks",
     "preferences": "Preferences",
-    "setting": "Setting",
     "about_us": "About us",
     "logout": "Log out",
     "share_this_app": "Share this app",

@@ -3,7 +3,11 @@ import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/datasources/user.mock.dart';
 
 abstract class CampaignMock {
-  static CampaignModel setCampaign(SetCampaignDTO setCampaignParams) {
+  static Future<CampaignModel> setCampaign(
+    SetCampaignDTO setCampaignParams,
+  ) async {
+    await Future.delayed(const Duration(seconds: 2));
+
     return CampaignModel(
       organization: UserMock.getOrganization(),
       name: 'Giúp mọi người quay lại cuốc sống bình thường',
@@ -21,7 +25,9 @@ abstract class CampaignMock {
     );
   }
 
-  static List<CampaignModel> getCampains() {
+  static Future<List<CampaignModel>> getCampains() async {
+    await Future.delayed(const Duration(seconds: 3));
+
     return [
       CampaignModel(
         id: 0,

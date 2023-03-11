@@ -44,7 +44,8 @@ class CodegenLoader extends AssetLoader{
     "confirm": "Confirm",
     "join": "Join",
     "finish": "Finish",
-    "update": "Update"
+    "update": "Update",
+    "create": "Create"
   },
   "root": {
     "map": "Map",
@@ -72,7 +73,9 @@ class CodegenLoader extends AssetLoader{
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
+    "organization_avatar_uploaded": "The organization avatar must be uploaded"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -88,6 +91,15 @@ class CodegenLoader extends AssetLoader{
     "sort_by": "Sort by: ",
     "newest": "Newest",
     "nearest": "Nearest"
+  },
+  "organization": {
+    "list_empty": "You don't have any organizations, let's try creating new one!",
+    "create": "Create a new organization",
+    "update": "Update organization info",
+    "phone_number": "Phone Number",
+    "address": "Address",
+    "description": "Description",
+    "management": "Organization Management"
   },
   "campaign": {
     "create": "Create new campaign",
@@ -126,7 +138,6 @@ class CodegenLoader extends AssetLoader{
     "ongoing": "Ongoing",
     "feedback": " Feedbacks",
     "preferences": "Preferences",
-    "setting": "Setting",
     "about_us": "About us",
     "logout": "Log out",
     "share_this_app": "Share this app",
@@ -165,7 +176,8 @@ static const Map<String,dynamic> vi = {
     "confirm": "Xác nhận",
     "join": "Đăng ký tham gia",
     "finish": "Hoàn Thành",
-    "update": "Cập Nhật"
+    "update": "Cập Nhật",
+    "create": "Tạo"
   },
   "root": {
     "map": "Bản đồ",
@@ -193,7 +205,9 @@ static const Map<String,dynamic> vi = {
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
     "field_required": "Không được để trống",
-    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp",
+    "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -209,6 +223,15 @@ static const Map<String,dynamic> vi = {
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
     "nearest": "Gần nhất"
+  },
+  "organization": {
+    "list_empty": "Bạn chưa có tổ chức nào, hãy thử tạo một tổ chức!",
+    "create": "Tạo tổ chức",
+    "update": "Cập nhật thông tin tổ chức",
+    "phone_number": "Số điện thoại",
+    "address": "Địa chỉ",
+    "description": "Mô tả",
+    "management": "Quản lý tổ chức"
   },
   "campaign": {
     "create": "Tạo dự án",
@@ -247,7 +270,6 @@ static const Map<String,dynamic> vi = {
     "ongoing": "Đang diễn ra",
     "feedback": " Đánh giá",
     "preferences": "Tùy chọn",
-    "setting": "Cài đặt",
     "about_us": "Về chúng tôi",
     "logout": "Đăng xuất",
     "share_this_app": "Chia sẻ ứng dụng",

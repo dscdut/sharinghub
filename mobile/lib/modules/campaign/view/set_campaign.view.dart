@@ -10,15 +10,14 @@ import 'package:mobile/common/utils/dialog.util.dart';
 import 'package:mobile/common/utils/file.util.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
-import 'package:mobile/data/datasources/user.mock.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/campaign/bloc/campaign/set_campaign.bloc.dart';
-import 'package:mobile/modules/campaign/widgets/create_campaign/campaign_appbar.widget.dart';
-import 'package:mobile/modules/campaign/widgets/create_campaign/campaign_form.widget.dart';
+import 'package:mobile/modules/campaign/bloc/set/set_campaign.bloc.dart';
+import 'package:mobile/modules/campaign/widgets/set_campaign/campaign_appbar.widget.dart';
+import 'package:mobile/modules/campaign/widgets/set_campaign/campaign_form.widget.dart';
 import 'package:mobile/router/app_routes.dart';
 
 class SetCampaignPage extends StatelessWidget {
@@ -42,7 +41,10 @@ class SetCampaignPage extends StatelessWidget {
     );
   }
 
-  _listenCampaignStateChanged(BuildContext context, SetCampaignState state) {
+  void _listenCampaignStateChanged(
+    BuildContext context,
+    SetCampaignState state,
+  ) {
     DialogUtil.hideLoading(context);
 
     if (state.status == HandleStatus.error) {
@@ -63,18 +65,7 @@ class SetCampaignPage extends StatelessWidget {
           );
         },
         cancelButtonText: LocaleKeys.campaign_back_home.tr(),
-        cancelAction: () {
-          // Navigator.of(context).pushNamedAndRemoveUntil(
-          //   AppRoutes.root,
-          //   (route) => route.settings.name == AppRoutes.root,
-          // );
-
-          //TODO: test organization profile
-          Navigator.of(context).pushNamed(
-            AppRoutes.organizationProfile,
-            arguments: UserMock.getOrganizations()[0],
-          );
-        },
+        cancelAction: () {},
       );
     } else if (state.status == HandleStatus.loading) {
       DialogUtil.showLoading(context);
@@ -142,7 +133,7 @@ class _SetCampaignViewState extends State<_SetCampaignView> {
     _specificAddressController.text = setCampaign.specificAddress ?? '';
   }
 
-  void _submitCampaign(BuildContext context) async {
+  void _submitCampaign(BuildContext context) {
     context
         .read<SetCampaignBloc>()
         .add(SetCampaignFormValidate(setCampaign: setCampaign));

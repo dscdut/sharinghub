@@ -63,37 +63,36 @@ class _MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Map'),
-      ),
-      body: BlocBuilder<MapBloc, MapState>(
-        builder: (bcontext, state) {
-          return GoogleMap(
-            initialCameraPosition: const CameraPosition(
-              target: defaultLocation,
-              zoom: 5,
-            ),
-            onMapCreated: (gController) {
-              controller.complete(gController);
-            },
-            mapToolbarEnabled: false,
-            myLocationEnabled: true,
-            zoomControlsEnabled: false,
-            buildingsEnabled: false,
-            markers: state.markers
-                    ?.map(
-                      (e) => Marker(
-                        markerId: e.markerId,
-                        position: e.position,
-                        onTap: () {
-                          _onClickMarker(context, e.position);
-                        },
-                      ),
-                    )
-                    .toSet() ??
-                const {},
-          );
-        },
+      body: SafeArea(
+        child: BlocBuilder<MapBloc, MapState>(
+          builder: (bcontext, state) {
+            return GoogleMap(
+              initialCameraPosition: const CameraPosition(
+                target: defaultLocation,
+                zoom: 5,
+              ),
+              onMapCreated: (gController) {
+                controller.complete(gController);
+              },
+              mapToolbarEnabled: false,
+              myLocationEnabled: true,
+              zoomControlsEnabled: false,
+              buildingsEnabled: false,
+              markers: state.markers
+                      ?.map(
+                        (e) => Marker(
+                          markerId: e.markerId,
+                          position: e.position,
+                          onTap: () {
+                            _onClickMarker(context, e.position);
+                          },
+                        ),
+                      )
+                      .toSet() ??
+                  const {},
+            );
+          },
+        ),
       ),
     );
   }

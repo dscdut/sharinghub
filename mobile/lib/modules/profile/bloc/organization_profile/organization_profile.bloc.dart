@@ -1,18 +1,19 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
-import 'package:mobile/data/models/user.model.dart';
-import 'package:mobile/data/repositories/user.repository.dart';
+import 'package:mobile/data/models/organization.model.dart';
+import 'package:mobile/data/repositories/organization.repository.dart';
 
 part 'organization_profile.event.dart';
 part 'organization_profile.state.dart';
 
 class OrganizationProfileBloc
     extends Bloc<OrganizationProfileEvent, OrganizationProfileState> {
-  final UserRepository _userRepository;
+  final OrganizationRepository _organizationRepository;
+
   OrganizationProfileBloc({
-    required UserRepository userRepository,
-  })  : _userRepository = userRepository,
+    required OrganizationRepository organizationRepository,
+  })  : _organizationRepository = organizationRepository,
         super(const OrganizationProfileState()) {
     on<OrganizationProfileGet>(_onGetOrganizationProfile);
   }
@@ -24,8 +25,9 @@ class OrganizationProfileBloc
     emitter(state.copyWith(status: HandleStatus.loading));
 
     try {
-      final OrganizationModel organization =
-          await _userRepository.getOrganizationInfoById(event.organizationId);
+      final OrganizationModel organization = await _organizationRepository
+          .getOrganizationInfoById(event.organizationId);
+
       emitter(
         state.copyWith(
           status: HandleStatus.success,

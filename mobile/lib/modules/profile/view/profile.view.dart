@@ -58,7 +58,7 @@ class _ProfileView extends StatelessWidget {
                                     ),
                             ),
                             title: Text(
-                              state.user?.name ?? '',
+                              state.user?.fullName ?? '',
                               style: TextStyles.boldHeading20,
                             ),
                             subtitle: Text(
