@@ -3,6 +3,7 @@ import { SwaggerDocument } from 'packages/swagger';
 
 ApiDocument.addModel('CreateCampaignDto', {
     name: SwaggerDocument.ApiProperty({ type: 'string' }),
+    image: SwaggerDocument.ApiProperty({ type: 'string', required: false }),
     address: SwaggerDocument.ApiProperty({ type: 'string' }),
     specificAddress: SwaggerDocument.ApiProperty({
         type: 'string',
@@ -44,6 +45,7 @@ ApiDocument.addModel('CreateCampaignDto', {
 
 export const CreateCampaignDto = body => ({
     name: body.name,
+    image: body.image,
     address: body.address,
     specificAddress: body.specificAddress,
     coordinate: body.coordinate,

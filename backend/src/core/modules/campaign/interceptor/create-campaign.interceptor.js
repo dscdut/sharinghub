@@ -5,6 +5,7 @@ import { JoiUtils } from '../../../utils';
 export const CreateCampaignInterceptor = new DefaultValidatorInterceptor(
     Joi.object({
         name: JoiUtils.requiredString().min(1),
+        image: Joi.string().trim().min(1).optional(),
         address: JoiUtils.requiredString().min(1),
         specificAddress: Joi.string().trim().min(1).optional(),
         coordinate: Joi.object({
