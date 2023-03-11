@@ -26,6 +26,9 @@ jobs:
             ssh-keyscan github.com >> ~/.ssh/known_hosts
             git clone git@github.com:dscdut/sharinghub.git
       - run:
+          name: Setup user
+          command: git config --global user.name "kiemtran.dev" && git config --global user.email "kiemtran.dev@gmail.com" && git config --global --unset credential.helper
+      - run:
           name: Init git
           command: git init && git remote add origin https://github.com/dscdut/sharinghub.git && git fetch
       - run:
