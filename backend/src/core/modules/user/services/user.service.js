@@ -1,10 +1,10 @@
 import { BcryptService } from 'core/modules/auth';
 import { getTransaction } from 'core/database';
 import { UserRoleRepository } from 'core/modules/role/userRole.repository';
-import { joinUserRoles } from 'core/utils/userFilter';
 import { Optional } from '../../../utils';
 import { NotFoundException, DuplicateException, BadRequestException } from '../../../../packages/httpException';
 import { UserRepository } from '../user.repository';
+import { MESSAGE } from './message.enum';
 
 class Service {
     constructor() {
@@ -42,7 +42,31 @@ class Service {
             .throwIfNotPresent(new NotFoundException())
             .get();
 
-        return joinUserRoles(data);
+        return data;
+    }
+
+    async upsertOne(UpdateUserDto, id) {
+        const trx = await getTransaction();
+        const user = await this.repository.findById(id);
+        if (!user) {
+            throw new NotFoundException();
+        }
+
+        let data;
+        try {
+            data = await this.repository.updateUser(id, UpdateUserDto, trx);
+            console.log(data);
+        } catch (error) {
+            await trx.rollback();
+            this.logger.error(error.message);
+            return null;
+        }
+
+        trx.commit();
+        return {
+            message: MESSAGE.UPDATE_USER_SUCCESS,
+            id: data[0].id,
+        };
     }
 }
 
