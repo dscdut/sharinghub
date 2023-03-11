@@ -36,12 +36,13 @@ jobs:
           command: cd sharinghub/backend && npm run build
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
       - run: sudo apt-get update && sudo apt-get install -y rsync
+      - run: ssh SSH_USER@$SSH_HOST
       - run:
           name: send file to server
-          command: ls && sudo rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/sharinghub/backend/
+          command: ls && rsync -vr --delete --progress sharinghub/backend/dist $SSH_USER@$SSH_HOST:/home/kiemtran.dev/sharinghub/backend/
       - run:
           name: Access vm and restart server
-          command: ssh SSH_USER@$SSH_HOST && pm2 restart all
+          command: pm2 restart all
 
 # Define the workflows that will run in your pipeline
 workflows:
