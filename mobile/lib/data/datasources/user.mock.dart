@@ -48,6 +48,10 @@ abstract class UserMock {
       projectCompleted: 5,
       projectOnGoing: 6,
       fullName: 'Kieu Thanh Duc',
+      address: '54 Nguyễn Lương Bằng, Hoà Khánh, Liên Chiểu, Đà Nẵng',
+      birthDay: DateTime.now(),
+      gender: true,
+      phoneNumber: '0905123123',
     );
   }
 
