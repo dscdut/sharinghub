@@ -2,18 +2,20 @@ import { OrgRepositoryService } from './org-repository.service';
 import { JwtService } from '../../auth/service/jwt.service';
 import { MESSAGE } from './message.enum';
 import { ForbiddenException } from '../../../../packages/httpException';
-
+import { FileSystemService } from '../../document/service/file-system.service';
 class Service {
     constructor() {
         this.OrgRepositoryService = OrgRepositoryService;
         this.JwtService = JwtService;
+        this.FileSystemService = FileSystemService;
     }
 
-    async updateOrgTable(orgDto, user, orgId) {
+    async updateOrgTable(file, orgDto, user, orgId) {
         if (orgId && !user.organization_ids.includes(Number(orgId))) {
+            this.FileSystemService.deleteFile(file);
             throw new ForbiddenException('You don\'t have permission to edit this organization');
         }
-        const [{ id }] = await this.OrgRepositoryService.updateOrgTable({ ...orgDto, user_id: user.id, id: orgId });
+        const [{ id }] = await this.OrgRepositoryService.updateOrgTable(file, { ...orgDto, user_id: user.id, id: orgId });
 
         if (!user.organization_ids.includes(id)) {
             user.organization_ids.push(id);
