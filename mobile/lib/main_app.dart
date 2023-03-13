@@ -93,9 +93,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(
-        userRepository: getIt.get<UserRepository>(),
-      ),
+      create: (context) => AuthBloc(),
       child: GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();

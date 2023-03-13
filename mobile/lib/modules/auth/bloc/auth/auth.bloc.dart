@@ -4,17 +4,11 @@ import 'package:mobile/common/constants/hive_keys.dart';
 import 'package:mobile/common/helpers/hive/hive.helper.dart';
 import 'package:mobile/data/dtos/auth.dto.dart';
 import 'package:mobile/data/models/user.model.dart';
-import 'package:mobile/data/repositories/user.repository.dart';
 part 'auth.event.dart';
 part 'auth.state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final UserRepository _userRepository;
-
-  AuthBloc({
-    required UserRepository userRepository,
-  })  : _userRepository = userRepository,
-        super(const AuthState.unknown()) {
+  AuthBloc() : super(const AuthState.unknown()) {
     // on<AuthUserInfoSet>(_onUserInfoSet);
     on<AuthSetTokens>(_onSetTokens);
     on<AuthUserInfoChecked>(_onUserInfoChecked);
