@@ -34,7 +34,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         SubmitLoginDTO(email: event.email, password: event.password),
       );
 
-      _authBloc.add(AuthUserInfoSet(authResponse: loginResponse));
+      // _authBloc.add(AuthUserInfoSet(authResponse: loginResponse));
 
       // _authBloc.add(
       //   AuthSetUser(
@@ -45,15 +45,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       // log(loginRepsonse.toString());
 
-      // _authBloc.add(
-      //   AuthSetTokens(
-      //     refreshToken: RefreshTokenDTO(
-      //       accessToken: loginRepsonse.accessToken,
-      //       refreshToken: loginRepsonse.refreshToken,
-      //       expiresIn: loginRepsonse.expiresIn,
-      //     ),
-      //   ),
-      // );
+      _authBloc.add(
+        AuthSetTokens(
+          accessToken: AccessTokenDTO(
+            accessToken: loginResponse.accessToken,
+          ),
+        ),
+      );
       emitter(LoginSuccess());
     } on DioError catch (error) {
       emitter(

@@ -15,70 +15,68 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     required UserRepository userRepository,
   })  : _userRepository = userRepository,
         super(const AuthState.unknown()) {
-    on<AuthUserInfoSet>(_onUserInfoSet);
-    // on<AuthSetTokens>(_onSetTokens);
+    // on<AuthUserInfoSet>(_onUserInfoSet);
+    on<AuthSetTokens>(_onSetTokens);
     on<AuthUserInfoChecked>(_onUserInfoChecked);
   }
 
-  Future<void> _getUserInfo(
-    Emitter<AuthState> emitter,
-  ) async {
-    try {
-      final UserModel user = await _userRepository.getUserInfo();
-
-      emitter(AuthState.authenticated(user: user));
-    } catch (err) {
-      emitter(const AuthState.unauthenticated());
-    }
-  }
+  // Future<void> _getUserInfo(
+  //   Emitter<AuthState> emitter,
+  // ) async {
+  //   try {
+  //     emitter(const AuthState.authenticated());
+  //   } catch (err) {
+  //     emitter(const AuthState.unauthenticated());
+  //   }
+  // }
 
   Future<void> _onUserInfoChecked(
     AuthUserInfoChecked event,
     Emitter<AuthState> emitter,
   ) async {
-    final user = await HiveHelper.get(
+    final token = await HiveHelper.get(
       boxName: HiveKeys.authBox,
-      keyValue: HiveKeys.user,
+      keyValue: HiveKeys.accessToken,
     );
 
-    if (user == null) {
+    if (token == null) {
       emitter(const AuthState.unauthenticated());
     } else {
-      await _getUserInfo(emitter);
+      // await _getUserInfo(emitter);
+      emitter(const AuthState.authenticated());
     }
   }
 
-  Future<void> _onUserInfoSet(
-    AuthUserInfoSet event,
-    Emitter<AuthState> emitter,
-  ) async {
-    if (event.authResponse == null) {
-      emitter(const AuthState.unauthenticated());
-    } else {
-      await HiveHelper.putAll(
-        boxName: HiveKeys.authBox,
-        value: event.authResponse!.toJson(),
-      );
-
-      emitter(
-        AuthState.authenticated(
-          user: event.authResponse!.user,
-        ),
-      );
-    }
-  }
-
-  // Future<void> _onSetTokens(
-  //   AuthSetTokens event,
+  // Future<void> _onUserInfoSet(
+  //   AuthUserInfoSet event,
   //   Emitter<AuthState> emitter,
   // ) async {
-  //   if (event.refreshToken == null) {
-  //     await HiveHelper.clear(boxName: HiveKeys.authBox);
+  //   if (event.authResponse == null) {
+  //     emitter(const AuthState.unauthenticated());
   //   } else {
   //     await HiveHelper.putAll(
   //       boxName: HiveKeys.authBox,
-  //       value: event.refreshToken!.toLocalJson(),
+  //       value: event.authResponse!.toJson(),
+  //     );
+
+  //     emitter(
+  //       const AuthState.authenticated(),
   //     );
   //   }
   // }
+
+  Future<void> _onSetTokens(
+    AuthSetTokens event,
+    Emitter<AuthState> emitter,
+  ) async {
+    if (event.accessToken == null) {
+      await HiveHelper.clear(boxName: HiveKeys.authBox);
+    } else {
+      await HiveHelper.putAll(
+        boxName: HiveKeys.authBox,
+        value: event.accessToken!.toLocalJson(),
+      );
+      print("object");
+    }
+  }
 }

@@ -8,12 +8,12 @@ part of 'auth.dto.dart';
 
 AuthResponseDTO _$AuthResponseDTOFromJson(Map<String, dynamic> json) =>
     AuthResponseDTO(
-      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+      accessToken: json['accessToken'] as String,
     );
 
 Map<String, dynamic> _$AuthResponseDTOToJson(AuthResponseDTO instance) =>
     <String, dynamic>{
-      'user': instance.user.toJson(),
+      'accessToken': instance.accessToken,
     };
 
 Map<String, dynamic> _$SubmitLoginDTOToJson(SubmitLoginDTO instance) =>
@@ -38,3 +38,13 @@ Map<String, dynamic> _$SubmitRegisterDTOToJson(SubmitRegisterDTO instance) {
   val['password'] = instance.password;
   return val;
 }
+
+AccessTokenDTO _$AccessTokenDTOFromJson(Map<String, dynamic> json) =>
+    AccessTokenDTO(
+      accessToken: json['accessToken'] as String,
+    );
+
+Map<String, dynamic> _$AccessTokenDTOToJson(AccessTokenDTO instance) =>
+    <String, dynamic>{
+      'accessToken': instance.accessToken,
+    };
