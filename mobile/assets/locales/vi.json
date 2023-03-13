@@ -127,6 +127,8 @@
     "share_this_app": "Chia sẻ ứng dụng",
     "help_center": "Trung tâm trợ giúp",
     "switch_account": "Đổi tài khoản",
-    "delete_account": "Xoá tài khoản"
+    "delete_account": "Xoá tài khoản",
+    "gender_female": "Nữ",
+    "gender_male": "Nam"
   }
 }

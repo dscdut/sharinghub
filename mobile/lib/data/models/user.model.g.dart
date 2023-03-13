@@ -17,6 +17,10 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       phoneNumber: json['phone_number'] as String?,
       address: json['address'] as String?,
       avatar: json['avatar'] as String?,
+      projectPending: json['project_pending'] as int?,
+      projectCompleted: json['project_completed'] as int?,
+      projectOnGoing: json['project_on_going'] as int?,
+      school: json['school'] as String?,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -28,26 +32,8 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'phone_number': instance.phoneNumber,
       'address': instance.address,
       'avatar': instance.avatar,
-    };
-
-UserProfileModel _$UserProfileModelFromJson(Map<String, dynamic> json) =>
-    UserProfileModel(
-      id: json['id'] as int,
-      email: json['email'] as String,
-      avatarURL: json['avatarURL'] as String?,
-      projectPending: json['projectPending'] as int,
-      projectCompleted: json['projectCompleted'] as int,
-      projectOnGoing: json['projectOnGoing'] as int,
-      fullName: json['fullName'] as String,
-    );
-
-Map<String, dynamic> _$UserProfileModelToJson(UserProfileModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'fullName': instance.fullName,
-      'email': instance.email,
-      'avatarURL': instance.avatarURL,
-      'projectPending': instance.projectPending,
-      'projectCompleted': instance.projectCompleted,
-      'projectOnGoing': instance.projectOnGoing,
+      'project_pending': instance.projectPending,
+      'project_completed': instance.projectCompleted,
+      'project_on_going': instance.projectOnGoing,
+      'school': instance.school,
     };

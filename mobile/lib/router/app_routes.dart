@@ -9,6 +9,7 @@ import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/view/explore.view.dart';
 import 'package:mobile/modules/management/view/set_organization.view.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
@@ -19,6 +20,7 @@ abstract class AppRoutes {
 
   //Profile
   static const String organizationProfile = '/organizationProfile';
+  static const String userProfile = '/userProfile';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -102,6 +104,12 @@ abstract class AppRoutes {
             return OrganizationProfilePage(
               organization: settings.arguments as OrganizationModel,
             );
+          },
+        );
+      case userProfile:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const UserProfilePage();
           },
         );
       case setCampaign:
