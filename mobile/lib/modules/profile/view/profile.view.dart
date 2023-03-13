@@ -55,12 +55,12 @@ class _ProfileView extends StatelessWidget {
                             },
                             leading: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
-                              child: state.user?.avatarURL == null
+                              child: state.user?.avatar == null
                                   ? Assets.images.imgDefautAvatar.image(
                                       height: double.infinity,
                                     )
                                   : Image.network(
-                                      state.user!.avatarURL!,
+                                      state.user!.avatar!,
                                       height: double.infinity,
                                     ),
                             ),

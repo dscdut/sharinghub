@@ -124,7 +124,9 @@ class CodegenLoader extends AssetLoader{
     "image_uploaded": "The campaign image must be uploaded",
     "volunteer": "Volunteer",
     "complete": "Complete",
-    "volunteer_register": "Register Volunteer"
+    "volunteer_register": "Register Volunteer",
+    "female": "Nữ",
+    "male": "Nam"
   },
   "profile": {
     "setting": "Setting",
@@ -143,7 +145,9 @@ class CodegenLoader extends AssetLoader{
     "share_this_app": "Share this app",
     "help_center": "Help center",
     "switch_account": "Switch account",
-    "delete_account": "Delete account"
+    "delete_account": "Delete account",
+    "gender_female": "Female",
+    "gender_male": "Male"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -256,7 +260,9 @@ static const Map<String,dynamic> vi = {
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "volunteer": "Tình nguyện viên",
     "complete": "Hoàn thành",
-    "volunteer_register": "Đăng kí tình nguyện viên"
+    "volunteer_register": "Đăng kí tình nguyện viên",
+    "female": "Nữ",
+    "male": "Nam"
   },
   "profile": {
     "setting": "Cài đặt",
@@ -275,7 +281,9 @@ static const Map<String,dynamic> vi = {
     "share_this_app": "Chia sẻ ứng dụng",
     "help_center": "Trung tâm trợ giúp",
     "switch_account": "Đổi tài khoản",
-    "delete_account": "Xoá tài khoản"
+    "delete_account": "Xoá tài khoản",
+    "gender_female": "Nữ",
+    "gender_male": "Nam"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

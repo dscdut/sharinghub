@@ -22,7 +22,7 @@ class UserRepository {
     return _dataSource.getUserInfo();
   }
 
-  Future<UserProfileModel> getUserProfile() {
+  Future<UserModel> getUserProfile() {
     return _dataSource.getUserProfile();
   }
 }

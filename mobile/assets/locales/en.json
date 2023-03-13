@@ -127,6 +127,8 @@
     "share_this_app": "Share this app",
     "help_center": "Help center",
     "switch_account": "Switch account",
-    "delete_account": "Delete account"
+    "delete_account": "Delete account",
+    "gender_female": "Female",
+    "gender_male": "Male"
   }
 }

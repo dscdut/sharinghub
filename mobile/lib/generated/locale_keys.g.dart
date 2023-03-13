@@ -120,6 +120,8 @@ abstract class  LocaleKeys {
   static const profile_help_center = 'profile.help_center';
   static const profile_switch_account = 'profile.switch_account';
   static const profile_delete_account = 'profile.delete_account';
+  static const profile_gender_female = 'profile.gender_female';
+  static const profile_gender_male = 'profile.gender_male';
   static const profile = 'profile';
 
 }

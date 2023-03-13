@@ -1,7 +1,7 @@
 part of 'profile.bloc.dart';
 
 class ProfileState extends Equatable {
-  final UserProfileModel? user;
+  final UserModel? user;
   final HandleStatus status;
 
   const ProfileState.initial()
@@ -19,6 +19,6 @@ class ProfileState extends Equatable {
 
 class ProfileStateSucess extends ProfileState {
   const ProfileStateSucess({
-    required UserProfileModel user,
+    required UserModel user,
   }) : super(user: user, status: HandleStatus.success);
 }
