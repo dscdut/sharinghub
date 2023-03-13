@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
-import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
 import 'package:hive_flutter/hive_flutter.dart';

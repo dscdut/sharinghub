@@ -70,7 +70,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         boxName: HiveKeys.authBox,
         value: event.accessToken!.toLocalJson(),
       );
-      print("object");
     }
   }
 }
