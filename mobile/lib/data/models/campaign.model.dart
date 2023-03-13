@@ -2,8 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
+import 'package:mobile/data/models/organization.model.dart';
 
-import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
 part 'campaign.model.g.dart';

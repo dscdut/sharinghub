@@ -37,7 +37,7 @@ class RegisterForm extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AuthTextFormField(
-              validator: ValidatorUtil.validateName,
+              validator: ValidatorUtil.validateRequiredField,
               textController: nameEditingController,
               hintText: isPersonal
                   ? LocaleKeys.texts_full_name.tr()
@@ -48,7 +48,7 @@ class RegisterForm extends StatelessWidget {
                 children: [
                   const SizedBox(height: 15),
                   AuthTextFormField(
-                    validator: ValidatorUtil.validateName,
+                    validator: ValidatorUtil.validateRequiredField,
                     textController: representativeNameEditingController,
                     hintText: LocaleKeys.texts_representative_name.tr(),
                   )

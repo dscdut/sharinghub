@@ -23,7 +23,7 @@ abstract class ValidatorUtil {
     return null;
   }
 
-  static String? validateName(String? value) {
+  static String? validateRequiredField(String? value) {
     if (value == null || value.isEmpty) {
       return LocaleKeys.validator_field_required.tr();
     }

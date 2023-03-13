@@ -29,6 +29,7 @@ abstract class  LocaleKeys {
   static const button_join = 'button.join';
   static const button_finish = 'button.finish';
   static const button_update = 'button.update';
+  static const button_create = 'button.create';
   static const button = 'button';
   static const root_map = 'root.map';
   static const root_explore = 'root.explore';
@@ -54,6 +55,8 @@ abstract class  LocaleKeys {
   static const validator_invalid_password = 'validator.invalid_password';
   static const validator_field_required = 'validator.field_required';
   static const validator_not_match_password = 'validator.not_match_password';
+  static const validator_campaign_avatar_uploaded = 'validator.campaign_avatar_uploaded';
+  static const validator_organization_avatar_uploaded = 'validator.organization_avatar_uploaded';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';
@@ -68,6 +71,14 @@ abstract class  LocaleKeys {
   static const home_newest = 'home.newest';
   static const home_nearest = 'home.nearest';
   static const home = 'home';
+  static const organization_list_empty = 'organization.list_empty';
+  static const organization_create = 'organization.create';
+  static const organization_update = 'organization.update';
+  static const organization_phone_number = 'organization.phone_number';
+  static const organization_address = 'organization.address';
+  static const organization_description = 'organization.description';
+  static const organization_management = 'organization.management';
+  static const organization = 'organization';
   static const campaign_create = 'campaign.create';
   static const campaign_update = 'campaign.update';
   static const campaign_create_success = 'campaign.create_success';
@@ -88,6 +99,9 @@ abstract class  LocaleKeys {
   static const campaign_artifact_type = 'campaign.artifact_type';
   static const campaign_obtained_results = 'campaign.obtained_results';
   static const campaign_image_uploaded = 'campaign.image_uploaded';
+  static const campaign_volunteer = 'campaign.volunteer';
+  static const campaign_complete = 'campaign.complete';
+  static const campaign_volunteer_register = 'campaign.volunteer_register';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
   static const profile_rate = 'profile.rate';
@@ -95,6 +109,19 @@ abstract class  LocaleKeys {
   static const profile_campaigns_doing = 'profile.campaigns_doing';
   static const profile_campaigns_done = 'profile.campaigns_done';
   static const profile_reviews = 'profile.reviews';
+  static const profile_profile = 'profile.profile';
+  static const profile_pending = 'profile.pending';
+  static const profile_ongoing = 'profile.ongoing';
+  static const profile_feedback = 'profile.feedback';
+  static const profile_preferences = 'profile.preferences';
+  static const profile_about_us = 'profile.about_us';
+  static const profile_logout = 'profile.logout';
+  static const profile_share_this_app = 'profile.share_this_app';
+  static const profile_help_center = 'profile.help_center';
+  static const profile_switch_account = 'profile.switch_account';
+  static const profile_delete_account = 'profile.delete_account';
+  static const profile_gender_female = 'profile.gender_female';
+  static const profile_gender_male = 'profile.gender_male';
   static const profile = 'profile';
 
 }

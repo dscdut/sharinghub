@@ -47,6 +47,7 @@ abstract class ImageUtil {
     required File imageFile,
     double? width,
     double? height,
+    CropStyle cropStyle = CropStyle.rectangle,
   }) async {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: imageFile.path,
@@ -56,6 +57,7 @@ abstract class ImageUtil {
       aspectRatioPresets: [
         CropAspectRatioPreset.square,
       ],
+      cropStyle: cropStyle,
       uiSettings: [
         AndroidUiSettings(
           toolbarColor: Colors.black,
@@ -90,11 +92,17 @@ abstract class ImageUtil {
     ImageSource source, {
     double? width,
     double? height,
+    CropStyle cropStyle = CropStyle.rectangle,
   }) async {
     final File? pickedImage = await pickImage(source);
 
     return pickedImage == null
         ? null
-        : await cropImage(imageFile: pickedImage, width: width, height: height);
+        : await cropImage(
+            imageFile: pickedImage,
+            width: width,
+            height: height,
+            cropStyle: cropStyle,
+          );
   }
 }

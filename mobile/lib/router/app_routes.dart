@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/data/models/campaign.model.dart';
-import 'package:mobile/data/models/user.model.dart';
+import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
+import 'package:mobile/modules/campaign/view/campaign_register.view.dart';
 import 'package:mobile/modules/campaign/view/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/view/explore.view.dart';
+import 'package:mobile/modules/management/view/set_organization.view.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
@@ -17,9 +20,11 @@ abstract class AppRoutes {
 
   //Profile
   static const String organizationProfile = '/organizationProfile';
+  static const String userProfile = '/userProfile';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
+  static const String campaignRegister = '/campaignRegister';
   static const String campaignDetail = '/campaignDetail';
   static const String locationSearch = '/locationSearch';
 
@@ -29,6 +34,9 @@ abstract class AppRoutes {
 
   // Root
   static const String root = '/root';
+
+  // Organization
+  static const String setOrganization = '/setOrganization';
 
   // static final router = GoRouter(
   //   routes: [
@@ -98,6 +106,12 @@ abstract class AppRoutes {
             );
           },
         );
+      case userProfile:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const UserProfilePage();
+          },
+        );
       case setCampaign:
         final CampaignModel? campaign = settings.arguments as CampaignModel?;
 
@@ -105,6 +119,15 @@ abstract class AppRoutes {
           builder: (_) {
             return SetCampaignPage(
               campaign: campaign,
+            );
+          },
+        );
+
+      case campaignRegister:
+        return MaterialPageRoute(
+          builder: (_) {
+            return CampaignRegisterFormPage(
+              formLink: settings.arguments as String,
             );
           },
         );
@@ -132,6 +155,12 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) {
             return const RootPage();
+          },
+        );
+      case setOrganization:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const SetOrganizationPage();
           },
         );
       default:

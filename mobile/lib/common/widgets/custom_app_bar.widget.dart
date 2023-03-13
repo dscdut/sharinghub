@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
+import 'package:mobile/common/widgets/app_back_button.widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isCenterTitle;
+  final bool automaticallyImplyLeading;
 
   final Color backgroundColor;
+  final Color titleColor;
 
   final double toolbarHeight;
   final double titleSpacing;
@@ -21,7 +24,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     this.isCenterTitle = true,
-    this.backgroundColor = ColorStyles.blue400,
+    this.automaticallyImplyLeading = true,
+    this.backgroundColor = ColorStyles.blue500,
+    this.titleColor = Colors.white,
     this.toolbarHeight = 60,
     this.titleSpacing = 15,
     this.elevation = 0,
@@ -43,7 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       title: Text(
         title,
-        style: TextStyles.s14BoldText.copyWith(color: Colors.white),
+        style: TextStyles.boldText.copyWith(color: titleColor, fontSize: 16),
       ),
       bottom: bottom != null
           ? PreferredSize(
@@ -52,9 +57,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : null,
       actions: actions,
-      leading: const BackButton(
-        color: Colors.white,
-      ),
+      leading: (automaticallyImplyLeading && Navigator.of(context).canPop())
+          ? AppBackButton(
+              iconColor: titleColor,
+            )
+          : null,
     );
   }
 

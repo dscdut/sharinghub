@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/widgets/app_read_more_text.widget.dart';
-import 'package:mobile/data/models/user.model.dart';
+import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/campaign/widgets/campaign_detail/info_card.widget.dart';
 
