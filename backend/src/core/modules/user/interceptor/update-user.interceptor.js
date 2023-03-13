@@ -11,5 +11,6 @@ export const UpdateUserInterceptor = new DefaultValidatorInterceptor(
         phoneNumber: JoiUtils.phoneNumber(),
         address: Joi.string().trim(),
         avatar: Joi.string().trim(),
+        workplace: Joi.string().trim(),
     })
 );

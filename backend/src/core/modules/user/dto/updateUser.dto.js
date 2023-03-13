@@ -9,6 +9,7 @@ ApiDocument.addModel('UpdateUserDto', {
     gender: SwaggerDocument.ApiProperty({ type: 'boolean', required: false }),
     phoneNumber: SwaggerDocument.ApiProperty({ type: 'string', required: false }),
     address: SwaggerDocument.ApiProperty({ type: 'string', required: false }),
+    workplace: SwaggerDocument.ApiProperty({ type: 'string', required: false }),
 });
 
 export const UpdateUserDto = body => ({
@@ -19,4 +20,5 @@ export const UpdateUserDto = body => ({
     gender: body.gender,
     phone_number: body.phoneNumber,
     address: body.address,
+    workplace: body.workplace,
 });
