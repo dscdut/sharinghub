@@ -5,11 +5,12 @@ import 'package:mobile/data/models/user.model.dart';
 abstract class UserMock {
   static AuthResponseDTO loginByEmail() {
     return AuthResponseDTO(
-      user: UserModel(
-        id: 100,
-        email: 'beobiebom@gmail.com',
-        fullName: 'Duc Nguyen',
-      ),
+      // user: UserModel(
+      //   id: 100,
+      //   email: 'beobiebom@gmail.com',
+      //   fullName: 'Duc Nguyen',
+      // ),
+      accessToken: 'access_token_demo',
     );
   }
 
