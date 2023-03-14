@@ -43,7 +43,7 @@ class SetOrganizationForm extends StatelessWidget {
               return ShowOrPickImage(
                 width: context.width / 3,
                 height: context.width / 3,
-                setCampaignImage: (File value) {},
+                setImage: (File value) {},
                 cropStyle: CropStyle.circle,
                 borderRadius: context.width / 3,
                 error: state.avatarError,

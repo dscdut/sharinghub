@@ -74,7 +74,7 @@ class CampaignForm extends StatelessWidget {
           BlocBuilder<SetCampaignBloc, SetCampaignState>(
             builder: (context, state) {
               return ShowOrPickImage(
-                setCampaignImage: setCampaignImage,
+                setImage: setCampaignImage,
                 imagePath: imagePath,
                 width: context.width - 2 * AppSize.horizontalSpace,
                 height: (context.width - 2 * AppSize.horizontalSpace) *

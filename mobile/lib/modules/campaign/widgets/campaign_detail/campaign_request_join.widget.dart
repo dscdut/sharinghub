@@ -50,7 +50,7 @@ class CampaignRequestJoin extends StatelessWidget {
             },
             backgroundColor: ColorStyles.primary1,
             // isLoading: state.status == CampaignDetailStatus.joinLoading,
-            content: 'Donate',
+            content: LocaleKeys.button_donate.tr(),
           ),
         )
       ],

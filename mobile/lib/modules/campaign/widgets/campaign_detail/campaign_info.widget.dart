@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
-import 'package:mobile/modules/campaign/widgets/campaign_detail/campaing_request_join.widget.dart';
+import 'package:mobile/modules/campaign/widgets/campaign_detail/campaign_feedback_button.widget.dart';
+import 'package:mobile/modules/campaign/widgets/campaign_detail/campaign_request_join.widget.dart';
 import 'package:mobile/modules/campaign/widgets/campaign_detail/campaign_detail_info.widget.dart';
-import 'package:mobile/modules/campaign/widgets/campaign_detail/campaign_ended_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/campaign_detail/image_and_description.widget.dart';
 import 'package:mobile/modules/campaign/widgets/campaign_detail/organization_info.widget.dart';
 
@@ -48,7 +48,8 @@ class CampaignInfo extends StatelessWidget {
                     );
                   },
                 )
-              : const CampaignEndedInfo()
+              : CampaignFeedbackButton(campaign: campaign),
+          // const CampaignEndedInfo()
         ],
       ),
     );

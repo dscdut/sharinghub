@@ -74,7 +74,9 @@ class _CampaignDetailView extends StatelessWidget {
               CampaignDetailStatus.initial: (_) => const SizedBox(),
             },
             fallbackBuilder: (_) {
-              return CampaignInfo(campaign: state.campaignModel!);
+              return CampaignInfo(
+                campaign: state.campaignModel!,
+              );
             },
           );
         },

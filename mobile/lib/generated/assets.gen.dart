@@ -30,6 +30,9 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_chat.png
+  AssetGenImage get icChat => const AssetGenImage('assets/icons/ic_chat.png');
+
   /// File path: assets/icons/ic_logout.png
   AssetGenImage get icLogout =>
       const AssetGenImage('assets/icons/ic_logout.png');
@@ -64,6 +67,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        icChat,
         icLogout,
         icRemoveUser,
         icSearch,
