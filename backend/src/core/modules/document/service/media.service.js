@@ -17,7 +17,7 @@ class Service {
         } catch (error) {
             throw new InternalServerException(error.message);
         } finally {
-            FileSystemService.deleteFile(file);
+            await FileSystemService.deleteFile(file);
         }
     }
 
