@@ -5,13 +5,39 @@ class Repository extends DataRepository {
         return this.query()
             .whereNull('campaigns.deleted_at')
             .where('campaigns.id', '=', id)
-            .first();
+            .join('organizations', 'campaigns.organization_id', 'organizations.id')
+            .first([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.image',
+                'campaigns.description',
+                'campaigns.address',
+                'campaigns.specificAddress',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                { registerLink: 'campaigns.register_link' },
+                { donationRequirement: 'campaigns.donation_requirement' },
+                'campaigns.coordinate',
+                { organizationName: 'organizations.name' }
+            ]);
     }
 
     findAllByOrgId(organization_id) {
         return this.query()
             .whereNull('campaigns.deleted_at')
-            .where('campaigns.organization_id', '=', organization_id);
+            .where('campaigns.organization_id', '=', organization_id)
+            .select([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.image',
+                'campaigns.description',
+                'campaigns.address',
+                'campaigns.specificAddress',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                { donationRequirement: 'campaigns.donation_requirement' },
+                'campaigns.coordinate',
+            ])
     }
 
     findOneByOrgIdAndCampaignId(organization_id, campaign_id) {
@@ -19,7 +45,19 @@ class Repository extends DataRepository {
             .whereNull('campaigns.deleted_at')
             .where('campaigns.id', '=', campaign_id)
             .where('campaigns.organization_id', '=', organization_id)
-            .first();
+            .first([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.image',
+                'campaigns.description',
+                'campaigns.address',
+                'campaigns.specificAddress',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                { registerLink: 'campaigns.register_link' },
+                { donationRequirement: 'campaigns.donation_requirement' },
+                'campaigns.coordinate',
+            ]);
     }
 
     findByName(name) {
@@ -57,12 +95,15 @@ class Repository extends DataRepository {
             .select([
                 'campaigns.id',
                 'campaigns.name',
-                'campaigns.specificAddress',
-                'campaigns.start_date',
-                'campaigns.end_date',
+                'campaigns.image',
                 'campaigns.description',
+                'campaigns.address',
+                'campaigns.specificAddress',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
                 'campaigns.coordinate',
-                'organizations.name as organization_name'
+                { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationName: 'organizations.name' }
             ]);
     }
 
@@ -75,12 +116,15 @@ class Repository extends DataRepository {
             .select([
                 'campaigns.id',
                 'campaigns.name',
-                'campaigns.specificAddress',
-                'campaigns.start_date',
-                'campaigns.end_date',
+                'campaigns.image',
                 'campaigns.description',
+                'campaigns.address',
+                'campaigns.specificAddress',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
                 'campaigns.coordinate',
-                'organizations.name as organization_name'
+                { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationName: 'organizations.name' }
             ]);
     }
 }
