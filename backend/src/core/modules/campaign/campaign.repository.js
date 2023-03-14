@@ -84,7 +84,7 @@ class Repository extends DataRepository {
                 'organizations.name as organization_name'
             ]);
     }
-    
+
     findVoluntaryCampaignsByUserId(id) {
         return this.query()
             .whereNull('campaigns.deleted_at')
@@ -96,13 +96,12 @@ class Repository extends DataRepository {
             .select(
                 'campaigns.id',
                 'campaigns.name',
-                'campaigns.description',
-                'campaigns.start_date',
-                'campaigns.end_date',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
                 'campaigns.specificAddress',
                 'campaigns.image',
                 'users_campaigns.role',
-                'organizations.name as organization_name',
+                { organizationName: 'organizations.name' },
             );
     }
 }
