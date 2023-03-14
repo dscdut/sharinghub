@@ -97,6 +97,7 @@ class Repository extends DataRepository {
                 'campaigns.name',
                 { startDate: 'campaigns.start_date' },
                 { endDate: 'campaigns.end_date' },
+                'campaigns.address',
                 'campaigns.specificAddress',
                 'campaigns.image',
                 'users_campaigns.role',
