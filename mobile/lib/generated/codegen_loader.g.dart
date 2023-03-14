@@ -37,7 +37,7 @@ class CodegenLoader extends AssetLoader{
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Tìm kiếm địa điểm"
+    "location_search": "Location Search"
   },
   "button": {
     "cancel": "Cancel",
@@ -64,7 +64,8 @@ class CodegenLoader extends AssetLoader{
     "forgot_password": "Forgot password?",
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
-    "have_not_account": "Don't have an account?"
+    "have_not_account": "Don't have an account?",
+    "registration_successful": "Registration Successful"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -124,9 +125,7 @@ class CodegenLoader extends AssetLoader{
     "image_uploaded": "The campaign image must be uploaded",
     "volunteer": "Volunteer",
     "complete": "Complete",
-    "volunteer_register": "Register Volunteer",
-    "female": "Nữ",
-    "male": "Nam"
+    "volunteer_register": "Register Volunteer"
   },
   "profile": {
     "setting": "Setting",
@@ -173,7 +172,7 @@ static const Map<String,dynamic> vi = {
     "galerry": "Thư viện",
     "camera": "Camera",
     "upload_photo": "Tải ảnh lên",
-    "location_search": "Location Search"
+    "location_search": "Tìm kiếm địa điểm"
   },
   "button": {
     "cancel": "Hủy",
@@ -200,7 +199,8 @@ static const Map<String,dynamic> vi = {
     "forgot_password": "Quên mật khẩu?",
     "confirm_password": "Xác nhận mật khẩu",
     "already_have_account": "Đã có tài khoản?",
-    "have_not_account": "Chưa có tài khoản?"
+    "have_not_account": "Chưa có tài khoản?",
+    "registration_successful": "Đăng ký tài khoản thành công"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -260,9 +260,7 @@ static const Map<String,dynamic> vi = {
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "volunteer": "Tình nguyện viên",
     "complete": "Hoàn thành",
-    "volunteer_register": "Đăng kí tình nguyện viên",
-    "female": "Nữ",
-    "male": "Nam"
+    "volunteer_register": "Đăng kí tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",

@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:mobile/data/datasources/organization.datasource.dart';
+import 'package:mobile/data/datasources/remote/organization.datasource.dart';
 import 'package:mobile/data/dtos/set_organization.dto.dart';
 import 'package:mobile/data/models/organization.model.dart';
 

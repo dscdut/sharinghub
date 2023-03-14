@@ -89,13 +89,9 @@ abstract class AppRoutes {
           },
         );
       case register:
-        final bool isPersonal = settings.arguments as bool;
-
         return MaterialPageRoute(
           builder: (_) {
-            return RegisterPage(
-              isPersonal: isPersonal,
-            );
+            return const RegisterPage();
           },
         );
       case organizationProfile:

@@ -4,26 +4,21 @@ import 'package:mobile/common/constants/hive_keys.dart';
 part 'auth.dto.g.dart';
 
 @JsonSerializable(
-  explicitToJson: true,
+  createToJson: false,
 )
-class AuthResponseDTO {
-  // final UserModel user;
-  @JsonKey(name: 'accessToken')
+class LoginResponseDTO {
   final String accessToken;
   // final String refreshToken;
   // final String expiresIn;
 
-  AuthResponseDTO({
-    // required this.user,
+  LoginResponseDTO({
     required this.accessToken,
     // required this.refreshToken,
     // required this.expiresIn,
   });
 
-  factory AuthResponseDTO.fromJson(Map<String, dynamic> json) =>
-      _$AuthResponseDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AuthResponseDTOToJson(this);
+  factory LoginResponseDTO.fromJson(Map<String, dynamic> json) =>
+      _$LoginResponseDTOFromJson(json);
 }
 
 @JsonSerializable(createFactory: false)
@@ -41,33 +36,33 @@ class SubmitLoginDTO {
 
 @JsonSerializable(createFactory: false, includeIfNull: false)
 class SubmitRegisterDTO {
-  final String name;
-  final String? representativeName;
+  final String fullName;
   final String email;
   final String password;
+  final String confirmPassword;
 
   SubmitRegisterDTO({
-    required this.name,
-    this.representativeName,
+    required this.fullName,
     required this.email,
     required this.password,
+    required this.confirmPassword,
   });
 
   Map<String, dynamic> toJson() => _$SubmitRegisterDTOToJson(this);
 }
 
-@JsonSerializable()
-class AccessTokenDTO {
+@JsonSerializable(
+  createToJson: false,
+)
+class TokenDTO {
   final String accessToken;
 
-  AccessTokenDTO({
+  TokenDTO({
     required this.accessToken,
   });
 
-  factory AccessTokenDTO.fromJson(Map<String, dynamic> json) =>
-      _$AccessTokenDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AccessTokenDTOToJson(this);
+  factory TokenDTO.fromJson(Map<String, dynamic> json) =>
+      _$TokenDTOFromJson(json);
 
   Map<String, String> toLocalJson() {
     return {

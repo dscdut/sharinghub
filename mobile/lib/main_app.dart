@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -92,7 +93,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthBloc(),
+      create: (context) => AuthBloc(
+        userRepository: getIt.get<UserRepository>(),
+      ),
       child: GestureDetector(
         onTap: () {
           FocusManager.instance.primaryFocus?.unfocus();
@@ -144,9 +147,9 @@ Future<void> initializeApp() async {
   await EasyLocalization.ensureInitialized();
   EasyLocalization.logger.enableBuildModes = [];
 
-  configureDependencies();
-
   await Hive.initFlutter();
+
+  await configureDependencies();
 
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
