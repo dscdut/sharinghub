@@ -16,29 +16,21 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     required UserRepository userRepository,
   })  : _userRepository = userRepository,
         super(const RegisterState()) {
-    on<RegisterSubmit>(_onRegisterSubmit);
+    on<RegisterSubmit>(_onSubmitRegister);
   }
 
-  Future<void> _onRegisterSubmit(
+  Future<void> _onSubmitRegister(
     RegisterSubmit event,
     Emitter<RegisterState> emitter,
   ) async {
     emitter(state.copyWith(status: HandleStatus.loading));
 
     try {
-      bool result = await _userRepository.registerByEmail(
-        SubmitRegisterDTO(
-          name: event.name,
-          representativeName: event.representativeName,
-          email: event.email,
-          password: event.password,
-        ),
+      await _userRepository.registerByEmail(
+        event.submitRegister,
       );
-      if (result) {
-        emitter(state.copyWith(status: HandleStatus.success));
-      } else {
-        emitter(state.copyWith(status: HandleStatus.error));
-      }
+
+      emitter(state.copyWith(status: HandleStatus.success));
     } catch (_) {
       emitter(
         state.copyWith(

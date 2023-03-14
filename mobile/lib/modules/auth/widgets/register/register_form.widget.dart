@@ -7,22 +7,17 @@ import 'package:mobile/modules/auth/bloc/register/register.bloc.dart';
 import 'package:mobile/modules/auth/widgets/auth_text_form_field.widget.dart';
 
 class RegisterForm extends StatelessWidget {
-  final bool isPersonal;
-
   final GlobalKey<FormState> formKey;
 
   final TextEditingController nameEditingController;
-  final TextEditingController representativeNameEditingController;
   final TextEditingController emailEditingController;
   final TextEditingController passwordEditingController;
   final TextEditingController confirmPasswordEditingController;
 
   const RegisterForm({
     super.key,
-    required this.isPersonal,
     required this.formKey,
     required this.nameEditingController,
-    required this.representativeNameEditingController,
     required this.emailEditingController,
     required this.passwordEditingController,
     required this.confirmPasswordEditingController,
@@ -39,21 +34,8 @@ class RegisterForm extends StatelessWidget {
             AuthTextFormField(
               validator: ValidatorUtil.validateRequiredField,
               textController: nameEditingController,
-              hintText: isPersonal
-                  ? LocaleKeys.texts_full_name.tr()
-                  : LocaleKeys.texts_organization_name.tr(),
+              hintText: LocaleKeys.texts_full_name.tr(),
             ),
-            if (!isPersonal)
-              Column(
-                children: [
-                  const SizedBox(height: 15),
-                  AuthTextFormField(
-                    validator: ValidatorUtil.validateRequiredField,
-                    textController: representativeNameEditingController,
-                    hintText: LocaleKeys.texts_representative_name.tr(),
-                  )
-                ],
-              ),
             const SizedBox(height: 15),
             AuthTextFormField(
               validator: ValidatorUtil.validateEmail,
@@ -77,7 +59,7 @@ class RegisterForm extends StatelessWidget {
                 );
               },
               textController: confirmPasswordEditingController,
-              hintText: LocaleKeys.validator_not_match_password.tr(),
+              hintText: LocaleKeys.auth_confirm_password.tr(),
               isPasswordField: true,
             ),
           ],

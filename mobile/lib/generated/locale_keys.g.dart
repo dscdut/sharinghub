@@ -47,6 +47,7 @@ abstract class  LocaleKeys {
   static const auth_confirm_password = 'auth.confirm_password';
   static const auth_already_have_account = 'auth.already_have_account';
   static const auth_have_not_account = 'auth.have_not_account';
+  static const auth_registration_successful = 'auth.registration_successful';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';

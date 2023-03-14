@@ -21,7 +21,7 @@
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Tìm kiếm địa điểm"
+    "location_search": "Location Search"
   },
   "button": {
     "cancel": "Cancel",
@@ -48,7 +48,8 @@
     "forgot_password": "Forgot password?",
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
-    "have_not_account": "Don't have an account?"
+    "have_not_account": "Don't have an account?",
+    "registration_successful": "Registration Successful"
   },
   "validator": {
     "email_required": "Please enter your email",

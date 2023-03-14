@@ -6,46 +6,78 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i1;
+import 'package:hive/hive.dart' as _i9;
+import 'package:hive_flutter/hive_flutter.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:mobile/data/datasources/address.datasource.dart' as _i3;
-import 'package:mobile/data/datasources/campaign.datasource.dart' as _i5;
-import 'package:mobile/data/datasources/organization.datasource.dart' as _i7;
-import 'package:mobile/data/datasources/place.datasource.dart' as _i9;
-import 'package:mobile/data/datasources/user.datasource.dart' as _i11;
+import 'package:mobile/common/helpers/dio.helper.dart' as _i13;
+import 'package:mobile/data/datasources/local/user_local.datasource.dart'
+    as _i12;
+import 'package:mobile/data/datasources/remote/address.datasource.dart' as _i3;
+import 'package:mobile/data/datasources/remote/campaign.datasource.dart' as _i6;
+import 'package:mobile/data/datasources/remote/organization.datasource.dart'
+    as _i10;
+import 'package:mobile/data/datasources/remote/place.datasource.dart' as _i14;
+import 'package:mobile/data/datasources/remote/user_remote.datasource.dart'
+    as _i16;
 import 'package:mobile/data/repositories/address.repository.dart' as _i4;
-import 'package:mobile/data/repositories/campaign.repository.dart' as _i6;
-import 'package:mobile/data/repositories/organization.repository.dart' as _i8;
-import 'package:mobile/data/repositories/place.repository.dart' as _i10;
-import 'package:mobile/data/repositories/user.repository.dart' as _i12;
+import 'package:mobile/data/repositories/campaign.repository.dart' as _i7;
+import 'package:mobile/data/repositories/organization.repository.dart' as _i11;
+import 'package:mobile/data/repositories/place.repository.dart' as _i15;
+import 'package:mobile/data/repositories/user.repository.dart' as _i17;
+import 'package:mobile/di/modules/local_module.dart' as _i18;
+import 'package:mobile/di/modules/network_module.dart' as _i19;
+import 'package:mobile/di/providers/dio_provider.dart' as _i8;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of main-scope dependencies inside of [GetIt]
-_i1.GetIt initGetIt(
+Future<_i1.GetIt> initGetIt(
   _i1.GetIt getIt, {
   String? environment,
   _i2.EnvironmentFilter? environmentFilter,
-}) {
+}) async {
   final gh = _i2.GetItHelper(
     getIt,
     environment,
     environmentFilter,
   );
-  gh.lazySingleton<_i3.AddressDataSOurce>(() => _i3.AddressDataSOurce());
+  final localModule = _$LocalModule();
+  final networkModule = _$NetworkModule();
+  gh.lazySingleton<_i3.AddressDataSource>(() => _i3.AddressDataSource());
   gh.lazySingleton<_i4.AddressRepository>(
-      () => _i4.AddressRepository(dataSource: gh<_i3.AddressDataSOurce>()));
-  gh.lazySingleton<_i5.CampaignDataSource>(() => _i5.CampaignDataSource());
-  gh.lazySingleton<_i6.CampaignRepository>(
-      () => _i6.CampaignRepository(dataSource: gh<_i5.CampaignDataSource>()));
-  gh.lazySingleton<_i7.OrganizationDataSource>(
-      () => _i7.OrganizationDataSource());
-  gh.lazySingleton<_i8.OrganizationRepository>(() =>
-      _i8.OrganizationRepository(dataSource: gh<_i7.OrganizationDataSource>()));
-  gh.lazySingleton<_i9.PlaceDataSource>(() => _i9.PlaceDataSource());
-  gh.lazySingleton<_i10.PlaceRepository>(
-      () => _i10.PlaceRepository(placeDataSource: gh<_i9.PlaceDataSource>()));
-  gh.lazySingleton<_i11.UserDataSource>(() => _i11.UserDataSource());
-  gh.lazySingleton<_i12.UserRepository>(
-      () => _i12.UserRepository(dataSource: gh<_i11.UserDataSource>()));
+      () => _i4.AddressRepository(dataSource: gh<_i3.AddressDataSource>()));
+  await gh.lazySingletonAsync<_i5.Box<dynamic>>(
+    () => localModule.authBox,
+    instanceName: 'user_box',
+    preResolve: true,
+  );
+  gh.lazySingleton<_i6.CampaignDataSource>(() => _i6.CampaignDataSource());
+  gh.lazySingleton<_i7.CampaignRepository>(
+      () => _i7.CampaignRepository(dataSource: gh<_i6.CampaignDataSource>()));
+  gh.lazySingleton<_i8.DioProvider>(() =>
+      _i8.DioProvider(userBox: gh<_i9.Box<dynamic>>(instanceName: 'user_box')));
+  gh.lazySingleton<_i10.OrganizationDataSource>(
+      () => _i10.OrganizationDataSource());
+  gh.lazySingleton<_i11.OrganizationRepository>(() =>
+      _i11.OrganizationRepository(
+          dataSource: gh<_i10.OrganizationDataSource>()));
+  gh.lazySingleton<_i12.UserLocalDataSource>(() => _i12.UserLocalDataSource(
+      userBox: gh<_i9.Box<dynamic>>(instanceName: 'user_box')));
+  gh.lazySingleton<_i13.DioHelper>(
+      () => networkModule.provideDioHelper(gh<_i8.DioProvider>()));
+  gh.lazySingleton<_i14.PlaceDataSource>(
+      () => _i14.PlaceDataSource(dioHelper: gh<_i13.DioHelper>()));
+  gh.lazySingleton<_i15.PlaceRepository>(
+      () => _i15.PlaceRepository(placeDataSource: gh<_i14.PlaceDataSource>()));
+  gh.lazySingleton<_i16.UserRemoteDataSource>(
+      () => _i16.UserRemoteDataSource(dioHelper: gh<_i13.DioHelper>()));
+  gh.lazySingleton<_i17.UserRepository>(() => _i17.UserRepository(
+        dataSource: gh<_i16.UserRemoteDataSource>(),
+        localDataSource: gh<_i12.UserLocalDataSource>(),
+      ));
   return getIt;
 }
+
+class _$LocalModule extends _i18.LocalModule {}
+
+class _$NetworkModule extends _i19.NetworkModule {}
