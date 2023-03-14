@@ -16,13 +16,17 @@ class UserDataSource {
     return AuthResponseDTO.fromJson(result.body);
   }
 
-  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) async {
-    return UserMock.loginByEmail();
-
-    // await DioHelper.post(
-    //   Endpoints.register,
-    //   data: params.toJson(),
-    // );
+  Future<bool> registerByEmail(SubmitRegisterDTO params) async {
+    final result = await DioHelper.post(
+      Endpoints.register,
+      data: {
+        'email': params.email,
+        'fullName': params.name,
+        'password': params.password,
+        'confirmPassword': params.password
+      },
+    );
+    return result.statusCode == 200;
   }
 
   Future<UserModel> getUserInfo() async {
