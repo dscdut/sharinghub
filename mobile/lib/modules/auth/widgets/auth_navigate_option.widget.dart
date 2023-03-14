@@ -33,7 +33,7 @@ class AuthNavigateOption extends StatelessWidget {
                   .pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
             } else {
               Navigator.of(context).pushNamed(
-                AppRoutes.chooseRole,
+                AppRoutes.register,
               );
             }
           },
