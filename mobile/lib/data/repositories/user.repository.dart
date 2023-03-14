@@ -14,7 +14,7 @@ class UserRepository {
     return _dataSource.loginByEmail(params);
   }
 
-  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) {
+  Future<bool> registerByEmail(SubmitRegisterDTO params) {
     return _dataSource.registerByEmail(params);
   }
 

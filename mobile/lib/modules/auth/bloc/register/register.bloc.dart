@@ -26,7 +26,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emitter(state.copyWith(status: HandleStatus.loading));
 
     try {
-      await _userRepository.registerByEmail(
+      bool result = await _userRepository.registerByEmail(
         SubmitRegisterDTO(
           name: event.name,
           representativeName: event.representativeName,
@@ -34,8 +34,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           password: event.password,
         ),
       );
-
-      emitter(state.copyWith(status: HandleStatus.success));
+      if (result) {
+        emitter(state.copyWith(status: HandleStatus.success));
+      } else {
+        emitter(state.copyWith(status: HandleStatus.error));
+      }
     } catch (_) {
       emitter(
         state.copyWith(
