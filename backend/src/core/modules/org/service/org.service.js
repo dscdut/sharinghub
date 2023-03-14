@@ -12,7 +12,7 @@ class Service {
 
     async updateOrgTable(file, orgDto, user, orgId) {
         if (orgId && !user.organization_ids.includes(Number(orgId))) {
-            this.FileSystemService.deleteFile(file);
+            this.OrgRepositoryService.deleteFile(file);
             throw new ForbiddenException('You don\'t have permission to edit this organization');
         }
         const [{ id }] = await this.OrgRepositoryService.updateOrgTable(file, { ...orgDto, user_id: user.id, id: orgId });

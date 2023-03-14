@@ -15,6 +15,17 @@ class Service {
         this.MediaService = MediaService;
         this.FileSystemService = FileSystemService;
     }
+    
+    deleteFile(file) {
+        try {
+            if (file) {
+                this.FileSystemService.deleteFile(file);
+            }
+        } catch(error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
 
     async findOrgByExactName(id, name) {
         try {
@@ -40,12 +51,11 @@ class Service {
             Optional.of(await this.findOrgByPhoneNumber(orgDto.id, orgDto.phone_number)).throwIfPresent(new DuplicateException('This phone number is already existed'));
         } catch(error) {
             if (file) {
-                this.FileSystemService.deleteFile(file);
+                this.deleteFile(file);
             }
             throw error;
         }
         
-
         if (!orgDto.id) {
             return this.createOrg(file, orgDto);
         }
@@ -58,7 +68,7 @@ class Service {
 
             return this.updateOrg(file, { ...orgDto, id });
         } catch (error) {
-            this.FileSystemService.deleteFile(file);
+            this.deleteFile(file);
             logger.error(error.message);
             throw new InternalServerException();
         }
@@ -67,10 +77,9 @@ class Service {
     async updateOrg(file, orgDto) {
         try {
             const url = file ? (await this.MediaService.uploadOne(file, `organizations/${orgDto.id}/avatar`, 'avatar', true)).url : null;
-
             return this.repository.updateOrg({...orgDto, avatar: url});
         } catch (error) {
-            this.FileSystemService.deleteFile(file);
+            this.deleteFile(file);
             logger.error(error.message);
             throw new InternalServerException();
         }
