@@ -84,7 +84,8 @@
     "phone_number": "Phone Number",
     "address": "Address",
     "description": "Description",
-    "management": "Organization Management"
+    "management": "Organization Management",
+    "duplicated": "This organization name or phone number is already existed"
   },
   "campaign": {
     "create": "Create new campaign",

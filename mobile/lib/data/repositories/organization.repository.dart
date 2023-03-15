@@ -15,7 +15,7 @@ class OrganizationRepository {
   }
 
   Future<void> setOrganization(SetOrganizationDTO params) async {
-    return _dataSource.setOrganization(params);
+    _dataSource.setOrganization(params);
   }
 
   Future<OrganizationModel> getOrganizationInfoById(int organizationId) {
