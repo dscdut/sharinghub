@@ -1,4 +1,3 @@
-import { AttendRole } from '../../common/enum';
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 
 class Repository extends DataRepository {
@@ -91,7 +90,6 @@ class Repository extends DataRepository {
             .join('users_campaigns', 'campaigns.id', '=', 'users_campaigns.campaign_id')
             .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
             .where('users_campaigns.user_id', '=', id)
-            .andWhere('users_campaigns.role', '=', AttendRole.VOLUNTEER)
             .select(
                 'campaigns.id',
                 'campaigns.name',
@@ -100,7 +98,6 @@ class Repository extends DataRepository {
                 'campaigns.address',
                 'campaigns.specificAddress',
                 'campaigns.image',
-                'users_campaigns.role',
                 'users_campaigns.status',
                 { organizationName: 'organizations.name' },
             );
