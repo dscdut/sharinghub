@@ -10,9 +10,17 @@ part 'set_organization.dto.g.dart';
 class SetOrganizationDTO {
   final int? id;
   final String? avatar;
+
+  @JsonKey(name: 'name')
   final String? name;
+
+  @JsonKey(name: 'phoneNumber')
   final String? phoneNumber;
+
+  @JsonKey(name: 'address')
   final String? address;
+
+  @JsonKey(name: 'description')
   final String? description;
 
   SetOrganizationDTO({

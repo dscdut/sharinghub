@@ -84,7 +84,8 @@
     "phone_number": "Số điện thoại",
     "address": "Địa chỉ",
     "description": "Mô tả",
-    "management": "Quản lý tổ chức"
+    "management": "Quản lý tổ chức",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
   },
   "campaign": {
     "create": "Tạo dự án",

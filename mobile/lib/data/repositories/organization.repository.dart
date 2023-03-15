@@ -14,7 +14,7 @@ class OrganizationRepository {
     return _dataSource.getOrganizations();
   }
 
-  Future<void> setOrganization(SetOrganizationDTO params) async {
+  Future<bool> setOrganization(SetOrganizationDTO params) async {
     return _dataSource.setOrganization(params);
   }
 

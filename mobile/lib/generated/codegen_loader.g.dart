@@ -100,7 +100,8 @@ class CodegenLoader extends AssetLoader{
     "phone_number": "Phone Number",
     "address": "Address",
     "description": "Description",
-    "management": "Organization Management"
+    "management": "Organization Management",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
   },
   "campaign": {
     "create": "Create new campaign",
@@ -235,7 +236,8 @@ static const Map<String,dynamic> vi = {
     "phone_number": "Số điện thoại",
     "address": "Địa chỉ",
     "description": "Mô tả",
-    "management": "Quản lý tổ chức"
+    "management": "Quản lý tổ chức",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
   },
   "campaign": {
     "create": "Tạo dự án",

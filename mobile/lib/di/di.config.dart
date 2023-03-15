@@ -9,19 +9,19 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:hive/hive.dart' as _i9;
 import 'package:hive_flutter/hive_flutter.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:mobile/common/helpers/dio.helper.dart' as _i13;
+import 'package:mobile/common/helpers/dio.helper.dart' as _i11;
 import 'package:mobile/data/datasources/local/user_local.datasource.dart'
-    as _i12;
+    as _i10;
 import 'package:mobile/data/datasources/remote/address.datasource.dart' as _i3;
 import 'package:mobile/data/datasources/remote/campaign.datasource.dart' as _i6;
 import 'package:mobile/data/datasources/remote/organization.datasource.dart'
-    as _i10;
+    as _i12;
 import 'package:mobile/data/datasources/remote/place.datasource.dart' as _i14;
 import 'package:mobile/data/datasources/remote/user_remote.datasource.dart'
     as _i16;
 import 'package:mobile/data/repositories/address.repository.dart' as _i4;
 import 'package:mobile/data/repositories/campaign.repository.dart' as _i7;
-import 'package:mobile/data/repositories/organization.repository.dart' as _i11;
+import 'package:mobile/data/repositories/organization.repository.dart' as _i13;
 import 'package:mobile/data/repositories/place.repository.dart' as _i15;
 import 'package:mobile/data/repositories/user.repository.dart' as _i17;
 import 'package:mobile/di/modules/local_module.dart' as _i18;
@@ -56,24 +56,24 @@ Future<_i1.GetIt> initGetIt(
       () => _i7.CampaignRepository(dataSource: gh<_i6.CampaignDataSource>()));
   gh.lazySingleton<_i8.DioProvider>(() =>
       _i8.DioProvider(userBox: gh<_i9.Box<dynamic>>(instanceName: 'user_box')));
-  gh.lazySingleton<_i10.OrganizationDataSource>(
-      () => _i10.OrganizationDataSource());
-  gh.lazySingleton<_i11.OrganizationRepository>(() =>
-      _i11.OrganizationRepository(
-          dataSource: gh<_i10.OrganizationDataSource>()));
-  gh.lazySingleton<_i12.UserLocalDataSource>(() => _i12.UserLocalDataSource(
+  gh.lazySingleton<_i10.UserLocalDataSource>(() => _i10.UserLocalDataSource(
       userBox: gh<_i9.Box<dynamic>>(instanceName: 'user_box')));
-  gh.lazySingleton<_i13.DioHelper>(
+  gh.lazySingleton<_i11.DioHelper>(
       () => networkModule.provideDioHelper(gh<_i8.DioProvider>()));
+  gh.lazySingleton<_i12.OrganizationDataSource>(
+      () => _i12.OrganizationDataSource(dioHelper: gh<_i11.DioHelper>()));
+  gh.lazySingleton<_i13.OrganizationRepository>(() =>
+      _i13.OrganizationRepository(
+          dataSource: gh<_i12.OrganizationDataSource>()));
   gh.lazySingleton<_i14.PlaceDataSource>(
-      () => _i14.PlaceDataSource(dioHelper: gh<_i13.DioHelper>()));
+      () => _i14.PlaceDataSource(dioHelper: gh<_i11.DioHelper>()));
   gh.lazySingleton<_i15.PlaceRepository>(
       () => _i15.PlaceRepository(placeDataSource: gh<_i14.PlaceDataSource>()));
   gh.lazySingleton<_i16.UserRemoteDataSource>(
-      () => _i16.UserRemoteDataSource(dioHelper: gh<_i13.DioHelper>()));
+      () => _i16.UserRemoteDataSource(dioHelper: gh<_i11.DioHelper>()));
   gh.lazySingleton<_i17.UserRepository>(() => _i17.UserRepository(
         dataSource: gh<_i16.UserRemoteDataSource>(),
-        localDataSource: gh<_i12.UserLocalDataSource>(),
+        localDataSource: gh<_i10.UserLocalDataSource>(),
       ));
   return getIt;
 }

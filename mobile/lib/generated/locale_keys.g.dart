@@ -79,6 +79,7 @@ abstract class  LocaleKeys {
   static const organization_address = 'organization.address';
   static const organization_description = 'organization.description';
   static const organization_management = 'organization.management';
+  static const organization_duplicated = 'organization.duplicated';
   static const organization = 'organization';
   static const campaign_create = 'campaign.create';
   static const campaign_update = 'campaign.update';
