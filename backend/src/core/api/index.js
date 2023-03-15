@@ -4,13 +4,15 @@ import { ApiDocument } from 'core/config/swagger.config';
 import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './auth/auth.resolver';
 import { OrgResolver } from './org/org.resolver';
-import { CampaignResolver } from './campaign';
+import { CampaignResolver, VolunteerResolver } from './campaign';
 
 export const ModuleResolver = HandlerResolver.builder()
     .addSwaggerBuilder(ApiDocument)
     .addModule([
-        AuthResolver, 
-        UserResolver, 
+        AuthResolver,
+        UserResolver,
         MediaResolver,
-        OrgResolver, 
-        CampaignResolver]);
+        OrgResolver,
+        CampaignResolver,
+        VolunteerResolver,
+    ]);

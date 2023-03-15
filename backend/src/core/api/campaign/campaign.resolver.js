@@ -1,5 +1,4 @@
 import { Module } from 'packages/handler/Module';
-
 import { CoordinateCampaignInterceptor, CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
 import { CampaignController } from './campaign.controller';
 import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../common/swagger';
@@ -63,5 +62,5 @@ export const CampaignResolver = Module.builder()
             params: [NameQuery, LongitudeQuery, LatitudeQuery],
             interceptors: [CoordinateCampaignInterceptor],
             controller: CampaignController.searchByQuery,
-        }
+        },
     ]);
