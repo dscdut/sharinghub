@@ -127,6 +127,16 @@ class Repository extends DataRepository {
                 { organizationName: 'organizations.name' }
             ]);
     }
+
+    getAllCoordinates() {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .select([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.coordinate',
+            ]);
+    }
 }
 
 export const CampaignRepository = new Repository('campaigns');

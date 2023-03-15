@@ -51,6 +51,11 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
+            route: '/campaigns/all-coordinates',
+            method: 'get',
+            controller: CampaignController.getAllCoordinates,
+        },
+        {
             route: '/campaigns/:id',
             method: 'get',
             params: [RecordId],
