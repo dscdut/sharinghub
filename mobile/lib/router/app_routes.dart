@@ -9,6 +9,7 @@ import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/view/explore.view.dart';
 import 'package:mobile/modules/management/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
 abstract class AppRoutes {
@@ -19,6 +20,7 @@ abstract class AppRoutes {
 
   //Profile
   static const String organizationProfile = '/organizationProfile';
+  static const String userProfile = '/userProfile';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -90,13 +92,9 @@ abstract class AppRoutes {
           },
         );
       case register:
-        final bool isPersonal = settings.arguments as bool;
-
         return MaterialPageRoute(
           builder: (_) {
-            return RegisterPage(
-              isPersonal: isPersonal,
-            );
+            return const RegisterPage();
           },
         );
       case organizationProfile:
@@ -113,6 +111,12 @@ abstract class AppRoutes {
             return FeedbackCampaignPage(
               campaign: settings.arguments as CampaignModel,
             );
+          },
+        );
+      case userProfile:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const UserProfilePage();
           },
         );
       case setCampaign:

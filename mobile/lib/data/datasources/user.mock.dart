@@ -5,13 +5,14 @@ import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/data/models/user.model.dart';
 
 abstract class UserMock {
-  static AuthResponseDTO loginByEmail() {
-    return AuthResponseDTO(
-      user: UserModel(
-        id: 100,
-        email: 'beobiebom@gmail.com',
-        fullName: 'Duc Nguyen',
-      ),
+  static LoginResponseDTO loginByEmail() {
+    return LoginResponseDTO(
+      // user: UserModel(
+      //   id: 100,
+      //   email: 'beobiebom@gmail.com',
+      //   fullName: 'Duc Nguyen',
+      // ),
+      accessToken: 'access_token_demo',
     );
   }
 
@@ -38,18 +39,22 @@ abstract class UserMock {
     );
   }
 
-  static Future<UserProfileModel> getUserProfile() async {
+  static Future<UserModel> getUserProfile() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    return UserProfileModel(
+    return UserModel(
       id: 1232312,
       email: 'gdscdut@gmil.com',
-      avatarURL:
-          'https://i1.sndcdn.com/avatars-000340222160-d547n2-t500x500.jpg',
+      avatar: 'https://i1.sndcdn.com/avatars-000340222160-d547n2-t500x500.jpg',
       projectPending: 12,
       projectCompleted: 5,
       projectOnGoing: 6,
       fullName: 'Kieu Thanh Duc',
+      address: '54 Nguyễn Lương Bằng, Hoà Khánh, Liên Chiểu, Đà Nẵng',
+      birthDay: DateTime.now(),
+      gender: true,
+      phoneNumber: '0905123123',
+      school: 'Đại học Công Nghệ - Đại học Quốc Gia TP.HCM',
     );
   }
 

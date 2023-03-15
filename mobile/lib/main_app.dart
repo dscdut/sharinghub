@@ -128,7 +128,7 @@ class _MyAppState extends State<MyApp> {
                     break;
                   case AuthenticationStatus.unauthenticated:
                     _navigator.pushNamedAndRemoveUntil(
-                      AppRoutes.root,
+                      AppRoutes.login,
                       (route) => false,
                     );
                     break;
@@ -147,9 +147,9 @@ Future<void> initializeApp() async {
   await EasyLocalization.ensureInitialized();
   EasyLocalization.logger.enableBuildModes = [];
 
-  configureDependencies();
-
   await Hive.initFlutter();
+
+  await configureDependencies();
 
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;

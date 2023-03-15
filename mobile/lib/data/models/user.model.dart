@@ -15,6 +15,11 @@ class UserModel {
   final String? address;
   final String? avatar;
 
+  final int? projectPending;
+  final int? projectCompleted;
+  final int? projectOnGoing;
+  final String? school;
+
   UserModel({
     required this.id,
     required this.fullName,
@@ -24,34 +29,14 @@ class UserModel {
     this.phoneNumber,
     this.address,
     this.avatar,
+    this.projectPending,
+    this.projectCompleted,
+    this.projectOnGoing,
+    this.school,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
-}
-
-@JsonSerializable()
-class UserProfileModel extends UserModel {
-  final String? avatarURL;
-  final int projectPending;
-  final int projectCompleted;
-  final int projectOnGoing;
-
-  UserProfileModel({
-    required super.id,
-    required super.email,
-    this.avatarURL,
-    required this.projectPending,
-    required this.projectCompleted,
-    required this.projectOnGoing,
-    required super.fullName,
-  });
-
-  factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
-      _$UserProfileModelFromJson(json);
-
-  @override
-  Map<String, dynamic> toJson() => _$UserProfileModelToJson(this);
 }

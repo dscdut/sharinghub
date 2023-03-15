@@ -5,7 +5,7 @@ import 'package:mobile/data/models/address/province.model.dart';
 import 'package:mobile/data/models/address/ward.model.dart';
 
 @lazySingleton
-class AddressDataSOurce {
+class AddressDataSource {
   Future<List<ProvinceModel>> getPronvinces() async {
     return await AddressMock.getPronvinces();
   }

@@ -1,28 +1,41 @@
-import 'package:mobile/data/datasources/user.datasource.dart';
+import 'package:mobile/data/datasources/local/user_local.datasource.dart';
+import 'package:mobile/data/datasources/remote/user_remote.datasource.dart';
 import 'package:mobile/data/dtos/auth.dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/data/models/user.model.dart';
 
 @lazySingleton
 class UserRepository {
-  final UserDataSource _dataSource;
+  final UserLocalDataSource _localDataSource;
+  final UserRemoteDataSource _remoteDataSource;
 
-  UserRepository({required UserDataSource dataSource})
-      : _dataSource = dataSource;
+  UserRepository({
+    required UserRemoteDataSource dataSource,
+    required UserLocalDataSource localDataSource,
+  })  : _remoteDataSource = dataSource,
+        _localDataSource = localDataSource;
 
-  Future<AuthResponseDTO> loginByEmail(SubmitLoginDTO params) {
-    return _dataSource.loginByEmail(params);
+  Future<LoginResponseDTO> loginByEmail(SubmitLoginDTO params) {
+    return _remoteDataSource.loginByEmail(params);
   }
 
-  Future<AuthResponseDTO> registerByEmail(SubmitRegisterDTO params) {
-    return _dataSource.registerByEmail(params);
+  Future<void> registerByEmail(SubmitRegisterDTO params) {
+    return _remoteDataSource.registerByEmail(params);
   }
 
   Future<UserModel> getUserInfo() {
-    return _dataSource.getUserInfo();
+    return _remoteDataSource.getUserInfo();
   }
 
-  Future<UserProfileModel> getUserProfile() {
-    return _dataSource.getUserProfile();
+  Future<UserModel> getUserProfile() {
+    return _remoteDataSource.getUserProfile();
+  }
+
+  String? getAccessToken() {
+    return _localDataSource.getAccessToken();
+  }
+
+  Future<void> setTokens(TokenDTO? tokenDTO) {
+    return _localDataSource.setTokens(tokenDTO);
   }
 }

@@ -21,7 +21,7 @@
     "galerry": "Thư viện",
     "camera": "Camera",
     "upload_photo": "Tải ảnh lên",
-    "location_search": "Location Search"
+    "location_search": "Tìm kiếm địa điểm"
   },
   "button": {
     "cancel": "Hủy",
@@ -51,7 +51,8 @@
     "forgot_password": "Quên mật khẩu?",
     "confirm_password": "Xác nhận mật khẩu",
     "already_have_account": "Đã có tài khoản?",
-    "have_not_account": "Chưa có tài khoản?"
+    "have_not_account": "Chưa có tài khoản?",
+    "registration_successful": "Đăng ký tài khoản thành công"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -86,7 +87,8 @@
     "phone_number": "Số điện thoại",
     "address": "Địa chỉ",
     "description": "Mô tả",
-    "management": "Quản lý tổ chức"
+    "management": "Quản lý tổ chức",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
   },
   "campaign": {
     "create": "Tạo dự án",
@@ -130,7 +132,9 @@
     "share_this_app": "Chia sẻ ứng dụng",
     "help_center": "Trung tâm trợ giúp",
     "switch_account": "Đổi tài khoản",
-    "delete_account": "Xoá tài khoản"
+    "delete_account": "Xoá tài khoản",
+    "gender_female": "Nữ",
+    "gender_male": "Nam"
   },
   "feedback": {
     "location_rate": "Đánh giá địa điểm",

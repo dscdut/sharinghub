@@ -20,43 +20,30 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   })  : _userRepository = userRepository,
         _authBloc = authBloc,
         super(LoginInitial()) {
-    on<LoginSubmit>(_onLoginSubmit);
+    on<LoginSubmit>(_onSubmitLogin);
   }
 
-  Future<void> _onLoginSubmit(
+  Future<void> _onSubmitLogin(
     LoginSubmit event,
-    Emitter<LoginState> emitter,
+    Emitter<LoginState> emit,
   ) async {
-    emitter(LoginLoading());
+    emit(LoginLoading());
 
     try {
-      final AuthResponseDTO loginResponse = await _userRepository.loginByEmail(
+      final LoginResponseDTO loginResponse = await _userRepository.loginByEmail(
         SubmitLoginDTO(email: event.email, password: event.password),
       );
 
-      _authBloc.add(AuthUserInfoSet(authResponse: loginResponse));
-
-      // _authBloc.add(
-      //   AuthSetUser(
-      //     currentEmail: loginRepsonse.email,
-      //     password: loginRepsonse.password,
-      //   ),
-      // );
-
-      // log(loginRepsonse.toString());
-
-      // _authBloc.add(
-      //   AuthSetTokens(
-      //     refreshToken: RefreshTokenDTO(
-      //       accessToken: loginRepsonse.accessToken,
-      //       refreshToken: loginRepsonse.refreshToken,
-      //       expiresIn: loginRepsonse.expiresIn,
-      //     ),
-      //   ),
-      // );
-      emitter(LoginSuccess());
+      _authBloc.add(
+        AuthTokensSet(
+          tokenDTO: TokenDTO(
+            accessToken: loginResponse.accessToken,
+          ),
+        ),
+      );
+      emit(LoginSuccess());
     } on DioError catch (error) {
-      emitter(
+      emit(
         const LoginNotSuccess(),
       );
       log(error.toString());

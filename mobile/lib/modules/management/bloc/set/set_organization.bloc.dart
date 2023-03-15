@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
@@ -49,7 +50,19 @@ class SetOrganizationBloc
       await _organizationRepository.setOrganization(event.setOrganization);
 
       emit(state.copyWith(status: HandleStatus.success));
-    } catch (_) {
+    } on DioError catch (e) {
+      // Handle case when organization name or phone is duplicated
+      if (e.response?.statusCode == 409) {
+        emit(
+          state.copyWith(
+            status: HandleStatus.error,
+            error: LocaleKeys.organization_duplicated.tr(),
+          ),
+        );
+      } else {
+        emit(state.copyWith(status: HandleStatus.error));
+      }
+    } catch (e) {
       emit(state.copyWith(status: HandleStatus.error));
     }
   }

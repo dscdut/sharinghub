@@ -25,13 +25,13 @@ class AppFlavor {
   static String get apiBaseUrl {
     switch (appFlavor) {
       case Flavor.DEV:
-        return 'dev.sharinghub.com';
+        return 'https://sharing-hub.gdsc.dev';
       case Flavor.QA:
-        return 'QA';
+        return 'https://sharing-hub.gdsc.dev';
       case Flavor.STAGING:
-        return '';
+        return 'https://sharing-hub.gdsc.dev';
       default:
-        return '';
+        return 'https://sharing-hub.gdsc.dev';
     }
   }
 }

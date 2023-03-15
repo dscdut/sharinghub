@@ -1,6 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:mobile/data/datasources/organization.datasource.dart';
-import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
+import 'package:mobile/data/datasources/remote/organization.datasource.dart';
 import 'package:mobile/data/dtos/set_organization.dto.dart';
 import 'package:mobile/data/models/organization.model.dart';
 
@@ -16,7 +15,7 @@ class OrganizationRepository {
   }
 
   Future<void> setOrganization(SetOrganizationDTO params) async {
-    return _dataSource.setOrganization(params);
+    _dataSource.setOrganization(params);
   }
 
   Future<OrganizationModel> getOrganizationInfoById(int organizationId) {

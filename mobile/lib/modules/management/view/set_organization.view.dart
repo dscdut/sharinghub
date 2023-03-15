@@ -43,7 +43,7 @@ class SetOrganizationPage extends StatelessWidget {
     DialogUtil.hideLoading(context);
 
     if (state.status == HandleStatus.error) {
-      ToastUtil.showError(context);
+      ToastUtil.showError(context, text: state.error);
     } else if (state.status == HandleStatus.success) {
     } else if (state.status == HandleStatus.loading) {
       DialogUtil.showLoading(context);
@@ -99,9 +99,21 @@ class _SetOrganizationViewState extends State<_SetOrganizationView> {
     context
         .read<SetOrganizationBloc>()
         .add(SetOrganizationFormValidate(setOrganizationDTO: setOrganization));
-
-    if (_formKey.currentState!.validate() &&
-        context.read<SetOrganizationBloc>().state.isValid) {}
+    if (_formKey.currentState!.validate()
+        // &&
+        //     context.read<SetOrganizationBloc>().state.isValid
+        ) {
+      context.read<SetOrganizationBloc>().add(
+            SetOrganizationSubmit(
+              setOrganization: SetOrganizationDTO(
+                address: setOrganization.address,
+                description: setOrganization.description,
+                name: setOrganization.name,
+                phoneNumber: setOrganization.phoneNumber,
+              ),
+            ),
+          );
+    }
   }
 
   void _collectDataForSetOrganization() {

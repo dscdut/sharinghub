@@ -50,6 +50,7 @@ abstract class  LocaleKeys {
   static const auth_confirm_password = 'auth.confirm_password';
   static const auth_already_have_account = 'auth.already_have_account';
   static const auth_have_not_account = 'auth.have_not_account';
+  static const auth_registration_successful = 'auth.registration_successful';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
@@ -81,6 +82,7 @@ abstract class  LocaleKeys {
   static const organization_address = 'organization.address';
   static const organization_description = 'organization.description';
   static const organization_management = 'organization.management';
+  static const organization_duplicated = 'organization.duplicated';
   static const organization = 'organization';
   static const campaign_create = 'campaign.create';
   static const campaign_update = 'campaign.update';
@@ -123,6 +125,8 @@ abstract class  LocaleKeys {
   static const profile_help_center = 'profile.help_center';
   static const profile_switch_account = 'profile.switch_account';
   static const profile_delete_account = 'profile.delete_account';
+  static const profile_gender_female = 'profile.gender_female';
+  static const profile_gender_male = 'profile.gender_male';
   static const profile = 'profile';
   static const feedback_location_rate = 'feedback.location_rate';
   static const feedback_traffic = 'feedback.traffic';

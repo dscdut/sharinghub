@@ -18,7 +18,7 @@ Map<String, dynamic> _$SetOrganizationDTOToJson(SetOrganizationDTO instance) {
   writeNotNull('id', instance.id);
   writeNotNull('avatar', instance.avatar);
   writeNotNull('name', instance.name);
-  writeNotNull('phone_number', instance.phoneNumber);
+  writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('address', instance.address);
   writeNotNull('description', instance.description);
   return val;

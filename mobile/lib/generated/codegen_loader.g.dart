@@ -37,7 +37,7 @@ class CodegenLoader extends AssetLoader{
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Tìm kiếm địa điểm"
+    "location_search": "Location Search"
   },
   "button": {
     "cancel": "Cancel",
@@ -67,7 +67,8 @@ class CodegenLoader extends AssetLoader{
     "forgot_password": "Forgot password?",
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
-    "have_not_account": "Don't have an account?"
+    "have_not_account": "Don't have an account?",
+    "registration_successful": "Registration Successful"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -102,7 +103,8 @@ class CodegenLoader extends AssetLoader{
     "phone_number": "Phone Number",
     "address": "Address",
     "description": "Description",
-    "management": "Organization Management"
+    "management": "Organization Management",
+    "duplicated": "This organization name or phone number is already existed"
   },
   "campaign": {
     "create": "Create new campaign",
@@ -146,7 +148,9 @@ class CodegenLoader extends AssetLoader{
     "share_this_app": "Share this app",
     "help_center": "Help center",
     "switch_account": "Switch account",
-    "delete_account": "Delete account"
+    "delete_account": "Delete account",
+    "gender_female": "Female",
+    "gender_male": "Male"
   },
   "feedback": {
     "location_rate": "Location rate",
@@ -184,7 +188,7 @@ static const Map<String,dynamic> vi = {
     "galerry": "Thư viện",
     "camera": "Camera",
     "upload_photo": "Tải ảnh lên",
-    "location_search": "Location Search"
+    "location_search": "Tìm kiếm địa điểm"
   },
   "button": {
     "cancel": "Hủy",
@@ -214,7 +218,8 @@ static const Map<String,dynamic> vi = {
     "forgot_password": "Quên mật khẩu?",
     "confirm_password": "Xác nhận mật khẩu",
     "already_have_account": "Đã có tài khoản?",
-    "have_not_account": "Chưa có tài khoản?"
+    "have_not_account": "Chưa có tài khoản?",
+    "registration_successful": "Đăng ký tài khoản thành công"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -249,7 +254,8 @@ static const Map<String,dynamic> vi = {
     "phone_number": "Số điện thoại",
     "address": "Địa chỉ",
     "description": "Mô tả",
-    "management": "Quản lý tổ chức"
+    "management": "Quản lý tổ chức",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
   },
   "campaign": {
     "create": "Tạo dự án",
@@ -293,7 +299,9 @@ static const Map<String,dynamic> vi = {
     "share_this_app": "Chia sẻ ứng dụng",
     "help_center": "Trung tâm trợ giúp",
     "switch_account": "Đổi tài khoản",
-    "delete_account": "Xoá tài khoản"
+    "delete_account": "Xoá tài khoản",
+    "gender_female": "Nữ",
+    "gender_male": "Nam"
   },
   "feedback": {
     "location_rate": "Đánh giá địa điểm",

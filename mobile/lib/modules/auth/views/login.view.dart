@@ -12,27 +12,9 @@ import 'package:mobile/modules/auth/bloc/login/login.bloc.dart';
 import 'package:mobile/modules/auth/widgets/auth_navigate_option.widget.dart';
 import 'package:mobile/modules/auth/widgets/login/login_form.widget.dart';
 import 'package:mobile/modules/auth/widgets/login/option_and_submit_button.widget.dart';
-import 'package:mobile/router/app_routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-
-  void _listenLoginState(BuildContext context, LoginState state) {
-    if (state is LoginNotSuccess) {
-      ToastUtil.showError(
-        context,
-      );
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.root,
-        (route) => false,
-      );
-    } else if (state is LoginSuccess) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-        AppRoutes.root,
-        (route) => false,
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +26,20 @@ class LoginPage extends StatelessWidget {
       child: BlocListener<LoginBloc, LoginState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) {
-          _listenLoginState(context, state);
+          _listenLoginStateChanged(context, state);
         },
         child: _LoginView(),
       ),
     );
+  }
+
+  void _listenLoginStateChanged(BuildContext context, LoginState state) {
+    if (state is LoginNotSuccess) {
+      ToastUtil.showError(
+        context,
+        position: ToastPosition.TOP,
+      );
+    }
   }
 }
 
@@ -78,9 +69,12 @@ class _LoginView extends StatelessWidget {
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Container(
-            height: context.heightWithSafeArea,
-            margin: const EdgeInsets.symmetric(
-              horizontal: 40,
+            height: context.height,
+            padding: EdgeInsets.fromLTRB(
+              40,
+              0,
+              40,
+              context.paddingBottom + 20,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
