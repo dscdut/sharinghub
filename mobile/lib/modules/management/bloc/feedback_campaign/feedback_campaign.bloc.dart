@@ -31,7 +31,8 @@ class FeedbackCampaignBloc
         rateError: event.organizationFeedback.locationRate == 0.0
             ? Wrapped.value(LocaleKeys.feedback_location_rated.tr())
             : const Wrapped.value(null),
-        imageError: event.organizationFeedback.images == null
+        imageError: event.organizationFeedback.images == null ||
+                event.organizationFeedback.images!.isEmpty
             ? Wrapped.value(LocaleKeys.feedback_images_uploaded.tr())
             : const Wrapped.value(null),
       ),

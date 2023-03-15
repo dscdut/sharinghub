@@ -64,10 +64,17 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
 
     if (files != null) {
       setState(() {
-        imagePaths = files.map((e) => e.path).toList();
+        if (imagePaths == null) {
+          imagePaths = files.take(10).map((e) => e.path).toList();
+        } else {
+          int remaining = 10 - imagePaths!.length;
+          if (remaining > 0) {
+            imagePaths!.addAll(files.take(remaining).map((e) => e.path).toList());
+          }
+        }
       });
 
-      widget.setImages!(files);
+      widget.setImages!(imagePaths!.map((e) => File(e!)).toList());
     }
   }
 
@@ -201,6 +208,7 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
             onTap: () {
               setState(() {
                 imagePaths!.removeAt(index);
+                widget.setImages!(imagePaths!.map((e) => File(e!)).toList());
               });
             },
             child: Container(
@@ -240,8 +248,9 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
               ),
               child: ConditionalRenderUtil.single(
                 context,
-                value:
-                    imagePath == null ? null : ImageUtil.getImageType(imagePath!),
+                value: imagePath == null
+                    ? null
+                    : ImageUtil.getImageType(imagePath!),
                 caseBuilders: {
                   ImageType.network: (_) {
                     return ClipRRect(
