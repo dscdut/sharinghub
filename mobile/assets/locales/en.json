@@ -85,7 +85,7 @@
     "address": "Address",
     "description": "Description",
     "management": "Organization Management",
-    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
+    "duplicated": "This organization name or phone number is already existed"
   },
   "campaign": {
     "create": "Create new campaign",

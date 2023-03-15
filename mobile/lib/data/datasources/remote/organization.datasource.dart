@@ -16,12 +16,11 @@ class OrganizationDataSource {
     return await UserMock.getOrganizations();
   }
 
-  Future<bool> setOrganization(SetOrganizationDTO params) async {
-    final result = await _dioHelper.post(
+  Future<void> setOrganization(SetOrganizationDTO params) async {
+    await _dioHelper.post(
       Endpoints.organization,
       data: params.toJson(),
     );
-    return result.statusCode == 200;
   }
 
   Future<OrganizationModel> getOrganizationInfoById(int organizationId) async {

@@ -99,8 +99,6 @@ class _SetOrganizationViewState extends State<_SetOrganizationView> {
     context
         .read<SetOrganizationBloc>()
         .add(SetOrganizationFormValidate(setOrganizationDTO: setOrganization));
-    print(context.read<SetOrganizationBloc>().state.isValid);
-
     if (_formKey.currentState!.validate()
         // &&
         //     context.read<SetOrganizationBloc>().state.isValid
