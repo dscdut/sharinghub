@@ -5,17 +5,17 @@ import { JoiUtils } from '../../../utils';
 export const CreateCampaignInterceptor = new DefaultValidatorInterceptor(
     Joi.object({
         name: JoiUtils.requiredString().min(1),
-        province: JoiUtils.requiredString().min(1),
-        district: JoiUtils.requiredString().min(1),
-        ward: JoiUtils.requiredString().min(1),
+        image: Joi.string().trim().min(1).optional(),
         address: JoiUtils.requiredString().min(1),
-        longitude: Joi.number().optional(),
-        latitude: Joi.number().optional(),
+        specificAddress: Joi.string().trim().min(1).optional(),
+        coordinate: Joi.object({
+            lat: Joi.number().optional(),
+            lng: Joi.number().optional(),
+        }).optional(),
         start_date: Joi.date().required(),
         end_date: Joi.date().required(),
         description: JoiUtils.requiredString().min(1),
-        register_link: JoiUtils.requiredString().min(1),
-        donation_method: Joi.number().optional(),
-        organization_id: JoiUtils.requiredNumber(),
+        register_link: Joi.string().trim().min(1).optional(),
+        donation_requirement: Joi.string().trim().optional(),
     }),
 );

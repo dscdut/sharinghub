@@ -4,8 +4,8 @@ const MONGOOSE_ID_OBJECT_FORMAT = /^[0-9a-fA-F]{24}$/;
 
 const DATE_YYYY_MM_DD_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 
-// Required from 6-30 char, contains special char
-const PWD_FORMAT = /^[a-zA-Z0-9\d@$!%*?&]{6,30}$/;
+// Required from 8-30 char, contains special char
+const PWD_FORMAT = /^[a-zA-Z0-9\d@$!%*?&]{8,30}$/;
 
 // Vietnam phone number validation
 const PHONE_NUMBER_FORMAT = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/;
