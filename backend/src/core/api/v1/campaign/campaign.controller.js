@@ -3,7 +3,7 @@ import { MESSAGE } from 'core/modules/campaign/services/message.enum';
 import { ValidHttpResponse } from 'packages/handler/response/validHttp.response';
 import { NotFoundException } from 'packages/httpException';
 import { ForbiddenException } from 'packages/httpException/ForbiddenException';
-import { CreateCampaignDto } from '../../modules/campaign/dto';
+import { CreateCampaignDto } from '../../../modules/campaign/dto';
 
 class Controller {
     constructor() {

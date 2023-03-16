@@ -2,8 +2,8 @@ import { Module } from 'packages/handler/Module';
 
 import { CoordinateCampaignInterceptor, CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
 import { CampaignController } from './campaign.controller';
-import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../common/swagger';
-import { RecordIdInterceptor } from '../../modules/interceptor/recordId/record-id.interceptor';
+import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../../common/swagger';
+import { RecordIdInterceptor } from '../../../modules/interceptor/recordId/record-id.interceptor';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({
@@ -17,13 +17,6 @@ export const CampaignResolver = Module.builder()
             method: 'get',
             params: [orgCampaignId],
             controller: CampaignController.findAllByOrgId,
-            preAuthorization: true,
-        },
-        {
-            route: '/organizations/:organizationId/campaigns/:campaignId',
-            method: 'get',
-            params: [orgCampaignId, campaignId],
-            controller: CampaignController.findOneByOrgIdAndCampaignId,
             preAuthorization: true,
         },
         {
@@ -51,7 +44,7 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/campaigns/all-coordinates',
+            route: '/campaigns/coordinates',
             method: 'get',
             controller: CampaignController.getAllCoordinates,
         },
