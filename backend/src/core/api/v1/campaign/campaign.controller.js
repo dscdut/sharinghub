@@ -182,6 +182,11 @@ class Controller {
         );
         return ValidHttpResponse.toOkResponse(data);
     }
+
+    getAllCoordinates = async req => {
+        const data = await this.service.getAllCoordinates();
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const CampaignController = new Controller();

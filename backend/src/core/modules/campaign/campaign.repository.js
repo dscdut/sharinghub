@@ -103,6 +103,7 @@ class Repository extends DataRepository {
                 { endDate: 'campaigns.end_date' },
                 'campaigns.coordinate',
                 { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationId: 'campaigns.organization_id' },
                 { organizationName: 'organizations.name' }
             ]);
     }
@@ -124,7 +125,19 @@ class Repository extends DataRepository {
                 { endDate: 'campaigns.end_date' },
                 'campaigns.coordinate',
                 { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationId: 'campaigns.organization_id' },
                 { organizationName: 'organizations.name' }
+            ]);
+    }
+
+    getAllCoordinates() {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .whereRaw('campaigns.end_date > now()')
+            .select([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.coordinate',
             ]);
     }
 }

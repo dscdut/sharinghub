@@ -313,8 +313,20 @@ class Service {
         trx.commit();
         return {
             message: MESSAGE.SET_PENDING_VOLUNTEERS_STATUS_TO_REJECTED_SUCCESS,
-        };
+        }
     }
-}
+
+    async getAllCoordinates() {
+        let campaigns;
+        try {
+            campaigns = await this.repository.getAllCoordinates();
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return campaigns;
+    }
+};
 
 export const CampaignService = new Service();
