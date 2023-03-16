@@ -12,7 +12,7 @@ class Repository extends DataRepository {
                 'campaigns.image',
                 'campaigns.description',
                 'campaigns.address',
-                'campaigns.specificAddress',
+                { specificAddress: 'campaigns.specific_address' },
                 { startDate: 'campaigns.start_date' },
                 { endDate: 'campaigns.end_date' },
                 { registerLink: 'campaigns.register_link' },
@@ -32,7 +32,7 @@ class Repository extends DataRepository {
                 'campaigns.image',
                 'campaigns.description',
                 'campaigns.address',
-                'campaigns.specificAddress',
+                { specificAddress: 'campaigns.specific_address' },
                 { startDate: 'campaigns.start_date' },
                 { endDate: 'campaigns.end_date' },
                 { donationRequirement: 'campaigns.donation_requirement' },
@@ -51,7 +51,7 @@ class Repository extends DataRepository {
                 'campaigns.image',
                 'campaigns.description',
                 'campaigns.address',
-                'campaigns.specificAddress',
+                { specificAddress: 'campaigns.specific_address' },
                 { startDate: 'campaigns.start_date' },
                 { endDate: 'campaigns.end_date' },
                 { registerLink: 'campaigns.register_link' },
@@ -98,11 +98,12 @@ class Repository extends DataRepository {
                 'campaigns.image',
                 'campaigns.description',
                 'campaigns.address',
-                'campaigns.specificAddress',
+                { specificAddress: 'campaigns.specific_address' },
                 { startDate: 'campaigns.start_date' },
                 { endDate: 'campaigns.end_date' },
                 'campaigns.coordinate',
                 { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationId: 'campaigns.organization_id' },
                 { organizationName: 'organizations.name' }
             ]);
     }
@@ -119,11 +120,12 @@ class Repository extends DataRepository {
                 'campaigns.image',
                 'campaigns.description',
                 'campaigns.address',
-                'campaigns.specificAddress',
+                { specificAddress: 'campaigns.specific_address' },
                 { startDate: 'campaigns.start_date' },
                 { endDate: 'campaigns.end_date' },
                 'campaigns.coordinate',
                 { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationId: 'campaigns.organization_id' },
                 { organizationName: 'organizations.name' }
             ]);
     }
