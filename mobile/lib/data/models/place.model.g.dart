@@ -11,10 +11,3 @@ PlaceModel _$PlaceModelFromJson(Map<String, dynamic> json) => PlaceModel(
       placeId: json['place_id'] as String,
       types: (json['types'] as List<dynamic>).map((e) => e as String).toList(),
     );
-
-Map<String, dynamic> _$PlaceModelToJson(PlaceModel instance) =>
-    <String, dynamic>{
-      'description': instance.description,
-      'place_id': instance.placeId,
-      'types': instance.types,
-    };

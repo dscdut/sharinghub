@@ -21,7 +21,9 @@
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Location Search"
+    "location_search": "Location Search",
+    "edit": "Edit",
+    "delele": "Delete"
   },
   "button": {
     "cancel": "Cancel",
@@ -60,7 +62,8 @@
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
-    "organization_avatar_uploaded": "The organization avatar must be uploaded"
+    "organization_avatar_uploaded": "The organization avatar must be uploaded",
+    "existed_email": "This email is already existed"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -85,13 +88,14 @@
     "address": "Address",
     "description": "Description",
     "management": "Organization Management",
-    "duplicated": "This organization name or phone number is already existed"
+    "duplicated": "This organization name or phone number is already existed",
+    "create_success": "Organization created successfully"
   },
   "campaign": {
     "create": "Create new campaign",
     "update": "Update campaign",
-    "create_success": "Success create campaign",
-    "update_success": "Success update campaign",
+    "create_success": "Campaign created successfully",
+    "update_success": "Campaign updated successfully",
     "back_home": "Back to home",
     "campaign_name": "Campaign name",
     "campaign_description": "Description",
@@ -110,27 +114,32 @@
     "image_uploaded": "The campaign image must be uploaded",
     "volunteer": "Volunteer",
     "complete": "Complete",
-    "volunteer_register": "Register Volunteer"
+    "volunteer_register": "Register Volunteer",
+    "management": "Campaign Management",
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!"
   },
   "profile": {
     "setting": "Setting",
-    "rate": "Rate:",
     "contact_info": "Contact information",
-    "campaigns_doing": "Campaigns doing",
-    "campaigns_done": "Campaigns done",
-    "reviews": "Reviews",
-    "profile": "Profile",
+    "personal": "Personal profile",
+    "organization": "Organization profile",
     "pending": "Pending",
+    "upcoming": "Upcoming",
     "ongoing": "Ongoing",
-    "feedback": " Feedbacks",
+    "participating": "Participating",
+    "done": "Done",
     "preferences": "Preferences",
     "about_us": "About us",
     "logout": "Log out",
     "share_this_app": "Share this app",
     "help_center": "Help center",
-    "switch_account": "Switch account",
+    "my_organizations": "My organizations",
+    "switch_to_myaccount": "Switch to my account",
     "delete_account": "Delete account",
     "gender_female": "Female",
-    "gender_male": "Male"
+    "gender_male": "Male",
+    "form_number": "{number} forms",
+    "campaign_number": "{number} campaigns",
+    "review_number": "{number} reviews"
   }
 }

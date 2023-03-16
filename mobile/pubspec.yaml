@@ -66,6 +66,7 @@ dependencies:
   package_info_plus: ^3.0.3
   path: ^1.8.2
   url_launcher: 6.1.10
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -130,6 +131,7 @@ flutter:
     - assets/fonts/
     - assets/icons/
     - assets/icons/launcher/
+    - assets/icons/profile/
     - assets/images/
     - assets/locales/
 

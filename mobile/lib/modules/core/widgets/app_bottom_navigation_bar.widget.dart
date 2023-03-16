@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
+import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/core/bloc/root.bloc.dart';
 
 class AppBottomNavigationBar extends StatelessWidget {
@@ -37,10 +38,15 @@ class AppBottomNavigationBar extends StatelessWidget {
                 icon: const Icon(Icons.travel_explore_outlined),
                 label: LocaleKeys.root_explore.tr(),
               ),
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.manage_search_outlined),
-                label: LocaleKeys.root_management.tr(),
-              ),
+              if (context
+                  .read<AuthBloc>()
+                  .state
+                  .status
+                  .isAuthenticatedOrganization)
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.manage_search_outlined),
+                  label: LocaleKeys.root_management.tr(),
+                ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.notifications_outlined),
                 label: LocaleKeys.texts_notification.tr(),

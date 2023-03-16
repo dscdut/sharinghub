@@ -23,6 +23,8 @@ abstract class  LocaleKeys {
   static const texts_camera = 'texts.camera';
   static const texts_upload_photo = 'texts.upload_photo';
   static const texts_location_search = 'texts.location_search';
+  static const texts_edit = 'texts.edit';
+  static const texts_delele = 'texts.delele';
   static const texts = 'texts';
   static const button_cancel = 'button.cancel';
   static const button_confirm = 'button.confirm';
@@ -58,6 +60,7 @@ abstract class  LocaleKeys {
   static const validator_not_match_password = 'validator.not_match_password';
   static const validator_campaign_avatar_uploaded = 'validator.campaign_avatar_uploaded';
   static const validator_organization_avatar_uploaded = 'validator.organization_avatar_uploaded';
+  static const validator_existed_email = 'validator.existed_email';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';
@@ -80,6 +83,7 @@ abstract class  LocaleKeys {
   static const organization_description = 'organization.description';
   static const organization_management = 'organization.management';
   static const organization_duplicated = 'organization.duplicated';
+  static const organization_create_success = 'organization.create_success';
   static const organization = 'organization';
   static const campaign_create = 'campaign.create';
   static const campaign_update = 'campaign.update';
@@ -104,26 +108,31 @@ abstract class  LocaleKeys {
   static const campaign_volunteer = 'campaign.volunteer';
   static const campaign_complete = 'campaign.complete';
   static const campaign_volunteer_register = 'campaign.volunteer_register';
+  static const campaign_management = 'campaign.management';
+  static const campaign_empty_list = 'campaign.empty_list';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
-  static const profile_rate = 'profile.rate';
   static const profile_contact_info = 'profile.contact_info';
-  static const profile_campaigns_doing = 'profile.campaigns_doing';
-  static const profile_campaigns_done = 'profile.campaigns_done';
-  static const profile_reviews = 'profile.reviews';
-  static const profile_profile = 'profile.profile';
+  static const profile_personal = 'profile.personal';
+  static const profile_organization = 'profile.organization';
   static const profile_pending = 'profile.pending';
+  static const profile_upcoming = 'profile.upcoming';
   static const profile_ongoing = 'profile.ongoing';
-  static const profile_feedback = 'profile.feedback';
+  static const profile_participating = 'profile.participating';
+  static const profile_done = 'profile.done';
   static const profile_preferences = 'profile.preferences';
   static const profile_about_us = 'profile.about_us';
   static const profile_logout = 'profile.logout';
   static const profile_share_this_app = 'profile.share_this_app';
   static const profile_help_center = 'profile.help_center';
-  static const profile_switch_account = 'profile.switch_account';
+  static const profile_my_organizations = 'profile.my_organizations';
+  static const profile_switch_to_myaccount = 'profile.switch_to_myaccount';
   static const profile_delete_account = 'profile.delete_account';
   static const profile_gender_female = 'profile.gender_female';
   static const profile_gender_male = 'profile.gender_male';
+  static const profile_form_number = 'profile.form_number';
+  static const profile_campaign_number = 'profile.campaign_number';
+  static const profile_review_number = 'profile.review_number';
   static const profile = 'profile';
 
 }

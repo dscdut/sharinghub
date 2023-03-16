@@ -16,10 +16,19 @@ class OrganizationDataSource {
     return await UserMock.getOrganizations();
   }
 
+  Future<List<OrganizationModel>> getMyOrganizations() async {
+    final HttpRequestResponse response =
+        await _dioHelper.get(Endpoints.myOrganizations);
+
+    return (response.body as List)
+        .map((e) => OrganizationModel.fromJson(e))
+        .toList();
+  }
+
   Future<void> setOrganization(SetOrganizationDTO params) async {
     await _dioHelper.post(
       Endpoints.organization,
-      data: params.toJson(),
+      formData: params.toJson(),
     );
   }
 

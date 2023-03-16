@@ -3,25 +3,28 @@ import 'package:json_annotation/json_annotation.dart';
 part 'set_campaign.dto.g.dart';
 
 @JsonSerializable(
-  fieldRename: FieldRename.snake,
   includeIfNull: false,
   createFactory: false,
-  explicitToJson: false,
+  explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class SetCampaignDTO {
-  dynamic image;
   String? name;
-  String? description;
+  @JsonKey(includeToJson: false)
+  dynamic image;
   String? address;
   String? specificAddress;
+  Map<String, double>? coordinate;
+  String? description;
   DateTime? startDate;
   DateTime? endDate;
-  String? formLink;
-  String? artifactTypes;
+  String? registerLink;
+  String? donationRequirement;
   String? otherInformation;
-  Map<String, double>? geometry;
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(includeToJson: false)
   String? placeId;
+  @JsonKey(includeToJson: false)
+  int? organizationId;
 
   SetCampaignDTO({
     this.image,
@@ -31,42 +34,45 @@ class SetCampaignDTO {
     this.specificAddress,
     this.startDate,
     this.endDate,
-    this.formLink,
-    this.artifactTypes,
+    this.registerLink,
+    this.donationRequirement,
     this.otherInformation,
-    this.geometry,
+    this.coordinate,
     this.placeId,
+    this.organizationId,
   });
 
   Map<String, dynamic> toJson() => _$SetCampaignDTOToJson(this);
 
   SetCampaignDTO copyWith({
-    dynamic image,
     String? name,
-    String? description,
+    dynamic image,
     String? address,
     String? specificAddress,
+    Map<String, double>? coordinate,
+    String? description,
     DateTime? startDate,
     DateTime? endDate,
-    String? formLink,
-    String? artifactTypes,
+    String? registerLink,
+    String? donationRequirement,
     String? otherInformation,
-    Map<String, double>? geometry,
     String? placeId,
+    int? organizationId,
   }) {
     return SetCampaignDTO(
-      image: image ?? this.image,
       name: name ?? this.name,
-      description: description ?? this.description,
+      image: image ?? this.image,
       address: address ?? this.address,
       specificAddress: specificAddress ?? this.specificAddress,
+      coordinate: coordinate ?? this.coordinate,
+      description: description ?? this.description,
       startDate: startDate ?? this.startDate,
       endDate: endDate ?? this.endDate,
-      formLink: formLink ?? this.formLink,
-      artifactTypes: artifactTypes ?? this.artifactTypes,
+      registerLink: registerLink ?? this.registerLink,
+      donationRequirement: donationRequirement ?? this.donationRequirement,
       otherInformation: otherInformation ?? this.otherInformation,
-      geometry: geometry ?? this.geometry,
       placeId: placeId ?? this.placeId,
+      organizationId: organizationId ?? this.organizationId,
     );
   }
 }
