@@ -7,7 +7,7 @@ export const CreateCampaignInterceptor = new DefaultValidatorInterceptor(
         name: JoiUtils.requiredString().min(1),
         image: Joi.string().trim().min(1).optional(),
         address: JoiUtils.requiredString().min(1),
-        specificAddress: Joi.string().trim().min(1).optional(),
+        specific_address: Joi.string().trim().min(1).optional(),
         coordinate: Joi.object({
             lat: Joi.number().optional(),
             lng: Joi.number().optional(),
