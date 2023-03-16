@@ -5,7 +5,7 @@ import { orgId } from '../../../common/swagger/org-id';
 
 export const OrgResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/organizations',
+        prefixPath: '/v1/organizations',
         tag: 'org',
         module: 'OrgModule'
     })

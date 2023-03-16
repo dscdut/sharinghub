@@ -10,7 +10,7 @@ import { resetToken } from '../../../common/swagger/reset-token';
 
 export const AuthResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/auth',
+        prefixPath: '/v1/auth',
         tag: 'auth',
         module: 'AuthModule'
     })

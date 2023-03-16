@@ -13,7 +13,7 @@ import { RecordId } from '../../../common/swagger/record-id';
 
 export const UserResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/users',
+        prefixPath: '/v1/users',
         tag: 'users',
         module: 'UserModule',
     })
