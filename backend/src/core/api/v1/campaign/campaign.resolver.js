@@ -1,8 +1,8 @@
 import { Module } from 'packages/handler/Module';
 import { CoordinateCampaignInterceptor, CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
 import { CampaignController } from './campaign.controller';
-import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../common/swagger';
-import { RecordIdInterceptor } from '../../modules/interceptor/recordId/record-id.interceptor';
+import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../../common/swagger';
+import { RecordIdInterceptor } from '../../../modules/interceptor/recordId/record-id.interceptor';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({

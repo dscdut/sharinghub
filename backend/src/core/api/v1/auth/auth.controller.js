@@ -1,11 +1,11 @@
-import { AuthService } from '../../modules/auth/service/auth.service';
+import { AuthService } from '../../../modules/auth/service/auth.service';
 import {
     LoginDto,
     RegisterDto,
     ForgotPasswordDto,
     UpdatePasswordDto
-} from '../../modules/auth';
-import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
+} from '../../../modules/auth';
+import { ValidHttpResponse } from '../../../../packages/handler/response/validHttp.response';
 
 class Controller {
     constructor() {

@@ -126,13 +126,11 @@ class Service {
             );
         }
 
-
-        let data = { ...campaign, ...createCampaignDto };
         let updatedCampaign;
         try {
             updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                data,
+                createCampaignDto,
                 trx,
             );
 
