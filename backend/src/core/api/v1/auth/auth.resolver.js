@@ -6,7 +6,7 @@ import {
 } from 'core/modules/auth';
 import { Module } from 'packages/handler/Module';
 import { AuthController } from './auth.controller';
-import { resetToken } from '../../common/swagger/reset-token';
+import { resetToken } from '../../../common/swagger/reset-token';
 
 export const AuthResolver = Module.builder()
     .addPrefix({

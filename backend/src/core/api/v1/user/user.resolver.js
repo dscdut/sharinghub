@@ -9,7 +9,7 @@ import {
 } from 'core/modules/auth/guard';
 import { RecordIdInterceptor } from 'core/modules/interceptor/recordId/record-id.interceptor';
 import { UserController } from './user.controller';
-import { RecordId } from '../../common/swagger/record-id';
+import { RecordId } from '../../../common/swagger/record-id';
 
 export const UserResolver = Module.builder()
     .addPrefix({

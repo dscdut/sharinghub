@@ -1,7 +1,7 @@
 import { Module } from 'packages/handler/Module';
 import { CreateOrgInterceptor } from 'core/modules/org/';
 import { OrgController } from './org.controller';
-import { orgId } from '../../common/swagger/org-id';
+import { orgId } from '../../../common/swagger/org-id';
 
 export const OrgResolver = Module.builder()
     .addPrefix({
@@ -39,7 +39,7 @@ export const OrgResolver = Module.builder()
             body: 'CreateOrgDto',
             controller: OrgController.putEditOrg,
             preAuthorization: true,
-        }, 
+        },
         {
             route: '/:id',
             params: [orgId],
