@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -14,7 +15,7 @@ import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/management/management.dart';
-import 'package:mobile/modules/management/widgets/feedback_campaign/feedback_campaign_form.dart';
+import 'package:mobile/modules/management/widgets/feedback_campaign/feedback_campaign_form.widget.dart';
 
 class FeedbackCampaignPage extends StatelessWidget {
   final CampaignModel campaign;
@@ -47,7 +48,7 @@ class _FeedbackCampaignView extends StatefulWidget {
 }
 
 class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
-  final FeedbackToCampaignDTO feedbackToCampaignDTO = FeedbackToCampaignDTO();
+  FeedbackToCampaignDTO feedbackToCampaignDTO = FeedbackToCampaignDTO();
 
   final _formKey = GlobalKey<FormState>();
   final _trafficEditingController = TextEditingController();
@@ -58,11 +59,16 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
   final _othersEditingController = TextEditingController();
 
   Future<void> _setFeedbackImages(List<File> files) async {
-    feedbackToCampaignDTO.images = await FileUtil.toMultipartFiles(files);
+    final List<dynamic> images = [];
+    for (File file in files) {
+      images.add(await FileUtil.toMultipartFile(file));
+    }
+    feedbackToCampaignDTO.images = images;
   }
 
   void _collectDataForFeedbackCampaign() {
-    feedbackToCampaignDTO.copyWith(
+    feedbackToCampaignDTO = feedbackToCampaignDTO.copyWith(
+      locationRate: feedbackToCampaignDTO.locationRate,
       traffic: _trafficEditingController.text,
       weather: _weatherEditingController.text,
       sanitization: _sanitizationEditingController.text,
@@ -74,6 +80,7 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
 
   void _submitFeedbackCampaign(BuildContext context) {
     _collectDataForFeedbackCampaign();
+    log(feedbackToCampaignDTO.locationRate.toString());
 
     context.read<FeedbackCampaignBloc>().add(
           FeedbackCampaignFormValidate(
@@ -91,10 +98,8 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
     }
   }
 
-  void _onRatingChanged(int rating) {
-    setState(() {
-      feedbackToCampaignDTO.locationRate = rating;
-    });
+  void _onLocationRateChanged(int rating) {
+    feedbackToCampaignDTO.locationRate = rating;
   }
 
   @override
@@ -115,7 +120,6 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
             FeedbackCampaignForm(
               formKey: _formKey,
               locationRate: feedbackToCampaignDTO.locationRate,
-              onRatingChanged: _onRatingChanged,
               trafficEditingController: _trafficEditingController,
               weatherEditingController: _weatherEditingController,
               sanitizationEditingController: _sanitizationEditingController,
@@ -124,13 +128,13 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
                   _authorityCooperationEditingController,
               othersEditingController: _othersEditingController,
               setFeedbackImages: _setFeedbackImages,
+              onLocationRateChanged: _onLocationRateChanged,
             ),
             const SizedBox(
               height: 30,
             ),
             AppRoundedButton(
               onPressed: () => _submitFeedbackCampaign(context),
-              backgroundColor: ColorStyles.zodiacBlue,
               width: double.infinity,
               content: LocaleKeys.button_finish.tr(),
             ),

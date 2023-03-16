@@ -312,7 +312,7 @@ static const Map<String,dynamic> vi = {
     "authority_cooperation": "Sự hợp tác của chính quyền địa phương",
     "others": "Thông tin khác",
     "images": "Hình ảnh về chiến dịch",
-    "images_uploaded": "Hình ảnh về chiến dịch phải được đăng tải",
+    "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
     "location_rated": "Hãy đánh giá địa điểm"
   }
 };

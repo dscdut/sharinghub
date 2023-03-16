@@ -7,7 +7,6 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/utils/file.util.dart';
 
 enum ImageType {
-  none,
   asset,
   file,
   network,
@@ -18,8 +17,6 @@ enum ImageType {
 abstract class ImageUtil {
   static ImageType getImageType(String path) {
     switch (FileUtil.getFileExtension(path)) {
-      case '.':
-        return ImageType.none;
       case '.png':
       case '.jpg':
       case '.jepg':
@@ -96,10 +93,7 @@ abstract class ImageUtil {
 
     return pickedFile.isEmpty
         ? null
-        : pickedFile
-            .where((e) => pickedFile.indexOf(e) < 10)
-            .map((e) => File(e.path))
-            .toList();
+        : pickedFile.map((e) => File(e.path)).toList();
   }
 
   static Future<File?> pickAndCropImage(

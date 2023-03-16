@@ -8,17 +8,14 @@ import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/validator.util.dart';
 import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
-import 'package:mobile/common/widgets/show_or_pick_image.widget.dart';
+import 'package:mobile/common/widgets/show_or_pick_multiple_image.widget.dart';
 import 'package:mobile/common/widgets/star_rating.widget.dart';
-import 'package:mobile/data/datasources/user.mock.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/management/management.dart';
-import 'package:mobile/modules/profile/widgets/organization_profile/header_profile.widget.dart';
 
 class FeedbackCampaignForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final int locationRate;
-  final void Function(int) onRatingChanged;
   final TextEditingController trafficEditingController;
   final TextEditingController weatherEditingController;
   final TextEditingController sanitizationEditingController;
@@ -26,13 +23,13 @@ class FeedbackCampaignForm extends StatelessWidget {
   final TextEditingController authorityCooperationEditingController;
   final TextEditingController othersEditingController;
   final Future<void> Function(List<File>) setFeedbackImages;
+  final void Function(int rating) onLocationRateChanged;
   final List<String?>? imagePath;
 
   const FeedbackCampaignForm({
     super.key,
     required this.formKey,
     required this.locationRate,
-    required this.onRatingChanged,
     required this.trafficEditingController,
     required this.weatherEditingController,
     required this.sanitizationEditingController,
@@ -40,6 +37,7 @@ class FeedbackCampaignForm extends StatelessWidget {
     required this.authorityCooperationEditingController,
     required this.othersEditingController,
     required this.setFeedbackImages,
+    required this.onLocationRateChanged,
     this.imagePath,
   });
 
@@ -53,12 +51,6 @@ class FeedbackCampaignForm extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
-          HeaderProfile(
-            rating: 5.0,
-            organization: UserMock.getOrganization(),
-            avatarRadius: 20,
-          ),
-          const SizedBox(height: 40),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -70,7 +62,7 @@ class FeedbackCampaignForm extends StatelessWidget {
           StarRating(
             rating: locationRate,
             size: 40.0,
-            onRatingChanged: onRatingChanged,
+            onRatingChanged: onLocationRateChanged,
           ),
           BlocBuilder<FeedbackCampaignBloc, FeedbackCampaignState>(
             builder: (context, state) {
@@ -128,7 +120,7 @@ class FeedbackCampaignForm extends StatelessWidget {
           _verticalSpacing,
           AppTextFormField(
             textController: othersEditingController,
-            labelText: LocaleKeys.feedback_others.tr(),
+            hintText: LocaleKeys.feedback_others.tr(),
             maxLines: 6,
             contentPadding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
             extendField: false,
@@ -144,8 +136,7 @@ class FeedbackCampaignForm extends StatelessWidget {
           _verticalSpacing,
           BlocBuilder<FeedbackCampaignBloc, FeedbackCampaignState>(
             builder: (context, state) {
-              return ShowOrPickImage(
-                isMultiplePick: true,
+              return ShowOrPickMultipleImage(
                 setImages: setFeedbackImages,
                 imagePaths: imagePath,
                 width: context.width - 2 * AppSize.horizontalSpace,

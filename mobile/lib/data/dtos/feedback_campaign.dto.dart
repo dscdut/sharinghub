@@ -4,6 +4,7 @@ import 'package:mobile/data/models/campaign.model.dart';
 part 'feedback_campaign.dto.g.dart';
 
 @JsonSerializable(
+  createFactory: false,
   explicitToJson: true,
   fieldRename: FieldRename.snake,
 )
@@ -55,7 +56,4 @@ class FeedbackToCampaignDTO {
       others: others ?? this.others,
     );
   }
-
-  factory FeedbackToCampaignDTO.fromJson(Map<String, dynamic> json) =>
-      _$FeedbackToCampaignDTOFromJson(json);
 }

@@ -35,14 +35,4 @@ abstract class FileUtil {
       contentType: getMediaType(file),
     );
   }
-
-  static Future<List<MultipartFile>> toMultipartFiles(List<File> files) async {
-    final List<MultipartFile> multipartFiles = [];
-
-    for (final file in files) {
-      multipartFiles.add(await toMultipartFile(file));
-    }
-
-    return multipartFiles;
-  }
 }

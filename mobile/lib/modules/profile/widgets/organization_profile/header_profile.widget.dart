@@ -8,7 +8,7 @@ import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
 class HeaderProfile extends StatelessWidget {
-  final double rating;
+  final int rating;
   final OrganizationModel organization;
   final double avatarRadius;
 

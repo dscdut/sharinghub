@@ -25,7 +25,6 @@ class CampaignFeedbackButton extends StatelessWidget {
           arguments: campaign,
         );
       },
-      backgroundColor: ColorStyles.primary1,
       content: LocaleKeys.button_send_feedback.tr(),
     );
   }
