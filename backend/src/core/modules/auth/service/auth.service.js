@@ -27,11 +27,18 @@ class Service {
         const user = await this.UserService.findByEmail(loginDto.email);
 
         if (user) {
-            if (this.bcryptService.compare(loginDto.password, user.password)) {
-                const organization_ids = (await this.OrgRepositoryService.findUsersOrgsById(user.id)).map(org => org.id);
+            if (this.bcryptService.compare(loginDto.password, user.password)) {             
+                const organizations =  await this.OrgRepositoryService.findUsersOrgsById(user.id);
+
+                const organization_ids = organizations.map(org => org.id);
+
+                const { id, fullName, email, phoneNumber, birthday, avatar, address } = user;
 
                 return {
                     message: MESSAGE.LOGIN_SUCCESS,
+                    user: { 
+                        id, fullName, email, phoneNumber, birthday, avatar, address, organizations,
+                    },
                     accessToken: this.jwtService.sign({ id: user.id, organization_ids }),
                 };
             }

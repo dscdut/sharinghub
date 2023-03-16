@@ -5,7 +5,7 @@ import { MediaController } from './media.controller';
 
 export const MediaResolver = Module.builder()
     .addPrefix({
-        prefixPath: '/media',
+        prefixPath: '/v1/media',
         tag: 'media',
         module: 'MediaModule'
     })
