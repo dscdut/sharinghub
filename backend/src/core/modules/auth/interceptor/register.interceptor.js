@@ -7,6 +7,6 @@ export const RegisterInterceptor = new DefaultValidatorInterceptor(
         email: JoiUtils.email().required(),
         fullName: JoiUtils.requiredString().min(1),
         password: JoiUtils.password().required(),
-        confirmPassword: JoiUtils.password().required(),
+        confirmPassword: JoiUtils.requiredString(),
     })
 );
