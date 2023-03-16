@@ -1,4 +1,5 @@
 import { Optional } from 'core/utils';
+import { FileSystemService, MediaService } from 'core/modules/document';
 import { logger } from '../../../../packages/logger';
 import { OrgRepository } from '../org.repository';
 import {
@@ -6,8 +7,6 @@ import {
     BadRequestException,
     DuplicateException,
 } from '../../../../packages/httpException';
-import { MediaService } from 'core/modules/document';
-import { FileSystemService } from 'core/modules/document';
 
 class Service {
     constructor() {
@@ -15,13 +14,13 @@ class Service {
         this.MediaService = MediaService;
         this.FileSystemService = FileSystemService;
     }
-    
+
     async deleteFile(file) {
         try {
             if (file) {
                 await this.FileSystemService.deleteFile(file);
             }
-        } catch(error) {
+        } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
@@ -49,13 +48,13 @@ class Service {
         try {
             Optional.of(await this.findOrgByExactName(orgDto.id, orgDto.name)).throwIfPresent(new DuplicateException('This name is already existed'));
             Optional.of(await this.findOrgByPhoneNumber(orgDto.id, orgDto.phone_number)).throwIfPresent(new DuplicateException('This phone number is already existed'));
-        } catch(error) {
+        } catch (error) {
             if (file) {
                 await this.deleteFile(file);
             }
             throw error;
         }
-        
+
         if (!orgDto.id) {
             return this.createOrg(file, orgDto);
         }
@@ -77,7 +76,7 @@ class Service {
     async updateOrg(file, orgDto) {
         try {
             const url = file ? (await this.MediaService.uploadOne(file, `organizations/${orgDto.id}/avatar`, 'avatar', true)).url : null;
-            return this.repository.updateOrg({...orgDto, avatar: url});
+            return this.repository.updateOrg({ ...orgDto, avatar: url });
         } catch (error) {
             await this.deleteFile(file);
             logger.error(error.message);
@@ -106,6 +105,7 @@ class Service {
             throw new InternalServerException();
         }
     }
+
     async deleteOrgById(id) {
         try {
             return this.repository.deleteOrgById(id);

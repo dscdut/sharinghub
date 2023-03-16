@@ -3,6 +3,7 @@ import { JwtService } from '../../auth/service/jwt.service';
 import { MESSAGE } from './message.enum';
 import { ForbiddenException } from '../../../../packages/httpException';
 import { FileSystemService } from '../../document/service/file-system.service';
+
 class Service {
     constructor() {
         this.OrgRepositoryService = OrgRepositoryService;
@@ -44,7 +45,7 @@ class Service {
         }
         return { ...data, editable };
     }
-    
+
     async deleteOrg(user, orgId) {
         if (!user.organization_ids.includes(Number(orgId))) {
             throw new ForbiddenException('You don\'t have permission to delete this organization or the organization doesn\'t exist');

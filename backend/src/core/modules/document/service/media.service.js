@@ -1,6 +1,7 @@
 import { InternalServerException } from 'packages/httpException';
 import { cloudinaryUploader } from '../../../config/cloudinary.config';
-import { FileSystemService } from './file-system.service'
+import { FileSystemService } from './file-system.service';
+
 class Service {
     constructor() {
         this.FileSystemService = FileSystemService;
@@ -8,7 +9,7 @@ class Service {
 
     async uploadOne(file, folderName = '', public_id = '', overwrite = false) {
         try {
-            const response = await cloudinaryUploader.upload(file.path, { folder: folderName, public_id, overwrite});
+            const response = await cloudinaryUploader.upload(file.path, { folder: folderName, public_id, overwrite });
             return {
                 originalName: response.original_filename,
                 url: response.secure_url,
