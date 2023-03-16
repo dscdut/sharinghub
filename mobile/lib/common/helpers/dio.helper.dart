@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:mobile/common/helpers/dio/dio_interceptor.dart';
 
 class HttpRequestResponse<T> {
   HttpRequestResponse({
@@ -19,10 +18,12 @@ class HttpRequestResponse<T> {
   Map<String, dynamic>? extra;
 }
 
-abstract class DioHelper {
-  static final Dio _dio = Dio()..interceptors.add(DioInterceptor());
+class DioHelper {
+  final Dio _dio;
 
-  static FormData _mapToFormData(Map<String, dynamic> map) {
+  DioHelper({required Dio dio}) : _dio = dio;
+
+  FormData _mapToFormData(Map<String, dynamic> map) {
     final formData = FormData.fromMap(map);
     final FormData newData = FormData();
 
@@ -47,7 +48,7 @@ abstract class DioHelper {
     return newData;
   }
 
-  static Future<HttpRequestResponse> get(
+  Future<HttpRequestResponse> get(
     String url, {
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -68,7 +69,7 @@ abstract class DioHelper {
     );
   }
 
-  static Future<HttpRequestResponse> post(
+  Future<HttpRequestResponse> post(
     String url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -98,7 +99,7 @@ abstract class DioHelper {
     );
   }
 
-  static Future<HttpRequestResponse> put(
+  Future<HttpRequestResponse> put(
     String url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -122,7 +123,7 @@ abstract class DioHelper {
     );
   }
 
-  static Future<HttpRequestResponse> delete(
+  Future<HttpRequestResponse> delete(
     String url, {
     dynamic data,
     Map<String, dynamic>? queryParameters,

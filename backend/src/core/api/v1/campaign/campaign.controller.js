@@ -3,7 +3,7 @@ import { MESSAGE } from 'core/modules/campaign/services/message.enum';
 import { ValidHttpResponse } from 'packages/handler/response/validHttp.response';
 import { NotFoundException } from 'packages/httpException';
 import { ForbiddenException } from 'packages/httpException/ForbiddenException';
-import { CreateCampaignDto } from '../../modules/campaign/dto';
+import { CreateCampaignDto } from '../../../modules/campaign/dto';
 
 class Controller {
     constructor() {
@@ -117,6 +117,11 @@ class Controller {
             throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT);
         }
 
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getAllCoordinates = async req => {
+        const data = await this.service.getAllCoordinates();
         return ValidHttpResponse.toOkResponse(data);
     }
 }

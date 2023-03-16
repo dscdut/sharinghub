@@ -3,13 +3,14 @@ import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/data/models/user.model.dart';
 
 abstract class UserMock {
-  static AuthResponseDTO loginByEmail() {
-    return AuthResponseDTO(
-      user: UserModel(
-        id: 100,
-        email: 'beobiebom@gmail.com',
-        fullName: 'Duc Nguyen',
-      ),
+  static LoginResponseDTO loginByEmail() {
+    return LoginResponseDTO(
+      // user: UserModel(
+      //   id: 100,
+      //   email: 'beobiebom@gmail.com',
+      //   fullName: 'Duc Nguyen',
+      // ),
+      accessToken: 'access_token_demo',
     );
   }
 

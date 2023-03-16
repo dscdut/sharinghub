@@ -122,13 +122,11 @@ class Service {
             );
         }
 
-
-        let data = { ...campaign, ...createCampaignDto };
         let updatedCampaign;
         try {
             updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                data,
+                createCampaignDto,
                 trx,
             );
 
@@ -188,6 +186,18 @@ class Service {
         let campaigns;
         try {
             campaigns = await this.repository.searchByCoordinate(lng, lat);
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return campaigns;
+    }
+
+    async getAllCoordinates() {
+        let campaigns;
+        try {
+            campaigns = await this.repository.getAllCoordinates();
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();

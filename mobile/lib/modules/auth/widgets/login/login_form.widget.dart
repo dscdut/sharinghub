@@ -44,7 +44,6 @@ class _LoginFormState extends State<LoginForm> {
           BlocBuilder<LoginBloc, LoginState>(
             builder: (_, state) {
               return AuthTextFormField(
-                //   focusNode: controller.passwordFocusNode,
                 validator: ValidatorUtil.validatePassword,
                 textController: widget.passwordEditingController,
                 isPasswordField: true,

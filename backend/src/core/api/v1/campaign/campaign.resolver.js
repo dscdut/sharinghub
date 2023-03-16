@@ -2,8 +2,8 @@ import { Module } from 'packages/handler/Module';
 
 import { CoordinateCampaignInterceptor, CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
 import { CampaignController } from './campaign.controller';
-import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../common/swagger';
-import { RecordIdInterceptor } from '../../modules/interceptor/recordId/record-id.interceptor';
+import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../../common/swagger';
+import { RecordIdInterceptor } from '../../../modules/interceptor/recordId/record-id.interceptor';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({
@@ -20,13 +20,6 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/organizations/:organizationId/campaigns/:campaignId',
-            method: 'get',
-            params: [orgCampaignId, campaignId],
-            controller: CampaignController.findOneByOrgIdAndCampaignId,
-            preAuthorization: true,
-        },
-        {
             route: '/organizations/:organizationId/campaigns',
             method: 'post',
             interceptors: [CreateCampaignInterceptor],
@@ -37,18 +30,15 @@ export const CampaignResolver = Module.builder()
         },
         {
             route: '/organizations/:organizationId/campaigns/:campaignId',
-            method: 'patch',
-            body: 'CreateCampaignDto',
-            params: [orgCampaignId, campaignId],
-            controller: CampaignController.updateOne,
-            preAuthorization: true,
-        },
-        {
-            route: '/organizations/:organizationId/campaigns/:campaignId',
             method: 'delete',
             params: [orgCampaignId, campaignId],
             controller: CampaignController.deleteOne,
             preAuthorization: true,
+        },
+        {
+            route: '/campaigns/coordinates',
+            method: 'get',
+            controller: CampaignController.getAllCoordinates,
         },
         {
             route: '/campaigns/:id',

@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:mobile/data/datasources/place.datasource.dart';
+import 'package:mobile/data/datasources/remote/place.datasource.dart';
 import 'package:mobile/data/models/place.model.dart';
 
 @lazySingleton

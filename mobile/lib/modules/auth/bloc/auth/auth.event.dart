@@ -9,24 +9,15 @@ abstract class AuthEvent extends Equatable {
 
 class AuthUserInfoChecked extends AuthEvent {}
 
-class AuthUserInfoSet extends AuthEvent {
-  final AuthResponseDTO? authResponse;
+class AuthTokensSet extends AuthEvent {
+  final TokenDTO? tokenDTO;
 
-  const AuthUserInfoSet({required this.authResponse});
+  const AuthTokensSet({
+    required this.tokenDTO,
+  });
 
   @override
-  List<Object?> get props => [authResponse];
+  List<Object?> get props => [tokenDTO];
 }
-
-// class AuthSetTokens extends AuthEvent {
-//   final RefreshTokenDTO? refreshToken;
-
-//   const AuthSetTokens({
-//     required this.refreshToken,
-//   });
-
-//   @override
-//   List<Object?> get props => [refreshToken];
-// }
 
 class AuthLogOut extends AuthEvent {}

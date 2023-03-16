@@ -33,7 +33,7 @@ class AuthNavigateOption extends StatelessWidget {
                   .pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
             } else {
               Navigator.of(context).pushNamed(
-                AppRoutes.chooseRole,
+                AppRoutes.register,
               );
             }
           },
@@ -41,8 +41,8 @@ class AuthNavigateOption extends StatelessWidget {
             haveAccount
                 ? LocaleKeys.auth_login.tr()
                 : LocaleKeys.auth_sign_up.tr(),
-            style: TextStyles.regularText
-                .copyWith(fontSize: 16, color: ColorStyles.blue400),
+            style: TextStyles.mediumText
+                .copyWith(fontSize: 16, color: ColorStyles.red500),
           ),
         )
       ],

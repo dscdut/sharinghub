@@ -5,6 +5,6 @@ import Joi from 'joi';
 export const LoginInterceptor = new DefaultValidatorInterceptor(
     Joi.object({
         email: JoiUtils.email().required(),
-        password: JoiUtils.password().required(),
+        password: JoiUtils.requiredString(),
     })
 );

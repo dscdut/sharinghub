@@ -5,7 +5,7 @@ ApiDocument.addModel('CreateCampaignDto', {
     name: SwaggerDocument.ApiProperty({ type: 'string' }),
     image: SwaggerDocument.ApiProperty({ type: 'string', required: false }),
     address: SwaggerDocument.ApiProperty({ type: 'string' }),
-    specificAddress: SwaggerDocument.ApiProperty({
+    specific_address: SwaggerDocument.ApiProperty({
         type: 'string',
         required: false,
     }),
@@ -47,7 +47,7 @@ export const CreateCampaignDto = body => ({
     name: body.name,
     image: body.image,
     address: body.address,
-    specificAddress: body.specificAddress,
+    specific_address: body.specific_address,
     coordinate: body.coordinate,
     description: body.description,
     start_date: body.start_date,

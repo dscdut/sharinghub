@@ -6,15 +6,10 @@ part of 'auth.dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthResponseDTO _$AuthResponseDTOFromJson(Map<String, dynamic> json) =>
-    AuthResponseDTO(
-      user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
+LoginResponseDTO _$LoginResponseDTOFromJson(Map<String, dynamic> json) =>
+    LoginResponseDTO(
+      accessToken: json['accessToken'] as String,
     );
-
-Map<String, dynamic> _$AuthResponseDTOToJson(AuthResponseDTO instance) =>
-    <String, dynamic>{
-      'user': instance.user.toJson(),
-    };
 
 Map<String, dynamic> _$SubmitLoginDTOToJson(SubmitLoginDTO instance) =>
     <String, dynamic>{
@@ -22,19 +17,14 @@ Map<String, dynamic> _$SubmitLoginDTOToJson(SubmitLoginDTO instance) =>
       'password': instance.password,
     };
 
-Map<String, dynamic> _$SubmitRegisterDTOToJson(SubmitRegisterDTO instance) {
-  final val = <String, dynamic>{
-    'name': instance.name,
-  };
+Map<String, dynamic> _$SubmitRegisterDTOToJson(SubmitRegisterDTO instance) =>
+    <String, dynamic>{
+      'fullName': instance.fullName,
+      'email': instance.email,
+      'password': instance.password,
+      'confirmPassword': instance.confirmPassword,
+    };
 
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('representativeName', instance.representativeName);
-  val['email'] = instance.email;
-  val['password'] = instance.password;
-  return val;
-}
+TokenDTO _$TokenDTOFromJson(Map<String, dynamic> json) => TokenDTO(
+      accessToken: json['accessToken'] as String,
+    );

@@ -7,9 +7,13 @@ class Repository extends DataRepository {
             .where('users.email', '=', email)
             .select(
                 'users.id',
+                { fullName: 'users.full_name' },
                 'users.email',
                 'users.password',
                 { phoneNumber: 'users.phone_number' },
+                'users.birthday',
+                'users.avatar',
+                'users.address',
             );
     }
 
