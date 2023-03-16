@@ -19,13 +19,6 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/organizations/:organizationId/campaigns/:campaignId',
-            method: 'get',
-            params: [orgCampaignId, campaignId],
-            controller: CampaignController.findOneByOrgIdAndCampaignId,
-            preAuthorization: true,
-        },
-        {
             route: '/organizations/:organizationId/campaigns',
             method: 'post',
             interceptors: [CreateCampaignInterceptor],

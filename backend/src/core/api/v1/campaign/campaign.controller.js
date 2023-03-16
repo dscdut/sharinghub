@@ -16,7 +16,7 @@ class Controller {
         const data = await this.service.findOneById(req.params.id);
 
         if (!data) {
-            throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_ID);
+            throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT);
         }
 
         return ValidHttpResponse.toOkResponse(data);

@@ -1,8 +1,8 @@
 import { Module } from 'packages/handler/Module';
 import { CampaignController } from './campaign.controller';
-import { orgCampaignId, campaignId, RecordId, volunteerId } from '../../common/swagger';
-import { RecordIdInterceptor } from '../../modules/interceptor/recordId/record-id.interceptor';
-import { UpdateUserStatusInterceptor } from '../../modules/user_campaign/interceptor';
+import { orgCampaignId, campaignId, RecordId, volunteerId } from '../../../common/swagger';
+import { RecordIdInterceptor } from '../../../modules/interceptor/recordId/record-id.interceptor';
+import { UpdateUserStatusInterceptor } from '../../../modules/user_campaign/interceptor';
 
 export const VolunteerResolver = Module.builder()
     .addPrefix({
