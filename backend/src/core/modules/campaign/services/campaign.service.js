@@ -193,6 +193,18 @@ class Service {
 
         return campaigns;
     }
+
+    async getAllCoordinates() {
+        let campaigns;
+        try {
+            campaigns = await this.repository.getAllCoordinates();
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return campaigns;
+    }
 }
 
 export const CampaignService = new Service();
