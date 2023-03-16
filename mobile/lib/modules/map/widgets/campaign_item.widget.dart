@@ -42,7 +42,7 @@ class CampaignItem extends StatelessWidget {
                 height,
               ),
               child: Image.network(
-                currentCampaign.imageURL!,
+                'https://swall.teahub.io/photos/small/0-2836_nature-wallpaper-with-flowers-image-good-morning-photo.jpg',
                 width: height,
                 height: height,
                 fit: BoxFit.cover,
@@ -85,7 +85,7 @@ class CampaignItem extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    currentCampaign.organization.name,
+                    currentCampaign.orgName,
                   )
                 ],
               ),

@@ -9,8 +9,6 @@ part of 'campaign.model.dart';
 CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
     CampaignModel(
       id: json['id'] as int?,
-      organization: OrganizationModel.fromJson(
-          json['organization'] as Map<String, dynamic>),
       name: json['name'] as String,
       address: json['address'] as String,
       specificAddress: json['specificAddress'] as String?,
@@ -20,32 +18,26 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       formLink: json['formLink'] as String?,
       artifactTypes: json['artifactTypes'] as String?,
       otherInformation: json['otherInformation'] as String?,
-      imageURL: json['imageURL'] as String?,
-      geometry: (json['geometry'] as Map<String, dynamic>).map(
+      imageURL: json['image'] as String?,
+      geometry: (json['coordinate'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
+      orgName: json['organizationName'] as String,
     );
 
-Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  val['imageURL'] = instance.imageURL;
-  val['name'] = instance.name;
-  val['description'] = instance.description;
-  val['address'] = instance.address;
-  val['specificAddress'] = instance.specificAddress;
-  val['startDate'] = instance.startDate.toIso8601String();
-  val['endDate'] = instance.endDate.toIso8601String();
-  val['formLink'] = instance.formLink;
-  val['artifactTypes'] = instance.artifactTypes;
-  val['otherInformation'] = instance.otherInformation;
-  val['geometry'] = instance.geometry;
-  return val;
-}
+Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'image': instance.imageURL,
+      'name': instance.name,
+      'description': instance.description,
+      'address': instance.address,
+      'specificAddress': instance.specificAddress,
+      'startDate': instance.startDate.toIso8601String(),
+      'endDate': instance.endDate.toIso8601String(),
+      'formLink': instance.formLink,
+      'artifactTypes': instance.artifactTypes,
+      'otherInformation': instance.otherInformation,
+      'coordinate': instance.geometry,
+      'organizationName': instance.orgName,
+    };

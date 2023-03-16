@@ -7,7 +7,6 @@ import 'package:mobile/modules/campaign/widgets/campaign_detail/campaing_request
 import 'package:mobile/modules/campaign/widgets/campaign_detail/campaign_detail_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/campaign_detail/campaign_ended_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/campaign_detail/image_and_description.widget.dart';
-import 'package:mobile/modules/campaign/widgets/campaign_detail/organization_info.widget.dart';
 
 class CampaignInfo extends StatelessWidget {
   final CampaignModel campaign;
@@ -35,7 +34,7 @@ class CampaignInfo extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          OrganizationInfo(organization: campaign.organization),
+          // OrganizationInfo(organization: campaign.organization),
           const SizedBox(
             height: 10,
           ),

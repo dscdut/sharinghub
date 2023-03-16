@@ -1,6 +1,5 @@
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
-import 'package:mobile/data/datasources/user.mock.dart';
 
 abstract class CampaignMock {
   static Future<CampaignModel> setCampaign(
@@ -9,7 +8,7 @@ abstract class CampaignMock {
     await Future.delayed(const Duration(seconds: 2));
 
     return CampaignModel(
-      organization: UserMock.getOrganization(),
+      // organization: UserMock.getOrganization(),
       name: 'Giúp mọi người quay lại cuốc sống bình thường',
       description:
           'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -22,6 +21,7 @@ abstract class CampaignMock {
           'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
       geometry: {},
       address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+      orgName: 'Công ty TNHH ABC',
     );
   }
 
@@ -31,7 +31,7 @@ abstract class CampaignMock {
     return [
       CampaignModel(
         id: 0,
-        organization: UserMock.getOrganization(),
+        // organization: UserMock.getOrganization(),
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -43,10 +43,11 @@ abstract class CampaignMock {
         imageURL: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
         geometry: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        orgName: 'Công ty TNHH ABC',
       ),
       CampaignModel(
         id: 1,
-        organization: UserMock.getOrganization(),
+        // organization: UserMock.getOrganization(),
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -59,10 +60,11 @@ abstract class CampaignMock {
             'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
         geometry: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        orgName: '',
       ),
       CampaignModel(
         id: 2,
-        organization: UserMock.getOrganization(),
+        // organization: UserMock.getOrganization(),
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -74,10 +76,11 @@ abstract class CampaignMock {
         imageURL: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
         geometry: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        orgName: '',
       ),
       CampaignModel(
         id: 3,
-        organization: UserMock.getOrganization(),
+        // organization: UserMock.getOrganization(),
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -90,10 +93,11 @@ abstract class CampaignMock {
             'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
         geometry: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        orgName: '',
       ),
       CampaignModel(
         id: 4,
-        organization: UserMock.getOrganization(),
+        // organization: UserMock.getOrganization(),
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -106,6 +110,7 @@ abstract class CampaignMock {
             'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
         geometry: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        orgName: '',
       )
     ];
   }
