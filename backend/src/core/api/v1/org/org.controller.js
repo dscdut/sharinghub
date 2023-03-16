@@ -1,6 +1,6 @@
-import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
-import { CreateOrgDto } from '../../modules/org';
-import { OrgService } from '../../modules/org/service/org.service';
+import { ValidHttpResponse } from '../../../../packages/handler/response/validHttp.response';
+import { CreateOrgDto } from '../../../modules/org';
+import { OrgService } from '../../../modules/org/service/org.service';
 
 class Controller {
     constructor() {

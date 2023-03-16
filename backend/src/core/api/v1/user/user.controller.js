@@ -1,6 +1,6 @@
-import { UserService } from '../../modules/user/services/user.service';
-import { CreateUserDto, UpdateUserDto } from '../../modules/user/dto';
-import { ValidHttpResponse } from '../../../packages/handler/response/validHttp.response';
+import { UserService } from '../../../modules/user/services/user.service';
+import { CreateUserDto, UpdateUserDto } from '../../../modules/user/dto';
+import { ValidHttpResponse } from '../../../../packages/handler/response/validHttp.response';
 
 class Controller {
     constructor() {
