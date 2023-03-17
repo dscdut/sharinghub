@@ -34,7 +34,8 @@ class Repository extends DataRepository {
     }
 
     updateUser(id, data = {}, trx = null) {
-        const queryBuilder = this.query().whereNull('deleted_at').where({ id }).update(data, 'id');
+        const queryBuilder = this.query().whereNull('deleted_at').where({ id }).update(data).returning('*');
+
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
     }

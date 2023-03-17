@@ -139,7 +139,7 @@ class Service {
         trx.commit();
         return {
             message: MESSAGE.UPDATE_CAMPAIGN_SUCCESS,
-            id: updatedCampaign[0].id,
+            campaign: updatedCampaign[0],
         };
     }
 
