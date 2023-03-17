@@ -1,7 +1,7 @@
 import 'package:mobile/flavors.dart';
 
 abstract class Endpoints {
-  static String apiUrl = '${AppFlavor.apiBaseUrl}/api';
+  static String apiUrl = '${AppFlavor.apiBaseUrl}/api/v1';
 
   static String login = '$apiUrl/auth/login';
   static String register = '$apiUrl/auth/register';

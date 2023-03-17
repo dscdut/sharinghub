@@ -48,7 +48,9 @@ class CampaignInfo extends StatelessWidget {
                     );
                   },
                 )
-              : CampaignFeedbackButton(campaign: campaign),
+              : campaign.isEnded
+                  ? CampaignFeedbackButton(campaign: campaign)
+                  : const SizedBox(),
           // const CampaignEndedInfo()
         ],
       ),

@@ -1,6 +1,4 @@
-import 'package:mobile/data/datasources/campaign.mock.dart';
 import 'package:mobile/data/dtos/auth.dto.dart';
-import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/data/models/user.model.dart';
 

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobile/common/extensions/date_time.extension.dart';
+import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/organization.model.dart';
 
@@ -23,10 +24,15 @@ class CampaignModel {
   final String? artifactTypes;
   final String? otherInformation;
   final Map<String, double> geometry;
+  final FeedbackToCampaignDTO? feedback;
   @JsonKey(includeFromJson: true, includeToJson: false)
   final OrganizationModel organization;
 
   bool get isOngoing => DateTime.now().isBeforeOrEqualTo(endDate);
+
+  bool get isEnded => DateTime.now().isAfter(endDate);
+
+  bool get hasFeedback => feedback != null;
 
   String get statusContent => isOngoing
       ? LocaleKeys.campaign_ongoing.tr()
@@ -47,6 +53,7 @@ class CampaignModel {
     this.artifactTypes,
     this.otherInformation,
     this.imageURL,
+    this.feedback,
     required this.geometry,
   });
 

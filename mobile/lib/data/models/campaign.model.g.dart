@@ -21,6 +21,10 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       artifactTypes: json['artifactTypes'] as String?,
       otherInformation: json['otherInformation'] as String?,
       imageURL: json['imageURL'] as String?,
+      feedback: json['feedback'] == null
+          ? null
+          : FeedbackToCampaignDTO.fromJson(
+              json['feedback'] as Map<String, dynamic>),
       geometry: (json['geometry'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
@@ -47,5 +51,6 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   val['artifactTypes'] = instance.artifactTypes;
   val['otherInformation'] = instance.otherInformation;
   val['geometry'] = instance.geometry;
+  val['feedback'] = instance.feedback?.toJson();
   return val;
 }

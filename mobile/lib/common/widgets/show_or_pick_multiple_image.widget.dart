@@ -12,7 +12,7 @@ import 'package:mobile/common/utils/image.util.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
 class ShowOrPickMultipleImage extends StatefulWidget {
-  final List<String?>? imagePaths;
+  final List<dynamic>? imagePaths;
   final double width;
   final double height;
   final double borderRadius;
@@ -37,7 +37,7 @@ class ShowOrPickMultipleImage extends StatefulWidget {
 }
 
 class _ShowOrPickMultipleImageState extends State<ShowOrPickMultipleImage> {
-  late List<String?>? imagePaths;
+  late List<dynamic>? imagePaths;
 
   @override
   void initState() {

@@ -77,7 +77,7 @@ class _OrganizationManagementView extends StatelessWidget {
             visible: state.status.isSuccess && state.organizations.isNotEmpty,
             child: FloatingActionButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.setOrganization);
+                Navigator.of(context).pushNamed(AppRoutes.setCampaign);
               },
               child: const Icon(Icons.add),
             ),

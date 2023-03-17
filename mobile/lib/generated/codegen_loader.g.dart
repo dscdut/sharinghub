@@ -162,7 +162,8 @@ class CodegenLoader extends AssetLoader{
     "others": "Others",
     "images": "Images of the campaign",
     "images_uploaded": "The campaign images must be uploaded",
-    "location_rated": "Please rate the location"
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -313,7 +314,8 @@ static const Map<String,dynamic> vi = {
     "others": "Thông tin khác",
     "images": "Hình ảnh về chiến dịch",
     "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
-    "location_rated": "Hãy đánh giá địa điểm"
+    "location_rated": "Hãy đánh giá địa điểm",
+    "success": "Gửi đánh giá thành công"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

@@ -44,6 +44,20 @@ abstract class CampaignMock {
         imageURL: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
         geometry: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        // feedback: FeedbackToCampaignDTO(
+        //   images: [
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //   ],
+        //   locationRate: 5,
+        //   traffic: 'Đông',
+        //   weather: 'Nắng',
+        //   sanitization: 'Tốt',
+        //   residence: 'Có',
+        //   authorityCooperation: 'Tốt',
+        //   others: 'Không có',
+        // ),
       ),
       CampaignModel(
         id: 1,
@@ -111,7 +125,6 @@ abstract class CampaignMock {
     ];
   }
 
-  // get campaign
   static CampaignModel getCampaign() {
     return CampaignModel(
       id: 0,

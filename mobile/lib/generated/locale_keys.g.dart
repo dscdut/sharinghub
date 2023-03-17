@@ -138,6 +138,7 @@ abstract class  LocaleKeys {
   static const feedback_images = 'feedback.images';
   static const feedback_images_uploaded = 'feedback.images_uploaded';
   static const feedback_location_rated = 'feedback.location_rated';
+  static const feedback_success = 'feedback.success';
   static const feedback = 'feedback';
 
 }

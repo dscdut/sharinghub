@@ -4,7 +4,6 @@ import 'package:mobile/data/models/campaign.model.dart';
 part 'feedback_campaign.dto.g.dart';
 
 @JsonSerializable(
-  createFactory: false,
   explicitToJson: true,
   fieldRename: FieldRename.snake,
 )
@@ -16,7 +15,6 @@ class FeedbackToCampaignDTO {
   String? sanitization;
   String? residence;
   String? authorityCooperation;
-  CampaignModel? campaign;
   String? others;
 
   FeedbackToCampaignDTO({
@@ -27,11 +25,13 @@ class FeedbackToCampaignDTO {
     this.sanitization,
     this.residence,
     this.authorityCooperation,
-    this.campaign,
     this.others,
   });
 
   Map<String, dynamic> toJson() => _$FeedbackToCampaignDTOToJson(this);
+
+  factory FeedbackToCampaignDTO.fromJson(Map<String, dynamic> json) =>
+      _$FeedbackToCampaignDTOFromJson(json);
 
   FeedbackToCampaignDTO copyWith({
     List<dynamic>? images,
@@ -41,7 +41,6 @@ class FeedbackToCampaignDTO {
     String? sanitization,
     String? residence,
     String? authorityCooperation,
-    CampaignModel? campaign,
     String? others,
   }) {
     return FeedbackToCampaignDTO(
@@ -52,7 +51,6 @@ class FeedbackToCampaignDTO {
       sanitization: sanitization ?? this.sanitization,
       residence: residence ?? this.residence,
       authorityCooperation: authorityCooperation ?? this.authorityCooperation,
-      campaign: campaign ?? this.campaign,
       others: others ?? this.others,
     );
   }

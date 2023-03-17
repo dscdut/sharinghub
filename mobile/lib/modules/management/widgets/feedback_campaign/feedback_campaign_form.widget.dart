@@ -24,7 +24,7 @@ class FeedbackCampaignForm extends StatelessWidget {
   final TextEditingController othersEditingController;
   final Future<void> Function(List<File>) setFeedbackImages;
   final void Function(int rating) onLocationRateChanged;
-  final List<String?>? imagePath;
+  final List<dynamic>? imagePaths;
 
   const FeedbackCampaignForm({
     super.key,
@@ -38,7 +38,7 @@ class FeedbackCampaignForm extends StatelessWidget {
     required this.othersEditingController,
     required this.setFeedbackImages,
     required this.onLocationRateChanged,
-    this.imagePath,
+    this.imagePaths,
   });
 
   final Widget _verticalSpacing = const SizedBox(
@@ -138,7 +138,7 @@ class FeedbackCampaignForm extends StatelessWidget {
             builder: (context, state) {
               return ShowOrPickMultipleImage(
                 setImages: setFeedbackImages,
-                imagePaths: imagePath,
+                imagePaths: imagePaths,
                 width: context.width - 2 * AppSize.horizontalSpace,
                 height: (context.width - 2 * AppSize.horizontalSpace) *
                     (1 / AppSize.campaignAvatarRatio),

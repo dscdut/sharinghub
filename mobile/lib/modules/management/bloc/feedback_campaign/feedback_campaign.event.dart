@@ -7,6 +7,8 @@ abstract class FeedbackCampaignEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class FeedbackCampaignInit extends FeedbackCampaignEvent {}
+
 class FeedbackCampaignFormValidate extends FeedbackCampaignEvent {
   final FeedbackToCampaignDTO organizationFeedback;
 

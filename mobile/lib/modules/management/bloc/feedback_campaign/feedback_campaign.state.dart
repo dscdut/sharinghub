@@ -11,8 +11,6 @@ class FeedbackCampaignState extends Equatable {
     this.imageError,
   });
 
-  bool get isValid => rateError != null && imageError != null;
-
   @override
   List<Object?> get props => [
         status,

@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
@@ -25,7 +24,9 @@ class CampaignFeedbackButton extends StatelessWidget {
           arguments: campaign,
         );
       },
-      content: LocaleKeys.button_send_feedback.tr(),
+      content: campaign.hasFeedback
+          ? LocaleKeys.button_edit_feedback.tr()
+          : LocaleKeys.button_send_feedback.tr(),
     );
   }
 }

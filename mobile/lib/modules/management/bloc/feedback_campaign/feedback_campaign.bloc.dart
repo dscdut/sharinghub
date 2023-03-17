@@ -18,16 +18,31 @@ class FeedbackCampaignBloc
     required CampaignRepository campaignRepository,
   })  : _campaignRepository = campaignRepository,
         super(const FeedbackCampaignState()) {
+    on<FeedbackCampaignInit>(_onInitFeedbackCampaign);
     on<FeedbackCampaignFormValidate>(_onValidateFeedbackCampaign);
     on<FeedbackCampaignSubmit>(_onSubmitFeedbackCampaign);
   }
 
-  void _onValidateFeedbackCampaign(
-    FeedbackCampaignFormValidate event,
+  Future<void> _onInitFeedbackCampaign(
+    FeedbackCampaignInit event,
     Emitter<FeedbackCampaignState> emitter,
-  ) {
+  ) async {
     emitter(
       state.copyWith(
+        status: HandleStatus.initial,
+        rateError: const Wrapped.value(null),
+        imageError: const Wrapped.value(null),
+      ),
+    );
+  }
+
+  Future<void> _onValidateFeedbackCampaign(
+    FeedbackCampaignFormValidate event,
+    Emitter<FeedbackCampaignState> emitter,
+  ) async {
+    emitter(
+      state.copyWith(
+        status: HandleStatus.initial,
         rateError: event.organizationFeedback.locationRate == 0.0
             ? Wrapped.value(LocaleKeys.feedback_location_rated.tr())
             : const Wrapped.value(null),
@@ -43,20 +58,27 @@ class FeedbackCampaignBloc
     FeedbackCampaignSubmit event,
     Emitter<FeedbackCampaignState> emitter,
   ) async {
-    emitter(
-      state.copyWith(
-        status: HandleStatus.loading,
-        imageError: const Wrapped.value(null),
-        rateError: const Wrapped.value(null),
-      ),
-    );
+    if (state.imageError == null && state.rateError == null) {
+      emitter(
+        state.copyWith(
+          status: HandleStatus.loading,
+        ),
+      );
+      
+      try {
+        await _campaignRepository
+            .feedbackToCampaign(event.organizationFeedback);
 
-    try {
-      await _campaignRepository.feedbackToCampaign(event.organizationFeedback);
-
-      emitter(state.copyWith(status: HandleStatus.success));
-    } catch (_) {
-      emitter(state.copyWith(status: HandleStatus.error));
+        emitter(
+          state.copyWith(
+            status: HandleStatus.success,
+            imageError: const Wrapped.value(null),
+            rateError: const Wrapped.value(null),
+          ),
+        );
+      } catch (_) {
+        emitter(state.copyWith(status: HandleStatus.error));
+      }
     }
   }
 }

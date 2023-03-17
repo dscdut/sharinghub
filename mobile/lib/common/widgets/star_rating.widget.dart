@@ -39,12 +39,6 @@ class _StarRatingState extends State<StarRating> {
         color: widget.color,
         size: widget.size,
       );
-    } else if (index > _rating - 1 && index < _rating) {
-      icon = Icon(
-        Icons.star_half,
-        color: widget.color,
-        size: widget.size,
-      );
     } else {
       icon = Icon(
         Icons.star,

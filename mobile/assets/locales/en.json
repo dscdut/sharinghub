@@ -146,6 +146,7 @@
     "others": "Others",
     "images": "Images of the campaign",
     "images_uploaded": "The campaign images must be uploaded",
-    "location_rated": "Please rate the location"
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 }

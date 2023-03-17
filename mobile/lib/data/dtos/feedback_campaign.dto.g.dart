@@ -16,9 +16,6 @@ FeedbackToCampaignDTO _$FeedbackToCampaignDTOFromJson(
       sanitization: json['sanitization'] as String?,
       residence: json['residence'] as String?,
       authorityCooperation: json['authority_cooperation'] as String?,
-      campaign: json['campaign'] == null
-          ? null
-          : CampaignModel.fromJson(json['campaign'] as Map<String, dynamic>),
       others: json['others'] as String?,
     );
 
@@ -32,6 +29,5 @@ Map<String, dynamic> _$FeedbackToCampaignDTOToJson(
       'sanitization': instance.sanitization,
       'residence': instance.residence,
       'authority_cooperation': instance.authorityCooperation,
-      'campaign': instance.campaign?.toJson(),
       'others': instance.others,
     };
