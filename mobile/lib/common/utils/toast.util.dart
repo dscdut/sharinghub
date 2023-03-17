@@ -10,7 +10,7 @@ abstract class ToastUtil {
   static void showSuccess(
     BuildContext context, {
     String? text,
-    ToastPosition position = ToastPosition.BOTTOM,
+    ToastPosition position = ToastPosition.TOP,
   }) {
     _showToast(
       context,
@@ -28,7 +28,7 @@ abstract class ToastUtil {
   static void showError(
     BuildContext context, {
     String? text,
-    ToastPosition position = ToastPosition.BOTTOM,
+    ToastPosition position = ToastPosition.TOP,
   }) {
     _showToast(
       context,

@@ -13,22 +13,22 @@ import 'package:mobile/common/utils/image.util.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
 class ShowOrPickImage extends StatefulWidget {
-  final String? imagePath;
+  final dynamic image;
   final double width;
   final double height;
   final double borderRadius;
   final CropStyle cropStyle;
-  final void Function(File) setCampaignImage;
+  final Function(File)? setImage;
   final String? error;
 
   const ShowOrPickImage({
     super.key,
-    this.imagePath,
+    this.image,
     required this.width,
     required this.height,
     this.borderRadius = 10,
     this.cropStyle = CropStyle.rectangle,
-    required this.setCampaignImage,
+    required this.setImage,
     this.error,
   });
 
@@ -37,16 +37,12 @@ class ShowOrPickImage extends StatefulWidget {
 }
 
 class _ShowOrPickImageState extends State<ShowOrPickImage> {
-  late String? imagePath;
+  late dynamic image;
 
   @override
   void initState() {
-    imagePath = widget.imagePath;
+    image = widget.image;
     super.initState();
-  }
-
-  void _closeBottomSheet() {
-    Navigator.of(context).pop();
   }
 
   Future<void> _pickImage(ImageSource imageSource) async {
@@ -61,11 +57,15 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
 
     if (file != null) {
       setState(() {
-        imagePath = file.path;
+        image = file;
       });
 
-      widget.setCampaignImage(file);
+      await widget.setImage?.call(file);
     }
+  }
+
+  void _closeBottomSheet() {
+    Navigator.of(context).pop();
   }
 
   void _onImageTap(BuildContext context) {
@@ -153,6 +153,14 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
     }
   }
 
+  ImageType? _getImageType() {
+    if (image == null) {
+      return null;
+    }
+
+    return image is File ? ImageType.file : ImageType.network;
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -170,14 +178,13 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
             ),
             child: ConditionalRenderUtil.single(
               context,
-              value:
-                  imagePath == null ? null : ImageUtil.getImageType(imagePath!),
+              value: _getImageType(),
               caseBuilders: {
                 ImageType.network: (_) {
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                     child: Image.network(
-                      widget.imagePath!,
+                      widget.image!,
                       fit: BoxFit.cover,
                     ),
                   );
@@ -186,7 +193,7 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(widget.borderRadius),
                     child: Image.file(
-                      File(imagePath!),
+                      image,
                       fit: BoxFit.cover,
                     ),
                   );

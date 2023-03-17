@@ -23,19 +23,19 @@ class UserRepository {
     return _remoteDataSource.registerByEmail(params);
   }
 
-  Future<UserModel> getUserInfo() {
-    return _remoteDataSource.getUserInfo();
-  }
-
   Future<UserModel> getUserProfile() {
     return _remoteDataSource.getUserProfile();
   }
 
-  String? getAccessToken() {
-    return _localDataSource.getAccessToken();
+  UserModel? getUserInfo() {
+    return _localDataSource.getUserInfo();
   }
 
-  Future<void> setTokens(TokenDTO? tokenDTO) {
-    return _localDataSource.setTokens(tokenDTO);
+  Future<void> setUserInfo(UserModel user) {
+    return _localDataSource.setUserInfo(user);
+  }
+
+  Future<void> setUserAuthInfo(LoginResponseDTO? response) {
+    return _localDataSource.setUserAuthInfo(response);
   }
 }

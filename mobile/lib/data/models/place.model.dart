@@ -2,7 +2,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'place.model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(
+  createToJson: false,
+  fieldRename: FieldRename.snake,
+)
 class PlaceModel {
   final String description;
   final String placeId;
@@ -16,6 +19,4 @@ class PlaceModel {
 
   factory PlaceModel.fromJson(Map<String, dynamic> json) =>
       _$PlaceModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PlaceModelToJson(this);
 }

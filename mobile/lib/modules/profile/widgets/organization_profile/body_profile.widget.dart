@@ -23,7 +23,7 @@ class BodyProfile extends StatelessWidget {
       children: [
         heightSpace,
         Text(
-          organization.description!,
+          organization.description,
           style: TextStyles.s14RegularText,
           textAlign: TextAlign.justify,
         ),
@@ -33,7 +33,7 @@ class BodyProfile extends StatelessWidget {
         ),
         const Divider(),
         InfoTitle(
-          title: LocaleKeys.profile_reviews.tr(),
+          title: LocaleKeys.texts_rate.tr(),
         ),
       ],
     );

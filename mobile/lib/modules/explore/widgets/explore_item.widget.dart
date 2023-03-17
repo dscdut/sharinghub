@@ -33,7 +33,7 @@ class ExploreItem extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.network(
-                    item.imageURL ?? '',
+                    item.image ?? '',
                     height: 170,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class ExploreItem extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                       child: Text(
-                        item.artifactTypes ?? '',
+                        item.donationRequirement ?? '',
                         style: TextStyles.regularBody14,
                       ),
                     ),

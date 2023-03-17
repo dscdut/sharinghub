@@ -61,6 +61,7 @@ class $AssetsIconsGen {
       const AssetGenImage('assets/icons/ic_switch.png');
 
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+  $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [
@@ -111,6 +112,32 @@ class $AssetsIconsLauncherGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsIconsProfileGen {
+  const $AssetsIconsProfileGen();
+
+  /// File path: assets/icons/profile/done.svg
+  SvgGenImage get done => const SvgGenImage('assets/icons/profile/done.svg');
+
+  /// File path: assets/icons/profile/feedback.svg
+  SvgGenImage get feedback =>
+      const SvgGenImage('assets/icons/profile/feedback.svg');
+
+  /// File path: assets/icons/profile/ongoing.svg
+  SvgGenImage get ongoing =>
+      const SvgGenImage('assets/icons/profile/ongoing.svg');
+
+  /// File path: assets/icons/profile/pending.svg
+  SvgGenImage get pending =>
+      const SvgGenImage('assets/icons/profile/pending.svg');
+
+  /// File path: assets/icons/profile/upcoming.svg
+  SvgGenImage get upcoming =>
+      const SvgGenImage('assets/icons/profile/upcoming.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [done, feedback, ongoing, pending, upcoming];
 }
 
 class Assets {

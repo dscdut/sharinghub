@@ -3,29 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 part 'set_organization.dto.g.dart';
 
 @JsonSerializable(
-  fieldRename: FieldRename.snake,
   includeIfNull: false,
   createFactory: false,
 )
 class SetOrganizationDTO {
   final int? id;
-  final String? avatar;
-
-  @JsonKey(name: 'name')
+  dynamic image;
   final String? name;
-
-  @JsonKey(name: 'phoneNumber')
   final String? phoneNumber;
-
-  @JsonKey(name: 'address')
   final String? address;
-
-  @JsonKey(name: 'description')
   final String? description;
 
   SetOrganizationDTO({
     this.id,
-    this.avatar,
+    this.image,
     this.name,
     this.phoneNumber,
     this.address,
@@ -36,7 +27,7 @@ class SetOrganizationDTO {
 
   SetOrganizationDTO copyWith({
     int? id,
-    String? avatar,
+    dynamic avatar,
     String? name,
     String? phoneNumber,
     String? address,
@@ -44,7 +35,7 @@ class SetOrganizationDTO {
   }) {
     return SetOrganizationDTO(
       id: id ?? this.id,
-      avatar: avatar ?? this.avatar,
+      image: avatar ?? image,
       name: name ?? this.name,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
