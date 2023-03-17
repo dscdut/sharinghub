@@ -140,6 +140,25 @@ class Repository extends DataRepository {
                 'campaigns.coordinate',
             ]);
     }
+
+    findVoluntaryCampaignsByUserId(id) {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .join('users_campaigns', 'campaigns.id', '=', 'users_campaigns.campaign_id')
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .where('users_campaigns.user_id', '=', id)
+            .select(
+                'campaigns.id',
+                'campaigns.name',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                'campaigns.image',
+                'users_campaigns.status',
+                { organizationName: 'organizations.name' },
+            );
+    }
 }
 
 export const CampaignRepository = new Repository('campaigns');
