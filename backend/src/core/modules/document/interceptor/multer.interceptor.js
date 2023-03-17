@@ -28,9 +28,6 @@ export class BaseMulterInterceptor {
                 this.#logger.error(err.message);
                 return next(new InternalServerException(err.message));
             }
-            if (!req.file && (!req.files || !req.files[0])) {
-                return next(new BadRequestException('Upload file is required'));
-            }
             return next();
         });
     };

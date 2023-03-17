@@ -2,6 +2,8 @@ import { Module } from 'packages/handler/Module';
 import { CreateOrgInterceptor } from 'core/modules/org/';
 import { OrgController } from './org.controller';
 import { orgId } from '../../../common/swagger/org-id';
+import { MediaInterceptor } from '../../../modules/document/interceptor/media.interceptor';
+import { uploadMediaSwagger } from 'core/common/swagger';
 
 export const OrgResolver = Module.builder()
     .addPrefix({
@@ -13,7 +15,9 @@ export const OrgResolver = Module.builder()
         {
             route: '/',
             method: 'post',
-            interceptors: [CreateOrgInterceptor],
+            interceptors: [new MediaInterceptor(), CreateOrgInterceptor],
+            params: [uploadMediaSwagger],
+            consumes: ['multipart/form-data'],
             body: 'CreateOrgDto',
             controller: OrgController.createOrg,
             preAuthorization: true,
@@ -34,12 +38,13 @@ export const OrgResolver = Module.builder()
         {
             route: '/:id',
             method: 'put',
-            interceptors: [CreateOrgInterceptor],
-            params: [orgId],
+            interceptors: [new MediaInterceptor(), CreateOrgInterceptor],
+            params: [orgId, uploadMediaSwagger],
+            consumes: ['multipart/form-data'],
             body: 'CreateOrgDto',
             controller: OrgController.putEditOrg,
             preAuthorization: true,
-        },
+        }, 
         {
             route: '/:id',
             params: [orgId],
