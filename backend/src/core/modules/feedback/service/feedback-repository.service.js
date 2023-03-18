@@ -96,6 +96,22 @@ class Service {
         }
 
     }
+
+    async deleteFeedback(id) {
+        const trx = await getTransaction();
+
+        try {
+            await this.repository.deleteFeedback(id, trx);
+
+            await this.repository.deleteFeedbackImages(id, trx);
+        } catch (error) {
+            await trx.rollback();
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+        
+        trx.commit();
+    }
 }
 
 export const FeedbackRepositoryService = new Service();

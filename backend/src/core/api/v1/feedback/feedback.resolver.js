@@ -32,5 +32,11 @@ export const FeedbackResolver = Module.builder()
             consumes: ['multipart/form-data'],
             controller: FeedbackController.createOrUpdateFeedback,
             preAuthorization: true,
+        },
+        {
+            route: '/campaigns/:campaignId',
+            method: 'delete',
+            controller: FeedbackController.deleteFeedback,
+            preAuthorization: true,
         }
     ])

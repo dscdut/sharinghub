@@ -12,6 +12,10 @@ class Controller {
         return ValidHttpResponse.toOkResponse(data);
     };
 
+    deleteFeedback = async req => {
+        const data = await this.service.deleteFeedback(req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
 };
 
 export const FeedbackController = new Controller();

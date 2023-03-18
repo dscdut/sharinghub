@@ -61,6 +61,30 @@ class Service {
             throw error;
         }
     }
+
+    async deleteFeedback(user, { campaignId }) {
+        const campaign = await this.campaignService.findOneById(campaignId);
+
+        if (!campaign) {
+            throw new NotFoundException('Campaign not found');
+        }
+
+        if (!user.organization_ids.includes(campaign.organizationId)) {
+            throw new ForbiddenException('You don\'t have permission to delete feedback for this campaign');
+        }
+
+        const existingFeedback = await this.FeedbackRepositoryService.findFeedbackByCampaignId(campaignId);
+
+        if (!existingFeedback) {
+            throw new NotFoundException('Feedback not found');
+        }
+        
+        await this.FeedbackRepositoryService.deleteFeedback(existingFeedback.id);
+            
+        return {
+            message: MESSAGE.DELETE_FEEDBACK_SUCCESS
+        }          
+    }
 };
 
 export const FeedbackService = new Service();

@@ -6,8 +6,17 @@ class Repository extends DataRepository {
         return super.insert(feedback, trx).into('feedbacks');
     }
     
-    updateFeedback(id, feedback, trx) {
+    updateFeedback(id, feedback, trx = null) {
         const queryBuilder = this.query().where({ id }).update(feedback).into('feedbacks');
+        if (trx) queryBuilder.transacting(trx);
+        return queryBuilder;
+    }
+
+    deleteFeedback(id, trx = null) {
+        const queryBuilder = this.query()
+            .where('id', '=', id)
+            .delete()
+            .into('feedbacks');
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
     }
