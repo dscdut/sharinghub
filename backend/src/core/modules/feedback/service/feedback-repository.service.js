@@ -60,7 +60,7 @@ class Service {
     async insertFeedbackImages(feedback_id, campaignId, organizationId, images, trx) {
         try {
             for (const image of images) {
-                const url = (await this.MediaService.uploadOne(image, `organizations/${organizationId}/campaigns/${campaignId}`)).url;
+                const url = (await this.MediaService.uploadOne(image, `organizations/${organizationId}/campaigns/${campaignId}/feedbacks`)).url;
                 await this.repository.insertFeedbackImages({ feedback_id, image: url }, trx);
             }
         } catch (error) {
