@@ -6,10 +6,12 @@ import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../campaign.repository';
 import { UserCampaignRepository } from '../../user_campaign/user_campaign.repository';
 import { Status } from '../../../common/enum';
+import { UserRepository } from '../../../modules/user/user.repository';
 
 class Service {
     constructor() {
         this.repository = CampaignRepository;
+        this.userRepository = UserRepository
         this.userCampaignRepository = UserCampaignRepository
     }
 
@@ -212,14 +214,12 @@ class Service {
         ))
             .throwIfPresent(new DuplicateException(MESSAGE.VOLUNTEER_ALREADY_REGISTERED));
 
-
         try {
             await this.userCampaignRepository.registerVolunteer(
                 campaign_id,
                 user_id,
                 trx,
             );
-
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
@@ -264,15 +264,19 @@ class Service {
 
         const trx = await getTransaction();
 
-        let data = { ...volunteer, ...updateUserStatusDto };
+        let updatedVolunteer;
         try {
             await this.userCampaignRepository.updateVolunteerStatus(
                 campaign_id,
                 user_id,
-                data,
+                updateUserStatusDto,
                 trx,
             );
 
+            updatedVolunteer = await this.userCampaignRepository.findOneByCampaignIdAndVolunteerId(
+                campaign_id,
+                user_id,
+            );
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
@@ -282,6 +286,7 @@ class Service {
         trx.commit();
         return {
             message: MESSAGE.UPDATE_VOLUNTEER_STATUS_SUCCESS,
+            user: updatedVolunteer,
         };
     }
 
@@ -313,6 +318,8 @@ class Service {
         trx.commit();
         return {
             message: MESSAGE.SET_PENDING_VOLUNTEERS_STATUS_TO_REJECTED_SUCCESS,
+            organizationId: organization_id,
+            campaignId: campaign_id,
         }
     }
 

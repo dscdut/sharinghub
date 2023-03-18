@@ -6,7 +6,17 @@ class Repository extends DataRepository {
             .whereNull('users_campaigns.deleted_at')
             .where('users_campaigns.campaign_id', '=', campaign_id)
             .andWhere('users_campaigns.user_id', '=', user_id)
-            .first();
+            .join('users', 'users.id', '=', 'users_campaigns.user_id')
+            .first([
+                { userId: 'users_campaigns.user_id' },
+                { campaignId: 'users_campaigns.campaign_id' },
+                { fullName: 'users.full_name' },
+                'users.email',
+                'users.birthday',
+                { phoneNumber: 'users.phone_number' },
+                'users.workplace',
+                'users_campaigns.status',
+            ]);
     }
 
     registerVolunteer(campaign_id, user_id, trx) {
