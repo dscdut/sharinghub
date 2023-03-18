@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/toast.util.dart';
@@ -37,15 +36,13 @@ class RegisterPage extends StatelessWidget {
     BuildContext context,
     RegisterState state,
   ) {
-    if (state.status == HandleStatus.error) {
+    if (state is RegisterNotSuccess && state.emailError == null) {
       ToastUtil.showError(
         context,
-        position: ToastPosition.TOP,
       );
-    } else if (state.status == HandleStatus.success) {
+    } else if (state is RegisterSuccess) {
       ToastUtil.showSuccess(
         context,
-        position: ToastPosition.TOP,
         text: LocaleKeys.auth_registration_successful.tr(),
       );
 
@@ -123,7 +120,7 @@ class _RegisterView extends StatelessWidget {
                       onSubmit: () {
                         _onRegisterButtonPressed(context);
                       },
-                      isLoading: state.status == HandleStatus.loading,
+                      isLoading: state is RegisterLoading,
                       isLogin: false,
                     );
                   },

@@ -1,13 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile/common/theme/text_styles.dart';
+import 'package:mobile/common/theme/color_styles.dart';
+import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/di/di.dart';
-import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
+import 'package:mobile/common/widgets/rounded_icon_button.widget.dart';
 import 'package:mobile/modules/profile/bloc/user_profile/user_profile.bloc.dart';
-import 'package:mobile/modules/profile/widgets/user_profile/user_profile_info.widget.dart';
 
 class UserProfilePage extends StatelessWidget {
   const UserProfilePage({super.key});
@@ -37,61 +37,20 @@ class _UserProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(LocaleKeys.profile_profile.tr()),
-        backgroundColor: Colors.blue,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.edit_outlined),
-          ),
+      appBar: CustomAppBar(
+        title: LocaleKeys.profile_personal.tr(),
+        titleColor: ColorStyles.zodiacBlue,
+        backgroundColor: Colors.white,
+        elevation: 0.5,
+        actions: const [
+          RoundedIconButton(icon: Icons.done),
+          SizedBox(
+            width: 5,
+          )
         ],
       ),
-      body: BlocBuilder<UserProfileBloc, UserProfileState>(
-        builder: (context, state) {
-          if (state.status.isLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          return Container(
-            margin: const EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: state.user?.avatar == null
-                          ? Assets.images.imgDefautAvatar.image(
-                              height: double.infinity,
-                            )
-                          : Image.network(
-                              state.user!.avatar!,
-                              height: double.infinity,
-                            ),
-                    ),
-                    title: Text(
-                      state.user?.fullName ?? '',
-                      style: TextStyles.boldHeading20,
-                    ),
-                    subtitle: Text(
-                      "@${state.user?.id.toString() ?? ''}",
-                      style:
-                          TextStyles.regularBody14.copyWith(color: Colors.grey),
-                    ),
-                  ),
-                  const Divider(
-                    height: 20,
-                    color: Colors.transparent,
-                  ),
-                  UserProfileInfoWidget(user: state.user!),
-                ],
-              ),
-            ),
-          );
-        },
-      ),
+      body: const SizedBox(),
+      backgroundColor: Colors.white,
     );
   }
 }

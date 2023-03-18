@@ -1,16 +1,15 @@
-import { unlink } from 'fs';
 import { InternalServerException } from 'packages/httpException';
-import { logger } from 'packages/logger';
 import { cloudinaryUploader } from '../../../config/cloudinary.config';
+import { FileSystemService } from './file-system.service';
 
 class Service {
     constructor() {
-        this.logger = logger;
+        this.FileSystemService = FileSystemService;
     }
 
-    async uploadOne(file, folderName = '') {
+    async uploadOne(file, folderName = '', public_id = '', overwrite = false) {
         try {
-            const response = await cloudinaryUploader.upload(file.path, { folder: folderName });
+            const response = await cloudinaryUploader.upload(file.path, { folder: folderName, public_id, overwrite });
             return {
                 originalName: response.original_filename,
                 url: response.secure_url,
@@ -19,12 +18,7 @@ class Service {
         } catch (error) {
             throw new InternalServerException(error.message);
         } finally {
-            unlink(file.path, err => {
-                if (err) {
-                    this.logger.error(err.message);
-                    throw new InternalServerException(err.message);
-                }
-            });
+            await FileSystemService.deleteFile(file);
         }
     }
 

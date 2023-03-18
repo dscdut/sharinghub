@@ -1,23 +1,11 @@
-import 'package:mobile/data/dtos/auth.dto.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/data/models/user.model.dart';
 
 abstract class UserMock {
-  static LoginResponseDTO loginByEmail() {
-    return LoginResponseDTO(
-      // user: UserModel(
-      //   id: 100,
-      //   email: 'beobiebom@gmail.com',
-      //   fullName: 'Duc Nguyen',
-      // ),
-      accessToken: 'access_token_demo',
-    );
-  }
-
   static Future<UserModel> getUserInfo() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    return UserModel(
+    return const UserModel(
       id: 100,
       email: 'beobiebom@gmail.com',
       fullName: 'Duc Nguyen',
@@ -52,7 +40,7 @@ abstract class UserMock {
       birthDay: DateTime.now(),
       gender: true,
       phoneNumber: '0905123123',
-      school: 'Đại học Công Nghệ - Đại học Quốc Gia TP.HCM',
+      workSpace: 'Đại học Công Nghệ - Đại học Quốc Gia TP.HCM',
     );
   }
 

@@ -14,6 +14,7 @@ class Repository extends DataRepository {
                 phone_number: org.phone_number,
                 address: org.address,
                 description: org.description,
+                avatar: org.avatar,
             })
             .into('organizations')
             .returning('id');
@@ -21,7 +22,6 @@ class Repository extends DataRepository {
 
     findUsersOrgsById(id) {
         return this.query()
-            .whereNull('organizations.deleted_at')
             .where('organizations.user_id', '=', id)
             .select(
                 'organizations.id',
@@ -29,12 +29,12 @@ class Repository extends DataRepository {
                 { phoneNumber: 'organizations.phone_number' },
                 'organizations.address',
                 'organizations.description',
+                'organizations.avatar'
             );
     }
 
     findOrgByName(name) {
         return this.query()
-            .whereNull('organizations.deleted_at')
             .whereRaw('username like ?', `%${name}%`)
             .select(
                 'organizations.id',
@@ -42,12 +42,12 @@ class Repository extends DataRepository {
                 { phoneNumber: 'organizations.phone_number' },
                 'organizations.address',
                 'organizations.description',
+                'organizations.avatar'
             );
     }
 
     findOrgById(id) {
         return this.query()
-            .whereNull('organizations.deleted_at')
             .where('organizations.id', '=', id)
             .select(
                 'organizations.id',
@@ -55,13 +55,13 @@ class Repository extends DataRepository {
                 { phoneNumber: 'organizations.phone_number' },
                 'organizations.address',
                 'organizations.description',
+                'organizations.avatar'
             );
     }
 
     findOrgByExactName(id, name) {
         if (id) {
             return this.query()
-                .whereNull('organizations.deleted_at')
                 .whereRaw('lower(organizations.name) = ?', name.toLowerCase())
                 .where('organizations.id', '!=', id)
                 .select(
@@ -70,10 +70,10 @@ class Repository extends DataRepository {
                     { phoneNumber: 'organizations.phone_number' },
                     'organizations.address',
                     'organizations.description',
+                    'organizations.avatar'
                 );
         }
         return this.query()
-            .whereNull('organizations.deleted_at')
             .whereRaw('lower(organizations.name) = ?', name.toLowerCase())
             .select(
                 'organizations.id',
@@ -81,13 +81,13 @@ class Repository extends DataRepository {
                 { phoneNumber: 'organizations.phone_number' },
                 'organizations.address',
                 'organizations.description',
+                'organizations.avatar'
             );
     }
 
     findOrgByPhoneNumber(id, phoneNumber) {
         if (id) {
             return this.query()
-                .whereNull('organizations.deleted_at')
                 .where('organizations.phone_number', '=', phoneNumber)
                 .where('organizations.id', '!=', id)
                 .select(
@@ -96,10 +96,10 @@ class Repository extends DataRepository {
                     { phoneNumber: 'organizations.phone_number' },
                     'organizations.address',
                     'organizations.description',
+                    'organizations.avatar'
                 );
         }
         return this.query()
-            .whereNull('organizations.deleted_at')
             .where('organizations.phone_number', '=', phoneNumber)
             .select(
                 'organizations.id',
@@ -107,16 +107,14 @@ class Repository extends DataRepository {
                 { phoneNumber: 'organizations.phone_number' },
                 'organizations.address',
                 'organizations.description',
+                'organizations.avatar'
             );
     }
 
     deleteOrgById(id) {
         return this.query()
-            .where('id', '=', id)
-            .update({
-                deleted_at: new Date(),
-            })
-            .into('organizations')
+            .where('organizations.id', '=', id)
+            .delete();
     }
 }
 

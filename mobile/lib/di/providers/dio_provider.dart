@@ -26,8 +26,6 @@ class DioProvider {
     interceptors.add(appInterceptor);
 
     return interceptorDio
-      ..options.connectTimeout = 3000
-      ..options.receiveTimeout = 5000
       ..options.headers = {
         HttpHeaders.contentTypeHeader: ContentType.json.value,
       }

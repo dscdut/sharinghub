@@ -3,16 +3,13 @@ import 'package:mobile/data/dtos/set_organization.dto.dart';
 
 part 'organization.model.g.dart';
 
-@JsonSerializable(
-  createToJson: false,
-  fieldRename: FieldRename.snake,
-)
+@JsonSerializable()
 class OrganizationModel {
   final int id;
   final String name;
   final String phoneNumber;
   final String address;
-  final String? description;
+  final String description;
   final String? avatar;
 
   OrganizationModel({
@@ -20,18 +17,20 @@ class OrganizationModel {
     required this.name,
     required this.phoneNumber,
     required this.address,
-    this.description,
+    required this.description,
     this.avatar,
   });
 
   factory OrganizationModel.fromJson(Map<String, dynamic> json) =>
       _$OrganizationModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$OrganizationModelToJson(this);
+
   SetOrganizationDTO toSetOrganizationDTO() {
     return SetOrganizationDTO(
       id: id,
       name: name,
-      avatar: avatar,
+      image: avatar,
       phoneNumber: phoneNumber,
       address: address,
       description: description,

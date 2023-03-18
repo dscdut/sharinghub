@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/data/models/place.model.dart';
@@ -26,6 +28,8 @@ class LocationSearchBloc
 
       emit(state.copyWith(places: places));
     } catch (err) {
+      log(err.toString());
+
       emit(state.copyWith(places: []));
     }
   }

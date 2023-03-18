@@ -37,11 +37,16 @@ class RegisterForm extends StatelessWidget {
               hintText: LocaleKeys.texts_full_name.tr(),
             ),
             const SizedBox(height: 15),
-            AuthTextFormField(
-              validator: ValidatorUtil.validateEmail,
-              textController: emailEditingController,
-              keyboardType: TextInputType.emailAddress,
-              hintText: LocaleKeys.texts_email_address.tr(),
+            BlocBuilder<RegisterBloc, RegisterState>(
+              builder: (context, state) {
+                return AuthTextFormField(
+                  validator: ValidatorUtil.validateEmail,
+                  textController: emailEditingController,
+                  keyboardType: TextInputType.emailAddress,
+                  hintText: LocaleKeys.texts_email_address.tr(),
+                  errorText: state.emailError,
+                );
+              },
             ),
             const SizedBox(height: 15),
             AuthTextFormField(

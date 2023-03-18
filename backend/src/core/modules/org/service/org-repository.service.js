@@ -1,4 +1,5 @@
 import { Optional } from 'core/utils';
+import { FileSystemService, MediaService } from 'core/modules/document';
 import { logger } from '../../../../packages/logger';
 import { OrgRepository } from '../org.repository';
 import {
@@ -10,6 +11,19 @@ import {
 class Service {
     constructor() {
         this.repository = OrgRepository;
+        this.MediaService = MediaService;
+        this.FileSystemService = FileSystemService;
+    }
+
+    async deleteFile(file) {
+        try {
+            if (file) {
+                await this.FileSystemService.deleteFile(file);
+            }
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
     }
 
     async findOrgByExactName(id, name) {
@@ -30,29 +44,41 @@ class Service {
         }
     }
 
-    async updateOrgTable(orgDto) {
-        Optional.of(await this.findOrgByExactName(orgDto.id, orgDto.name)).throwIfPresent(new DuplicateException('This name is already existed'));
-        Optional.of(await this.findOrgByPhoneNumber(orgDto.id, orgDto.phone_number)).throwIfPresent(new DuplicateException('This phone number is already existed'));
+    async updateOrgTable(file, orgDto) {
+        try {
+            Optional.of(await this.findOrgByExactName(orgDto.id, orgDto.name)).throwIfPresent(new DuplicateException('This name is already existed'));
+            Optional.of(await this.findOrgByPhoneNumber(orgDto.id, orgDto.phone_number)).throwIfPresent(new DuplicateException('This phone number is already existed'));
+        } catch (error) {
+            if (file) {
+                await this.deleteFile(file);
+            }
+            throw error;
+        }
 
         if (!orgDto.id) {
-            return this.createOrg(orgDto);
+            return this.createOrg(file, orgDto);
         }
-        return this.updateOrg(orgDto);
+        return this.updateOrg(file, orgDto);
     }
 
-    async createOrg(orgDto) {
+    async createOrg(file, orgDto) {
         try {
-            return this.repository.createOrg(orgDto);
+            const [{ id }] = await this.repository.createOrg(orgDto);
+
+            return this.updateOrg(file, { ...orgDto, id });
         } catch (error) {
+            await this.deleteFile(file);
             logger.error(error.message);
             throw new InternalServerException();
         }
     }
 
-    async updateOrg(orgDto) {
+    async updateOrg(file, orgDto) {
         try {
-            return this.repository.updateOrg(orgDto);
+            const url = file ? (await this.MediaService.uploadOne(file, `organizations/${orgDto.id}/avatar`, 'avatar', true)).url : null;
+            return this.repository.updateOrg({ ...orgDto, avatar: url });
         } catch (error) {
+            await this.deleteFile(file);
             logger.error(error.message);
             throw new InternalServerException();
         }
@@ -79,6 +105,7 @@ class Service {
             throw new InternalServerException();
         }
     }
+
     async deleteOrgById(id) {
         try {
             return this.repository.deleteOrgById(id);

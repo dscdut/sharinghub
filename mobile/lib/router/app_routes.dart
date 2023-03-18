@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
-import 'package:mobile/modules/campaign/view/campaign_register.view.dart';
-import 'package:mobile/modules/campaign/view/location_search.view.dart';
+import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
+import 'package:mobile/modules/explore/explore.dart';
 import 'package:mobile/modules/explore/view/explore.view.dart';
-import 'package:mobile/modules/management/management.dart';
+import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
@@ -39,6 +40,7 @@ abstract class AppRoutes {
   static const String root = '/root';
 
   // Organization
+  static const String organizationManagement = '/organizationManagement';
   static const String setOrganization = '/setOrganization';
 
   // static final router = GoRouter(
@@ -120,14 +122,26 @@ abstract class AppRoutes {
           },
         );
       case setCampaign:
+        final argumentWrapper = settings.arguments as ArgumentWrapper3<
+            CampaignModel?, CampaignManagementBloc, AuthBloc>;
+
         return MaterialPageRoute(
           builder: (_) {
-            return SetCampaignPage(
-              campaign: settings.arguments as CampaignModel?,
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider.value(
+                  value: argumentWrapper.param2,
+                ),
+                BlocProvider.value(
+                  value: argumentWrapper.param3,
+                )
+              ],
+              child: SetCampaignPage(
+                campaign: argumentWrapper.param1,
+              ),
             );
           },
         );
-
       case campaignRegister:
         return MaterialPageRoute(
           builder: (_) {
@@ -139,7 +153,7 @@ abstract class AppRoutes {
       case search:
         return MaterialPageRoute(
           builder: (_) {
-            return const ExplorePage();
+            return const SearchPage();
           },
         );
       case campaignDetail:
@@ -162,14 +176,55 @@ abstract class AppRoutes {
             return const RootPage();
           },
         );
-      case setOrganization:
+      case organizationManagement:
         return MaterialPageRoute(
           builder: (_) {
-            return const SetOrganizationPage();
+            return const OrganizationManagementPage();
           },
         );
+      case setOrganization:
+        final argumentWrapper = settings.arguments as ArgumentWrapper2<
+            OrganizationModel?, OrganizationManagementBloc?>;
+
+        return MaterialPageRoute(
+          builder: (_) {
+            final page = SetOrganizationPage(
+              organization: argumentWrapper.param1,
+            );
+
+            return argumentWrapper.param2 == null
+                ? page
+                : BlocProvider.value(
+                    value: argumentWrapper.param2!,
+                    child: page,
+                  );
+          },
+        );
+
       default:
         return null;
     }
   }
+}
+
+class ArgumentWrapper2<A, B> {
+  ArgumentWrapper2({
+    required this.param1,
+    required this.param2,
+  });
+
+  final A param1;
+  final B param2;
+}
+
+class ArgumentWrapper3<A, B, C> {
+  ArgumentWrapper3({
+    required this.param1,
+    required this.param2,
+    required this.param3,
+  });
+
+  final A param1;
+  final B param2;
+  final B param3;
 }

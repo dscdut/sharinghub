@@ -23,11 +23,11 @@ class ItemSearchWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              if (item.imageURL != null)
+              if (item.image != null)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    item.imageURL!,
+                    item.image!,
                     width: 120,
                     height: 120,
                     fit: BoxFit.cover,

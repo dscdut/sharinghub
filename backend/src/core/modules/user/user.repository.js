@@ -7,9 +7,13 @@ class Repository extends DataRepository {
             .where('users.email', '=', email)
             .select(
                 'users.id',
+                { fullName: 'users.full_name' },
                 'users.email',
                 'users.password',
                 { phoneNumber: 'users.phone_number' },
+                'users.birthday',
+                'users.avatar',
+                'users.address',
             );
     }
 
@@ -29,17 +33,25 @@ class Repository extends DataRepository {
         return this.query().insert(user).into('users');
     }
 
+    updateUser(id, data = {}, trx = null) {
+        const queryBuilder = this.query().whereNull('deleted_at').where({ id }).update(data, 'id');
+        if (trx) queryBuilder.transacting(trx);
+        return queryBuilder;
+    }
+
     findById(id) {
         return this.query()
             .whereNull('users.deleted_at')
             .where('users.id', '=', id)
             .select(
-                'users.id',
-                'users.email',
+                'users.avatar',
                 { fullName: 'users.full_name' },
-                { createdAt: 'users.created_at' },
-                { updatedAt: 'users.updated_at' },
-                { deletedAt: 'users.deleted_at' },
+                { phoneNumber: 'users.phone_number' },
+                'users.gender',
+                'users.email',
+                'users.birthday',
+                'users.address',
+                'users.workplace',
             );
     }
 

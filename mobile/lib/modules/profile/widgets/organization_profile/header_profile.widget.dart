@@ -49,7 +49,7 @@ class HeaderProfile extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      LocaleKeys.profile_rate.tr(),
+                      LocaleKeys.texts_rate.tr(),
                       style: TextStyles.s17MediumText,
                     ),
                     StarRating(rating: rating),

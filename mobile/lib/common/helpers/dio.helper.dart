@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:mobile/common/utils/file.util.dart';
 
 class HttpRequestResponse<T> {
   HttpRequestResponse({
@@ -23,7 +26,13 @@ class DioHelper {
 
   DioHelper({required Dio dio}) : _dio = dio;
 
-  FormData _mapToFormData(Map<String, dynamic> map) {
+  Future<FormData> _mapToFormData(Map<String, dynamic> map) async {
+    for (var item in map.entries) {
+      if (item.value is File) {
+        map[item.key] = await FileUtil.toMultipartFile(item.value);
+      }
+    }
+
     final formData = FormData.fromMap(map);
     final FormData newData = FormData();
 
@@ -78,7 +87,7 @@ class DioHelper {
     Function(int count, int total)? onSendProgress,
   }) async {
     if (formData != null) {
-      data = _mapToFormData(formData);
+      data = await _mapToFormData(formData);
     }
 
     final Response response = await _dio.post(

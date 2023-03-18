@@ -9,23 +9,23 @@ part of 'campaign.model.dart';
 CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
     CampaignModel(
       id: json['id'] as int?,
-      organization: OrganizationModel.fromJson(
-          json['organization'] as Map<String, dynamic>),
       name: json['name'] as String,
       address: json['address'] as String,
       specificAddress: json['specificAddress'] as String?,
       description: json['description'] as String,
-      startDate: DateTime.parse(json['startDate'] as String),
-      endDate: DateTime.parse(json['endDate'] as String),
-      formLink: json['formLink'] as String?,
-      artifactTypes: json['artifactTypes'] as String?,
+      startDate: const JsonSerializableDateTime()
+          .fromJson(json['startDate'] as String),
+      endDate:
+          const JsonSerializableDateTime().fromJson(json['endDate'] as String),
+      registerLink: json['registerLink'] as String?,
+      donationRequirement: json['donationRequirement'] as String?,
       otherInformation: json['otherInformation'] as String?,
-      imageURL: json['imageURL'] as String?,
+      image: json['image'] as String?,
       feedback: json['feedback'] == null
           ? null
           : FeedbackToCampaignDTO.fromJson(
               json['feedback'] as Map<String, dynamic>),
-      geometry: (json['geometry'] as Map<String, dynamic>).map(
+      coordinate: (json['coordinate'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
     );
@@ -40,17 +40,18 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   }
 
   writeNotNull('id', instance.id);
-  val['imageURL'] = instance.imageURL;
   val['name'] = instance.name;
-  val['description'] = instance.description;
+  val['image'] = instance.image;
   val['address'] = instance.address;
   val['specificAddress'] = instance.specificAddress;
-  val['startDate'] = instance.startDate.toIso8601String();
-  val['endDate'] = instance.endDate.toIso8601String();
-  val['formLink'] = instance.formLink;
-  val['artifactTypes'] = instance.artifactTypes;
+  val['coordinate'] = instance.coordinate;
+  val['description'] = instance.description;
+  val['startDate'] =
+      const JsonSerializableDateTime().toJson(instance.startDate);
+  val['endDate'] = const JsonSerializableDateTime().toJson(instance.endDate);
+  val['registerLink'] = instance.registerLink;
+  val['donationRequirement'] = instance.donationRequirement;
   val['otherInformation'] = instance.otherInformation;
-  val['geometry'] = instance.geometry;
   val['feedback'] = instance.feedback?.toJson();
   return val;
 }
