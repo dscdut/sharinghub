@@ -1,9 +1,8 @@
 import { OrgRepositoryService } from '../../org/service/org-repository.service';
 import { CampaignService } from '../../campaign/services/campaign.service';
-import { ForbiddenException, DuplicateException, NotFoundException, BadRequestException } from 'packages/httpException';
+import { ForbiddenException, NotFoundException, BadRequestException } from 'packages/httpException';
 import { FeedbackRepositoryService } from './feedback-repository.service';
 import { MESSAGE } from './message.enum';
-import { Optional } from 'core/utils';
 import { logger } from '../../../../packages/logger';
 
 
@@ -23,8 +22,7 @@ class Service {
             return { ...feedback, images };
         }
     }
-
-    async createFeedback({file, files}, feedbackDto, user, { campaignId }) {
+    async createOrUpdateFeedback({file, files}, feedbackDto, user, { campaignId }) {
         const images = file ? [file] : files ? files : [];
 
         try {
@@ -35,20 +33,28 @@ class Service {
             }
 
             if (!user.organization_ids.includes(campaign.organizationId)) {
-                throw new ForbiddenException('You don\'t have permission to create a feedback for this campaign');
+                throw new ForbiddenException('You don\'t have permission to create or edit feedback for this campaign');
             }
 
             if (new Date(campaign.end_date) < new Date()) {
                 throw new BadRequestException('The campaign hasn\'t ended yet');
             }
 
-            Optional.of(await this.FeedbackRepositoryService.findFeedbackByCampaignId(campaignId)).throwIfPresent(new DuplicateException('Feedback already exists for this campaign'));
+            const existingFeedback = await this.FeedbackRepositoryService.findFeedbackByCampaignId(campaignId);
 
-            await this.FeedbackRepositoryService.createFeedback(feedbackDto, campaign.id, campaign.organizationId, images);
-            
-            return {
-                message: MESSAGE.CREATE_FEEDBACK_SUCCESS
-            }
+            if (!existingFeedback) {
+                await this.FeedbackRepositoryService.createFeedback(feedbackDto, campaign.id, campaign.organizationId, images);
+                
+                return {
+                    message: MESSAGE.CREATE_FEEDBACK_SUCCESS
+                }
+            } else {
+                await this.FeedbackRepositoryService.updateFeedback(existingFeedback.id, feedbackDto, campaign.id, campaign.organizationId, images);
+                
+                return {
+                    message: MESSAGE.UPDATE_FEEDBACK_SUCCESS
+                }
+            }            
         } catch(error) {
             this.FeedbackRepositoryService.deleteFile(images);
             logger.error(error.message);

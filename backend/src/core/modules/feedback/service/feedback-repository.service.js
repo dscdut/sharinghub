@@ -46,10 +46,10 @@ class Service {
 
         try {
             const [{ id }] = await this.repository.createFeedback({ ...feedbackDto, campaign_id: campaignId }, trx);
+            
             await this.insertFeedbackImages(id, campaignId, organizationId, images, trx);
         } catch (error) {
             await trx.rollback();
-            this.deleteFile(images);
             logger.error(error.message);
             throw new InternalServerException();
         }
@@ -63,6 +63,33 @@ class Service {
                 const url = (await this.MediaService.uploadOne(image, `organizations/${organizationId}/campaigns/${campaignId}`)).url;
                 await this.repository.insertFeedbackImages({ feedback_id, image: url }, trx);
             }
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException(error.message);
+        }
+    }
+
+    async updateFeedback(id, feedbackDto, campaignId, organizationId, images) {
+        const trx = await getTransaction();
+
+        try {
+            await this.repository.updateFeedback(id, { ...feedbackDto, campaign_id: campaignId }, trx);
+
+            await this.deleteFeedbackImages(id, trx);
+
+            await this.insertFeedbackImages(id, campaignId, organizationId, images, trx);
+        } catch (error) {
+            await trx.rollback();
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        trx.commit();
+    }
+
+    async deleteFeedbackImages(id, trx) {
+        try {
+            await this.repository.deleteFeedbackImages(id, trx);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException(error.message);

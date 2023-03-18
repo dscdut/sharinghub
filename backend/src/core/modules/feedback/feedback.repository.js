@@ -5,9 +5,24 @@ class Repository extends DataRepository {
     createFeedback(feedback, trx) {
         return super.insert(feedback, trx).into('feedbacks');
     }
+    
+    updateFeedback(id, feedback, trx) {
+        const queryBuilder = this.query().where({ id }).update(feedback).into('feedbacks');
+        if (trx) queryBuilder.transacting(trx);
+        return queryBuilder;
+    }
 
     insertFeedbackImages(image, trx = null) {
         const queryBuilder = this.query().insert(image).into('feedback_images');
+        if (trx) queryBuilder.transacting(trx);
+        return queryBuilder;
+    }
+
+    deleteFeedbackImages(id, trx = null) {
+        const queryBuilder = this.query()
+            .where('feedback_id', '=', id)
+            .delete()
+            .into('feedback_images');
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
     }

@@ -7,8 +7,8 @@ class Controller {
         this.service = FeedbackService;
     }
 
-    createFeedback = async req => {
-        const data = await this.service.createFeedback(req, CreateFeedbackDto(req.body), req.user.payload, req.params);
+    createOrUpdateFeedback = async req => {
+        const data = await this.service.createOrUpdateFeedback(req, CreateFeedbackDto(req.body), req.user.payload, req.params);
         return ValidHttpResponse.toOkResponse(data);
     };
 

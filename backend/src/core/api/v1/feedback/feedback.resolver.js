@@ -20,7 +20,17 @@ export const FeedbackResolver = Module.builder()
             body: 'CreateFeedbackDto',
             params: [campaignId, uploadMediaSwagger],
             consumes: ['multipart/form-data'],
-            controller: FeedbackController.createFeedback,
+            controller: FeedbackController.createOrUpdateFeedback,
+            preAuthorization: true,
+        },
+        {
+            route: '/campaigns/:campaignId',
+            method: 'put',
+            interceptors: [new MediaInterceptor(10), FeedbackInterceptor],
+            body: 'CreateFeedbackDto',
+            params: [campaignId, uploadMediaSwagger],
+            consumes: ['multipart/form-data'],
+            controller: FeedbackController.createOrUpdateFeedback,
             preAuthorization: true,
         }
     ])
