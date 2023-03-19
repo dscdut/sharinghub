@@ -5,6 +5,7 @@ import { NotFoundException } from 'packages/httpException';
 import { ForbiddenException } from 'packages/httpException/ForbiddenException';
 import { CreateCampaignDto } from '../../../modules/campaign/dto';
 import { FeedbackService } from '../../../modules/feedback/service/feedback.service';
+import { CreateFeedbackDto } from '../../../modules/feedback/dto';
 import { logger } from '../../../../packages/logger';
 
 class Controller {
@@ -140,6 +141,16 @@ class Controller {
 
     getAllCoordinates = async req => {
         const data = await this.service.getAllCoordinates();
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    createOrUpdateFeedback = async req => {
+        const data = await this.feedbackService.createOrUpdateFeedback(req, CreateFeedbackDto(req.body), req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    };
+
+    deleteFeedback = async req => {
+        const data = await this.feedbackService.deleteFeedback(req.user.payload, req.params);
         return ValidHttpResponse.toOkResponse(data);
     }
 }

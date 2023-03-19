@@ -5,7 +5,6 @@ import { HandlerResolver } from '../../packages/handler/HandlerResolver';
 import { AuthResolver } from './v1/auth/auth.resolver';
 import { OrgResolver } from './v1/org/org.resolver';
 import { CampaignResolver } from './v1/campaign';
-import { FeedbackResolver } from './v1/feedback/feedback.resolver';
 
 export const ModuleResolver = HandlerResolver.builder()
     .addSwaggerBuilder(ApiDocument)
@@ -15,5 +14,4 @@ export const ModuleResolver = HandlerResolver.builder()
         MediaResolver,
         OrgResolver,
         CampaignResolver,
-        FeedbackResolver
     ]);

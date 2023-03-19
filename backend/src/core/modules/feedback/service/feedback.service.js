@@ -22,6 +22,7 @@ class Service {
             return { ...feedback, images };
         }
     }
+
     async createOrUpdateFeedback({file, files}, feedbackDto, user, { campaignId }) {
         const images = file ? [file] : files ? files : [];
 
