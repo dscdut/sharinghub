@@ -133,7 +133,6 @@ class Repository extends DataRepository {
     getAllCoordinates() {
         return this.query()
             .whereNull('campaigns.deleted_at')
-            .whereRaw('campaigns.end_date > now()')
             .select([
                 'campaigns.id',
                 'campaigns.name',
