@@ -18,7 +18,8 @@ class Repository extends DataRepository {
                 { registerLink: 'campaigns.register_link' },
                 { donationRequirement: 'campaigns.donation_requirement' },
                 'campaigns.coordinate',
-                { organizationName: 'organizations.name' }
+                { organizationName: 'organizations.name' },
+                { organizationId: '.campaigns.organization_id' }
             ]);
     }
 

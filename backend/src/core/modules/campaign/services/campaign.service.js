@@ -3,10 +3,13 @@ import { logger } from 'core/utils';
 import { InternalServerException, NotFoundException } from 'packages/httpException';
 import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../campaign.repository';
+import { FileSystemService, MediaService } from 'core/modules/document';
 
 class Service {
     constructor() {
         this.repository = CampaignRepository;
+        this.FileSystemService = FileSystemService;
+        this.MediaService = MediaService;
     }
 
     async findOneById(id) {
@@ -48,7 +51,18 @@ class Service {
         return campaign;
     }
 
-    async createOne(createCampaignDto, organization_id) {
+    async deleteFile(file) {
+        try {
+            if (file) {
+                await this.FileSystemService.deleteFile(file);
+            }
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
+
+    async createOne(createCampaignDto, organization_id, file) {
         const trx = await getTransaction();
 
         // check if start date is before end date
@@ -76,6 +90,8 @@ class Service {
             const data = { ...createCampaignDto, organization_id };
 
             createdCampaign = await this.repository.insert(data, trx);
+
+            await this.updateOne(organization_id, createdCampaign[0].id, data, file);
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
@@ -89,7 +105,7 @@ class Service {
         };
     }
 
-    async updateOne(organization_id, campaign_id, createCampaignDto) {
+    async updateOne(organization_id, campaign_id, createCampaignDto, file) {
         const trx = await getTransaction();
 
         // check if campaign exist
@@ -124,9 +140,11 @@ class Service {
 
         let updatedCampaign;
         try {
+            const url = file ? (await this.MediaService.uploadOne(file, `organizations/${organization_id}/campaigns/${campaign_id}`, 'image', true)).url : null;
+            
             updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                createCampaignDto,
+                { ...createCampaignDto, image: url },
                 trx,
             );
 
@@ -168,6 +186,10 @@ class Service {
         }
 
         trx.commit();
+        
+        return {
+            message: MESSAGE.DELETE_CAMPAIGN_SUCCESS,
+        }
     }
 
     async searchByName(name) {
