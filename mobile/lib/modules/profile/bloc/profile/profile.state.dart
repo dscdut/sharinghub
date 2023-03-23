@@ -1,24 +1,27 @@
 part of 'profile.bloc.dart';
 
 class ProfileState extends Equatable {
-  final UserModel? user;
   final HandleStatus status;
-
-  const ProfileState.initial()
-      : user = null,
-        status = HandleStatus.loading;
+  final UserModel? user;
 
   const ProfileState({
+    this.status = HandleStatus.initial,
     this.user,
-    required this.status,
   });
 
-  @override
-  List<Object> get props => [];
-}
+  bool get isOrganizationMode =>
+      (user != null && user!.currentOrganization != null);
 
-class ProfileStateSucess extends ProfileState {
-  const ProfileStateSucess({
-    required UserModel user,
-  }) : super(user: user, status: HandleStatus.success);
+  @override
+  List<Object?> get props => [status, user];
+
+  ProfileState copyWith({
+    HandleStatus? status,
+    UserModel? user,
+  }) {
+    return ProfileState(
+      status: status ?? this.status,
+      user: user ?? this.user,
+    );
+  }
 }

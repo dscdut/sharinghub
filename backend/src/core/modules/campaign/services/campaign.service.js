@@ -7,42 +7,39 @@ import { CampaignRepository } from '../campaign.repository';
 import { UserCampaignRepository } from '../../user_campaign/user_campaign.repository';
 import { Status } from '../../../common/enum';
 import { UserRepository } from '../../../modules/user/user.repository';
+import { FileSystemService, MediaService } from 'core/modules/document';
 
 class Service {
     constructor() {
         this.repository = CampaignRepository;
         this.userRepository = UserRepository
         this.userCampaignRepository = UserCampaignRepository
+        this.FileSystemService = FileSystemService;
+        this.MediaService = MediaService;
     }
 
     async findOneById(id) {
-        let campaign;
         try {
-            campaign = await this.repository.findOneById(id);
+            return this.repository.findOneById(id);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
 
-        return campaign;
     }
 
     async findAllByOrgId(organization_id) {
-        let campaigns;
         try {
-            campaigns = await this.repository.findAllByOrgId(organization_id);
+            return this.repository.findAllByOrgId(organization_id);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        return campaigns;
     }
 
     async findOneByOrgIdAndCampaignId(organization_id, campaign_id) {
-        let campaign;
         try {
-            campaign = await this.repository.findOneByOrgIdAndCampaignId(
+            return this.repository.findOneByOrgIdAndCampaignId(
                 organization_id,
                 campaign_id,
             );
@@ -50,13 +47,20 @@ class Service {
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        return campaign;
     }
 
-    async createOne(createCampaignDto, organization_id) {
-        const trx = await getTransaction();
+    async deleteFile(file) {
+        try {
+            if (file) {
+                await this.FileSystemService.deleteFile(file);
+            }
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
 
+    async createOne(createCampaignDto, organization_id, file) {
         // check if start date is before end date
         if (
             new Date(createCampaignDto.start_date)
@@ -77,25 +81,33 @@ class Service {
             );
         }
 
-        let createdCampaign;
         try {
-            const data = { ...createCampaignDto, organization_id };
+            const data = {
+                ...createCampaignDto,
+                organization_id,
+                coordinate: {
+                    lat: parseFloat(createCampaignDto.coordinate.lat),
+                    lng: parseFloat(createCampaignDto.coordinate.lng),
+                }
+            };
 
-            createdCampaign = await this.repository.insert(data, trx);
+            const createdCampaign = await this.repository.insert(data);
+
+            if (file) {
+                await this.updateOne(organization_id, createdCampaign[0].id, data, file);
+            }
+
+            return {
+                message: MESSAGE.CREATE_CAMPAIGN_SUCCESS,
+                id: createdCampaign[0].id,
+            };
         } catch (error) {
-            await trx.rollback();
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        trx.commit();
-        return {
-            message: MESSAGE.CREATE_CAMPAIGN_SUCCESS,
-            id: createdCampaign[0].id,
-        };
     }
 
-    async updateOne(organization_id, campaign_id, createCampaignDto) {
+    async updateOne(organization_id, campaign_id, createCampaignDto, file) {
         const trx = await getTransaction();
 
         // check if campaign exist
@@ -128,25 +140,32 @@ class Service {
             );
         }
 
-        let updatedCampaign;
         try {
-            updatedCampaign = await this.repository.updateOne(
+            const url = file ? (await this.MediaService.uploadOne(file, `organizations/${organization_id}/campaigns/${campaign_id}`, 'image', true)).url : null;
+
+            const updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                createCampaignDto,
+                {
+                    ...createCampaignDto,
+                    image: url,
+                    coordinate: {
+                        lat: parseFloat(createCampaignDto.coordinate.lat),
+                        lng: parseFloat(createCampaignDto.coordinate.lng),
+                    }
+                },
                 trx,
             );
 
+            trx.commit();
+            return {
+                message: MESSAGE.UPDATE_CAMPAIGN_SUCCESS,
+                id: updatedCampaign[0],
+            };
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        trx.commit();
-        return {
-            message: MESSAGE.UPDATE_CAMPAIGN_SUCCESS,
-            id: updatedCampaign[0].id,
-        };
     }
 
     async deleteOne(organization_id, campaign_id) {
@@ -174,30 +193,28 @@ class Service {
         }
 
         trx.commit();
+
+        return {
+            message: MESSAGE.DELETE_CAMPAIGN_SUCCESS,
+        }
     }
 
     async searchByName(name) {
-        let campaigns;
         try {
-            campaigns = await this.repository.searchByName(name);
+            return this.repository.searchByName(name);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        return campaigns;
     }
 
     async searchByCoordinate(lng, lat) {
-        let campaigns;
         try {
-            campaigns = await this.repository.searchByCoordinate(lng, lat);
+            return this.repository.searchByCoordinate(lng, lat);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        return campaigns;
     }
 
     async registerVolunteer(campaign_id, user_id) {
@@ -324,15 +341,12 @@ class Service {
     }
 
     async getAllCoordinates() {
-        let campaigns;
         try {
-            campaigns = await this.repository.getAllCoordinates();
+            return this.repository.getAllCoordinates();
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        return campaigns;
     }
 };
 

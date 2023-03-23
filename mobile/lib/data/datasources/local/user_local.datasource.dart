@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/common/constants/hive_keys.dart';
 import 'package:mobile/data/dtos/auth.dto.dart';
+import 'package:mobile/data/models/user.model.dart';
 
 @lazySingleton
 class UserLocalDataSource {
@@ -11,15 +14,28 @@ class UserLocalDataSource {
     @Named(HiveKeys.userBox) required Box userBox,
   }) : _userBox = userBox;
 
-  String? getAccessToken() {
-    return _userBox.get(HiveKeys.accessToken);
+  UserModel? getUserInfo() {
+    final String? rawData = _userBox.get(HiveKeys.user);
+
+    if (rawData == null) {
+      return null;
+    } else {
+      return UserModel.fromJson(Map<String, dynamic>.from(jsonDecode(rawData)));
+    }
   }
 
-  Future<void> setTokens(TokenDTO? tokenDTO) async {
-    if (tokenDTO == null) {
+  Future<void> setUserInfo(UserModel user) async {
+    await _userBox.put(HiveKeys.user, jsonEncode(user));
+  }
+
+  Future<void> setUserAuthInfo(LoginResponseDTO? response) async {
+    if (response == null) {
       await _userBox.clear();
     } else {
-      return await _userBox.putAll(tokenDTO.toLocalJson());
+      await Future.wait([
+        _userBox.put(HiveKeys.accessToken, response.accessToken),
+        _userBox.put(HiveKeys.user, jsonEncode(response.user))
+      ]);
     }
   }
 }

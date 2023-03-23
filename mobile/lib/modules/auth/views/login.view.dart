@@ -34,10 +34,9 @@ class LoginPage extends StatelessWidget {
   }
 
   void _listenLoginStateChanged(BuildContext context, LoginState state) {
-    if (state is LoginNotSuccess) {
+    if (state is LoginNotSuccess && state.error == null) {
       ToastUtil.showError(
         context,
-        position: ToastPosition.TOP,
       );
     }
   }

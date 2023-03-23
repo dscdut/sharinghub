@@ -5,7 +5,7 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/utils/conditional_render.util.dart';
 import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/common/widgets/loading_dot.widget.dart';
-import 'package:mobile/common/widgets/not_found.widget.dart';
+import 'package:mobile/common/widgets/common_error.widget.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/data/repositories/organization.repository.dart';
 import 'package:mobile/di/di.dart';
@@ -51,7 +51,7 @@ class _OrganizationProfileView extends StatelessWidget {
                       dotColor: ColorStyles.zodiacBlue,
                     ),
                   ),
-              HandleStatus.error: (_) => const Center(child: NotFound()),
+              HandleStatus.error: (_) => const Center(child: CommonError()),
               HandleStatus.initial: (_) => const SizedBox()
             },
             fallbackBuilder: (_) {

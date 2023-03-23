@@ -116,11 +116,14 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           builder: (_, child) {
             return BlocListener<AuthBloc, AuthState>(
+              listenWhen: (previous, current) =>
+                  previous.status != current.status,
               listener: (_, state) {
                 switch (state.status) {
                   case AuthenticationStatus.unknown:
                     break;
-                  case AuthenticationStatus.authenticated:
+                  case AuthenticationStatus.authenticatedOrganization:
+                  case AuthenticationStatus.authenticatedUser:
                     _navigator.pushNamedAndRemoveUntil(
                       AppRoutes.root,
                       (route) => false,

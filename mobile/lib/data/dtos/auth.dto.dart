@@ -1,17 +1,19 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mobile/common/constants/hive_keys.dart';
+import 'package:mobile/data/models/user.model.dart';
 
 part 'auth.dto.g.dart';
 
 @JsonSerializable(
-  createToJson: false,
+  explicitToJson: true,
 )
 class LoginResponseDTO {
+  final UserModel user;
   final String accessToken;
   // final String refreshToken;
   // final String expiresIn;
 
   LoginResponseDTO({
+    required this.user,
     required this.accessToken,
     // required this.refreshToken,
     // required this.expiresIn,
@@ -19,6 +21,8 @@ class LoginResponseDTO {
 
   factory LoginResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LoginResponseDTOToJson(this);
 }
 
 @JsonSerializable(createFactory: false)
@@ -49,24 +53,4 @@ class SubmitRegisterDTO {
   });
 
   Map<String, dynamic> toJson() => _$SubmitRegisterDTOToJson(this);
-}
-
-@JsonSerializable(
-  createToJson: false,
-)
-class TokenDTO {
-  final String accessToken;
-
-  TokenDTO({
-    required this.accessToken,
-  });
-
-  factory TokenDTO.fromJson(Map<String, dynamic> json) =>
-      _$TokenDTOFromJson(json);
-
-  Map<String, String> toLocalJson() {
-    return {
-      HiveKeys.accessToken: accessToken,
-    };
-  }
 }

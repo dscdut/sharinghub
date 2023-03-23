@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
@@ -17,23 +15,5 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
   })  : _userRepository = userRepository,
         super(
           const UserProfileState.initial(),
-        ) {
-    on<UserProfileStarted>(_getUserProfile);
-    add(const UserProfileStarted());
-  }
-
-  Future<void> _getUserProfile(
-    UserProfileEvent event,
-    Emitter<UserProfileState> emitter,
-  ) async {
-    try {
-      emitter(
-        UserProfileState.success(
-          user: await _userRepository.getUserProfile(),
-        ),
-      );
-    } catch (e) {
-      log(e.toString());
-    }
-  }
+        );
 }

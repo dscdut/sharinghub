@@ -31,10 +31,10 @@ class PlaceDataSource {
       '${Endpoints.geoCode}&place_id=$placeId',
     );
 
-    Map<String, double> geoLocation =
+    Map<String, dynamic> geoLocation =
         response.body['results'][0]['geometry']['location'];
 
-    geoLocation = {
+    return {
       'lat': double.parse(
         (geoLocation['lat'] as double).toStringAsFixed(4),
       ),
@@ -42,7 +42,5 @@ class PlaceDataSource {
         (geoLocation['lng'] as double).toStringAsFixed(4),
       ),
     };
-
-    return geoLocation;
   }
 }

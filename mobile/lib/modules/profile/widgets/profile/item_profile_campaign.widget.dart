@@ -1,30 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 
 class ItemProfileCampaignWidget extends StatelessWidget {
   const ItemProfileCampaignWidget({
     super.key,
-    required this.number,
+    required this.icon,
+    required this.subTitle,
     required this.title,
   });
 
-  final int number;
+  final String icon;
+  final String subTitle;
   final String title;
+
+  final Widget _verticalSpacing = const SizedBox(
+    height: 4,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          number.toString(),
-          style: TextStyles.boldHeading24,
-        ),
-        const SizedBox(height: 5),
-        Text(
-          title,
-          style: TextStyles.regularBody16,
-        ),
-      ],
+    return GestureDetector(
+      onTap: () {},
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            icon,
+            width: 25,
+            height: 35,
+            color: ColorStyles.gray300,
+          ),
+          _verticalSpacing,
+          Text(
+            title,
+            style: TextStyles.s14MediumText,
+          ),
+          _verticalSpacing,
+          Text(
+            subTitle,
+            style: TextStyles.s14RegularText,
+          ),
+        ],
+      ),
     );
   }
 }

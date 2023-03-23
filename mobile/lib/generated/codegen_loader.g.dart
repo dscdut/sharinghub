@@ -37,7 +37,9 @@ class CodegenLoader extends AssetLoader{
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Location Search"
+    "location_search": "Location Search",
+    "edit": "Edit",
+    "delele": "Delete"
   },
   "button": {
     "cancel": "Cancel",
@@ -76,7 +78,8 @@ class CodegenLoader extends AssetLoader{
     "field_required": "This field is required",
     "not_match_password": "Password and confirm password not match",
     "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
-    "organization_avatar_uploaded": "The organization avatar must be uploaded"
+    "organization_avatar_uploaded": "The organization avatar must be uploaded",
+    "existed_email": "This email is already existed"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -101,13 +104,14 @@ class CodegenLoader extends AssetLoader{
     "address": "Address",
     "description": "Description",
     "management": "Organization Management",
-    "duplicated": "This organization name or phone number is already existed"
+    "duplicated": "This organization name or phone number is already existed",
+    "create_success": "Organization created successfully"
   },
   "campaign": {
     "create": "Create new campaign",
     "update": "Update campaign",
-    "create_success": "Success create campaign",
-    "update_success": "Success update campaign",
+    "create_success": "Campaign created successfully",
+    "update_success": "Campaign updated successfully",
     "back_home": "Back to home",
     "campaign_name": "Campaign name",
     "campaign_description": "Description",
@@ -126,28 +130,33 @@ class CodegenLoader extends AssetLoader{
     "image_uploaded": "The campaign image must be uploaded",
     "volunteer": "Volunteer",
     "complete": "Complete",
-    "volunteer_register": "Register Volunteer"
+    "volunteer_register": "Register Volunteer",
+    "management": "Campaign Management",
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!"
   },
   "profile": {
     "setting": "Setting",
-    "rate": "Rate:",
     "contact_info": "Contact information",
-    "campaigns_doing": "Campaigns doing",
-    "campaigns_done": "Campaigns done",
-    "reviews": "Reviews",
-    "profile": "Profile",
+    "personal": "Personal profile",
+    "organization": "Organization profile",
     "pending": "Pending",
+    "upcoming": "Upcoming",
     "ongoing": "Ongoing",
-    "feedback": " Feedbacks",
+    "participating": "Participating",
+    "done": "Done",
     "preferences": "Preferences",
     "about_us": "About us",
     "logout": "Log out",
     "share_this_app": "Share this app",
     "help_center": "Help center",
-    "switch_account": "Switch account",
+    "my_organizations": "My organizations",
+    "switch_to_myaccount": "Switch to my account",
     "delete_account": "Delete account",
     "gender_female": "Female",
-    "gender_male": "Male"
+    "gender_male": "Male",
+    "form_number": "{number} forms",
+    "campaign_number": "{number} campaigns",
+    "review_number": "{number} reviews"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -173,7 +182,9 @@ static const Map<String,dynamic> vi = {
     "galerry": "Thư viện",
     "camera": "Camera",
     "upload_photo": "Tải ảnh lên",
-    "location_search": "Tìm kiếm địa điểm"
+    "location_search": "Tìm kiếm địa điểm",
+    "edit": "Chỉnh sửa",
+    "delele": "Xoá"
   },
   "button": {
     "cancel": "Hủy",
@@ -209,10 +220,11 @@ static const Map<String,dynamic> vi = {
     "invalid_email": "Không đúng định dạng email",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
-    "field_required": "Không được để trống",
+    "field_required": "Trường giá trị này không được để trống",
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
-    "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải"
+    "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
+    "existed_email": "Email này đã được đăng ký"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -237,7 +249,8 @@ static const Map<String,dynamic> vi = {
     "address": "Địa chỉ",
     "description": "Mô tả",
     "management": "Quản lý tổ chức",
-    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại"
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại",
+    "create_success": "Tạo tổ chức thành công"
   },
   "campaign": {
     "create": "Tạo dự án",
@@ -262,28 +275,33 @@ static const Map<String,dynamic> vi = {
     "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "volunteer": "Tình nguyện viên",
     "complete": "Hoàn thành",
-    "volunteer_register": "Đăng kí tình nguyện viên"
+    "volunteer_register": "Đăng kí tình nguyện viên",
+    "management": "Quản lý chiến dịch",
+    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!"
   },
   "profile": {
     "setting": "Cài đặt",
-    "rate": "Đánh giá:",
     "contact_info": "Thông tin liên hệ",
-    "campaigns_doing": "Dự án đang thực hiện",
-    "campaigns_done": "Dự án đã hoàn thành",
-    "reviews": "Đánh giá",
-    "profile": "Hồ sơ cá nhân",
+    "personal_profile": "Hồ sơ cá nhân",
+    "organization_profile": "Hồ sơ tổ chức",
     "pending": "Chờ duyệt",
+    "upcoming": "Sắp diễn ra",
     "ongoing": "Đang diễn ra",
-    "feedback": " Đánh giá",
+    "participating": "Đang tham gia",
+    "done": "Đã hoàn thành",
     "preferences": "Tùy chọn",
     "about_us": "Về chúng tôi",
     "logout": "Đăng xuất",
     "share_this_app": "Chia sẻ ứng dụng",
     "help_center": "Trung tâm trợ giúp",
-    "switch_account": "Đổi tài khoản",
+    "my_organizations": "Tổ chức của tôi",
+    "switch_to_myaccount": "Chuyển sang tài khoản của tôi",
     "delete_account": "Xoá tài khoản",
     "gender_female": "Nữ",
-    "gender_male": "Nam"
+    "gender_male": "Nam",
+    "form_number": "{number} đơn",
+    "campaign_number": "{number} dự án",
+    "review_number": "{number} đánh giá"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};
