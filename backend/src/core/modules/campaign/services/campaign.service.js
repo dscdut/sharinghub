@@ -55,8 +55,6 @@ class Service {
     }
 
     async createOne(createCampaignDto, organization_id, file) {
-        const trx = await getTransaction();
-
         // check if start date is before end date
         if (
             new Date(createCampaignDto.start_date)
@@ -80,22 +78,18 @@ class Service {
         try {
             const data = { ...createCampaignDto, organization_id };
 
-            const createdCampaign = await this.repository.insert(data, trx);
+            const createdCampaign = await this.repository.insert(data);
 
             await this.updateOne(organization_id, createdCampaign[0].id, data, file);
 
-            trx.commit();
             return {
                 message: MESSAGE.CREATE_CAMPAIGN_SUCCESS,
                 id: createdCampaign[0].id,
             };
         } catch (error) {
-            await trx.rollback();
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-        
     }
 
     async updateOne(organization_id, campaign_id, createCampaignDto, file) {
