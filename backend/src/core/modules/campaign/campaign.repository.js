@@ -138,7 +138,8 @@ class Repository extends DataRepository {
                 'campaigns.id',
                 'campaigns.name',
                 'campaigns.coordinate',
-            ]);
+            ])
+            .orderBy('campaigns.created_at', 'asc');
     }
 
     findVoluntaryCampaignsByUserId(id) {
