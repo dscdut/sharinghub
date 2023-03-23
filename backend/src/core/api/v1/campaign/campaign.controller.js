@@ -4,11 +4,14 @@ import { ValidHttpResponse } from 'packages/handler/response/validHttp.response'
 import { NotFoundException } from 'packages/httpException';
 import { ForbiddenException } from 'packages/httpException/ForbiddenException';
 import { CreateCampaignDto } from '../../../modules/campaign/dto';
+import { FeedbackService } from '../../../modules/feedback/service/feedback.service';
+import { CreateFeedbackDto } from '../../../modules/feedback/dto';
 import { logger } from '../../../../packages/logger';
 
 class Controller {
     constructor() {
         this.service = CampaignService;
+        this.feedbackService = FeedbackService;
     }
 
     findOneById = async req => {
@@ -18,7 +21,9 @@ class Controller {
             throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_ID);
         }
 
-        return ValidHttpResponse.toOkResponse(data);
+        const feedback = await this.feedbackService.getFeedBack(data.id);
+        
+        return ValidHttpResponse.toOkResponse({ ...data, feedback: feedback ? feedback : null });
     }
 
     findAllByOrgId = async req => {
@@ -136,6 +141,16 @@ class Controller {
 
     getAllCoordinates = async req => {
         const data = await this.service.getAllCoordinates();
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    createOrUpdateFeedback = async req => {
+        const data = await this.feedbackService.createOrUpdateFeedback(req, CreateFeedbackDto(req.body), req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    };
+
+    deleteFeedback = async req => {
+        const data = await this.feedbackService.deleteFeedback(req.user.payload, req.params);
         return ValidHttpResponse.toOkResponse(data);
     }
 }
