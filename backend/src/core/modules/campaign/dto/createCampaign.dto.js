@@ -3,9 +3,8 @@ import { SwaggerDocument } from 'packages/swagger';
 
 ApiDocument.addModel('CreateCampaignDto', {
     name: SwaggerDocument.ApiProperty({ type: 'string' }),
-    image: SwaggerDocument.ApiProperty({ type: 'string', required: false }),
     address: SwaggerDocument.ApiProperty({ type: 'string' }),
-    specific_address: SwaggerDocument.ApiProperty({
+    specificAddress: SwaggerDocument.ApiProperty({
         type: 'string',
         required: false,
     }),
@@ -22,22 +21,22 @@ ApiDocument.addModel('CreateCampaignDto', {
         },
     }),
     description: SwaggerDocument.ApiProperty({ type: 'string' }),
-    start_date: SwaggerDocument.ApiProperty({
+    startDate: SwaggerDocument.ApiProperty({
         type: 'string',
         format: 'date',
         example: '2023-01-01',
     }),
-    end_date: SwaggerDocument.ApiProperty({
+    endDate: SwaggerDocument.ApiProperty({
         type: 'string',
         format: 'date',
         example: '2023-12-01',
     }),
-    register_link: SwaggerDocument.ApiProperty({
+    registerLink: SwaggerDocument.ApiProperty({
         type: 'string',
         required: false,
         example: 'https://docs.google.com/forms/register-for-campaign',
     }),
-    donation_requirement: SwaggerDocument.ApiProperty({
+    donationRequirement: SwaggerDocument.ApiProperty({
         type: 'string',
         required: false,
     }),
@@ -47,11 +46,11 @@ export const CreateCampaignDto = body => ({
     name: body.name,
     image: body.image,
     address: body.address,
-    specific_address: body.specific_address,
+    specific_address: body.specificAddress,
     coordinate: body.coordinate,
     description: body.description,
-    start_date: body.start_date,
-    end_date: body.end_date,
-    register_link: body.register_link,
-    donation_requirement: body.donation_requirement,
+    start_date: body.startDate,
+    end_date: body.endDate,
+    register_link: body.registerLink,
+    donation_requirement: body.donationRequirement,
 });

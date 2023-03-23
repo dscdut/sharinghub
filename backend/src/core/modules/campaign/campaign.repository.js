@@ -18,7 +18,8 @@ class Repository extends DataRepository {
                 { registerLink: 'campaigns.register_link' },
                 { donationRequirement: 'campaigns.donation_requirement' },
                 'campaigns.coordinate',
-                { organizationName: 'organizations.name' }
+                { organizationName: 'organizations.name' },
+                { organizationId: '.campaigns.organization_id' }
             ]);
     }
 
@@ -134,12 +135,12 @@ class Repository extends DataRepository {
     getAllCoordinates() {
         return this.query()
             .whereNull('campaigns.deleted_at')
-            .whereRaw('campaigns.end_date > now()')
             .select([
                 'campaigns.id',
                 'campaigns.name',
                 'campaigns.coordinate',
-            ]);
+            ])
+            .orderBy('campaigns.created_at', 'asc');
     }
 
     findVoluntaryCampaignsByUserId(id) {

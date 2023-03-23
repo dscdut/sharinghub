@@ -13,5 +13,5 @@ export const ModuleResolver = HandlerResolver.builder()
         UserResolver,
         MediaResolver,
         OrgResolver,
-        CampaignResolver
+        CampaignResolver,
     ]);
