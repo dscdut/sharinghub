@@ -153,7 +153,7 @@ class Service {
             trx.commit();
             return {
                 message: MESSAGE.UPDATE_CAMPAIGN_SUCCESS,
-                id: updatedCampaign[0].id,
+                id: updatedCampaign[0],
             };
         } catch (error) {
             await trx.rollback();
