@@ -76,7 +76,7 @@ class Service {
         }
 
         try {
-            const data = { 
+            const data = {
                 ...createCampaignDto,
                 organization_id,
                 coordinate: {
@@ -86,7 +86,7 @@ class Service {
             };
 
             const createdCampaign = await this.repository.insert(data);
-            
+
             if (file) {
                 await this.updateOne(organization_id, createdCampaign[0].id, data, file);
             }
@@ -136,10 +136,10 @@ class Service {
 
         try {
             const url = file ? (await this.MediaService.uploadOne(file, `organizations/${organization_id}/campaigns/${campaign_id}`, 'image', true)).url : null;
-            
+
             const updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                { 
+                {
                     ...createCampaignDto,
                     image: url,
                     coordinate: {
@@ -153,15 +153,13 @@ class Service {
             trx.commit();
             return {
                 message: MESSAGE.UPDATE_CAMPAIGN_SUCCESS,
-                id: updatedCampaign[0].id,
+                id: updatedCampaign[0],
             };
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-
     }
 
     async deleteOne(organization_id, campaign_id) {
@@ -189,7 +187,7 @@ class Service {
         }
 
         trx.commit();
-        
+
         return {
             message: MESSAGE.DELETE_CAMPAIGN_SUCCESS,
         }

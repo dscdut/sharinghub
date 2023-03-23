@@ -33,6 +33,14 @@ export const CampaignResolver = Module.builder()
         },
         {
             route: '/organizations/:organizationId/campaigns/:campaignId',
+            method: 'patch',
+            body: 'CreateCampaignDto',
+            params: [orgCampaignId, campaignId],
+            controller: CampaignController.updateOne,
+            preAuthorization: true,
+        },
+        {
+            route: '/organizations/:organizationId/campaigns/:campaignId',
             method: 'delete',
             params: [orgCampaignId, campaignId],
             controller: CampaignController.deleteOne,
