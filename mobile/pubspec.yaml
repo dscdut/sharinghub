@@ -147,13 +147,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Mulish
+    - family: BeVietnamPro
       fonts:
-        - asset: assets/fonts/Mulish-Regular.ttf
+        - asset: assets/fonts/BeVietnamPro-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Mulish-Medium.ttf
+        - asset: assets/fonts/BeVietnamPro-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Mulish-Bold.ttf
+        - asset: assets/fonts/BeVietnamPro-Bold.ttf
           weight: 700
 
 flutter_gen:
