@@ -76,11 +76,20 @@ class Service {
         }
 
         try {
-            const data = { ...createCampaignDto, organization_id };
+            const data = { 
+                ...createCampaignDto,
+                organization_id,
+                coordinate: {
+                    lat: parseFloat(createCampaignDto.coordinate.lat),
+                    lng: parseFloat(createCampaignDto.coordinate.lng),
+                }
+            };
 
             const createdCampaign = await this.repository.insert(data);
-
-            await this.updateOne(organization_id, createdCampaign[0].id, data, file);
+            
+            if (file) {
+                await this.updateOne(organization_id, createdCampaign[0].id, data, file);
+            }
 
             return {
                 message: MESSAGE.CREATE_CAMPAIGN_SUCCESS,
@@ -130,7 +139,14 @@ class Service {
             
             const updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                { ...createCampaignDto, image: url },
+                { 
+                    ...createCampaignDto,
+                    image: url,
+                    coordinate: {
+                        lat: parseFloat(createCampaignDto.coordinate.lat),
+                        lng: parseFloat(createCampaignDto.coordinate.lng),
+                    }
+                },
                 trx,
             );
 
