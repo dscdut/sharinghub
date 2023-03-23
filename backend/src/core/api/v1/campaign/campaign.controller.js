@@ -29,9 +29,7 @@ class Controller {
             throw new ForbiddenException(MESSAGE.NOT_BELONG_TO_ORGANIZATION);
         }
 
-        const data = await this.service.findAllByOrgId(
-            req.params.organizationId,
-        );
+        const data = await this.service.findAllByOrgId(req.params.organizationId);
 
         return ValidHttpResponse.toOkResponse(data);
     }
@@ -61,22 +59,20 @@ class Controller {
 
         const { file } = req;
 
-        let data;
-
         try {
-        
             // check if organizationId in params is in the organization_ids array of the user
             if (!organization_ids.includes(parseInt(req.params.organizationId))) {
                 throw new ForbiddenException(MESSAGE.NOT_BELONG_TO_ORGANIZATION);
             }
 
-            data = await this.service.createOne(CreateCampaignDto(req.body), req.params.organizationId, file);
+            const data = await this.service.createOne(CreateCampaignDto(req.body), req.params.organizationId, file);
+
+            return ValidHttpResponse.toCreatedResponse(data);
         } catch(error) {
             this.service.deleteFile(file);
             logger.error(error.message);
             throw error;
         }
-        return ValidHttpResponse.toCreatedResponse(data);
     };
 
     updateOne = async req => {
@@ -89,22 +85,21 @@ class Controller {
             if (!organization_ids.includes(parseInt(req.params.organizationId))) {
                 throw new ForbiddenException(MESSAGE.NOT_BELONG_TO_ORGANIZATION);
             }
-
-            let data;
         
-            data = await this.service.updateOne(
+            const data = await this.service.updateOne(
                 req.params.organizationId,
                 req.params.campaignId,
                 CreateCampaignDto(req.body),
                 file
             );
+            
+            return ValidHttpResponse.toOkResponse(data);
         } catch(error) { 
             this.service.deleteFile(file);
             logger.error(error.message);
             throw error;
         }
 
-        return ValidHttpResponse.toOkResponse(data);
     }
 
     deleteOne = async req => {
