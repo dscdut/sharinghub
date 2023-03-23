@@ -73,7 +73,19 @@ class Repository extends DataRepository {
             .whereNull('deleted_at')
             .where({ id })
             .update(data)
-            .returning('*');
+            .returning([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.image',
+                'campaigns.description',
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                { registerLink: 'campaigns.register_link' },
+                { donationRequirement: 'campaigns.donation_requirement' },
+                'campaigns.coordinate',
+            ]);
 
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
