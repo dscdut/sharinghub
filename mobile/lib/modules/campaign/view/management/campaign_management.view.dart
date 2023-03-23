@@ -49,7 +49,11 @@ class _CampaignManagementView extends StatelessWidget {
             },
             fallbackBuilder: (_) {
               if (state.campaigns.isEmpty) {
-                return const Center(child: CampaignGetCommonError());
+                return Center(
+                  child: CampaignGetCommonError(
+                    isEmpty: state.campaigns.isEmpty,
+                  ),
+                );
               }
 
               return ListCampaigns(campaigns: state.campaigns);

@@ -226,5 +226,5 @@ class ArgumentWrapper3<A, B, C> {
 
   final A param1;
   final B param2;
-  final B param3;
+  final C param3;
 }

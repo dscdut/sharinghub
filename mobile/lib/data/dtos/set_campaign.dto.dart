@@ -6,11 +6,9 @@ part 'set_campaign.dto.g.dart';
   includeIfNull: false,
   createFactory: false,
   explicitToJson: true,
-  fieldRename: FieldRename.snake,
 )
 class SetCampaignDTO {
   String? name;
-  @JsonKey(includeToJson: false)
   dynamic image;
   String? address;
   String? specificAddress;
@@ -18,8 +16,11 @@ class SetCampaignDTO {
   String? description;
   DateTime? startDate;
   DateTime? endDate;
+  @JsonKey(includeIfNull: false)
   String? registerLink;
+  @JsonKey(includeIfNull: false)
   String? donationRequirement;
+  @JsonKey(includeIfNull: false)
   String? otherInformation;
   @JsonKey(includeToJson: false)
   String? placeId;

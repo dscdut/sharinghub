@@ -16,14 +16,15 @@ Map<String, dynamic> _$SetCampaignDTOToJson(SetCampaignDTO instance) {
   }
 
   writeNotNull('name', instance.name);
+  writeNotNull('image', instance.image);
   writeNotNull('address', instance.address);
-  writeNotNull('specific_address', instance.specificAddress);
+  writeNotNull('specificAddress', instance.specificAddress);
   writeNotNull('coordinate', instance.coordinate);
   writeNotNull('description', instance.description);
-  writeNotNull('start_date', instance.startDate?.toIso8601String());
-  writeNotNull('end_date', instance.endDate?.toIso8601String());
-  writeNotNull('register_link', instance.registerLink);
-  writeNotNull('donation_requirement', instance.donationRequirement);
-  writeNotNull('other_information', instance.otherInformation);
+  writeNotNull('startDate', instance.startDate?.toIso8601String());
+  writeNotNull('endDate', instance.endDate?.toIso8601String());
+  writeNotNull('registerLink', instance.registerLink);
+  writeNotNull('donationRequirement', instance.donationRequirement);
+  writeNotNull('otherInformation', instance.otherInformation);
   return val;
 }
