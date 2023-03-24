@@ -141,5 +141,9 @@
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
     "review_number": "{number} reviews"
+  },
+  "map": {
+    "error_get_markers": "Cannot load list of locations",
+    "location_error": "Cannot get your location"
   }
 }

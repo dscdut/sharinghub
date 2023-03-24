@@ -1,10 +1,12 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
 import 'package:mobile/data/repositories/place.repository.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -26,13 +28,18 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     add(const MapMarkersGet());
   }
 
-  Future<LatLng> _getMyLocation() async {
+  Future<LatLng> _getMyLocation(Emitter<MapState> emiiter) async {
     try {
       final Position userPosition = await Geolocator.getCurrentPosition();
 
       return LatLng(userPosition.latitude, userPosition.longitude);
     } catch (err) {
       log('Error in get user location');
+      emiiter(
+        state.copyWith(
+          error: LocaleKeys.map_location_error.tr(),
+        ),
+      );
 
       return defaultLocation;
     }
@@ -50,7 +57,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
 
     emiiter(
       MapGetLocationSuccess(
-        myLocation: await _getMyLocation(),
+        myLocation: await _getMyLocation(emiiter),
         markers: state.markers ?? const {},
       ),
     );
@@ -68,7 +75,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
               .map(
                 (e) => Marker(
                   markerId: MarkerId(e.id.toString()),
-                  position: LatLng(e.coordinate.lat, e.coordinate.lng),
+                  position: LatLng(e.coordinate!.lat, e.coordinate!.lng),
                 ),
               )
               .toSet(),
@@ -76,6 +83,11 @@ class MapBloc extends Bloc<MapEvent, MapState> {
       );
     } catch (e) {
       log('Error in get markers');
+      emiiter(
+        state.copyWith(
+          error: LocaleKeys.map_error_get_markers.tr(),
+        ),
+      );
     }
   }
 }

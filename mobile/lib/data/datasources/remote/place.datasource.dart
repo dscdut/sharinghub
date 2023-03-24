@@ -51,6 +51,7 @@ class PlaceDataSource {
     );
     List<CoordinateModel> result = response.body
         .map<CoordinateModel>((e) => CoordinateModel.fromJson(e))
+        .where((element) => element.coordinate != null)
         .toList();
     return result;
   }

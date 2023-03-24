@@ -10,8 +10,9 @@ CoordinateModel _$CoordinateModelFromJson(Map<String, dynamic> json) =>
     CoordinateModel(
       id: json['id'] as int,
       name: json['name'] as String,
-      coordinate:
-          Coordinate.fromJson(json['coordinate'] as Map<String, dynamic>),
+      coordinate: json['coordinate'] == null
+          ? null
+          : Coordinate.fromJson(json['coordinate'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CoordinateModelToJson(CoordinateModel instance) =>

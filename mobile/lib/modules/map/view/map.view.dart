@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
+import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/data/repositories/place.repository.dart';
 import 'package:mobile/di/di.dart';
@@ -52,6 +53,9 @@ class MapPage extends StatelessWidget {
           9,
         ),
       );
+    }
+    if (state.error != null && context.mounted) {
+      ToastUtil.showError(context, text: state.error);
     }
   }
 }

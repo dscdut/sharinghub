@@ -11,7 +11,7 @@ class CoordinateModel {
   final String name;
 
   @JsonKey(name: 'coordinate')
-  final Coordinate coordinate;
+  final Coordinate? coordinate;
 
   const CoordinateModel({
     required this.id,

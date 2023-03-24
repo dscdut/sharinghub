@@ -141,5 +141,9 @@
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
     "review_number": "{number} đánh giá"
+  },
+  "map": {
+    "error_get_markers": "Không thể tải danh sách vị trí",
+    "location_error": "Không thể lấy vị trí hiện tại của bạn"
   }
 }
