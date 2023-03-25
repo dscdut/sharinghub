@@ -6,7 +6,6 @@ import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/campaign/widgets/detail/info_card.widget.dart';
 
-// TODO: replace that to header profile
 class OrganizationInfo extends StatelessWidget {
   final OrganizationModel organization;
 

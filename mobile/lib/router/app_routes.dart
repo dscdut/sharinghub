@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
+import 'package:mobile/modules/campaign/view/donors/campaign_donors.view.dart';
 import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
@@ -27,6 +28,7 @@ abstract class AppRoutes {
   static const String campaignRegister = '/campaignRegister';
   static const String campaignDetail = '/campaignDetail';
   static const String locationSearch = '/locationSearch';
+  static const String campaignDonation = '/campaignDonation';
 
   // Auth
   static const String login = '/login';
@@ -151,6 +153,12 @@ abstract class AppRoutes {
               campaign: settings.arguments as CampaignModel,
             );
           },
+        );
+      case campaignDonation:
+        return MaterialPageRoute(
+          builder: (_) => CampaignDonorsPage(
+            initIndex: settings.arguments as int,
+          ),
         );
       case locationSearch:
         return MaterialPageRoute(
