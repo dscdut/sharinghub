@@ -90,8 +90,8 @@ class CodegenLoader extends AssetLoader{
     "province": "Province",
     "district": "District",
     "ward": "Ward",
-    "empty_result": "No result found",
-    "init_placeholder": "Some text like Enter keyword to Search"
+    "empty_result": "Nothing matches your search 🙌",
+    "init_placeholder": "Find something here"
   },
   "home": {
     "search": "Search",
@@ -251,7 +251,7 @@ static const Map<String,dynamic> vi = {
     "province": "Tỉnh/Thành phố",
     "district": "Quận/Huyện",
     "ward": "Phường/Xã",
-    "empty_result": "Không tìm thấy kết quả nào",
+    "empty_result": "Không tìm thấy kết quả 🙌",
     "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
   },
   "home": {

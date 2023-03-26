@@ -15,8 +15,8 @@ import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/explore/bloc/search/search.bloc.dart';
-import 'package:mobile/modules/explore/widgets/item_search.widget.dart';
 import 'package:mobile/modules/explore/widgets/search_input.widget.dart';
+import 'package:mobile/modules/explore/widgets/search_result.widget.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -49,7 +49,7 @@ class _SearchPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           LocaleKeys.home_search.tr(),
-          style: TextStyles.regularHeading20,
+          style: TextStyles.regularHeading20.copyWith(color: Colors.white),
         ),
         backgroundColor: ColorStyles.primary1,
       ),
@@ -179,7 +179,7 @@ class _SearchPage extends StatelessWidget {
                     ),
                 width: double.infinity,
                 backgroundColor: ColorStyles.primary1,
-                content: 'Search',
+                content: LocaleKeys.home_search.tr(),
                 prefixIcon:
                     Assets.icons.icSearch.image(width: AppSize.iconSize),
               ),
@@ -187,42 +187,16 @@ class _SearchPage extends StatelessWidget {
                 height: 12,
                 color: Colors.transparent,
               ),
-              Expanded(
-                child: Builder(
-                  builder: (context) {
-                    if (state.isInitial) {
-                      return Padding(
-                        padding: const EdgeInsets.only(top: 100),
-                        child: Text(
-                          LocaleKeys.search_init_placeholder.tr(),
-                          style: TextStyles.regularHeading20
-                              .copyWith(color: ColorStyles.disableColor),
+              SearchResultWidget(
+                campaigns: state.campaigns,
+                status: state.status,
+                onSearch: () {
+                  context.read<SearchBloc>().add(
+                        SearchListCampainsGet(
+                          keyword: _searchController.text,
                         ),
                       );
-                    } else if (state.isLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else {
-                      return RefreshIndicator(
-                        child: ListView.separated(
-                          itemBuilder: (context, index) =>
-                              ItemSearchWidget(item: state.campaigns![index]),
-                          itemCount: state.campaigns!.length,
-                          separatorBuilder: (context, index) => const Divider(
-                            height: 8,
-                            color: Colors.transparent,
-                          ),
-                        ),
-                        onRefresh: () async {
-                          context.read<SearchBloc>().add(
-                                SearchListCampainsGet(
-                                  keyword: _searchController.text,
-                                ),
-                              );
-                        },
-                      );
-                    }
-                  },
-                ),
+                },
               )
             ],
           ),

@@ -25,7 +25,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
           ? null
           : FeedbackToCampaignDTO.fromJson(
               json['feedback'] as Map<String, dynamic>),
-      coordinate: (json['coordinate'] as Map<String, dynamic>).map(
+      coordinate: (json['coordinate'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
     );

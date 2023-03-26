@@ -105,6 +105,7 @@ class _MyAppState extends State<MyApp> {
           navigatorKey: _navigatorKey,
           title: 'Flutter Demo',
           theme: ThemeData(
+            fontFamily: 'BeVietnamPro',
             primarySwatch: Colors.blue,
           ),
           // routerConfig: AppRoutes.router,
