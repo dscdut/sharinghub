@@ -22,7 +22,15 @@ class CampaignDataSource {
     int? wardCode,
     String keyword,
   ) async {
-    return await CampaignMock.getCampains();
+    final response = await _dioHelper.get(
+      Endpoints.campaigns,
+      queryParameters: {
+        'name': keyword,
+      },
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
   }
 
   Future<CampaignModel> getCampaignById(int id) async {

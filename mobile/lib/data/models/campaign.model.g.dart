@@ -21,7 +21,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       donationRequirement: json['donationRequirement'] as String?,
       otherInformation: json['otherInformation'] as String?,
       image: json['image'] as String?,
-      coordinate: (json['coordinate'] as Map<String, dynamic>).map(
+      coordinate: (json['coordinate'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
     );
