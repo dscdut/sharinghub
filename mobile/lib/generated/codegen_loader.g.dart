@@ -45,9 +45,12 @@ class CodegenLoader extends AssetLoader{
     "cancel": "Cancel",
     "confirm": "Confirm",
     "join": "Join",
+    "donate": "Donate",
     "finish": "Finish",
     "update": "Update",
-    "create": "Create"
+    "create": "Create",
+    "send_feedback": "Send Feedback",
+    "edit_feedback": "Edit Feedback"
   },
   "root": {
     "map": "Map",
@@ -87,8 +90,8 @@ class CodegenLoader extends AssetLoader{
     "province": "Province",
     "district": "District",
     "ward": "Ward",
-    "empty_result": "No result found",
-    "init_placeholder": "Some text like Enter keyword to Search"
+    "empty_result": "Nothing matches your search 🙌",
+    "init_placeholder": "Find something here"
   },
   "home": {
     "search": "Search",
@@ -161,6 +164,19 @@ class CodegenLoader extends AssetLoader{
   "map": {
     "error_get_markers": "Cannot load list of locations",
     "location_error": "Cannot get your location"
+  },
+  "feedback": {
+    "location_rate": "Location rate",
+    "traffic": "Traffic",
+    "weather": "Weather",
+    "santization": "Santization",
+    "residence": "Residence",
+    "authority_cooperation": "Authority cooperation",
+    "others": "Others",
+    "images": "Images of the campaign",
+    "images_uploaded": "The campaign images must be uploaded",
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -194,9 +210,12 @@ static const Map<String,dynamic> vi = {
     "cancel": "Hủy",
     "confirm": "Xác nhận",
     "join": "Đăng ký tham gia",
+    "donate": "Quyên góp",
     "finish": "Hoàn Thành",
     "update": "Cập Nhật",
-    "create": "Tạo"
+    "create": "Tạo",
+    "send_feedback": "Gửi phản hồi",
+    "edit_feedback": "Sửa phản hồi"
   },
   "root": {
     "map": "Bản đồ",
@@ -236,7 +255,7 @@ static const Map<String,dynamic> vi = {
     "province": "Tỉnh/Thành phố",
     "district": "Quận/Huyện",
     "ward": "Phường/Xã",
-    "empty_result": "Không tìm thấy kết quả nào",
+    "empty_result": "Không tìm thấy kết quả 🙌",
     "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
   },
   "home": {
@@ -310,6 +329,19 @@ static const Map<String,dynamic> vi = {
   "map": {
     "error_get_markers": "Không thể tải danh sách vị trí",
     "location_error": "Không thể lấy vị trí hiện tại của bạn"
+  },
+  "feedback": {
+    "location_rate": "Đánh giá địa điểm",
+    "traffic": "Đường xá",
+    "weather": "Thời tiết",
+    "santization": "Vệ sinh",
+    "residence": "Nơi cư trú",
+    "authority_cooperation": "Sự hợp tác của chính quyền địa phương",
+    "others": "Thông tin khác",
+    "images": "Hình ảnh về chiến dịch",
+    "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
+    "location_rated": "Hãy đánh giá địa điểm",
+    "success": "Gửi đánh giá thành công"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

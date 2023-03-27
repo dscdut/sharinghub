@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -59,7 +60,8 @@ class SetCampaignBloc extends Bloc<SetCampaignEvent, SetCampaignState> {
       _campaignManagementBloc.add(const CampaignManagementGet());
 
       emit(state.copyWith(status: HandleStatus.success));
-    } catch (_) {
+    } catch (e) {
+      log(e.toString());
       emit(state.copyWith(status: HandleStatus.error));
     }
   }

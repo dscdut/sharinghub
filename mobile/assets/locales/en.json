@@ -29,9 +29,12 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "join": "Join",
+    "donate": "Donate",
     "finish": "Finish",
     "update": "Update",
-    "create": "Create"
+    "create": "Create",
+    "send_feedback": "Send Feedback",
+    "edit_feedback": "Edit Feedback"
   },
   "root": {
     "map": "Map",
@@ -71,8 +74,8 @@
     "province": "Province",
     "district": "District",
     "ward": "Ward",
-    "empty_result": "No result found",
-    "init_placeholder": "Some text like Enter keyword to Search"
+    "empty_result": "Nothing matches your search 🙌",
+    "init_placeholder": "Find something here"
   },
   "home": {
     "search": "Search",
@@ -145,5 +148,18 @@
   "map": {
     "error_get_markers": "Cannot load list of locations",
     "location_error": "Cannot get your location"
+  },
+  "feedback": {
+    "location_rate": "Location rate",
+    "traffic": "Traffic",
+    "weather": "Weather",
+    "santization": "Santization",
+    "residence": "Residence",
+    "authority_cooperation": "Authority cooperation",
+    "others": "Others",
+    "images": "Images of the campaign",
+    "images_uploaded": "The campaign images must be uploaded",
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 }

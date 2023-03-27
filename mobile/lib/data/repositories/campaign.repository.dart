@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/remote/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 
@@ -41,8 +42,10 @@ class CampaignRepository {
     return _dataSource.setCampaign(setCampaignParams);
   }
 
-  Future<List<CampaignModel>> getCampainsByLocation(LatLng wardLocation) async {
-    return _dataSource.getCampainsByLocation(wardLocation);
+  Future<List<CampaignModel>> getCampaignsByLocation(
+    LatLng wardLocation,
+  ) async {
+    return _dataSource.getCampaignsByLocation(wardLocation);
   }
 
   Future<List<CampaignModel>> getCampaignsByOrganizationId(int organizationId) {
@@ -55,5 +58,9 @@ class CampaignRepository {
 
   Future<void> joinCampaign(int campaignId) async {
     return _dataSource.joinCampaign(campaignId);
+  }
+
+  Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {
+    return _dataSource.feedbackToCampaign(params);
   }
 }

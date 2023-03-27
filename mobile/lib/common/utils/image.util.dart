@@ -88,6 +88,14 @@ abstract class ImageUtil {
     return pickedFile == null ? null : File(pickedFile.path);
   }
 
+  static Future<List<File>?> pickMultipleImage() async {
+    final pickedFile = await ImagePicker().pickMultiImage();
+
+    return pickedFile.isEmpty
+        ? null
+        : pickedFile.map((e) => File(e.path)).toList();
+  }
+
   static Future<File?> pickAndCropImage(
     ImageSource source, {
     double? width,

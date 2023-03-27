@@ -29,9 +29,12 @@ abstract class  LocaleKeys {
   static const button_cancel = 'button.cancel';
   static const button_confirm = 'button.confirm';
   static const button_join = 'button.join';
+  static const button_donate = 'button.donate';
   static const button_finish = 'button.finish';
   static const button_update = 'button.update';
   static const button_create = 'button.create';
+  static const button_send_feedback = 'button.send_feedback';
+  static const button_edit_feedback = 'button.edit_feedback';
   static const button = 'button';
   static const root_map = 'root.map';
   static const root_explore = 'root.explore';
@@ -137,5 +140,17 @@ abstract class  LocaleKeys {
   static const map_error_get_markers = 'map.error_get_markers';
   static const map_location_error = 'map.location_error';
   static const map = 'map';
+  static const feedback_location_rate = 'feedback.location_rate';
+  static const feedback_traffic = 'feedback.traffic';
+  static const feedback_weather = 'feedback.weather';
+  static const feedback_santization = 'feedback.santization';
+  static const feedback_residence = 'feedback.residence';
+  static const feedback_authority_cooperation = 'feedback.authority_cooperation';
+  static const feedback_others = 'feedback.others';
+  static const feedback_images = 'feedback.images';
+  static const feedback_images_uploaded = 'feedback.images_uploaded';
+  static const feedback_location_rated = 'feedback.location_rated';
+  static const feedback_success = 'feedback.success';
+  static const feedback = 'feedback';
 
 }

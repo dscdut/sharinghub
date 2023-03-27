@@ -12,6 +12,7 @@ abstract class Endpoints {
 
   // Campaign
   static String campaignByOrganization = '$apiUrl/organizations';
+  static String campaigns = '$apiUrl/campaigns';
 
   // Coordinators
   static String coordinators = '$apiUrl/campaigns/coordinates';
