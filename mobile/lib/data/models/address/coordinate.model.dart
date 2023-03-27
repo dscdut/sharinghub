@@ -4,13 +4,8 @@ part 'coordinate.model.g.dart';
 
 @JsonSerializable()
 class CoordinateModel {
-  @JsonKey(name: 'id')
   final int id;
-
-  @JsonKey(name: 'name')
   final String name;
-
-  @JsonKey(name: 'coordinate')
   final Coordinate? coordinate;
 
   const CoordinateModel({
@@ -25,10 +20,8 @@ class CoordinateModel {
 
 @JsonSerializable()
 class Coordinate {
-  @JsonKey(name: 'lat')
   final double lat;
 
-  @JsonKey(name: 'lng')
   final double lng;
 
   const Coordinate({
