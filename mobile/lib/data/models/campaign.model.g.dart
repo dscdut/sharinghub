@@ -21,6 +21,10 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       donationRequirement: json['donationRequirement'] as String?,
       otherInformation: json['otherInformation'] as String?,
       image: json['image'] as String?,
+      feedback: json['feedback'] == null
+          ? null
+          : FeedbackToCampaignDTO.fromJson(
+              json['feedback'] as Map<String, dynamic>),
       coordinate: (json['coordinate'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
@@ -48,5 +52,6 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   val['registerLink'] = instance.registerLink;
   val['donationRequirement'] = instance.donationRequirement;
   val['otherInformation'] = instance.otherInformation;
+  val['feedback'] = instance.feedback?.toJson();
   return val;
 }

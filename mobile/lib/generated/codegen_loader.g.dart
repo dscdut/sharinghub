@@ -45,9 +45,12 @@ class CodegenLoader extends AssetLoader{
     "cancel": "Cancel",
     "confirm": "Confirm",
     "join": "Join",
+    "donate": "Donate",
     "finish": "Finish",
     "update": "Update",
-    "create": "Create"
+    "create": "Create",
+    "send_feedback": "Send Feedback",
+    "edit_feedback": "Edit Feedback"
   },
   "root": {
     "map": "Map",
@@ -157,6 +160,19 @@ class CodegenLoader extends AssetLoader{
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
     "review_number": "{number} reviews"
+  },
+  "feedback": {
+    "location_rate": "Location rate",
+    "traffic": "Traffic",
+    "weather": "Weather",
+    "santization": "Santization",
+    "residence": "Residence",
+    "authority_cooperation": "Authority cooperation",
+    "others": "Others",
+    "images": "Images of the campaign",
+    "images_uploaded": "The campaign images must be uploaded",
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -190,9 +206,12 @@ static const Map<String,dynamic> vi = {
     "cancel": "Hủy",
     "confirm": "Xác nhận",
     "join": "Đăng ký tham gia",
+    "donate": "Quyên góp",
     "finish": "Hoàn Thành",
     "update": "Cập Nhật",
-    "create": "Tạo"
+    "create": "Tạo",
+    "send_feedback": "Gửi phản hồi",
+    "edit_feedback": "Sửa phản hồi"
   },
   "root": {
     "map": "Bản đồ",
@@ -302,6 +321,19 @@ static const Map<String,dynamic> vi = {
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
     "review_number": "{number} đánh giá"
+  },
+  "feedback": {
+    "location_rate": "Đánh giá địa điểm",
+    "traffic": "Đường xá",
+    "weather": "Thời tiết",
+    "santization": "Vệ sinh",
+    "residence": "Nơi cư trú",
+    "authority_cooperation": "Sự hợp tác của chính quyền địa phương",
+    "others": "Thông tin khác",
+    "images": "Hình ảnh về chiến dịch",
+    "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
+    "location_rated": "Hãy đánh giá địa điểm",
+    "success": "Gửi đánh giá thành công"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

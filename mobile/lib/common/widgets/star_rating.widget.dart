@@ -1,41 +1,58 @@
 import 'package:flutter/material.dart';
 
-typedef RatingChangeCallback = void Function(double rating);
+typedef RatingChangeCallback = void Function(int rating);
 
-class StarRating extends StatelessWidget {
+class StarRating extends StatefulWidget {
   final int starCount;
-  final double rating;
+  final int rating;
   final RatingChangeCallback? onRatingChanged;
   final Color color;
+  final double size;
 
   const StarRating({
     super.key,
     this.starCount = 5,
-    this.rating = .0,
+    this.rating = 0,
     this.onRatingChanged,
-    this.color = Colors.black,
+    this.color = Colors.orangeAccent,
+    this.size = 24.0,
   });
+
+  @override
+  State<StarRating> createState() => _StarRatingState();
+}
+
+class _StarRatingState extends State<StarRating> {
+  late int _rating;
+
+  @override
+  void initState() {
+    super.initState();
+    _rating = widget.rating;
+  }
 
   Widget buildStar(BuildContext context, int index) {
     Icon icon;
-    if (index >= rating) {
+    if (index >= _rating) {
       icon = Icon(
         Icons.star_border,
-        color: color,
-      );
-    } else if (index > rating - 1 && index < rating) {
-      icon = Icon(
-        Icons.star_half,
-        color: color,
+        color: widget.color,
+        size: widget.size,
       );
     } else {
       icon = Icon(
         Icons.star,
-        color: color,
+        color: widget.color,
+        size: widget.size,
       );
     }
-    return InkResponse(
-      onTap: () => onRatingChanged?.call(index + 1.0),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _rating = index + 1;
+        });
+        widget.onRatingChanged?.call(_rating);
+      },
       child: icon,
     );
   }
@@ -43,7 +60,9 @@ class StarRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: List.generate(starCount, (index) => buildStar(context, index)),
+      mainAxisAlignment: MainAxisAlignment.center,
+      children:
+          List.generate(widget.starCount, (index) => buildStar(context, index)),
     );
   }
 }

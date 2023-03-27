@@ -10,7 +10,6 @@ import 'package:mobile/modules/profile/widgets/profile/list_status_shimmer.widge
 import 'package:mobile/modules/profile/bloc/profile/profile.bloc.dart';
 import 'package:mobile/modules/profile/widgets/profile/list_setting_item.widget.dart';
 import 'package:mobile/modules/profile/widgets/profile/summary_info.widget.dart';
-import 'package:mobile/modules/profile/widgets/profile/summary_info_shimmer.widget.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
