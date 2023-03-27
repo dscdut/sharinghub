@@ -19,7 +19,7 @@ class CampaignModel {
   final String? image;
   final String address;
   final String? specificAddress;
-  final Map<String, double> coordinate;
+  final Map<String, double>? coordinate;
   final String description;
   final DateTime startDate;
   final DateTime endDate;

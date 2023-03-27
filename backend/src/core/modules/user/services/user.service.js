@@ -66,7 +66,7 @@ class Service {
         trx.commit();
         return {
             message: MESSAGE.UPDATE_USER_SUCCESS,
-            id: data[0].id,
+            user: data[0],
         };
     }
 
