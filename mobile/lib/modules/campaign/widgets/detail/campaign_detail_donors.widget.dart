@@ -13,75 +13,22 @@ class CampaignDetailDonorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InfoCard(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Divider(
-            height: 20,
-            color: Colors.transparent,
-          ),
-          Text(
-            LocaleKeys.campaign_list_donator.tr(),
-            style: TextStyles.boldSubti18,
-          ),
-          const Divider(
-            height: 4,
-            color: Colors.transparent,
-          ),
-          Text(
-            LocaleKeys.campaign_update_to.tr(),
-            style: TextStyles.regularBody14.copyWith(
-              color: ColorStyles.disableColor,
+          _ListDonors(
+            title: LocaleKeys.campaign_list_donator.tr(),
+            onSeemore: () => Navigator.of(context).pushNamed(
+              AppRoutes.campaignDonation,
+              arguments: 0,
             ),
+            updateTo: LocaleKeys.campaign_update_to.tr(),
           ),
-          const Divider(
-            height: 8,
-            color: Colors.transparent,
-          ),
-          const _ListDonors(),
-          Center(
-            child: MaterialButton(
-              onPressed: () => Navigator.of(context).pushNamed(
-                AppRoutes.campaignDonation,
-                arguments: 0,
-              ),
-              child: Text(
-                LocaleKeys.texts_read_more.tr(),
-              ),
+          _ListDonors(
+            title: LocaleKeys.campaign_list_volunteer.tr(),
+            onSeemore: () => Navigator.of(context).pushNamed(
+              AppRoutes.campaignDonation,
+              arguments: 1,
             ),
-          ),
-          const Divider(
-            height: 8,
-            color: Colors.transparent,
-          ),
-          Text(
-            LocaleKeys.campaign_list_volunteer.tr(),
-            style: TextStyles.boldSubti18,
-          ),
-          const Divider(
-            height: 4,
-            color: Colors.transparent,
-          ),
-          Text(
-            LocaleKeys.campaign_update_to.tr(),
-            style: TextStyles.regularBody14.copyWith(
-              color: ColorStyles.disableColor,
-            ),
-          ),
-          const Divider(
-            height: 8,
-            color: Colors.transparent,
-          ),
-          const _ListDonors(),
-          Center(
-            child: MaterialButton(
-              onPressed: () => Navigator.of(context).pushNamed(
-                AppRoutes.campaignDonation,
-                arguments: 1,
-              ),
-              child: Text(
-                LocaleKeys.texts_read_more.tr(),
-              ),
-            ),
+            updateTo: LocaleKeys.campaign_update_to.tr(),
           ),
         ],
       ),
@@ -90,29 +37,67 @@ class CampaignDetailDonorsWidget extends StatelessWidget {
 }
 
 class _ListDonors extends StatelessWidget {
-  const _ListDonors();
+  const _ListDonors({
+    required this.title,
+    required this.updateTo,
+    required this.onSeemore,
+  });
 
   final String phoneNum = '090294309432';
   final String name = 'Hello World2';
+  final String title;
+  final String updateTo;
+  final Function onSeemore;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(name),
-            Text(
-              '${phoneNum.substring(0, 3)}***${phoneNum.substring(phoneNum.length - 1)}',
-            ),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyles.boldSubti18,
         ),
-      ),
-      itemCount: 3,
-      primary: false,
+        const Divider(
+          height: 4,
+          color: Colors.transparent,
+        ),
+        Text(
+          updateTo,
+          style: TextStyles.regularBody14.copyWith(
+            color: ColorStyles.disableColor,
+          ),
+        ),
+        const Divider(
+          height: 8,
+          color: Colors.transparent,
+        ),
+        ListView.builder(
+          shrinkWrap: true,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(name),
+                Text(
+                  '${phoneNum.substring(0, 3)}***${phoneNum.substring(phoneNum.length - 1)}',
+                ),
+              ],
+            ),
+          ),
+          itemCount: 3,
+          primary: false,
+        ),
+        Center(
+          child: MaterialButton(
+            onPressed: () => onSeemore(),
+            child: Text(
+              LocaleKeys.texts_read_more.tr(),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

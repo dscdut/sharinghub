@@ -78,8 +78,8 @@ class __CampaignDonorsView extends State<_CampaignDonorsView>
         title: Text(title),
         bottom: TabBar(
           tabs: [
-            Tab(text: LocaleKeys.campaign_donator.tr()),
-            Tab(text: LocaleKeys.campaign_volunteer.tr()),
+            Tab(text: '${LocaleKeys.campaign_donator.tr()}s'),
+            Tab(text: '${LocaleKeys.campaign_volunteer.tr()}s'),
           ],
           indicatorColor: Colors.white,
           controller: _tabController,
