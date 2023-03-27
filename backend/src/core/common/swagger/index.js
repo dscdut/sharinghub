@@ -9,3 +9,4 @@ export * from './longitude-query';
 export * from './latitude-query';
 export * from './campaign-id';
 export * from './volunteer-id';
+export * from './donation-id';

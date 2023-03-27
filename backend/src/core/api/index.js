@@ -6,6 +6,7 @@ import { AuthResolver } from './v1/auth/auth.resolver';
 import { OrgResolver } from './v1/org/org.resolver';
 import { CampaignResolver } from './v1/campaign';
 import { VolunteerResolver } from './v1/campaign/volunteer.resolver';
+import { DonationResolver } from './v1/campaign/donation.resolver';
 
 export const ModuleResolver = HandlerResolver.builder()
     .addSwaggerBuilder(ApiDocument)
@@ -16,4 +17,5 @@ export const ModuleResolver = HandlerResolver.builder()
         OrgResolver,
         CampaignResolver,
         VolunteerResolver,
+        DonationResolver
     ]);
