@@ -9,6 +9,7 @@ import 'package:mobile/di/di.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 import 'package:mobile/modules/map/bloc/map/map.bloc.dart';
 import 'package:mobile/modules/map/widgets/map_bottom_sheet.widget.dart';
+import 'package:mobile/modules/map/widgets/map_search_button.widget.dart';
 
 class MapPage extends StatelessWidget {
   final Completer<GoogleMapController> controller = Completer();
@@ -66,30 +67,34 @@ class _MapView extends StatelessWidget {
       body: SafeArea(
         child: BlocBuilder<MapBloc, MapState>(
           builder: (bcontext, state) {
-            return GoogleMap(
-              initialCameraPosition: const CameraPosition(
-                target: defaultLocation,
-                zoom: 5,
-              ),
-              onMapCreated: (gController) {
-                controller.complete(gController);
-              },
-              mapToolbarEnabled: false,
-              myLocationEnabled: true,
-              zoomControlsEnabled: false,
-              buildingsEnabled: false,
-              markers: state.markers
-                      ?.map(
-                        (e) => Marker(
-                          markerId: e.markerId,
-                          position: e.position,
-                          onTap: () {
-                            _onClickMarker(context, e.position);
-                          },
-                        ),
-                      )
-                      .toSet() ??
-                  const {},
+            return Stack(
+              children: [
+                GoogleMap(
+                  initialCameraPosition: const CameraPosition(
+                    target: defaultLocation,
+                    zoom: 5,
+                  ),
+                  onMapCreated: (gController) {
+                    controller.complete(gController);
+                  },
+                  mapToolbarEnabled: false,
+                  zoomControlsEnabled: false,
+                  buildingsEnabled: false,
+                  markers: state.markers
+                          ?.map(
+                            (e) => Marker(
+                              markerId: e.markerId,
+                              position: e.position,
+                              onTap: () {
+                                _onClickMarker(context, e.position);
+                              },
+                            ),
+                          )
+                          .toSet() ??
+                      const {},
+                ),
+                const MapSearchButtonWidget()
+              ],
             );
           },
         ),

@@ -4,16 +4,19 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/widgets/star_rating.widget.dart';
 import 'package:mobile/data/models/organization.model.dart';
+import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
 class HeaderProfile extends StatelessWidget {
-  final double rating;
+  final int rating;
   final OrganizationModel organization;
+  final double avatarRadius;
 
   const HeaderProfile({
     super.key,
     required this.rating,
     required this.organization,
+    this.avatarRadius = 90,
   });
 
   final Widget horizontalSpacing = const SizedBox(width: 20);
@@ -25,7 +28,7 @@ class HeaderProfile extends StatelessWidget {
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(90),
+            borderRadius: BorderRadius.circular(avatarRadius),
             child: Image.network(
               organization.avatar!,
               fit: BoxFit.cover,
@@ -41,8 +44,7 @@ class HeaderProfile extends StatelessWidget {
               children: [
                 Text(
                   organization.name,
-                  style: TextStyles.s17MediumText
-                      .copyWith(color: ColorStyles.zodiacBlue),
+                  style: TextStyles.s17MediumText,
                 ),
                 Row(
                   children: [
@@ -57,9 +59,10 @@ class HeaderProfile extends StatelessWidget {
             ),
           ),
           horizontalSpacing,
-          const Icon(
-            Icons.chat_outlined,
-            color: Colors.black,
+          Assets.icons.icChat.image(
+            width: 30,
+            height: 30,
+            color: ColorStyles.zodiacBlue,
           ),
         ],
       ),

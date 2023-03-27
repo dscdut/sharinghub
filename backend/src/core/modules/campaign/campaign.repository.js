@@ -19,7 +19,7 @@ class Repository extends DataRepository {
                 { donationRequirement: 'campaigns.donation_requirement' },
                 'campaigns.coordinate',
                 { organizationName: 'organizations.name' },
-                { organizationId: '.campaigns.organization_id' }
+                { organizationId: 'campaigns.organization_id' }
             ]);
     }
 
@@ -72,7 +72,20 @@ class Repository extends DataRepository {
         const queryBuilder = this.query()
             .whereNull('deleted_at')
             .where({ id })
-            .update(data, 'id');
+            .update(data)
+            .returning([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.image',
+                'campaigns.description',
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                { registerLink: 'campaigns.register_link' },
+                { donationRequirement: 'campaigns.donation_requirement' },
+                'campaigns.coordinate',
+            ]);
 
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
@@ -138,7 +151,8 @@ class Repository extends DataRepository {
                 'campaigns.id',
                 'campaigns.name',
                 'campaigns.coordinate',
-            ]);
+            ])
+            .orderBy('campaigns.created_at', 'asc');
     }
 
     findVoluntaryCampaignsByUserId(id) {

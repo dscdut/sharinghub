@@ -1,3 +1,4 @@
+import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/datasources/user.mock.dart';
@@ -25,7 +26,7 @@ abstract class CampaignMock {
     );
   }
 
-  static Future<List<CampaignModel>> getCampains() async {
+  static Future<List<CampaignModel>> getCampaigns() async {
     await Future.delayed(const Duration(seconds: 3));
 
     return [
@@ -43,6 +44,20 @@ abstract class CampaignMock {
         image: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
         coordinate: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        // feedback: FeedbackToCampaignDTO(
+        //   images: [
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //   ],
+        //   locationRate: 5,
+        //   traffic: 'Đông',
+        //   weather: 'Nắng',
+        //   sanitization: 'Tốt',
+        //   residence: 'Có',
+        //   authorityCooperation: 'Tốt',
+        //   others: 'Không có',
+        // ),
       ),
       CampaignModel(
         id: 1,

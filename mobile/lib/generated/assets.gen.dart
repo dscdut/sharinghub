@@ -14,21 +14,25 @@ import 'package:flutter/services.dart';
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
-  /// File path: assets/fonts/Mulish-Bold.ttf
-  String get mulishBold => 'assets/fonts/Mulish-Bold.ttf';
+  /// File path: assets/fonts/BeVietnamPro-Bold.ttf
+  String get beVietnamProBold => 'assets/fonts/BeVietnamPro-Bold.ttf';
 
-  /// File path: assets/fonts/Mulish-Medium.ttf
-  String get mulishMedium => 'assets/fonts/Mulish-Medium.ttf';
+  /// File path: assets/fonts/BeVietnamPro-Medium.ttf
+  String get beVietnamProMedium => 'assets/fonts/BeVietnamPro-Medium.ttf';
 
-  /// File path: assets/fonts/Mulish-Regular.ttf
-  String get mulishRegular => 'assets/fonts/Mulish-Regular.ttf';
+  /// File path: assets/fonts/BeVietnamPro-Regular.ttf
+  String get beVietnamProRegular => 'assets/fonts/BeVietnamPro-Regular.ttf';
 
   /// List of all assets
-  List<String> get values => [mulishBold, mulishMedium, mulishRegular];
+  List<String> get values =>
+      [beVietnamProBold, beVietnamProMedium, beVietnamProRegular];
 }
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
+
+  /// File path: assets/icons/ic_chat.png
+  AssetGenImage get icChat => const AssetGenImage('assets/icons/ic_chat.png');
 
   /// File path: assets/icons/ic_logout.png
   AssetGenImage get icLogout =>
@@ -65,6 +69,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        icChat,
         icLogout,
         icRemoveUser,
         icSearch,

@@ -29,9 +29,12 @@
     "cancel": "Hủy",
     "confirm": "Xác nhận",
     "join": "Đăng ký tham gia",
+    "donate": "Quyên góp",
     "finish": "Hoàn Thành",
     "update": "Cập Nhật",
-    "create": "Tạo"
+    "create": "Tạo",
+    "send_feedback": "Gửi phản hồi",
+    "edit_feedback": "Sửa phản hồi"
   },
   "root": {
     "map": "Bản đồ",
@@ -71,7 +74,7 @@
     "province": "Tỉnh/Thành phố",
     "district": "Quận/Huyện",
     "ward": "Phường/Xã",
-    "empty_result": "Không tìm thấy kết quả nào",
+    "empty_result": "Không tìm thấy kết quả 🙌",
     "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
   },
   "home": {
@@ -146,5 +149,18 @@
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
     "review_number": "{number} đánh giá"
+  },
+  "feedback": {
+    "location_rate": "Đánh giá địa điểm",
+    "traffic": "Đường xá",
+    "weather": "Thời tiết",
+    "santization": "Vệ sinh",
+    "residence": "Nơi cư trú",
+    "authority_cooperation": "Sự hợp tác của chính quyền địa phương",
+    "others": "Thông tin khác",
+    "images": "Hình ảnh về chiến dịch",
+    "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
+    "location_rated": "Hãy đánh giá địa điểm",
+    "success": "Gửi đánh giá thành công"
   }
 }

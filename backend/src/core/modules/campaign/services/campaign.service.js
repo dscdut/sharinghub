@@ -1,13 +1,19 @@
 import { getTransaction } from 'core/database';
 import { logger } from 'core/utils';
-import { InternalServerException, NotFoundException } from 'packages/httpException';
+import { InternalServerException, NotFoundException, DuplicateException } from 'packages/httpException';
+import { Optional } from 'core/utils';
 import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../campaign.repository';
+import { UserCampaignRepository } from '../../user_campaign/user_campaign.repository';
+import { Status } from '../../../common/enum';
+import { UserRepository } from '../../../modules/user/user.repository';
 import { FileSystemService, MediaService } from 'core/modules/document';
 
 class Service {
     constructor() {
         this.repository = CampaignRepository;
+        this.userRepository = UserRepository
+        this.userCampaignRepository = UserCampaignRepository
         this.FileSystemService = FileSystemService;
         this.MediaService = MediaService;
     }
@@ -76,11 +82,20 @@ class Service {
         }
 
         try {
-            const data = { ...createCampaignDto, organization_id };
+            const data = {
+                ...createCampaignDto,
+                organization_id,
+                coordinate: {
+                    lat: parseFloat(createCampaignDto.coordinate.lat),
+                    lng: parseFloat(createCampaignDto.coordinate.lng),
+                }
+            };
 
             const createdCampaign = await this.repository.insert(data);
 
-            await this.updateOne(organization_id, createdCampaign[0].id, data, file);
+            if (file) {
+                await this.updateOne(organization_id, createdCampaign[0].id, data, file);
+            }
 
             return {
                 message: MESSAGE.CREATE_CAMPAIGN_SUCCESS,
@@ -127,25 +142,30 @@ class Service {
 
         try {
             const url = file ? (await this.MediaService.uploadOne(file, `organizations/${organization_id}/campaigns/${campaign_id}`, 'image', true)).url : null;
-            
+
             const updatedCampaign = await this.repository.updateOne(
                 campaign_id,
-                { ...createCampaignDto, image: url },
+                {
+                    ...createCampaignDto,
+                    image: url,
+                    coordinate: {
+                        lat: parseFloat(createCampaignDto.coordinate.lat),
+                        lng: parseFloat(createCampaignDto.coordinate.lng),
+                    }
+                },
                 trx,
             );
 
             trx.commit();
             return {
                 message: MESSAGE.UPDATE_CAMPAIGN_SUCCESS,
-                id: updatedCampaign[0].id,
+                id: updatedCampaign[0],
             };
         } catch (error) {
             await trx.rollback();
             logger.error(error.message);
             throw new InternalServerException();
         }
-
-
     }
 
     async deleteOne(organization_id, campaign_id) {
@@ -173,7 +193,7 @@ class Service {
         }
 
         trx.commit();
-        
+
         return {
             message: MESSAGE.DELETE_CAMPAIGN_SUCCESS,
         }
@@ -197,6 +217,129 @@ class Service {
         }
     }
 
+    async registerVolunteer(campaign_id, user_id) {
+        const trx = await getTransaction();
+
+        // check if campaign exist
+        Optional.of(await this.findOneById(campaign_id))
+            .throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT));
+
+        // check if campaign_id is already registered by user_id
+        Optional.of(await this.userCampaignRepository.findOneByCampaignIdAndVolunteerId(
+            campaign_id,
+            user_id,
+        ))
+            .throwIfPresent(new DuplicateException(MESSAGE.VOLUNTEER_ALREADY_REGISTERED));
+
+        try {
+            await this.userCampaignRepository.registerVolunteer(
+                campaign_id,
+                user_id,
+                trx,
+            );
+        } catch (error) {
+            await trx.rollback();
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        trx.commit();
+        return {
+            message: MESSAGE.REGISTER_VOLUNTEER_SUCCESS,
+        };
+    }
+
+    async getAllVolunteersByOrgIdAndCampaignId(organization_id, campaign_id, status) {
+        // check if campaign exist
+        Optional.of(await this.findOneByOrgIdAndCampaignId(organization_id, campaign_id))
+            .throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND));
+
+        let data;
+        try {
+            data = await this.userCampaignRepository.getAllVolunteersByCampaignId(campaign_id, status);
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        return data;
+    }
+
+    async updateVolunteerStatus(organization_id, campaign_id, user_id, updateUserStatusDto) {
+        // check if campaign exist
+        Optional.of(await this.findOneByOrgIdAndCampaignId(organization_id, campaign_id))
+            .throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND));
+
+        const volunteer = await this.userCampaignRepository.findOneByCampaignIdAndVolunteerId(
+            campaign_id,
+            user_id,
+        );
+
+        // check if user_id is registered in campaign_id
+        Optional.of(volunteer)
+            .throwIfNotPresent(new NotFoundException(MESSAGE.VOLUNTEER_NOT_FOUND));
+
+        const trx = await getTransaction();
+
+        let updatedVolunteer;
+        try {
+            await this.userCampaignRepository.updateVolunteerStatus(
+                campaign_id,
+                user_id,
+                updateUserStatusDto,
+                trx,
+            );
+
+            updatedVolunteer = await this.userCampaignRepository.findOneByCampaignIdAndVolunteerId(
+                campaign_id,
+                user_id,
+            );
+        } catch (error) {
+            await trx.rollback();
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        trx.commit();
+        return {
+            message: MESSAGE.UPDATE_VOLUNTEER_STATUS_SUCCESS,
+            user: updatedVolunteer,
+        };
+    }
+
+    async setPendingVolunteersStatusToRejected(organization_id, campaign_id) {
+        // check if campaign exist
+        Optional.of(await this.findOneByOrgIdAndCampaignId(organization_id, campaign_id))
+            .throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND));
+
+        const user_ids = await this.userCampaignRepository.getAllVolunteersByCampaignId(campaign_id, Status.PENDING).pluck('id');
+
+        const trx = await getTransaction();
+
+        try {
+            await Promise.all(user_ids.map(async (user_id) => {
+                await this.userCampaignRepository.updateVolunteerStatus(
+                    campaign_id,
+                    user_id,
+                    { status: Status.REJECTED },
+                    trx,
+                );
+            }));
+
+        } catch (error) {
+            await trx.rollback();
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+
+        trx.commit();
+        return {
+            message: MESSAGE.SET_PENDING_VOLUNTEERS_STATUS_TO_REJECTED_SUCCESS,
+            organizationId: organization_id,
+            campaignId: campaign_id,
+        }
+    }
+
     async getAllCoordinates() {
         try {
             return this.repository.getAllCoordinates();
@@ -205,6 +348,6 @@ class Service {
             throw new InternalServerException();
         }
     }
-}
+};
 
 export const CampaignService = new Service();
