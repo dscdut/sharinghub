@@ -113,6 +113,11 @@ abstract class  LocaleKeys {
   static const campaign_volunteer_register = 'campaign.volunteer_register';
   static const campaign_management = 'campaign.management';
   static const campaign_empty_list = 'campaign.empty_list';
+  static const campaign_see_more = 'campaign.see_more';
+  static const campaign_donator = 'campaign.donator';
+  static const campaign_update_to = 'campaign.update_to';
+  static const campaign_list_donator = 'campaign.list_donator';
+  static const campaign_list_volunteer = 'campaign.list_volunteer';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
   static const profile_contact_info = 'profile.contact_info';

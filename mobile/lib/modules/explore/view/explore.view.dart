@@ -1,10 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
+import 'package:mobile/common/widgets/common_error.widget.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/assets.gen.dart';
@@ -96,21 +98,6 @@ class _HomeView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppRoundedButton(
-                      width: double.infinity,
-                      content: LocaleKeys.home_search.tr(),
-                      backgroundColor: ColorStyles.primary1,
-                      onPressed: () {
-                        Navigator.of(context).pushNamed(
-                          AppRoutes.search,
-                        );
-                      },
-                      prefixIcon:
-                          Assets.icons.icSearch.image(width: AppSize.iconSize),
-                    ),
-                    const Divider(
-                      height: 10,
-                    ),
                     Row(
                       children: [
                         Text(
@@ -147,11 +134,11 @@ class _HomeView extends StatelessWidget {
                     ),
                     Builder(
                       builder: (context) {
-                        if (state.status.isLoading) {
+                        if (state.status.isLoading || state.status.isInitial) {
                           return const Center(
                             child: Padding(
                               padding: EdgeInsets.only(top: 50),
-                              child: CircularProgressIndicator(),
+                              child: CupertinoActivityIndicator(),
                             ),
                           );
                         }
@@ -168,7 +155,7 @@ class _HomeView extends StatelessWidget {
                             itemCount: state.campaigns!.length,
                           );
                         } else {
-                          return const Placeholder();
+                          return const CommonError();
                         }
                       },
                     ),

@@ -135,7 +135,12 @@ class CodegenLoader extends AssetLoader{
     "complete": "Complete",
     "volunteer_register": "Register Volunteer",
     "management": "Campaign Management",
-    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!"
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
+    "see_more": "See more",
+    "donator": "Donator",
+    "update_to": "Update to",
+    "list_donator": "List of donators",
+    "list_volunteer": "List of volunteers"
   },
   "profile": {
     "setting": "Setting",
@@ -300,7 +305,12 @@ static const Map<String,dynamic> vi = {
     "complete": "Hoàn thành",
     "volunteer_register": "Đăng kí tình nguyện viên",
     "management": "Quản lý chiến dịch",
-    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!"
+    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!",
+    "see_more": "Xem thêm",
+    "donator": "Nhà hảo tâm",
+    "update_to": "Cập nhật đến ngày",
+    "list_donator": "Danh sách nhà hảo tâm",
+    "list_volunteer": "Danh sách tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
