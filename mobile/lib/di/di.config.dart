@@ -59,7 +59,10 @@ Future<_i1.GetIt> initGetIt(
   gh.lazySingleton<_i9.DioHelper>(
       () => networkModule.provideDioHelper(gh<_i6.DioProvider>()));
   gh.lazySingleton<_i10.OrganizationDataSource>(
-      () => _i10.OrganizationDataSource(dioHelper: gh<_i9.DioHelper>()));
+      () => _i10.OrganizationDataSource(
+            dioHelper: gh<_i9.DioHelper>(),
+            userBox: gh<_i7.Box<dynamic>>(instanceName: 'user_box'),
+          ));
   gh.lazySingleton<_i11.OrganizationRepository>(() =>
       _i11.OrganizationRepository(
           dataSource: gh<_i10.OrganizationDataSource>()));

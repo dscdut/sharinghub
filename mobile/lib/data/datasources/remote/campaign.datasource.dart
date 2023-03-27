@@ -41,7 +41,7 @@ class CampaignDataSource {
   Future<void> setCampaign(SetCampaignDTO setCampaignParams) async {
     await _dioHelper.post(
       '${Endpoints.campaignByOrganization}/${setCampaignParams.organizationId}/campaigns',
-      data: setCampaignParams.toJson(),
+      formData: setCampaignParams.toJson(),
     );
   }
 

@@ -148,8 +148,12 @@ class _SetCampaignViewState extends State<_SetCampaignView> {
       address: _addressController.text,
       specificAddress: _specificAddressController.text,
       description: _descriptionController.text,
-      registerLink: _registerLinkController.text,
-      donationRequirement: _actifactDonateController.text,
+      registerLink: _registerLinkController.text == ''
+          ? null
+          : _registerLinkController.text,
+      donationRequirement: _actifactDonateController.text == ''
+          ? null
+          : _actifactDonateController.text,
       organizationId: context.read<AuthBloc>().state.currentOrganizationId,
     );
   }
