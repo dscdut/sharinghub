@@ -161,6 +161,10 @@ class CodegenLoader extends AssetLoader{
     "campaign_number": "{number} campaigns",
     "review_number": "{number} reviews"
   },
+  "map": {
+    "error_get_markers": "Cannot load list of locations",
+    "location_error": "Cannot get your location"
+  },
   "feedback": {
     "location_rate": "Location rate",
     "traffic": "Traffic",
@@ -321,6 +325,10 @@ static const Map<String,dynamic> vi = {
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
     "review_number": "{number} đánh giá"
+  },
+  "map": {
+    "error_get_markers": "Không thể tải danh sách vị trí",
+    "location_error": "Không thể lấy vị trí hiện tại của bạn"
   },
   "feedback": {
     "location_rate": "Đánh giá địa điểm",

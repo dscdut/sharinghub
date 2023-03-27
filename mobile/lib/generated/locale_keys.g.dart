@@ -137,6 +137,9 @@ abstract class  LocaleKeys {
   static const profile_campaign_number = 'profile.campaign_number';
   static const profile_review_number = 'profile.review_number';
   static const profile = 'profile';
+  static const map_error_get_markers = 'map.error_get_markers';
+  static const map_location_error = 'map.location_error';
+  static const map = 'map';
   static const feedback_location_rate = 'feedback.location_rate';
   static const feedback_traffic = 'feedback.traffic';
   static const feedback_weather = 'feedback.weather';
