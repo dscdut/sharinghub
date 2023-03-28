@@ -35,8 +35,7 @@ class Controller {
         const maskedVolunteers = volunteers.map(volunteer => {
             return {
                 fullName: volunteer.fullName,
-                phoneNumber: `${volunteer.phoneNumber.substring(0, 3)}***${volunteer.phoneNumber.substring(volunteer.phoneNumber.length - 1)}`
-            }
+                phoneNumber: volunteer.phoneNumber ? volunteer.phoneNumber.split('').map((char, index) => index > 2 && index < volunteer.phoneNumber.length - 1 ? '*' : char).join('') : null,
         })
 
         const donations = await this.donationRecordRepositoryService.findAllDonationByCampaignIdAndStatus(data.id, Status.APPROVED);
@@ -44,7 +43,7 @@ class Controller {
         const maskedDonors = donations.map(donation => {
             return {
                 donorFullName: donation.donorFullName,
-                donorPhoneNumber: `${donation.donorPhoneNumber.substring(0, 3)}***${donation.donorPhoneNumber.substring(donation.donorPhoneNumber.length - 1)}`
+                donorPhoneNumber: donation.donorPhoneNumber ? donation.donorPhoneNumber.split('').map((char, index) => index > 2 && index < donation.donorPhoneNumber.length - 1 ? '*' : char).join('') : null,
             }
         })
 
@@ -156,6 +155,8 @@ class Controller {
             data = await this.service.searchByName(name);
         } else if (!name && lng && lat) {
             data = await this.service.searchByCoordinate(lng, lat);
+        } else if (!name && !lng && !lat) {
+            data = await this.service.findAllCampaigns();
         }
         else {
             throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT);

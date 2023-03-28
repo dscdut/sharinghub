@@ -145,6 +145,28 @@ class Repository extends DataRepository {
             ]);
     }
 
+    findAllCampaigns() {
+        return this.query()
+        .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+        .whereNull('campaigns.deleted_at')
+        .select([
+            'campaigns.id',
+            'campaigns.name',
+            'campaigns.image',
+            'campaigns.description',
+            'campaigns.address',
+            { specificAddress: 'campaigns.specific_address' },
+            { startDate: 'campaigns.start_date' },
+            { endDate: 'campaigns.end_date' },
+            'campaigns.coordinate',
+            { donationRequirement: 'campaigns.donation_requirement' },
+            { organizationId: 'campaigns.organization_id' },
+            { organizationName: 'organizations.name' },
+            { organizationAvatar: 'organizations.avatar'}
+        ])
+        .orderBy('campaigns.created_at', 'desc');;
+    }
+
     getAllCoordinates() {
         return this.query()
             .whereNull('campaigns.deleted_at')
@@ -153,7 +175,7 @@ class Repository extends DataRepository {
                 'campaigns.name',
                 'campaigns.coordinate',
             ])
-            .orderBy('campaigns.created_at', 'asc');
+            .orderBy('campaigns.created_at', 'desc');
     }
 
     findVoluntaryCampaignsByUserId(id) {
