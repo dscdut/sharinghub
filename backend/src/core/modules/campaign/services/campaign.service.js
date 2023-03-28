@@ -217,6 +217,15 @@ class Service {
         }
     }
 
+    async findAllCampaigns() {
+        try {
+            return this.repository.findAllCampaigns();
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
+
     async registerVolunteer(campaign_id, user_id) {
         const trx = await getTransaction();
 
