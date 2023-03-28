@@ -5,11 +5,11 @@ import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/common/widgets/rounded_icon_button.widget.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
-class SetOrganizationAppbar extends StatelessWidget
+class SetUserAppbar extends StatelessWidget
     implements PreferredSizeWidget {
   final bool isUpdate;
 
-  const SetOrganizationAppbar({
+  const SetUserAppbar({
     super.key,
     this.isUpdate = true,
   });
@@ -18,7 +18,7 @@ class SetOrganizationAppbar extends StatelessWidget
   Widget build(BuildContext context) {
     return CustomAppBar(
       title: isUpdate
-          ? LocaleKeys.profile_organization.tr()
+          ? LocaleKeys.profile_personal.tr()
           : LocaleKeys.organization_create.tr(),
       backgroundColor: Colors.white,
       titleColor: ColorStyles.zodiacBlue,
@@ -27,7 +27,7 @@ class SetOrganizationAppbar extends StatelessWidget
         RoundedIconButton(
           icon: Icons.done_rounded,
           backgroundColor: Colors.transparent,
-        ),
+        )
       ],
     );
   }

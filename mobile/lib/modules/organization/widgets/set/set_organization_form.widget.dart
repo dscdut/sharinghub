@@ -84,6 +84,11 @@ class SetOrganizationForm extends StatelessWidget {
             validator: ValidatorUtil.validateRequiredField,
             textController: descriptionEditingController,
             labelText: LocaleKeys.organization_description.tr(),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            maxLines: 6,
             extendField: false,
           ),
         ],

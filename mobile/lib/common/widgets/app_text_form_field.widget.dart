@@ -98,6 +98,7 @@ class AppTextFormField extends StatelessWidget {
       style: TextStyles.regularBody14.copyWith(color: ColorStyles.zodiacBlue),
       textAlign: isCenterText ? TextAlign.center : TextAlign.start,
       decoration: InputDecoration(
+        alignLabelWithHint: true,
         labelText: labelText,
         labelStyle: labelStyle,
         hintText: hintText,
