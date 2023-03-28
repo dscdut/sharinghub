@@ -36,6 +36,7 @@ class Controller {
             return {
                 fullName: volunteer.fullName,
                 phoneNumber: volunteer.phoneNumber ? volunteer.phoneNumber.split('').map((char, index) => index > 2 && index < volunteer.phoneNumber.length - 1 ? '*' : char).join('') : null,
+            }
         })
 
         const donations = await this.donationRecordRepositoryService.findAllDonationByCampaignIdAndStatus(data.id, Status.APPROVED);
