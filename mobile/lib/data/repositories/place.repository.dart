@@ -1,5 +1,7 @@
+
 import 'package:injectable/injectable.dart';
 import 'package:mobile/data/datasources/remote/place.datasource.dart';
+import 'package:mobile/data/models/address/coordinate.model.dart';
 import 'package:mobile/data/models/place.model.dart';
 
 @lazySingleton
@@ -15,5 +17,9 @@ class PlaceRepository {
 
   Future<Map<String, double>> getGeometry(String placeId) {
     return _dataSource.getGeometry(placeId);
+  }
+
+  Future<List<CoordinateModel>> getCoordinates() async {
+    return await _dataSource.getCoordinates();
   }
 }

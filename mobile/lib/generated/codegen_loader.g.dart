@@ -135,7 +135,12 @@ class CodegenLoader extends AssetLoader{
     "complete": "Complete",
     "volunteer_register": "Register Volunteer",
     "management": "Campaign Management",
-    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!"
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
+    "see_more": "See more",
+    "donator": "Donator",
+    "update_to": "Update to",
+    "list_donator": "List of donators",
+    "list_volunteer": "List of volunteers"
   },
   "profile": {
     "setting": "Setting",
@@ -160,6 +165,10 @@ class CodegenLoader extends AssetLoader{
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
     "review_number": "{number} reviews"
+  },
+  "map": {
+    "error_get_markers": "Cannot load list of locations",
+    "location_error": "Cannot get your location"
   },
   "feedback": {
     "location_rate": "Location rate",
@@ -296,7 +305,12 @@ static const Map<String,dynamic> vi = {
     "complete": "Hoàn thành",
     "volunteer_register": "Đăng kí tình nguyện viên",
     "management": "Quản lý chiến dịch",
-    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!"
+    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!",
+    "see_more": "Xem thêm",
+    "donator": "Nhà hảo tâm",
+    "update_to": "Cập nhật đến ngày",
+    "list_donator": "Danh sách nhà hảo tâm",
+    "list_volunteer": "Danh sách tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
@@ -321,6 +335,10 @@ static const Map<String,dynamic> vi = {
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
     "review_number": "{number} đánh giá"
+  },
+  "map": {
+    "error_get_markers": "Không thể tải danh sách vị trí",
+    "location_error": "Không thể lấy vị trí hiện tại của bạn"
   },
   "feedback": {
     "location_rate": "Đánh giá địa điểm",

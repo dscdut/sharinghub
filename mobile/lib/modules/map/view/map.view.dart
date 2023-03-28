@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
+import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
+import 'package:mobile/data/repositories/place.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 import 'package:mobile/modules/map/bloc/map/map.bloc.dart';
@@ -21,7 +23,9 @@ class MapPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => MapBloc(),
+          create: (context) => MapBloc(
+            placeRepository: getIt.get<PlaceRepository>(),
+          ),
         ),
         BlocProvider(
           create: (context) => MapBottomsheetBloc(
@@ -50,6 +54,9 @@ class MapPage extends StatelessWidget {
           9,
         ),
       );
+    }
+    if (state.error != null && context.mounted) {
+      ToastUtil.showError(context, text: state.error);
     }
   }
 }

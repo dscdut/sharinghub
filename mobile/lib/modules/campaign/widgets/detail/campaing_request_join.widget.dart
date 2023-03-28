@@ -19,41 +19,44 @@ class CampaignRequestJoin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: AppRoundedButton(
-            width: double.infinity,
-            isDisable: formLink == null,
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                AppRoutes.campaignRegister,
-                arguments: formLink,
-              );
-              context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
-            },
-            backgroundColor: ColorStyles.primary1,
-            content: LocaleKeys.button_join.tr(),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      child: Row(
+        children: [
+          Expanded(
+            child: AppRoundedButton(
+              width: double.infinity,
+              isDisable: formLink == null,
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.campaignRegister,
+                  arguments: formLink,
+                );
+                context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
+              },
+              backgroundColor: ColorStyles.primary1,
+              content: LocaleKeys.button_join.tr(),
+            ),
           ),
-        ),
-        const VerticalDivider(
-          width: 10,
-          color: Colors.transparent,
-        ),
-        Expanded(
-          child: AppRoundedButton(
-            isDisable: artifactTypes == null,
-            width: double.infinity,
-            onPressed: () {
-              context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
-            },
-            backgroundColor: ColorStyles.primary1,
-            // isLoading: state.status == CampaignDetailStatus.joinLoading,
-            content: LocaleKeys.button_donate.tr(),
+          const VerticalDivider(
+            width: 10,
+            color: Colors.transparent,
           ),
-        )
-      ],
+          Expanded(
+            child: AppRoundedButton(
+              isDisable: artifactTypes == null,
+              width: double.infinity,
+              onPressed: () {
+                context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
+              },
+              backgroundColor: ColorStyles.primary1,
+              // isLoading: state.status == CampaignDetailStatus.joinLoading,
+              content: 'Donate',
+            ),
+          )
+        ],
+      ),
     );
   }
 }

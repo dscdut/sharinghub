@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mobile/common/constants/constants.dart';
 import 'package:mobile/common/constants/endpoints.dart';
 import 'package:mobile/common/helpers/dio.helper.dart';
+import 'package:mobile/data/models/address/coordinate.model.dart';
 import 'package:mobile/data/models/place.model.dart';
 
 @lazySingleton
@@ -42,5 +43,16 @@ class PlaceDataSource {
         (geoLocation['lng'] as double).toStringAsFixed(4),
       ),
     };
+  }
+
+  Future<List<CoordinateModel>> getCoordinates() async {
+    final response = await _dioHelper.get(
+      Endpoints.coordinators,
+    );
+    List<CoordinateModel> result = response.body
+        .map<CoordinateModel>((e) => CoordinateModel.fromJson(e))
+        .where((element) => element.coordinate != null)
+        .toList();
+    return result;
   }
 }

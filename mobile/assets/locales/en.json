@@ -119,7 +119,12 @@
     "complete": "Complete",
     "volunteer_register": "Register Volunteer",
     "management": "Campaign Management",
-    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!"
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
+    "see_more": "See more",
+    "donator": "Donator",
+    "update_to": "Update to",
+    "list_donator": "List of donators",
+    "list_volunteer": "List of volunteers"
   },
   "profile": {
     "setting": "Setting",
@@ -144,6 +149,10 @@
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
     "review_number": "{number} reviews"
+  },
+  "map": {
+    "error_get_markers": "Cannot load list of locations",
+    "location_error": "Cannot get your location"
   },
   "feedback": {
     "location_rate": "Location rate",

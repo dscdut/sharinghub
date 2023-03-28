@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
+import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_donors.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaing_request_join.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_ended_info.widget.dart';
@@ -39,6 +40,7 @@ class CampaignInfo extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
+          const CampaignDetailDonorsWidget(),
           campaign.isOngoing
               ? BlocBuilder<CampaignDetailBloc, CampaignDetailState>(
                   builder: (context, state) {
@@ -48,7 +50,7 @@ class CampaignInfo extends StatelessWidget {
                     );
                   },
                 )
-              : const CampaignEndedInfo()
+              : const CampaignEndedInfo(),
         ],
       ),
     );

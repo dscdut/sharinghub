@@ -119,7 +119,12 @@
     "complete": "Hoàn thành",
     "volunteer_register": "Đăng kí tình nguyện viên",
     "management": "Quản lý chiến dịch",
-    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!"
+    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!",
+    "see_more": "Xem thêm",
+    "donator": "Nhà hảo tâm",
+    "update_to": "Cập nhật đến ngày",
+    "list_donator": "Danh sách nhà hảo tâm",
+    "list_volunteer": "Danh sách tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
@@ -144,6 +149,10 @@
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
     "review_number": "{number} đánh giá"
+  },
+  "map": {
+    "error_get_markers": "Không thể tải danh sách vị trí",
+    "location_error": "Không thể lấy vị trí hiện tại của bạn"
   },
   "feedback": {
     "location_rate": "Đánh giá địa điểm",
