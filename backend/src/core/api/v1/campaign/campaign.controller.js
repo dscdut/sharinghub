@@ -11,12 +11,14 @@ import { CreateFeedbackDto } from '../../../modules/feedback/dto';
 import { logger } from '../../../../packages/logger';
 import { CreateDonationDto, UpdateDonorsStatusDto } from '../../../modules/donation/dto';
 import { DonationService } from '../../../modules/donation/service/donation.service';
+import { DonationRecordRepositoryService } from '../../../modules/donation/service/donation-record-repository.service';
 
 class Controller {
     constructor() {
         this.service = CampaignService;
         this.feedbackService = FeedbackService;
         this.donationService = DonationService;
+        this.donationRecordRepositoryService = DonationRecordRepositoryService
     }
 
     findOneById = async req => {
@@ -27,8 +29,26 @@ class Controller {
         }
 
         const feedback = await this.feedbackService.getFeedBack(data.id);
-        
-        return ValidHttpResponse.toOkResponse({ ...data, feedback: feedback ? feedback : null });
+
+        const volunteers = await this.service.getAllVolunteersByOrgIdAndCampaignId(data.organizationId, data.id, Status.APPROVED);
+
+        const maskedVolunteers = volunteers.map(volunteer => {
+            return {
+                fullName: volunteer.fullName,
+                phoneNumber: `${volunteer.phoneNumber.substring(0, 3)}***${volunteer.phoneNumber.substring(volunteer.phoneNumber.length - 1)}`
+            }
+        })
+
+        const donations = await this.donationRecordRepositoryService.findAllDonationByCampaignIdAndStatus(data.id, Status.APPROVED);
+
+        const maskedDonors = donations.map(donation => {
+            return {
+                donorFullName: donation.donorFullName,
+                donorPhoneNumber: `${donation.donorPhoneNumber.substring(0, 3)}***${donation.donorPhoneNumber.substring(donation.donorPhoneNumber.length - 1)}`
+            }
+        })
+
+        return ValidHttpResponse.toOkResponse({ ...data, feedback: feedback ? feedback : null, volunteers: maskedVolunteers.slice(0, 3), donors: maskedDonors.slice(0, 3)});
     }
 
     findAllByOrgId = async req => {

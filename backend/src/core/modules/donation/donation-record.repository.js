@@ -107,13 +107,16 @@ class Repository extends DataRepository {
         return this.query()
             .where('donation_records.campaign_id', '=', campaignId)
             .where('donation_records.status', '=', status)
+            .join('users', 'donation_records.donor_id', 'users.id')
             .select(
-                'id',
+                'donation_records.id',
                 { campaignId: 'campaign_id' },
-                { donorId: 'donor_id' },
                 { itemName: 'item_name' },
                 { quantity: 'quantity' },
-                'status'
+                'status',
+                { donorId: 'donor_id' },
+                { donorFullName: 'users.full_name' },
+                { donorPhoneNumber: 'users.phone_number' },
             );
     }
 }
