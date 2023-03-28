@@ -9,11 +9,14 @@ import { CreateCampaignDto } from '../../../modules/campaign/dto';
 import { FeedbackService } from '../../../modules/feedback/service/feedback.service';
 import { CreateFeedbackDto } from '../../../modules/feedback/dto';
 import { logger } from '../../../../packages/logger';
+import { CreateDonationDto, UpdateDonorsStatusDto } from '../../../modules/donation/dto';
+import { DonationService } from '../../../modules/donation/service/donation.service';
 
 class Controller {
     constructor() {
         this.service = CampaignService;
         this.feedbackService = FeedbackService;
+        this.donationService = DonationService;
     }
 
     findOneById = async req => {
@@ -214,6 +217,46 @@ class Controller {
 
     deleteFeedback = async req => {
         const data = await this.feedbackService.deleteFeedback(req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    createOrUpdateDonation = async req => {
+        const data = await this.donationService.createOrUpdateDonation(req.params, req.user.payload.id, CreateDonationDto(req.body), req);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getDonations = async req => {
+        const data = await this.donationService.getDonations(req.params.campaignId, req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getDonation = async req => {
+        const data = await this.donationService.getDonation(req.params.donationId, req.params.campaignId, req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    deleteDonation = async req => {
+        const data = await this.donationService.deleteDonation(req.params.donationId, req.params.campaignId, req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getPendingDonors = async req => {
+        const data = await this.donationService.getPendingDonors(req.params.organizationId, req.params.campaignId, req.user.payload);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    updateDonorsStatus = async req => {
+        const data = await this.donationService.updateDonorsStatus(req.params.organizationId, req.params.campaignId, req.params.donationId, req.user.payload, UpdateDonorsStatusDto(req.body));
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    setPendingDonorsStatusToRejected = async req => {
+        const data = await this.donationService.setPendingDonorsStatusToRejected(req.params.organizationId, req.params.campaignId, req.user.payload);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getDonors = async req => {
+        const data = await this.donationService.getDonors(req.params.organizationId, req.params.campaignId, req.user.payload);
         return ValidHttpResponse.toOkResponse(data);
     }
 }
