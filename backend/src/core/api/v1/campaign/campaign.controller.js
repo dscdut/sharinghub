@@ -211,7 +211,7 @@ class Controller {
     }
 
     createOrUpdateFeedback = async req => {
-        const data = await this.feedbackService.createOrUpdateFeedback(req.params, CreateFeedbackDto(req.body), req.user.payload, req.params);
+        const data = await this.feedbackService.createOrUpdateFeedback(req, CreateFeedbackDto(req.body), req.user.payload, req.params);
         return ValidHttpResponse.toOkResponse(data);
     };
 
