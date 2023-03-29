@@ -6,38 +6,39 @@ part of 'user.model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-OrganizationModel _$OrganizationModelFromJson(Map<String, dynamic> json) =>
-    OrganizationModel(
-      organizationId: json['organization_id'] as int,
-      name: json['name'] as String,
-      address: json['address'] as String?,
-      avatar: json['avatar'] as String?,
-      email: json['email'] as String,
-      phoneNumber: json['phone_number'] as String?,
-      description: json['description'] as String?,
-      userId: json['user_id'] as int?,
-    );
-
 UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
       id: json['id'] as int,
-      name: json['name'] as String,
-      address: json['address'] as String?,
       avatar: json['avatar'] as String?,
-      email: json['email'] as String,
+      fullName: json['fullName'] as String,
       phoneNumber: json['phoneNumber'] as String?,
       gender: json['gender'] as bool?,
+      email: json['email'] as String,
       birthDay: json['birthDay'] == null
           ? null
           : DateTime.parse(json['birthDay'] as String),
+      address: json['address'] as String?,
+      workSpace: json['workSpace'] as String?,
+      projectPending: json['projectPending'] as int?,
+      projectCompleted: json['projectCompleted'] as int?,
+      projectOnGoing: json['projectOnGoing'] as int?,
+      currentOrganization: json['currentOrganization'] == null
+          ? null
+          : OrganizationModel.fromJson(
+              json['currentOrganization'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
-      'address': instance.address,
       'avatar': instance.avatar,
-      'email': instance.email,
+      'fullName': instance.fullName,
       'phoneNumber': instance.phoneNumber,
       'gender': instance.gender,
+      'email': instance.email,
       'birthDay': instance.birthDay?.toIso8601String(),
+      'address': instance.address,
+      'workSpace': instance.workSpace,
+      'projectPending': instance.projectPending,
+      'projectCompleted': instance.projectCompleted,
+      'projectOnGoing': instance.projectOnGoing,
+      'currentOrganization': instance.currentOrganization?.toJson(),
     };

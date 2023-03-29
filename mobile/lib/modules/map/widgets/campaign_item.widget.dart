@@ -42,7 +42,7 @@ class CampaignItem extends StatelessWidget {
                 height,
               ),
               child: Image.network(
-                currentCampaign.imageURL!,
+                currentCampaign.image!,
                 width: height,
                 height: height,
                 fit: BoxFit.cover,
@@ -85,7 +85,7 @@ class CampaignItem extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    currentCampaign.organization.name,
+                    currentCampaign.organization?.name ?? '',
                   )
                 ],
               ),

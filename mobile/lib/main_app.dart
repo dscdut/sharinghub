@@ -105,6 +105,7 @@ class _MyAppState extends State<MyApp> {
           navigatorKey: _navigatorKey,
           title: 'Flutter Demo',
           theme: ThemeData(
+            fontFamily: 'BeVietnamPro',
             primarySwatch: Colors.blue,
           ),
           // routerConfig: AppRoutes.router,
@@ -116,11 +117,14 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           builder: (_, child) {
             return BlocListener<AuthBloc, AuthState>(
+              listenWhen: (previous, current) =>
+                  previous.status != current.status,
               listener: (_, state) {
                 switch (state.status) {
                   case AuthenticationStatus.unknown:
                     break;
-                  case AuthenticationStatus.authenticated:
+                  case AuthenticationStatus.authenticatedOrganization:
+                  case AuthenticationStatus.authenticatedUser:
                     _navigator.pushNamedAndRemoveUntil(
                       AppRoutes.root,
                       (route) => false,
@@ -128,7 +132,7 @@ class _MyAppState extends State<MyApp> {
                     break;
                   case AuthenticationStatus.unauthenticated:
                     _navigator.pushNamedAndRemoveUntil(
-                      AppRoutes.root,
+                      AppRoutes.login,
                       (route) => false,
                     );
                     break;
@@ -147,9 +151,9 @@ Future<void> initializeApp() async {
   await EasyLocalization.ensureInitialized();
   EasyLocalization.logger.enableBuildModes = [];
 
-  configureDependencies();
-
   await Hive.initFlutter();
+
+  await configureDependencies();
 
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;

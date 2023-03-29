@@ -4,10 +4,12 @@ class MapState extends Equatable {
   const MapState({
     this.myLocation,
     this.markers,
+    this.error,
   });
 
   final LatLng? myLocation;
   final Set<Marker>? markers;
+  final String? error;
 
   const MapState.initial()
       : this(
@@ -18,15 +20,21 @@ class MapState extends Equatable {
   MapState copyWith({
     LatLng? myLocation,
     Set<Marker>? markers,
+    String? error,
   }) {
     return MapState(
       myLocation: myLocation ?? this.myLocation,
       markers: markers ?? this.markers,
+      error: error ?? this.error,
     );
   }
 
   @override
-  List<Object?> get props => [myLocation];
+  List<Object?> get props => [
+        myLocation,
+        markers,
+        error,
+      ];
 }
 
 class MapGetLocationSuccess extends MapState {

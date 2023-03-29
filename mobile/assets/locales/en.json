@@ -21,14 +21,20 @@
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Tìm kiếm địa điểm"
+    "location_search": "Location Search",
+    "edit": "Edit",
+    "delele": "Delete"
   },
   "button": {
     "cancel": "Cancel",
     "confirm": "Confirm",
     "join": "Join",
+    "donate": "Donate",
     "finish": "Finish",
-    "update": "Update"
+    "update": "Update",
+    "create": "Create",
+    "send_feedback": "Send Feedback",
+    "edit_feedback": "Edit Feedback"
   },
   "root": {
     "map": "Map",
@@ -47,7 +53,8 @@
     "forgot_password": "Forgot password?",
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
-    "have_not_account": "Don't have an account?"
+    "have_not_account": "Don't have an account?",
+    "registration_successful": "Registration Successful"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -56,7 +63,10 @@
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
+    "organization_avatar_uploaded": "The organization avatar must be uploaded",
+    "existed_email": "This email is already existed"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -64,8 +74,8 @@
     "province": "Province",
     "district": "District",
     "ward": "Ward",
-    "empty_result": "No result found",
-    "init_placeholder": "Some text like Enter keyword to Search"
+    "empty_result": "Nothing matches your search 🙌",
+    "init_placeholder": "Find something here"
   },
   "home": {
     "search": "Search",
@@ -73,11 +83,22 @@
     "newest": "Newest",
     "nearest": "Nearest"
   },
+  "organization": {
+    "list_empty": "You don't have any organizations, let's try creating new one!",
+    "create": "Create a new organization",
+    "update": "Update organization info",
+    "phone_number": "Phone Number",
+    "address": "Address",
+    "description": "Description",
+    "management": "Organization Management",
+    "duplicated": "This organization name or phone number is already existed",
+    "create_success": "Organization created successfully"
+  },
   "campaign": {
     "create": "Create new campaign",
     "update": "Update campaign",
-    "create_success": "Success create campaign",
-    "update_success": "Success update campaign",
+    "create_success": "Campaign created successfully",
+    "update_success": "Campaign updated successfully",
     "back_home": "Back to home",
     "campaign_name": "Campaign name",
     "campaign_description": "Description",
@@ -93,14 +114,57 @@
     "has_ended": "The campaign has ended",
     "artifact_type": "Artifact Types",
     "obtained_results": "Obtained Results",
-    "image_uploaded": "The campaign image must be uploaded"
+    "image_uploaded": "The campaign image must be uploaded",
+    "volunteer": "Volunteer",
+    "complete": "Complete",
+    "volunteer_register": "Register Volunteer",
+    "management": "Campaign Management",
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
+    "see_more": "See more",
+    "donator": "Donator",
+    "update_to": "Update to",
+    "list_donator": "List of donators",
+    "list_volunteer": "List of volunteers"
   },
   "profile": {
     "setting": "Setting",
-    "rate": "Rate:",
     "contact_info": "Contact information",
-    "campaigns_doing": "Campaigns doing",
-    "campaigns_done": "Campaigns done",
-    "reviews": "Reviews"
+    "personal": "Personal profile",
+    "organization": "Organization profile",
+    "pending": "Pending",
+    "upcoming": "Upcoming",
+    "ongoing": "Ongoing",
+    "participating": "Participating",
+    "done": "Done",
+    "preferences": "Preferences",
+    "about_us": "About us",
+    "logout": "Log out",
+    "share_this_app": "Share this app",
+    "help_center": "Help center",
+    "my_organizations": "My organizations",
+    "switch_to_myaccount": "Switch to my account",
+    "delete_account": "Delete account",
+    "gender_female": "Female",
+    "gender_male": "Male",
+    "form_number": "{number} forms",
+    "campaign_number": "{number} campaigns",
+    "review_number": "{number} reviews"
+  },
+  "map": {
+    "error_get_markers": "Cannot load list of locations",
+    "location_error": "Cannot get your location"
+  },
+  "feedback": {
+    "location_rate": "Location rate",
+    "traffic": "Traffic",
+    "weather": "Weather",
+    "santization": "Santization",
+    "residence": "Residence",
+    "authority_cooperation": "Authority cooperation",
+    "others": "Others",
+    "images": "Images of the campaign",
+    "images_uploaded": "The campaign images must be uploaded",
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 }

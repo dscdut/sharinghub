@@ -21,14 +21,20 @@
     "galerry": "Thư viện",
     "camera": "Camera",
     "upload_photo": "Tải ảnh lên",
-    "location_search": "Location Search"
+    "location_search": "Tìm kiếm địa điểm",
+    "edit": "Chỉnh sửa",
+    "delele": "Xoá"
   },
   "button": {
     "cancel": "Hủy",
     "confirm": "Xác nhận",
     "join": "Đăng ký tham gia",
+    "donate": "Quyên góp",
     "finish": "Hoàn Thành",
-    "update": "Cập Nhật"
+    "update": "Cập Nhật",
+    "create": "Tạo",
+    "send_feedback": "Gửi phản hồi",
+    "edit_feedback": "Sửa phản hồi"
   },
   "root": {
     "map": "Bản đồ",
@@ -47,7 +53,8 @@
     "forgot_password": "Quên mật khẩu?",
     "confirm_password": "Xác nhận mật khẩu",
     "already_have_account": "Đã có tài khoản?",
-    "have_not_account": "Chưa có tài khoản?"
+    "have_not_account": "Chưa có tài khoản?",
+    "registration_successful": "Đăng ký tài khoản thành công"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -55,8 +62,11 @@
     "invalid_email": "Không đúng định dạng email",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
-    "field_required": "Không được để trống",
-    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+    "field_required": "Trường giá trị này không được để trống",
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp",
+    "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
+    "existed_email": "Email này đã được đăng ký"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -64,7 +74,7 @@
     "province": "Tỉnh/Thành phố",
     "district": "Quận/Huyện",
     "ward": "Phường/Xã",
-    "empty_result": "Không tìm thấy kết quả nào",
+    "empty_result": "Không tìm thấy kết quả 🙌",
     "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
   },
   "home": {
@@ -72,6 +82,17 @@
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
     "nearest": "Gần nhất"
+  },
+  "organization": {
+    "list_empty": "Bạn chưa có tổ chức nào, hãy thử tạo một tổ chức!",
+    "create": "Tạo tổ chức",
+    "update": "Cập nhật thông tin tổ chức",
+    "phone_number": "Số điện thoại",
+    "address": "Địa chỉ",
+    "description": "Mô tả",
+    "management": "Quản lý tổ chức",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại",
+    "create_success": "Tạo tổ chức thành công"
   },
   "campaign": {
     "create": "Tạo dự án",
@@ -93,14 +114,57 @@
     "has_ended": "Dự án đã kết thúc",
     "artifact_type": "Hiện vật cần quyên góp",
     "obtained_results": "Kết quả thu được",
-    "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "volunteer": "Tình nguyện viên",
+    "complete": "Hoàn thành",
+    "volunteer_register": "Đăng kí tình nguyện viên",
+    "management": "Quản lý chiến dịch",
+    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!",
+    "see_more": "Xem thêm",
+    "donator": "Nhà hảo tâm",
+    "update_to": "Cập nhật đến ngày",
+    "list_donator": "Danh sách nhà hảo tâm",
+    "list_volunteer": "Danh sách tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
-    "rate": "Đánh giá:",
     "contact_info": "Thông tin liên hệ",
-    "campaigns_doing": "Dự án đang thực hiện",
-    "campaigns_done": "Dự án đã hoàn thành",
-    "reviews": "Đánh giá"
+    "personal_profile": "Hồ sơ cá nhân",
+    "organization_profile": "Hồ sơ tổ chức",
+    "pending": "Chờ duyệt",
+    "upcoming": "Sắp diễn ra",
+    "ongoing": "Đang diễn ra",
+    "participating": "Đang tham gia",
+    "done": "Đã hoàn thành",
+    "preferences": "Tùy chọn",
+    "about_us": "Về chúng tôi",
+    "logout": "Đăng xuất",
+    "share_this_app": "Chia sẻ ứng dụng",
+    "help_center": "Trung tâm trợ giúp",
+    "my_organizations": "Tổ chức của tôi",
+    "switch_to_myaccount": "Chuyển sang tài khoản của tôi",
+    "delete_account": "Xoá tài khoản",
+    "gender_female": "Nữ",
+    "gender_male": "Nam",
+    "form_number": "{number} đơn",
+    "campaign_number": "{number} dự án",
+    "review_number": "{number} đánh giá"
+  },
+  "map": {
+    "error_get_markers": "Không thể tải danh sách vị trí",
+    "location_error": "Không thể lấy vị trí hiện tại của bạn"
+  },
+  "feedback": {
+    "location_rate": "Đánh giá địa điểm",
+    "traffic": "Đường xá",
+    "weather": "Thời tiết",
+    "santization": "Vệ sinh",
+    "residence": "Nơi cư trú",
+    "authority_cooperation": "Sự hợp tác của chính quyền địa phương",
+    "others": "Thông tin khác",
+    "images": "Hình ảnh về chiến dịch",
+    "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
+    "location_rated": "Hãy đánh giá địa điểm",
+    "success": "Gửi đánh giá thành công"
   }
 }

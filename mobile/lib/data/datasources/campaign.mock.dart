@@ -1,9 +1,14 @@
+import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/datasources/user.mock.dart';
 
 abstract class CampaignMock {
-  static CampaignModel setCampaign(SetCampaignDTO setCampaignParams) {
+  static Future<CampaignModel> setCampaign(
+    SetCampaignDTO setCampaignParams,
+  ) async {
+    await Future.delayed(const Duration(seconds: 2));
+
     return CampaignModel(
       organization: UserMock.getOrganization(),
       name: 'Giúp mọi người quay lại cuốc sống bình thường',
@@ -11,17 +16,19 @@ abstract class CampaignMock {
           'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       startDate: DateTime.now().subtract(const Duration(days: 1)),
       endDate: DateTime.now().add(const Duration(days: 1)),
-      formLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
-      artifactTypes: 'My Event and Smart Food',
+      registerLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
+      donationRequirement: 'My Event and Smart Food',
       otherInformation: 'My Event and Smart Food',
-      imageURL:
+      image:
           'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
-      geometry: {},
+      coordinate: {},
       address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
     );
   }
 
-  static List<CampaignModel> getCampains() {
+  static Future<List<CampaignModel>> getCampaigns() async {
+    await Future.delayed(const Duration(seconds: 3));
+
     return [
       CampaignModel(
         id: 0,
@@ -31,12 +38,26 @@ abstract class CampaignMock {
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         startDate: DateTime.now().subtract(const Duration(days: 1)),
         endDate: DateTime.now().add(const Duration(days: 1)),
-        formLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
-        artifactTypes: 'My Event and Smart Food',
+        registerLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
+        donationRequirement: 'My Event and Smart Food',
         otherInformation: 'My Event and Smart Food',
-        imageURL: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
-        geometry: {},
+        image: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        coordinate: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
+        // feedback: FeedbackToCampaignDTO(
+        //   images: [
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //     'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        //   ],
+        //   locationRate: 5,
+        //   traffic: 'Đông',
+        //   weather: 'Nắng',
+        //   sanitization: 'Tốt',
+        //   residence: 'Có',
+        //   authorityCooperation: 'Tốt',
+        //   others: 'Không có',
+        // ),
       ),
       CampaignModel(
         id: 1,
@@ -46,12 +67,12 @@ abstract class CampaignMock {
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         startDate: DateTime.now().subtract(const Duration(days: 1)),
         endDate: DateTime.now().add(const Duration(days: 1)),
-        formLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
-        artifactTypes: 'My Event and Smart Food',
+        registerLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
+        donationRequirement: 'My Event and Smart Food',
         otherInformation: 'My Event and Smart Food',
-        imageURL:
+        image:
             'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
-        geometry: {},
+        coordinate: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
       ),
       CampaignModel(
@@ -62,11 +83,11 @@ abstract class CampaignMock {
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         startDate: DateTime.now().subtract(const Duration(days: 1)),
         endDate: DateTime.now().add(const Duration(days: 1)),
-        formLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
-        artifactTypes: 'My Event and Smart Food',
+        registerLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
+        donationRequirement: 'My Event and Smart Food',
         otherInformation: 'My Event and Smart Food',
-        imageURL: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
-        geometry: {},
+        image: 'https://pbs.twimg.com/media/EC6sf2iWwAUyeM_.jpg',
+        coordinate: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
       ),
       CampaignModel(
@@ -77,12 +98,12 @@ abstract class CampaignMock {
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         startDate: DateTime.now().subtract(const Duration(days: 1)),
         endDate: DateTime.now().add(const Duration(days: 1)),
-        formLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
-        artifactTypes: 'My Event and Smart Food',
+        registerLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
+        donationRequirement: 'My Event and Smart Food',
         otherInformation: 'My Event and Smart Food',
-        imageURL:
+        image:
             'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
-        geometry: {},
+        coordinate: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
       ),
       CampaignModel(
@@ -93,12 +114,12 @@ abstract class CampaignMock {
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         startDate: DateTime.now().subtract(const Duration(days: 1)),
         endDate: DateTime.now().add(const Duration(days: 1)),
-        formLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
-        artifactTypes: 'My Event and Smart Food',
+        registerLink: 'https://forms.gle/S1M2A3R4T5F6O7O8D9',
+        donationRequirement: 'My Event and Smart Food',
         otherInformation: 'My Event and Smart Food',
-        imageURL:
+        image:
             'https://www.angelcharity.org/wp-content/uploads/hero-background.jpg',
-        geometry: {},
+        coordinate: {},
         address: 'Hải Châu 1, Hải Châu, Đà Nẵng',
       )
     ];

@@ -37,14 +37,20 @@ class CodegenLoader extends AssetLoader{
     "galerry": "Galerry",
     "camera": "Camera",
     "upload_photo": "Upload photo",
-    "location_search": "Tìm kiếm địa điểm"
+    "location_search": "Location Search",
+    "edit": "Edit",
+    "delele": "Delete"
   },
   "button": {
     "cancel": "Cancel",
     "confirm": "Confirm",
     "join": "Join",
+    "donate": "Donate",
     "finish": "Finish",
-    "update": "Update"
+    "update": "Update",
+    "create": "Create",
+    "send_feedback": "Send Feedback",
+    "edit_feedback": "Edit Feedback"
   },
   "root": {
     "map": "Map",
@@ -63,7 +69,8 @@ class CodegenLoader extends AssetLoader{
     "forgot_password": "Forgot password?",
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
-    "have_not_account": "Don't have an account?"
+    "have_not_account": "Don't have an account?",
+    "registration_successful": "Registration Successful"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -72,7 +79,10 @@ class CodegenLoader extends AssetLoader{
     "incorrect_email_password": "Incorrect email or password",
     "invalid_password": "Password must be at least 8 characters",
     "field_required": "This field is required",
-    "not_match_password": "Password and confirm password not match"
+    "not_match_password": "Password and confirm password not match",
+    "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
+    "organization_avatar_uploaded": "The organization avatar must be uploaded",
+    "existed_email": "This email is already existed"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -80,8 +90,8 @@ class CodegenLoader extends AssetLoader{
     "province": "Province",
     "district": "District",
     "ward": "Ward",
-    "empty_result": "No result found",
-    "init_placeholder": "Some text like Enter keyword to Search"
+    "empty_result": "Nothing matches your search 🙌",
+    "init_placeholder": "Find something here"
   },
   "home": {
     "search": "Search",
@@ -89,11 +99,22 @@ class CodegenLoader extends AssetLoader{
     "newest": "Newest",
     "nearest": "Nearest"
   },
+  "organization": {
+    "list_empty": "You don't have any organizations, let's try creating new one!",
+    "create": "Create a new organization",
+    "update": "Update organization info",
+    "phone_number": "Phone Number",
+    "address": "Address",
+    "description": "Description",
+    "management": "Organization Management",
+    "duplicated": "This organization name or phone number is already existed",
+    "create_success": "Organization created successfully"
+  },
   "campaign": {
     "create": "Create new campaign",
     "update": "Update campaign",
-    "create_success": "Success create campaign",
-    "update_success": "Success update campaign",
+    "create_success": "Campaign created successfully",
+    "update_success": "Campaign updated successfully",
     "back_home": "Back to home",
     "campaign_name": "Campaign name",
     "campaign_description": "Description",
@@ -109,15 +130,58 @@ class CodegenLoader extends AssetLoader{
     "has_ended": "The campaign has ended",
     "artifact_type": "Artifact Types",
     "obtained_results": "Obtained Results",
-    "image_uploaded": "The campaign image must be uploaded"
+    "image_uploaded": "The campaign image must be uploaded",
+    "volunteer": "Volunteer",
+    "complete": "Complete",
+    "volunteer_register": "Register Volunteer",
+    "management": "Campaign Management",
+    "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
+    "see_more": "See more",
+    "donator": "Donator",
+    "update_to": "Update to",
+    "list_donator": "List of donators",
+    "list_volunteer": "List of volunteers"
   },
   "profile": {
     "setting": "Setting",
-    "rate": "Rate:",
     "contact_info": "Contact information",
-    "campaigns_doing": "Campaigns doing",
-    "campaigns_done": "Campaigns done",
-    "reviews": "Reviews"
+    "personal": "Personal profile",
+    "organization": "Organization profile",
+    "pending": "Pending",
+    "upcoming": "Upcoming",
+    "ongoing": "Ongoing",
+    "participating": "Participating",
+    "done": "Done",
+    "preferences": "Preferences",
+    "about_us": "About us",
+    "logout": "Log out",
+    "share_this_app": "Share this app",
+    "help_center": "Help center",
+    "my_organizations": "My organizations",
+    "switch_to_myaccount": "Switch to my account",
+    "delete_account": "Delete account",
+    "gender_female": "Female",
+    "gender_male": "Male",
+    "form_number": "{number} forms",
+    "campaign_number": "{number} campaigns",
+    "review_number": "{number} reviews"
+  },
+  "map": {
+    "error_get_markers": "Cannot load list of locations",
+    "location_error": "Cannot get your location"
+  },
+  "feedback": {
+    "location_rate": "Location rate",
+    "traffic": "Traffic",
+    "weather": "Weather",
+    "santization": "Santization",
+    "residence": "Residence",
+    "authority_cooperation": "Authority cooperation",
+    "others": "Others",
+    "images": "Images of the campaign",
+    "images_uploaded": "The campaign images must be uploaded",
+    "location_rated": "Please rate the location",
+    "success": "Send feedback successfully"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -143,14 +207,20 @@ static const Map<String,dynamic> vi = {
     "galerry": "Thư viện",
     "camera": "Camera",
     "upload_photo": "Tải ảnh lên",
-    "location_search": "Location Search"
+    "location_search": "Tìm kiếm địa điểm",
+    "edit": "Chỉnh sửa",
+    "delele": "Xoá"
   },
   "button": {
     "cancel": "Hủy",
     "confirm": "Xác nhận",
     "join": "Đăng ký tham gia",
+    "donate": "Quyên góp",
     "finish": "Hoàn Thành",
-    "update": "Cập Nhật"
+    "update": "Cập Nhật",
+    "create": "Tạo",
+    "send_feedback": "Gửi phản hồi",
+    "edit_feedback": "Sửa phản hồi"
   },
   "root": {
     "map": "Bản đồ",
@@ -169,7 +239,8 @@ static const Map<String,dynamic> vi = {
     "forgot_password": "Quên mật khẩu?",
     "confirm_password": "Xác nhận mật khẩu",
     "already_have_account": "Đã có tài khoản?",
-    "have_not_account": "Chưa có tài khoản?"
+    "have_not_account": "Chưa có tài khoản?",
+    "registration_successful": "Đăng ký tài khoản thành công"
   },
   "validator": {
     "email_required": "Vui lòng nhập email",
@@ -177,8 +248,11 @@ static const Map<String,dynamic> vi = {
     "invalid_email": "Không đúng định dạng email",
     "incorrect_email_password": "Email hoặc mật khẩu không đúng",
     "invalid_password": "Mật khẩu phải có ít nhất 8 kí tự",
-    "field_required": "Không được để trống",
-    "not_match_password": "Mật khẩu xác nhận không trùng khớp"
+    "field_required": "Trường giá trị này không được để trống",
+    "not_match_password": "Mật khẩu xác nhận không trùng khớp",
+    "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
+    "existed_email": "Email này đã được đăng ký"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -186,7 +260,7 @@ static const Map<String,dynamic> vi = {
     "province": "Tỉnh/Thành phố",
     "district": "Quận/Huyện",
     "ward": "Phường/Xã",
-    "empty_result": "Không tìm thấy kết quả nào",
+    "empty_result": "Không tìm thấy kết quả 🙌",
     "init_placeholder": "Tìm kiếm tổ chức hoặc dự án"
   },
   "home": {
@@ -194,6 +268,17 @@ static const Map<String,dynamic> vi = {
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
     "nearest": "Gần nhất"
+  },
+  "organization": {
+    "list_empty": "Bạn chưa có tổ chức nào, hãy thử tạo một tổ chức!",
+    "create": "Tạo tổ chức",
+    "update": "Cập nhật thông tin tổ chức",
+    "phone_number": "Số điện thoại",
+    "address": "Địa chỉ",
+    "description": "Mô tả",
+    "management": "Quản lý tổ chức",
+    "duplicated": "Tên tổ chức hoặc số điện thoại đã tồn tại",
+    "create_success": "Tạo tổ chức thành công"
   },
   "campaign": {
     "create": "Tạo dự án",
@@ -215,15 +300,58 @@ static const Map<String,dynamic> vi = {
     "has_ended": "Dự án đã kết thúc",
     "artifact_type": "Hiện vật cần quyên góp",
     "obtained_results": "Kết quả thu được",
-    "image_uploaded": "Ảnh chiến dịch phải được đăng tải"
+    "image_uploaded": "Ảnh chiến dịch phải được đăng tải",
+    "volunteer": "Tình nguyện viên",
+    "complete": "Hoàn thành",
+    "volunteer_register": "Đăng kí tình nguyện viên",
+    "management": "Quản lý chiến dịch",
+    "empty_list": "Tổ chức của bạn chưa có chiến dịch nào, hãy thử tạo một chiến dịch!",
+    "see_more": "Xem thêm",
+    "donator": "Nhà hảo tâm",
+    "update_to": "Cập nhật đến ngày",
+    "list_donator": "Danh sách nhà hảo tâm",
+    "list_volunteer": "Danh sách tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
-    "rate": "Đánh giá:",
     "contact_info": "Thông tin liên hệ",
-    "campaigns_doing": "Dự án đang thực hiện",
-    "campaigns_done": "Dự án đã hoàn thành",
-    "reviews": "Đánh giá"
+    "personal_profile": "Hồ sơ cá nhân",
+    "organization_profile": "Hồ sơ tổ chức",
+    "pending": "Chờ duyệt",
+    "upcoming": "Sắp diễn ra",
+    "ongoing": "Đang diễn ra",
+    "participating": "Đang tham gia",
+    "done": "Đã hoàn thành",
+    "preferences": "Tùy chọn",
+    "about_us": "Về chúng tôi",
+    "logout": "Đăng xuất",
+    "share_this_app": "Chia sẻ ứng dụng",
+    "help_center": "Trung tâm trợ giúp",
+    "my_organizations": "Tổ chức của tôi",
+    "switch_to_myaccount": "Chuyển sang tài khoản của tôi",
+    "delete_account": "Xoá tài khoản",
+    "gender_female": "Nữ",
+    "gender_male": "Nam",
+    "form_number": "{number} đơn",
+    "campaign_number": "{number} dự án",
+    "review_number": "{number} đánh giá"
+  },
+  "map": {
+    "error_get_markers": "Không thể tải danh sách vị trí",
+    "location_error": "Không thể lấy vị trí hiện tại của bạn"
+  },
+  "feedback": {
+    "location_rate": "Đánh giá địa điểm",
+    "traffic": "Đường xá",
+    "weather": "Thời tiết",
+    "santization": "Vệ sinh",
+    "residence": "Nơi cư trú",
+    "authority_cooperation": "Sự hợp tác của chính quyền địa phương",
+    "others": "Thông tin khác",
+    "images": "Hình ảnh về chiến dịch",
+    "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
+    "location_rated": "Hãy đánh giá địa điểm",
+    "success": "Gửi đánh giá thành công"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

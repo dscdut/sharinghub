@@ -30,7 +30,7 @@ class MapBottomsheetBloc
 
     try {
       final List<CampaignModel> campaigns =
-          await _campaignRepository.getCampainsByLocation(event.wardLocation);
+          await _campaignRepository.getCampaignsByLocation(event.wardLocation);
 
       emit(MapBottomSheetState.success(campaigns: campaigns));
     } catch (err) {

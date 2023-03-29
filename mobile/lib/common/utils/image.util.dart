@@ -47,6 +47,7 @@ abstract class ImageUtil {
     required File imageFile,
     double? width,
     double? height,
+    CropStyle cropStyle = CropStyle.rectangle,
   }) async {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: imageFile.path,
@@ -56,6 +57,7 @@ abstract class ImageUtil {
       aspectRatioPresets: [
         CropAspectRatioPreset.square,
       ],
+      cropStyle: cropStyle,
       uiSettings: [
         AndroidUiSettings(
           toolbarColor: Colors.black,
@@ -86,15 +88,29 @@ abstract class ImageUtil {
     return pickedFile == null ? null : File(pickedFile.path);
   }
 
+  static Future<List<File>?> pickMultipleImage() async {
+    final pickedFile = await ImagePicker().pickMultiImage();
+
+    return pickedFile.isEmpty
+        ? null
+        : pickedFile.map((e) => File(e.path)).toList();
+  }
+
   static Future<File?> pickAndCropImage(
     ImageSource source, {
     double? width,
     double? height,
+    CropStyle cropStyle = CropStyle.rectangle,
   }) async {
     final File? pickedImage = await pickImage(source);
 
     return pickedImage == null
         ? null
-        : await cropImage(imageFile: pickedImage, width: width, height: height);
+        : await cropImage(
+            imageFile: pickedImage,
+            width: width,
+            height: height,
+            cropStyle: cropStyle,
+          );
   }
 }

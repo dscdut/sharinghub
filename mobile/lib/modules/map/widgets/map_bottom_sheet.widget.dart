@@ -5,7 +5,7 @@ import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/conditional_render.util.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 import 'package:mobile/common/widgets/bottom_sheet_header.widget.dart';
-import 'package:mobile/modules/map/widgets/list_campaigns.widget.dart';
+import 'package:mobile/modules/map/widgets/list_marker_campaigns.widget.dart';
 
 class CampaignBottomSheet extends StatelessWidget {
   const CampaignBottomSheet({super.key});
@@ -47,7 +47,9 @@ class CampaignBottomSheet extends StatelessWidget {
                                   ),
                                 ),
                             HandleStatus.success: (_) {
-                              return ListCampaigns(campaigns: state.campaigns);
+                              return ListMarkerCampaigns(
+                                campaigns: state.campaigns,
+                              );
                             }
                           },
                           fallbackBuilder: (_) => const SizedBox(),

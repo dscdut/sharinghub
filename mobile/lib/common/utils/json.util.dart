@@ -5,10 +5,10 @@ class JsonSerializableDateTime implements JsonConverter<DateTime, String> {
   const JsonSerializableDateTime();
 
   @override
-  DateTime fromJson(String json) => DateTime.parse(json).toLocal();
+  DateTime fromJson(String json) => DateTime.parse(json);
 
   @override
-  String toJson(DateTime date) => date.toUtc().toIso8601String();
+  String toJson(DateTime date) => date.toIso8601String();
 }
 
 class JsonSerializableMultipartFile

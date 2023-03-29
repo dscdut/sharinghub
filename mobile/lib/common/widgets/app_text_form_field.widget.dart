@@ -45,7 +45,7 @@ class AppTextFormField extends StatelessWidget {
 
   final EdgeInsetsGeometry contentPadding;
 
-  const AppTextFormField({
+  AppTextFormField({
     Key? key,
     this.textController,
     this.isObscure = false,
@@ -72,110 +72,98 @@ class AppTextFormField extends StatelessWidget {
     this.onChanged,
     this.onTapPrefixIcon,
     this.onTapSuffixIcon,
-    this.labelStyle = TextStyles.s14MediumText,
     this.focusNode,
     this.maxLines = 1,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20),
-  }) : super(key: key);
+  })  : labelStyle =
+            TextStyles.s14RegularText.copyWith(color: ColorStyles.gray200),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (labelText != null)
-          Text(
-            labelText!,
-            style: labelStyle,
-          ),
-        if (labelText != null)
-          const SizedBox(
-            height: 5,
-          ),
-        TextFormField(
-          controller: textController,
-          focusNode: focusNode,
-          textInputAction: TextInputAction.done,
-          onChanged: onChanged,
-          onTap: onTap,
-          validator: validator,
-          obscureText: isObscure,
-          readOnly: readOnly,
-          enableSuggestions: false,
-          enabled: enabled,
-          keyboardType: keyboardType,
-          initialValue: initialValue,
-          maxLines: maxLines,
-          style:
-              TextStyles.regularBody14.copyWith(color: ColorStyles.zodiacBlue),
-          textAlign: isCenterText ? TextAlign.center : TextAlign.start,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyles.regularBody14.copyWith(color: hintColor),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
-              borderSide: const BorderSide(
-                color: ColorStyles.red600,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
-              borderSide: BorderSide(
-                color: focusedBorderColor,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
-              borderSide: BorderSide(
-                color: borderColor,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
-              borderSide: BorderSide(
-                color: borderColor,
-              ),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
-              borderSide: const BorderSide(
-                color: ColorStyles.red600,
-              ),
-            ),
-            // isDense: true,
-            filled: true,
-            fillColor: fillColor,
-            contentPadding: contentPadding,
-            prefixIcon: prefixIcon != null
-                ? GestureDetector(
-                    onTap: onTapPrefixIcon,
-                    behavior: HitTestBehavior.opaque,
-                    child: Icon(
-                      prefixIcon,
-                      color: prefixIconColor,
-                    ),
-                  )
-                : null,
-            suffixIcon: suffixIcon != null
-                ? GestureDetector(
-                    onTap: onTapSuffixIcon,
-                    behavior: HitTestBehavior.opaque,
-                    child: Icon(
-                      suffixIcon,
-                      color: suffixIconColor,
-                    ),
-                  )
-                : null,
-            helperText: extendField ? '' : null,
-            helperStyle: extendField
-                ? TextStyles.regularBody14.copyWith(fontSize: 13)
-                : null,
-            errorText: errorText == '' || errorText == null ? null : errorText,
-            errorStyle: TextStyles.regularBody14
-                .copyWith(color: Colors.red, fontSize: 13, height: 0),
+    return TextFormField(
+      controller: textController,
+      focusNode: focusNode,
+      textInputAction: TextInputAction.done,
+      onChanged: onChanged,
+      onTap: onTap,
+      validator: validator,
+      obscureText: isObscure,
+      readOnly: readOnly,
+      enableSuggestions: false,
+      enabled: enabled,
+      keyboardType: keyboardType,
+      initialValue: initialValue,
+      maxLines: maxLines,
+      style: TextStyles.regularBody14.copyWith(color: ColorStyles.zodiacBlue),
+      textAlign: isCenterText ? TextAlign.center : TextAlign.start,
+      decoration: InputDecoration(
+        labelText: labelText,
+        labelStyle: labelStyle,
+        hintText: hintText,
+        hintStyle: TextStyles.regularBody14.copyWith(color: hintColor),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: const BorderSide(
+            color: ColorStyles.red600,
           ),
         ),
-      ],
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(
+            color: focusedBorderColor,
+          ),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(
+            color: borderColor,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: BorderSide(
+            color: borderColor,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          borderSide: const BorderSide(
+            color: ColorStyles.red600,
+          ),
+        ),
+        // isDense: true,
+        filled: true,
+        fillColor: fillColor,
+        contentPadding: contentPadding,
+        prefixIcon: prefixIcon != null
+            ? GestureDetector(
+                onTap: onTapPrefixIcon,
+                behavior: HitTestBehavior.opaque,
+                child: Icon(
+                  prefixIcon,
+                  color: prefixIconColor,
+                ),
+              )
+            : null,
+        suffixIcon: suffixIcon != null
+            ? GestureDetector(
+                onTap: onTapSuffixIcon,
+                behavior: HitTestBehavior.opaque,
+                child: Icon(
+                  suffixIcon,
+                  color: suffixIconColor,
+                ),
+              )
+            : null,
+        helperText: extendField ? '' : null,
+        helperStyle: extendField
+            ? TextStyles.regularBody14.copyWith(fontSize: 13)
+            : null,
+        errorText: errorText == '' || errorText == null ? null : errorText,
+        errorStyle: TextStyles.regularBody14
+            .copyWith(color: Colors.red, fontSize: 13, height: 0),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
 enum ToastPosition { TOP, BOTTOM }
@@ -9,12 +10,13 @@ abstract class ToastUtil {
   static void showSuccess(
     BuildContext context, {
     String? text,
-    ToastPosition position = ToastPosition.BOTTOM,
+    ToastPosition position = ToastPosition.TOP,
   }) {
     _showToast(
       context,
       text: text ?? LocaleKeys.texts_success.tr(),
       backgroundColor: Colors.green,
+      position: position,
       leading: const Icon(
         Icons.check_circle_rounded,
         color: Colors.white,
@@ -26,12 +28,13 @@ abstract class ToastUtil {
   static void showError(
     BuildContext context, {
     String? text,
-    ToastPosition position = ToastPosition.BOTTOM,
+    ToastPosition position = ToastPosition.TOP,
   }) {
     _showToast(
       context,
       text: text ?? LocaleKeys.texts_error_occur.tr(),
       backgroundColor: Colors.redAccent,
+      position: position,
       leading: const Icon(
         Icons.warning_amber_outlined,
         color: Colors.white,
@@ -149,14 +152,14 @@ class ToastView {
     switch (toastPosition) {
       case ToastPosition.TOP:
         return Positioned(
-          top: MediaQuery.of(context).padding.top,
+          top: context.paddingTop + 10,
           left: 10,
           right: 10,
           child: child,
         );
       default:
         return Positioned(
-          bottom: MediaQuery.of(context).padding.bottom,
+          bottom: context.paddingBottom + 10,
           left: 10,
           right: 10,
           child: child,

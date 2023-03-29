@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 
-class TitleInfoProfile extends StatelessWidget {
+class InfoTitle extends StatelessWidget {
   final String title;
 
-  final Widget heightSpace;
-
-  const TitleInfoProfile({
+  const InfoTitle({
     super.key,
     required this.title,
-    required this.heightSpace,
   });
 
   @override
@@ -19,14 +16,11 @@ class TitleInfoProfile extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyles.s17MediumText.copyWith(color: Colors.black),
+          style: TextStyles.s17MediumText,
         ),
-        heightSpace,
-        const Divider(
-          color: Color(0xFFABB0BC),
-          thickness: 1,
-        ),
-        heightSpace,
+        const SizedBox(
+          height: 10,
+        )
       ],
     );
   }

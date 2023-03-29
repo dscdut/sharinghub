@@ -14,40 +14,85 @@ import 'package:flutter/services.dart';
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
-  /// File path: assets/fonts/Mulish-Bold.ttf
-  String get mulishBold => 'assets/fonts/Mulish-Bold.ttf';
+  /// File path: assets/fonts/BeVietnamPro-Bold.ttf
+  String get beVietnamProBold => 'assets/fonts/BeVietnamPro-Bold.ttf';
 
-  /// File path: assets/fonts/Mulish-Medium.ttf
-  String get mulishMedium => 'assets/fonts/Mulish-Medium.ttf';
+  /// File path: assets/fonts/BeVietnamPro-Medium.ttf
+  String get beVietnamProMedium => 'assets/fonts/BeVietnamPro-Medium.ttf';
 
-  /// File path: assets/fonts/Mulish-Regular.ttf
-  String get mulishRegular => 'assets/fonts/Mulish-Regular.ttf';
+  /// File path: assets/fonts/BeVietnamPro-Regular.ttf
+  String get beVietnamProRegular => 'assets/fonts/BeVietnamPro-Regular.ttf';
 
   /// List of all assets
-  List<String> get values => [mulishBold, mulishMedium, mulishRegular];
+  List<String> get values =>
+      [beVietnamProBold, beVietnamProMedium, beVietnamProRegular];
 }
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_chat.png
+  AssetGenImage get icChat => const AssetGenImage('assets/icons/ic_chat.png');
+
+  /// File path: assets/icons/ic_logout.png
+  AssetGenImage get icLogout =>
+      const AssetGenImage('assets/icons/ic_logout.png');
+
+  /// File path: assets/icons/ic_remove_user.png
+  AssetGenImage get icRemoveUser =>
+      const AssetGenImage('assets/icons/ic_remove_user.png');
+
   /// File path: assets/icons/ic_search.png
   AssetGenImage get icSearch =>
       const AssetGenImage('assets/icons/ic_search.png');
 
+  /// File path: assets/icons/ic_setting.png
+  AssetGenImage get icSetting =>
+      const AssetGenImage('assets/icons/ic_setting.png');
+
+  /// File path: assets/icons/ic_share.png
+  AssetGenImage get icShare => const AssetGenImage('assets/icons/ic_share.png');
+
+  /// File path: assets/icons/ic_star.png
+  AssetGenImage get icStar => const AssetGenImage('assets/icons/ic_star.png');
+
+  /// File path: assets/icons/ic_support.png
+  AssetGenImage get icSupport =>
+      const AssetGenImage('assets/icons/ic_support.png');
+
+  /// File path: assets/icons/ic_switch.png
+  AssetGenImage get icSwitch =>
+      const AssetGenImage('assets/icons/ic_switch.png');
+
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
+  $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
 
   /// List of all assets
-  List<AssetGenImage> get values => [icSearch];
+  List<AssetGenImage> get values => [
+        icChat,
+        icLogout,
+        icRemoveUser,
+        icSearch,
+        icSetting,
+        icShare,
+        icStar,
+        icSupport,
+        icSwitch
+      ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/img_defaut_avatar.png
+  AssetGenImage get imgDefautAvatar =>
+      const AssetGenImage('assets/images/img_defaut_avatar.png');
+
   /// File path: assets/images/not_found.svg
   SvgGenImage get notFound => const SvgGenImage('assets/images/not_found.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [notFound];
+  List<dynamic> get values => [imgDefautAvatar, notFound];
 }
 
 class $AssetsLocalesGen {
@@ -72,6 +117,32 @@ class $AssetsIconsLauncherGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [appIcon];
+}
+
+class $AssetsIconsProfileGen {
+  const $AssetsIconsProfileGen();
+
+  /// File path: assets/icons/profile/done.svg
+  SvgGenImage get done => const SvgGenImage('assets/icons/profile/done.svg');
+
+  /// File path: assets/icons/profile/feedback.svg
+  SvgGenImage get feedback =>
+      const SvgGenImage('assets/icons/profile/feedback.svg');
+
+  /// File path: assets/icons/profile/ongoing.svg
+  SvgGenImage get ongoing =>
+      const SvgGenImage('assets/icons/profile/ongoing.svg');
+
+  /// File path: assets/icons/profile/pending.svg
+  SvgGenImage get pending =>
+      const SvgGenImage('assets/icons/profile/pending.svg');
+
+  /// File path: assets/icons/profile/upcoming.svg
+  SvgGenImage get upcoming =>
+      const SvgGenImage('assets/icons/profile/upcoming.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [done, feedback, ongoing, pending, upcoming];
 }
 
 class Assets {
