@@ -82,7 +82,9 @@ class CodegenLoader extends AssetLoader{
     "not_match_password": "Password and confirm password not match",
     "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
     "organization_avatar_uploaded": "The organization avatar must be uploaded",
-    "existed_email": "This email is already existed"
+    "existed_email": "This email is already existed",
+    "gender_required": "Please select your gender",
+    "birthday_required": "Please select your birthday"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -162,9 +164,12 @@ class CodegenLoader extends AssetLoader{
     "delete_account": "Delete account",
     "gender_female": "Female",
     "gender_male": "Male",
+    "gender_other": "Other",
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
-    "review_number": "{number} reviews"
+    "review_number": "{number} reviews",
+    "gender": "Gender",
+    "birthday": "Birthday"
   },
   "map": {
     "error_get_markers": "Cannot load list of locations",
@@ -252,7 +257,9 @@ static const Map<String,dynamic> vi = {
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
-    "existed_email": "Email này đã được đăng ký"
+    "existed_email": "Email này đã được đăng ký",
+    "gender_required": "Vui lòng chọn giới tính",
+    "birthday_required": "Vui lòng chọn ngày sinh"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -332,9 +339,12 @@ static const Map<String,dynamic> vi = {
     "delete_account": "Xoá tài khoản",
     "gender_female": "Nữ",
     "gender_male": "Nam",
+    "gender_other": "Khác",
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
-    "review_number": "{number} đánh giá"
+    "review_number": "{number} đánh giá",
+    "gender": "Giới tính",
+    "birthday": "Ngày sinh"
   },
   "map": {
     "error_get_markers": "Không thể tải danh sách vị trí",

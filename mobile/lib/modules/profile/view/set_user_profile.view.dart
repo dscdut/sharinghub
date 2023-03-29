@@ -132,6 +132,14 @@ class _SetUserViewState extends State<_SetUserView> {
     _setUser.avatar = file;
   }
 
+  void _onGenderChanged(bool? value) {
+    _setUser = _setUser.copyWith(gender: value);
+  }
+
+  void _onBirthdaySelected(DateTime? value) {
+    _setUser = _setUser.copyWith(birthDate: value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,7 +160,9 @@ class _SetUserViewState extends State<_SetUserView> {
               workplaceEditingController: _workplaceEditingController,
               emailEditingController: _emailEditingController,
               gender: _setUser.gender,
+              onGenderChanged: _onGenderChanged,
               birthday: _setUser.birthDate,
+              onBirthdaySelected: _onBirthdaySelected,
               image: _setUser.avatar,
             ),
             const SizedBox(
@@ -165,7 +175,7 @@ class _SetUserViewState extends State<_SetUserView> {
                   _submitSetUser(context);
                 },
                 width: context.width / 2,
-                content: LocaleKeys.button_create.tr(),
+                content: LocaleKeys.button_update.tr(),
               ),
             ),
           ],
