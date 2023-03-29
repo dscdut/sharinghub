@@ -43,8 +43,8 @@ class Controller {
 
         const maskedDonors = donations.map(donation => {
             return {
-                donorFullName: donation.donorFullName,
-                donorPhoneNumber: donation.donorPhoneNumber ? donation.donorPhoneNumber.split('').map((char, index) => index > 2 && index < donation.donorPhoneNumber.length - 1 ? '*' : char).join('') : null,
+                fullName: donation.fullName,
+                phoneNumber: donation.phoneNumber ? donation.phoneNumber.split('').map((char, index) => index > 2 && index < donation.phoneNumber.length - 1 ? '*' : char).join('') : null,
             }
         })
 

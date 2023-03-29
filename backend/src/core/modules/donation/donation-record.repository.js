@@ -115,8 +115,8 @@ class Repository extends DataRepository {
                 { quantity: 'quantity' },
                 'status',
                 { donorId: 'donor_id' },
-                { donorFullName: 'users.full_name' },
-                { donorPhoneNumber: 'users.phone_number' },
+                { fullName: 'users.full_name' },
+                { phoneNumber: 'users.phone_number' },
             );
     }
 }
