@@ -45,7 +45,7 @@ class Repository extends DataRepository {
     }
     
     createDonation(donation, trx = null) {
-        return super.insert(donation, trx).into('donation_records');
+        return super.insert({ ...donation, status: 2}, trx).into('donation_records');
     }
 
     updateDonation(id, donation, trx = null) {

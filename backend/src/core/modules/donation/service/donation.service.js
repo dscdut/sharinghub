@@ -21,7 +21,6 @@ class Service {
     }
 
     async createOrUpdateDonation({ campaignId, donationId }, user_id, RegisterDonorDto, { file, files }) {
-        console.log(campaignId, donationId);
         const images = file ? [file] : files ? files : [];
         try {
             Optional.of(await this.campaignService.findOneById(campaignId)).throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT));
@@ -60,7 +59,7 @@ class Service {
     }
     
     async getDonation(donationId, campaignId, userId) {
-        const donation =  this.donationRecordRepositoryService.findDonationByIdAndCampaignIdAndUserId(donationId, campaignId, userId);
+        const donation = await this.donationRecordRepositoryService.findDonationByIdAndCampaignIdAndUserId(donationId, campaignId, userId);
         if (!donation) {
             throw new NotFoundException(MESSAGE.DONATION_NOT_FOUND);
         }
