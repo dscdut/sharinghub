@@ -106,7 +106,7 @@ class Service {
 
         return {
             message: MESSAGE.UPDATE_DONATION_STATUS_SUCCESS,
-            user: await this.donationRecordRepositoryService.findDonationByIdAndCampaignIdAndUserId(donationId, campaignId, donation.userId)
+            donation: await this.donationRecordRepositoryService.findDonationByIdAndCampaignIdAndUserId(donationId, campaignId, donation.donorId)
         }
     }
 
