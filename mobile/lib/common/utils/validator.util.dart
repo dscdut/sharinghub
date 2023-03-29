@@ -41,4 +41,16 @@ abstract class ValidatorUtil {
 
     return null;
   }
+
+  static String? validateQuantity(String? value) {
+    if (value != null) {
+      if (value.isEmpty) {
+        return LocaleKeys.validator_field_required.tr();
+      } else if (int.parse(value) < 1) {
+        return LocaleKeys.auth_invalid_quantity.tr();
+      }
+    }
+
+    return null;
+  }
 }

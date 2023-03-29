@@ -53,6 +53,7 @@ abstract class  LocaleKeys {
   static const auth_already_have_account = 'auth.already_have_account';
   static const auth_have_not_account = 'auth.have_not_account';
   static const auth_registration_successful = 'auth.registration_successful';
+  static const auth_invalid_quantity = 'auth.invalid_quantity';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
@@ -157,5 +158,10 @@ abstract class  LocaleKeys {
   static const feedback_location_rated = 'feedback.location_rated';
   static const feedback_success = 'feedback.success';
   static const feedback = 'feedback';
+  static const donate_thank_you = 'donate.thank_you';
+  static const donate_artifact_name = 'donate.artifact_name';
+  static const donate_artifact_quantity = 'donate.artifact_quantity';
+  static const donate_artifact_status = 'donate.artifact_status';
+  static const donate = 'donate';
 
 }

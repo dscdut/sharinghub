@@ -70,7 +70,8 @@ class CodegenLoader extends AssetLoader{
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
     "have_not_account": "Don't have an account?",
-    "registration_successful": "Registration Successful"
+    "registration_successful": "Registration Successful",
+    "invalid_quantity": "Invalid quantity"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -182,6 +183,12 @@ class CodegenLoader extends AssetLoader{
     "images_uploaded": "The campaign images must be uploaded",
     "location_rated": "Please rate the location",
     "success": "Send feedback successfully"
+  },
+  "donate": {
+    "thank_you": "Thank you for your donation!",
+    "artifact_name": "Artifact name",
+    "artifact_quantity": "Artifact quantity",
+    "artifact_status": "Artifact status"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -252,7 +259,8 @@ static const Map<String,dynamic> vi = {
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
-    "existed_email": "Email này đã được đăng ký"
+    "existed_email": "Email này đã được đăng ký",
+    "invalid_quantity": "Số lượng không hợp lệ"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -352,6 +360,12 @@ static const Map<String,dynamic> vi = {
     "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
     "location_rated": "Hãy đánh giá địa điểm",
     "success": "Gửi đánh giá thành công"
+  },
+  "donate": {
+    "thank_you": "Cảm ơn bạn đã quyên góp!",
+    "artifact_name": "Tên hiện vật",
+    "artifact_quantity": "Số lượng hiện vật",
+    "artifact_status": "Tình trạng hiện vật"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

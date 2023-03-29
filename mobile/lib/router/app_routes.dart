@@ -8,7 +8,6 @@ import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/explore.dart';
-import 'package:mobile/modules/explore/view/explore.view.dart';
 import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/profile/view/user_profile.view.dart';
@@ -30,6 +29,7 @@ abstract class AppRoutes {
   static const String campaignDetail = '/campaignDetail';
   static const String locationSearch = '/locationSearch';
   static const String campaignDonation = '/campaignDonation';
+  static const String donate = '/donate';
 
   // Auth
   static const String login = '/login';
@@ -163,6 +163,14 @@ abstract class AppRoutes {
           builder: (_) {
             return CampaignDetailPage(
               campaign: settings.arguments as CampaignModel,
+            );
+          },
+        );
+      case donate:
+        return MaterialPageRoute(
+          builder: (_) {
+            return DonatePage(
+              campaignId: settings.arguments as int,
             );
           },
         );
