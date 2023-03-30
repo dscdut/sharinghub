@@ -48,11 +48,12 @@ class CampaignRequestJoin extends StatelessWidget {
               isDisable: artifactTypes == null,
               width: double.infinity,
               onPressed: () {
-                context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
+                // context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
+                Navigator.of(context).pushNamed(AppRoutes.donate, arguments: context.read<CampaignDetailBloc>().state.campaignModel!.id);
               },
               backgroundColor: ColorStyles.primary1,
               // isLoading: state.status == CampaignDetailStatus.joinLoading,
-              content: 'Donate',
+              content: LocaleKeys.button_donate.tr(),
             ),
           )
         ],
