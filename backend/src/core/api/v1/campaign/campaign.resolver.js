@@ -90,5 +90,12 @@ export const CampaignResolver = Module.builder()
             method: 'delete',
             controller: CampaignController.deleteFeedback,
             preAuthorization: true,
-        }
+        },
+        {
+            route: '/dev/organizations/:organizationId/campaigns/:campaignId',
+            description: 'delete campaign without authorization',
+            method: 'delete',
+            params: [orgCampaignId, campaignId],
+            controller: CampaignController.deleteOneWithoutAuth,
+        },
     ]);
