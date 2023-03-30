@@ -49,7 +49,16 @@ class CampaignDataSource {
   Future<List<CampaignModel>> getCampaignsByLocation(
     LatLng wardLocation,
   ) async {
-    return CampaignMock.getCampaigns();
+    final response = await _dioHelper.get(
+      Endpoints.campaigns,
+      queryParameters: {
+        'lat': wardLocation.latitude,
+        'lng': wardLocation.longitude,
+      },
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
   }
 
   Future<List<CampaignModel>> getCampaignsByOrganizationId(

@@ -3,6 +3,7 @@ import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/campaign.model.dart';
+import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/router/app_routes.dart';
 
 class CampaignItem extends StatelessWidget {
@@ -41,12 +42,18 @@ class CampaignItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(
                 height,
               ),
-              child: Image.network(
-                currentCampaign.image!,
-                width: height,
-                height: height,
-                fit: BoxFit.cover,
-              ),
+              child: currentCampaign.image == null
+                  ? Assets.images.imgDefautAvatar.image(
+                      height: height,
+                      width: height,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.network(
+                      currentCampaign.image!,
+                      width: height,
+                      height: height,
+                      fit: BoxFit.cover,
+                    ),
             ),
             const SizedBox(
               width: 20,
