@@ -14,7 +14,12 @@ class CampaignDataSource {
   CampaignDataSource({required DioHelper dioHelper}) : _dioHelper = dioHelper;
 
   Future<List<CampaignModel>> getCampaigns() async {
-    return CampaignMock.getCampaigns();
+    final response = await _dioHelper.get(
+      Endpoints.campaigns,
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
   }
 
   Future<List<CampaignModel>> searchCampaigns(
@@ -32,10 +37,6 @@ class CampaignDataSource {
     return response.body
         .map<CampaignModel>((e) => CampaignModel.fromJson(e))
         .toList();
-  }
-
-  Future<CampaignModel> getCampaignById(int id) async {
-    return (await CampaignMock.getCampaigns())[id];
   }
 
   Future<void> setCampaign(SetCampaignDTO setCampaignParams) async {
@@ -63,7 +64,10 @@ class CampaignDataSource {
   }
 
   Future<CampaignModel> getCampaignDetail(int campaignId) async {
-    return (await CampaignMock.getCampaigns())[0];
+    final response = await _dioHelper.get(
+      '${Endpoints.campaigns}/$campaignId',
+    );
+    return CampaignModel.fromJson(response.body);
   }
 
   Future<void> joinCampaign(int campaignId) async {}

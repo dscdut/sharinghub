@@ -28,6 +28,9 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       coordinate: (json['coordinate'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
+      organizationName: json['organizationName'] as String,
+      organizationAvatar: json['organizationAvatar'] as String?,
+      organizationId: json['organizationId'] as int,
     );
 
 Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
@@ -53,5 +56,8 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   val['donationRequirement'] = instance.donationRequirement;
   val['otherInformation'] = instance.otherInformation;
   val['feedback'] = instance.feedback?.toJson();
+  val['organizationName'] = instance.organizationName;
+  val['organizationAvatar'] = instance.organizationAvatar;
+  val['organizationId'] = instance.organizationId;
   return val;
 }

@@ -85,7 +85,7 @@ class CampaignItem extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    currentCampaign.organization?.name ?? '',
+                    currentCampaign.organizationName,
                   )
                 ],
               ),

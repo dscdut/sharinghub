@@ -1,7 +1,5 @@
-import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
-import 'package:mobile/data/datasources/user.mock.dart';
 
 abstract class CampaignMock {
   static Future<CampaignModel> setCampaign(
@@ -10,8 +8,9 @@ abstract class CampaignMock {
     await Future.delayed(const Duration(seconds: 2));
 
     return CampaignModel(
-      organization: UserMock.getOrganization(),
       name: 'Giúp mọi người quay lại cuốc sống bình thường',
+      organizationId: 1,
+      organizationName: 'Công ty TNHH ABC',
       description:
           'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       startDate: DateTime.now().subtract(const Duration(days: 1)),
@@ -32,7 +31,9 @@ abstract class CampaignMock {
     return [
       CampaignModel(
         id: 0,
-        organization: UserMock.getOrganization(),
+        organizationId: 1,
+        organizationName: 'Công ty TNHH ABC',
+
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -61,7 +62,8 @@ abstract class CampaignMock {
       ),
       CampaignModel(
         id: 1,
-        organization: UserMock.getOrganization(),
+        organizationId: 1,
+        organizationName: 'Công ty TNHH ABC',
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -77,7 +79,8 @@ abstract class CampaignMock {
       ),
       CampaignModel(
         id: 2,
-        organization: UserMock.getOrganization(),
+        organizationId: 1,
+        organizationName: 'Công ty TNHH ABC',
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -92,7 +95,8 @@ abstract class CampaignMock {
       ),
       CampaignModel(
         id: 3,
-        organization: UserMock.getOrganization(),
+        organizationId: 1,
+        organizationName: 'Công ty TNHH ABC',
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
@@ -108,7 +112,8 @@ abstract class CampaignMock {
       ),
       CampaignModel(
         id: 4,
-        organization: UserMock.getOrganization(),
+        organizationId: 1,
+        organizationName: 'Công ty TNHH ABC',
         name: 'Giúp mọi người quay lại cuốc sống bình thường',
         description:
             'Lorem ipsum dolor sit amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',

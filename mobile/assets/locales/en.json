@@ -124,6 +124,7 @@
     "donator": "Donator",
     "update_to": "Update to",
     "list_donator": "List of donators",
+    "artifact_empty": "No artifact need to donate",
     "list_volunteer": "List of volunteers"
   },
   "profile": {

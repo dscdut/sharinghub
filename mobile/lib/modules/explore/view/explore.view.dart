@@ -68,25 +68,6 @@ class _HomeView extends StatelessWidget {
                 ],
               ),
             ),
-            actions: [
-              Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.only(right: 12),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: const Badge(
-                    label: Text('2'),
-                    textColor: Colors.white,
-                    backgroundColor: Colors.red,
-                    child: Icon(
-                      Icons.mail_outline,
-                      color: ColorStyles.primary1,
-                      size: AppSize.iconSize,
-                    ),
-                  ),
-                ),
-              )
-            ],
           ),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -105,32 +86,36 @@ class _HomeView extends StatelessWidget {
                           style: TextStyles.regularBody14
                               .copyWith(color: ColorStyles.primary1),
                         ),
-                        DropdownButton(
-                          onChanged: (value) => context.read<ExploreBloc>().add(
-                                ExploreSortTypeChange(
-                                  value!,
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton(
+                            onChanged: (value) =>
+                                context.read<ExploreBloc>().add(
+                                      ExploreSortTypeChange(
+                                        value!,
+                                      ),
+                                    ),
+                            value: state.sortType,
+                            items: SortType.values.map((e) {
+                              return DropdownMenuItem<SortType>(
+                                value: e,
+                                child: Text(
+                                  e.name,
+                                  style: TextStyles.regularBody16
+                                      .copyWith(color: ColorStyles.primary1),
                                 ),
-                              ),
-                          value: state.sortType,
-                          items: SortType.values.map((e) {
-                            return DropdownMenuItem<SortType>(
-                              value: e,
-                              child: Text(
-                                e.name,
-                                style: TextStyles.regularBody16
-                                    .copyWith(color: ColorStyles.primary1),
-                              ),
-                            );
-                          }).toList(),
-                          icon: const Icon(
-                            Icons.keyboard_arrow_down,
-                            color: ColorStyles.primary1,
+                              );
+                            }).toList(),
+                            icon: const Icon(
+                              Icons.keyboard_arrow_down,
+                              color: ColorStyles.primary1,
+                            ),
                           ),
                         ),
                       ],
                     ),
                     const Divider(
                       height: 10,
+                      color: Colors.transparent,
                     ),
                     Builder(
                       builder: (context) {
