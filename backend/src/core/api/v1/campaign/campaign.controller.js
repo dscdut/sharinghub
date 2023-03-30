@@ -140,12 +140,21 @@ class Controller {
             throw new ForbiddenException(MESSAGE.NOT_BELONG_TO_ORGANIZATION);
         }
 
-        await this.service.deleteOne(
+        const message = await this.service.deleteOne(
             req.params.organizationId,
             req.params.campaignId,
         );
 
-        return ValidHttpResponse.toNoContentResponse();
+        return ValidHttpResponse.toOkResponse(message);
+    }
+
+    deleteOneWithoutAuth = async req => {
+        const message = await this.service.deleteOne(
+            req.params.organizationId,
+            req.params.campaignId,
+        );
+
+        return ValidHttpResponse.toOkResponse(message);
     }
 
     searchByQuery = async req => {
