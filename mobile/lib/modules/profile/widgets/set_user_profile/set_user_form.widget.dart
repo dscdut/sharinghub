@@ -9,27 +9,39 @@ import 'package:mobile/common/utils/validator.util.dart';
 import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
 import 'package:mobile/common/widgets/show_or_pick_image.widget.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/organization/bloc/set/set_organization.bloc.dart';
+import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/widgets/set_user_profile/birthday_picker.widget.dart';
+import 'package:mobile/modules/profile/widgets/set_user_profile/gender_picker.widget.dart';
 
-class SetOrganizationForm extends StatelessWidget {
+class SetUserProfileForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
 
   final dynamic image;
   final void Function(File) setAvatar;
   final TextEditingController nameEditingController;
+  final TextEditingController emailEditingController;
   final TextEditingController phoneNumberEditingController;
   final TextEditingController addressEditingController;
-  final TextEditingController descriptionEditingController;
+  final TextEditingController workplaceEditingController;
+  final bool? gender;
+  final DateTime? birthday;
+  final void Function(bool?)? onGenderChanged;
+  final void Function(DateTime?)? onBirthdaySelected;
 
-  const SetOrganizationForm({
+  const SetUserProfileForm({
     super.key,
     required this.formKey,
+    required this.emailEditingController,
+    required this.gender,
+    this.onGenderChanged,
+    this.onBirthdaySelected,
     this.image,
+    required this.birthday,
     required this.setAvatar,
     required this.nameEditingController,
     required this.phoneNumberEditingController,
     required this.addressEditingController,
-    required this.descriptionEditingController,
+    required this.workplaceEditingController,
   });
 
   final Widget _verticalSpacing = const SizedBox(
@@ -42,7 +54,7 @@ class SetOrganizationForm extends StatelessWidget {
       key: formKey,
       child: Column(
         children: [
-          BlocBuilder<SetOrganizationBloc, SetOrganizationState>(
+          BlocBuilder<SetUserBloc, SetUserState>(
             builder: (context, state) {
               return ShowOrPickImage(
                 width: context.width / 3,
@@ -66,6 +78,23 @@ class SetOrganizationForm extends StatelessWidget {
           ),
           _verticalSpacing,
           AppTextFormField(
+            validator: ValidatorUtil.validateEmail,
+            textController: emailEditingController,
+            labelText: LocaleKeys.texts_email_address.tr(),
+            extendField: false,
+          ),
+          _verticalSpacing,
+          GenderPicker(
+            gender: gender,
+            onChanged: onGenderChanged,
+          ),
+          _verticalSpacing,
+          BirthdayPicker(
+            birthday: birthday,
+            onSelected: onBirthdaySelected,
+          ),
+          _verticalSpacing,
+          AppTextFormField(
             validator: ValidatorUtil.validateRequiredField,
             textController: phoneNumberEditingController,
             keyboardType: TextInputType.number,
@@ -82,13 +111,8 @@ class SetOrganizationForm extends StatelessWidget {
           _verticalSpacing,
           AppTextFormField(
             validator: ValidatorUtil.validateRequiredField,
-            textController: descriptionEditingController,
+            textController: workplaceEditingController,
             labelText: LocaleKeys.organization_description.tr(),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 10,
-            ),
-            maxLines: 6,
             extendField: false,
           ),
         ],

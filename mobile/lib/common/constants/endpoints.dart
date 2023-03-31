@@ -6,6 +6,9 @@ abstract class Endpoints {
   static String login = '$apiUrl/auth/login';
   static String register = '$apiUrl/auth/register';
 
+  // User
+  static String user = '$apiUrl/users/me';
+
   // Organization
   static String organization = '$apiUrl/organizations';
   static String myOrganizations = '$organization/my-organizations';

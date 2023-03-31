@@ -65,6 +65,8 @@ abstract class  LocaleKeys {
   static const validator_campaign_avatar_uploaded = 'validator.campaign_avatar_uploaded';
   static const validator_organization_avatar_uploaded = 'validator.organization_avatar_uploaded';
   static const validator_existed_email = 'validator.existed_email';
+  static const validator_gender_required = 'validator.gender_required';
+  static const validator_birthday_required = 'validator.birthday_required';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';
@@ -140,9 +142,12 @@ abstract class  LocaleKeys {
   static const profile_delete_account = 'profile.delete_account';
   static const profile_gender_female = 'profile.gender_female';
   static const profile_gender_male = 'profile.gender_male';
+  static const profile_gender_other = 'profile.gender_other';
   static const profile_form_number = 'profile.form_number';
   static const profile_campaign_number = 'profile.campaign_number';
   static const profile_review_number = 'profile.review_number';
+  static const profile_gender = 'profile.gender';
+  static const profile_birthday = 'profile.birthday';
   static const profile = 'profile';
   static const map_error_get_markers = 'map.error_get_markers';
   static const map_location_error = 'map.location_error';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/models/organization.model.dart';
+import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/view/donors/campaign_donors.view.dart';
 import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
@@ -10,6 +11,7 @@ import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/explore.dart';
 import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/view/set_user_profile.view.dart';
 import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
 
@@ -22,6 +24,7 @@ abstract class AppRoutes {
   //Profile
   static const String organizationProfile = '/organizationProfile';
   static const String userProfile = '/userProfile';
+  static const String setIndividual = '/setIndividual';
 
   // Campaign
   static const String setCampaign = '/setCampaign';
@@ -121,6 +124,14 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) {
             return const UserProfilePage();
+          },
+        );
+      case setIndividual:
+        return MaterialPageRoute(
+          builder: (_) {
+            return SetUserPage(
+              user: settings.arguments as UserModel,
+            );
           },
         );
       case setCampaign:

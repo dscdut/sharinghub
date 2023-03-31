@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:mobile/common/utils/wrapped_value.dart';
+import 'package:mobile/data/dtos/set_user.dto.dart';
 
 import 'package:mobile/data/models/organization.model.dart';
 
@@ -93,6 +94,20 @@ class UserModel extends Equatable {
       currentOrganization: currentOrganization == null
           ? this.currentOrganization
           : currentOrganization.value,
+    );
+  }
+
+  SetUserDTO toSetUserDTO() {
+    return SetUserDTO(
+      id: id,
+      fullName: fullName,
+      avatar: avatar,
+      email: email,
+      gender: gender,
+      birthDate: birthDay,
+      phoneNumber: phoneNumber,
+      address: address,
+      workplace: workSpace,
     );
   }
 }

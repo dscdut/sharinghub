@@ -67,6 +67,8 @@
     "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
     "existed_email": "Email này đã được đăng ký",
+    "gender_required": "Vui lòng chọn giới tính",
+    "birthday_required": "Vui lòng chọn ngày sinh",
     "invalid_quantity": "Số lượng không hợp lệ"
   },
   "search": {
@@ -148,9 +150,12 @@
     "delete_account": "Xoá tài khoản",
     "gender_female": "Nữ",
     "gender_male": "Nam",
+    "gender_other": "Khác",
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
-    "review_number": "{number} đánh giá"
+    "review_number": "{number} đánh giá",
+    "gender": "Giới tính",
+    "birthday": "Ngày sinh"
   },
   "map": {
     "error_get_markers": "Không thể tải danh sách vị trí",

@@ -67,7 +67,9 @@
     "not_match_password": "Password and confirm password not match",
     "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
     "organization_avatar_uploaded": "The organization avatar must be uploaded",
-    "existed_email": "This email is already existed"
+    "existed_email": "This email is already existed",
+    "gender_required": "Please select your gender",
+    "birthday_required": "Please select your birthday"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -148,9 +150,12 @@
     "delete_account": "Delete account",
     "gender_female": "Female",
     "gender_male": "Male",
+    "gender_other": "Other",
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
-    "review_number": "{number} reviews"
+    "review_number": "{number} reviews",
+    "gender": "Gender",
+    "birthday": "Birthday"
   },
   "map": {
     "error_get_markers": "Cannot load list of locations",
