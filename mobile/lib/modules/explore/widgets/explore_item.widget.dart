@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/campaign.model.dart';
+import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/router/app_routes.dart';
 
 class ExploreItem extends StatelessWidget {
@@ -32,12 +33,18 @@ class ExploreItem extends StatelessWidget {
               borderRadius: const BorderRadius.all(Radius.circular(8)),
               child: Stack(
                 children: [
-                  Image.network(
-                    item.image ?? '',
-                    height: 170,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                  item.image == null
+                      ? Assets.images.imgDefaultCampaign.image(
+                          height: 170,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.network(
+                          item.image ?? '',
+                          height: 170,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                   Positioned(
                     top: 12,
                     left: 12,
@@ -48,7 +55,7 @@ class ExploreItem extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                       child: Text(
-                        item.donationRequirement ?? '',
+                        item.organizationName,
                         style: TextStyles.regularBody14,
                       ),
                     ),
@@ -67,15 +74,18 @@ class ExploreItem extends StatelessWidget {
               ),
             ),
             const Divider(
-              height: 6,
-              // color: Colors.transparent,
+              height: 4,
+              color: Colors.transparent,
             ),
             Text(
-              '',
+              item.address,
               style: TextStyles.regularBody14.copyWith(
                 color: ColorStyles.zodiacBlue,
               ),
             ),
+            const Divider(
+              height: 8,
+            )
           ],
         ),
       ),

@@ -33,10 +33,6 @@ class CampaignRepository {
     );
   }
 
-  Future<CampaignModel> getCampaignById(int id) async {
-    return _dataSource.getCampaignById(id);
-  }
-
   Future<void> setCampaign(SetCampaignDTO setCampaignParams) {
     return _dataSource.setCampaign(setCampaignParams);
   }

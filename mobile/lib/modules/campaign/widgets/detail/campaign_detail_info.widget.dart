@@ -74,7 +74,10 @@ class CampaignDetailInfo extends StatelessWidget {
                   ),
                 ),
                 TextSpan(
-                  text: campaign.donationRequirement,
+                  text: (campaign.donationRequirement == '' ||
+                          campaign.donationRequirement == null)
+                      ? LocaleKeys.campaign_artifact_empty.tr()
+                      : campaign.donationRequirement,
                   style: TextStyles.s14RegularText,
                 ),
               ],
