@@ -4,7 +4,6 @@ import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/common/utils/json.util.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
-import 'package:mobile/data/models/organization.model.dart';
 
 import 'package:mobile/generated/locale_keys.g.dart';
 

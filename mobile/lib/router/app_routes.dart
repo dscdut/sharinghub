@@ -8,7 +8,6 @@ import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/explore.dart';
-import 'package:mobile/modules/explore/view/explore.view.dart';
 import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/profile/view/user_profile.view.dart';
