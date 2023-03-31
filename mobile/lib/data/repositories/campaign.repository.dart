@@ -5,6 +5,7 @@ import 'package:mobile/data/datasources/remote/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
+import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 
 @lazySingleton
@@ -32,13 +33,7 @@ class CampaignRepository {
     );
   }
 
-  Future<CampaignModel> getCampaignById(int id) async {
-    return _dataSource.getCampaignById(id);
-  }
-
   Future<void> setCampaign(SetCampaignDTO setCampaignParams) {
-    log(setCampaignParams.toJson().toString());
-
     return _dataSource.setCampaign(setCampaignParams);
   }
 
@@ -62,5 +57,9 @@ class CampaignRepository {
 
   Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {
     return _dataSource.feedbackToCampaign(params);
+  }
+
+  Future<void> donateToCampaign(SetDonateDTO params) async {
+    return _dataSource.donateToCampaign(params);
   }
 }

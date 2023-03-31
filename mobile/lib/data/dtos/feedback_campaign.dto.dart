@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:mobile/data/models/campaign.model.dart';
 
 part 'feedback_campaign.dto.g.dart';
 

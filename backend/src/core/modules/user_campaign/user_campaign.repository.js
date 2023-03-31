@@ -23,6 +23,7 @@ class Repository extends DataRepository {
         return this.query(trx).insert({
             campaign_id,
             user_id,
+            status: 2
         });
     }
 

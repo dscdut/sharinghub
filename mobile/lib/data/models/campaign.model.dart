@@ -4,7 +4,6 @@ import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/common/utils/json.util.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
-import 'package:mobile/data/models/organization.model.dart';
 
 import 'package:mobile/generated/locale_keys.g.dart';
 
@@ -27,8 +26,10 @@ class CampaignModel {
   final String? donationRequirement;
   final String? otherInformation;
   final FeedbackToCampaignDTO? feedback;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final OrganizationModel? organization;
+
+  final String organizationName;
+  final String? organizationAvatar;
+  final int organizationId;
 
   bool get isOngoing => DateTime.now().isBeforeOrEqualTo(endDate);
 
@@ -44,7 +45,6 @@ class CampaignModel {
 
   CampaignModel({
     this.id,
-    this.organization,
     required this.name,
     required this.address,
     this.specificAddress,
@@ -56,7 +56,10 @@ class CampaignModel {
     this.otherInformation,
     this.image,
     this.feedback,
-    required this.coordinate,
+    this.coordinate,
+    required this.organizationName,
+    this.organizationAvatar,
+    required this.organizationId,
   });
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) =>

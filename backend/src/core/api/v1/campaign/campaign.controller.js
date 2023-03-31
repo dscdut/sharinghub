@@ -9,11 +9,16 @@ import { CreateCampaignDto } from '../../../modules/campaign/dto';
 import { FeedbackService } from '../../../modules/feedback/service/feedback.service';
 import { CreateFeedbackDto } from '../../../modules/feedback/dto';
 import { logger } from '../../../../packages/logger';
+import { CreateDonationDto, UpdateDonorsStatusDto } from '../../../modules/donation/dto';
+import { DonationService } from '../../../modules/donation/service/donation.service';
+import { DonationRecordRepositoryService } from '../../../modules/donation/service/donation-record-repository.service';
 
 class Controller {
     constructor() {
         this.service = CampaignService;
         this.feedbackService = FeedbackService;
+        this.donationService = DonationService;
+        this.donationRecordRepositoryService = DonationRecordRepositoryService
     }
 
     findOneById = async req => {
@@ -24,8 +29,26 @@ class Controller {
         }
 
         const feedback = await this.feedbackService.getFeedBack(data.id);
-        
-        return ValidHttpResponse.toOkResponse({ ...data, feedback: feedback ? feedback : null });
+
+        const volunteers = await this.service.getAllVolunteersByOrgIdAndCampaignId(data.organizationId, data.id, Status.APPROVED);
+
+        const maskedVolunteers = volunteers.map(volunteer => {
+            return {
+                fullName: volunteer.fullName,
+                phoneNumber: volunteer.phoneNumber ? volunteer.phoneNumber.split('').map((char, index) => index > 2 && index < volunteer.phoneNumber.length - 1 ? '*' : char).join('') : null,
+            }
+        })
+
+        const donations = await this.donationRecordRepositoryService.findAllDonationByCampaignIdAndStatus(data.id, Status.APPROVED);
+
+        const maskedDonors = donations.map(donation => {
+            return {
+                fullName: donation.fullName,
+                phoneNumber: donation.phoneNumber ? donation.phoneNumber.split('').map((char, index) => index > 2 && index < donation.phoneNumber.length - 1 ? '*' : char).join('') : null,
+            }
+        })
+
+        return ValidHttpResponse.toOkResponse({ ...data, feedback: feedback ? feedback : null, volunteers: maskedVolunteers.slice(0, 3), donors: maskedDonors.slice(0, 3)});
     }
 
     findAllByOrgId = async req => {
@@ -117,12 +140,21 @@ class Controller {
             throw new ForbiddenException(MESSAGE.NOT_BELONG_TO_ORGANIZATION);
         }
 
-        await this.service.deleteOne(
+        const message = await this.service.deleteOne(
             req.params.organizationId,
             req.params.campaignId,
         );
 
-        return ValidHttpResponse.toNoContentResponse();
+        return ValidHttpResponse.toOkResponse(message);
+    }
+
+    deleteOneWithoutAuth = async req => {
+        const message = await this.service.deleteOne(
+            req.params.organizationId,
+            req.params.campaignId,
+        );
+
+        return ValidHttpResponse.toOkResponse(message);
     }
 
     searchByQuery = async req => {
@@ -133,6 +165,8 @@ class Controller {
             data = await this.service.searchByName(name);
         } else if (!name && lng && lat) {
             data = await this.service.searchByCoordinate(lng, lat);
+        } else if (!name && !lng && !lat) {
+            data = await this.service.findAllCampaigns();
         }
         else {
             throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT);
@@ -214,6 +248,46 @@ class Controller {
 
     deleteFeedback = async req => {
         const data = await this.feedbackService.deleteFeedback(req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    createOrUpdateDonation = async req => {
+        const data = await this.donationService.createOrUpdateDonation(req.params, req.user.payload.id, CreateDonationDto(req.body), req);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getDonations = async req => {
+        const data = await this.donationService.getDonations(req.params.campaignId, req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getDonation = async req => {
+        const data = await this.donationService.getDonation(req.params.donationId, req.params.campaignId, req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    deleteDonation = async req => {
+        const data = await this.donationService.deleteDonation(req.params.donationId, req.params.campaignId, req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getPendingDonors = async req => {
+        const data = await this.donationService.getPendingDonors(req.params.organizationId, req.params.campaignId, req.user.payload);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    updateDonorsStatus = async req => {
+        const data = await this.donationService.updateDonorsStatus(req.params.organizationId, req.params.campaignId, req.params.donationId, req.user.payload, UpdateDonorsStatusDto(req.body));
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    setPendingDonorsStatusToRejected = async req => {
+        const data = await this.donationService.setPendingDonorsStatusToRejected(req.params.organizationId, req.params.campaignId, req.user.payload);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getDonors = async req => {
+        const data = await this.donationService.getDonors(req.params.organizationId, req.params.campaignId, req.user.payload);
         return ValidHttpResponse.toOkResponse(data);
     }
 }
