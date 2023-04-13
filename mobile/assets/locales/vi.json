@@ -133,8 +133,8 @@
   "profile": {
     "setting": "Cài đặt",
     "contact_info": "Thông tin liên hệ",
-    "personal_profile": "Hồ sơ cá nhân",
-    "organization_profile": "Hồ sơ tổ chức",
+    "personal": "Hồ sơ cá nhân",
+    "organization": "Hồ sơ tổ chức",
     "pending": "Chờ duyệt",
     "upcoming": "Sắp diễn ra",
     "ongoing": "Đang diễn ra",
