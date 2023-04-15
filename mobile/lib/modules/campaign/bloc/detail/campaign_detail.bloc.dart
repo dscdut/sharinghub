@@ -14,7 +14,6 @@ class CampaignDetailBloc
       : _campaignRepository = campaignRepository,
         super(const CampaignDetailState()) {
     on<CampaignDetailGet>(_onGetCampaignDetail);
-    on<CampaignDetailJoin>(_onJoinCampaign);
   }
 
   Future<void> _onGetCampaignDetail(
@@ -35,21 +34,6 @@ class CampaignDetailBloc
       );
     } catch (err) {
       emit(state.copyWith(status: CampaignDetailStatus.getFailed));
-    }
-  }
-
-  Future<void> _onJoinCampaign(
-    CampaignDetailJoin event,
-    Emitter<CampaignDetailState> emit,
-  ) async {
-    try {
-      emit(state.copyWith(status: CampaignDetailStatus.joinLoading));
-
-      await _campaignRepository.joinCampaign(state.campaignModel!.id!);
-
-      emit(state.copyWith(status: CampaignDetailStatus.joinSuccess));
-    } catch (err) {
-      emit(state.copyWith(status: CampaignDetailStatus.joinFailed));
     }
   }
 }

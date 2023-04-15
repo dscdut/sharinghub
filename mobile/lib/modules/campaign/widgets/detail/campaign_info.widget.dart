@@ -5,9 +5,9 @@ import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_donors.widget.dart';
-import 'package:mobile/modules/campaign/widgets/detail/campaing_request_join.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_ended_info.widget.dart';
+import 'package:mobile/modules/campaign/widgets/detail/campaign_request_join.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/image_and_description.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/organization_info.widget.dart';
 
@@ -44,8 +44,8 @@ class CampaignInfo extends StatelessWidget {
             ),
             OrganizationInfo(
               organization: OrganizationModel(
-                id: campaign.organizationId,
-                name: campaign.organizationName,
+                id: campaign.organizationId!,
+                name: campaign.organizationName ?? '',
                 avatar: campaign.organizationAvatar,
                 address: '',
                 description: '',
@@ -60,8 +60,7 @@ class CampaignInfo extends StatelessWidget {
                 ? BlocBuilder<CampaignDetailBloc, CampaignDetailState>(
                     builder: (context, state) {
                       return CampaignRequestJoin(
-                        formLink: campaign.registerLink,
-                        artifactTypes: campaign.donationRequirement,
+                        campaign: campaign,
                       );
                     },
                   )

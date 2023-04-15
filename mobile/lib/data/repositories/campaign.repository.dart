@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/remote/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/common/constants/endpoints.dart';
@@ -81,7 +79,11 @@ class CampaignDataSource {
     return CampaignModel.fromJson(response.body);
   }
 
-  Future<void> joinCampaign(int campaignId) async {}
+  Future<void> joinCampaign(int campaignId) async {
+    _dioHelper.post(
+      '${Endpoints.campaigns}/$campaignId/volunteers',
+    );
+  }
 
   Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {}
 

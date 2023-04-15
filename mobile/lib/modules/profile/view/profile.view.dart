@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/data/models/user.model.dart';
-import 'package:mobile/data/repositories/user.repository.dart';
-import 'package:mobile/di/di.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/profile/widgets/profile/list_status_shimmer.widget.dart';
 import 'package:mobile/modules/profile/bloc/profile/profile.bloc.dart';
@@ -18,7 +16,6 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => ProfileBloc(
-        userRepository: getIt.get<UserRepository>(),
         authBloc: context.read<AuthBloc>(),
       ),
       child: const _ProfileView(),

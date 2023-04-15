@@ -159,7 +159,7 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) {
             return CampaignRegisterFormPage(
-              formLink: settings.arguments as String,
+              campaign: settings.arguments as CampaignModel,
             );
           },
         );
