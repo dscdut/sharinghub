@@ -87,14 +87,14 @@ class CampaignForm extends StatelessWidget {
           AppTextFormField(
             validator: ValidatorUtil.validateRequiredField,
             textController: nameController,
-            hintText: LocaleKeys.campaign_campaign_name.tr(),
+            hintText: LocaleKeys.campaign_name.tr(),
             extendField: false,
           ),
           _verticalSpacing,
           AppTextFormField(
             validator: ValidatorUtil.validateRequiredField,
             textController: descriptionController,
-            hintText: LocaleKeys.campaign_campaign_description.tr(),
+            hintText: LocaleKeys.campaign_description.tr(),
             maxLines: 6,
             contentPadding: const EdgeInsets.fromLTRB(20, 30, 20, 0),
             extendField: false,

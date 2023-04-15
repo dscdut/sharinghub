@@ -70,8 +70,7 @@ class CodegenLoader extends AssetLoader{
     "confirm_password": "Confirm password",
     "already_have_account": "Already have an account?",
     "have_not_account": "Don't have an account?",
-    "registration_successful": "Registration Successful",
-    "invalid_quantity": "Invalid quantity"
+    "registration_successful": "Registration Successful"
   },
   "validator": {
     "email_required": "Please enter your email",
@@ -85,7 +84,8 @@ class CodegenLoader extends AssetLoader{
     "organization_avatar_uploaded": "The organization avatar must be uploaded",
     "existed_email": "This email is already existed",
     "gender_required": "Please select your gender",
-    "birthday_required": "Please select your birthday"
+    "birthday_required": "Please select your birthday",
+    "invalid_quantity": "Invalid quantity"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -119,8 +119,8 @@ class CodegenLoader extends AssetLoader{
     "create_success": "Campaign created successfully",
     "update_success": "Campaign updated successfully",
     "back_home": "Back to home",
-    "campaign_name": "Campaign name",
-    "campaign_description": "Description",
+    "name": "Campaign name",
+    "description": "Description",
     "ward_district_province": "Ward, district, province, ...",
     "address": "Specific address",
     "start_date": "Start date",
@@ -332,8 +332,8 @@ static const Map<String,dynamic> vi = {
   "profile": {
     "setting": "Cài đặt",
     "contact_info": "Thông tin liên hệ",
-    "personal_profile": "Hồ sơ cá nhân",
-    "organization_profile": "Hồ sơ tổ chức",
+    "personal": "Hồ sơ cá nhân",
+    "organization": "Hồ sơ tổ chức",
     "pending": "Chờ duyệt",
     "upcoming": "Sắp diễn ra",
     "ongoing": "Đang diễn ra",

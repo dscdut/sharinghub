@@ -47,7 +47,7 @@ abstract class ValidatorUtil {
       if (value.isEmpty) {
         return LocaleKeys.validator_field_required.tr();
       } else if (int.parse(value) < 1) {
-        return LocaleKeys.auth_invalid_quantity.tr();
+        return LocaleKeys.validator_invalid_quantity.tr();
       }
     }
 

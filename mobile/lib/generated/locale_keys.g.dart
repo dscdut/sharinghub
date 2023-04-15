@@ -53,7 +53,6 @@ abstract class  LocaleKeys {
   static const auth_already_have_account = 'auth.already_have_account';
   static const auth_have_not_account = 'auth.have_not_account';
   static const auth_registration_successful = 'auth.registration_successful';
-  static const auth_invalid_quantity = 'auth.invalid_quantity';
   static const auth = 'auth';
   static const validator_email_required = 'validator.email_required';
   static const validator_password_required = 'validator.password_required';
@@ -67,6 +66,7 @@ abstract class  LocaleKeys {
   static const validator_existed_email = 'validator.existed_email';
   static const validator_gender_required = 'validator.gender_required';
   static const validator_birthday_required = 'validator.birthday_required';
+  static const validator_invalid_quantity = 'validator.invalid_quantity';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';
@@ -96,8 +96,8 @@ abstract class  LocaleKeys {
   static const campaign_create_success = 'campaign.create_success';
   static const campaign_update_success = 'campaign.update_success';
   static const campaign_back_home = 'campaign.back_home';
-  static const campaign_campaign_name = 'campaign.campaign_name';
-  static const campaign_campaign_description = 'campaign.campaign_description';
+  static const campaign_name = 'campaign.name';
+  static const campaign_description = 'campaign.description';
   static const campaign_ward_district_province = 'campaign.ward_district_province';
   static const campaign_address = 'campaign.address';
   static const campaign_start_date = 'campaign.start_date';
