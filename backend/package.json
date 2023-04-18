@@ -7,7 +7,7 @@
     "license": "MIT",
     "scripts": {
         "lint": "eslint --fix --ext .js .",
-        "dev": "nodemon --exec npx babel-node src/core/bin/www.js",
+        "dev": "nodemon --exec babel-node src/core/bin/www.js",
         "start": "npm run build && node ./dist/core/bin/www.js",
         "clean": "rm -rf dist && mkdir dist",
         "build:babel": "babel ./src --out-dir dist --copy-files",
