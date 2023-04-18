@@ -126,6 +126,7 @@ class CampaignForm extends StatelessWidget {
           ),
           _verticalSpacing,
           AppTextFormField(
+            validator: (p0) => ValidatorUtil.validateURL(p0?.trim()),
             textController: registerLinkController,
             hintText: LocaleKeys.campaign_form_link.tr(),
             extendField: false,

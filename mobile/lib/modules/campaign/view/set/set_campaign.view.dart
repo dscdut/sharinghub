@@ -123,7 +123,7 @@ class _SetCampaignViewState extends State<_SetCampaignView> {
     _descriptionController.text = _setCampaign.description ?? '';
     _addressController.text = _setCampaign.address ?? '';
     _specificAddressController.text = _setCampaign.specificAddress ?? '';
-    _registerLinkController.text = _setCampaign.registerLink ?? '';
+    _registerLinkController.text = _setCampaign.registerLink?.trim() ?? '';
     _actifactDonateController.text = _setCampaign.donationRequirement ?? '';
   }
 
