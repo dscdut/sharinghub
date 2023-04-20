@@ -53,4 +53,14 @@ abstract class ValidatorUtil {
 
     return null;
   }
+
+  static String? validateURL(String? value) {
+    if (value == null) return null;
+    final RegExp regExp = RegExp(
+      r'^(https?:\/\/)?([\w.-]+)\.([a-z]{2,})(\/[\w.%+-]+)*\/?(\?[^\s]+)?$',
+      caseSensitive: false,
+    );
+    if (regExp.hasMatch(value)) return null;
+    return LocaleKeys.validator_invalid_url.tr();
+  }
 }

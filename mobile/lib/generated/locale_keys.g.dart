@@ -67,6 +67,7 @@ abstract class  LocaleKeys {
   static const validator_gender_required = 'validator.gender_required';
   static const validator_birthday_required = 'validator.birthday_required';
   static const validator_invalid_quantity = 'validator.invalid_quantity';
+  static const validator_invalid_url = 'validator.invalid_url';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';

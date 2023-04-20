@@ -69,7 +69,8 @@
     "existed_email": "This email is already existed",
     "gender_required": "Please select your gender",
     "birthday_required": "Please select your birthday",
-    "invalid_quantity": "Invalid quantity"
+    "invalid_quantity": "Invalid quantity",
+    "invalid_url": "Invalid URL"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",

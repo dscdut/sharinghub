@@ -69,7 +69,8 @@
     "existed_email": "Email này đã được đăng ký",
     "gender_required": "Vui lòng chọn giới tính",
     "birthday_required": "Vui lòng chọn ngày sinh",
-    "invalid_quantity": "Số lượng không hợp lệ"
+    "invalid_quantity": "Số lượng không hợp lệ",
+    "invalid_url": "URL không hợp lệ"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",

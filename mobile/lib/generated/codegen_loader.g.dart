@@ -85,7 +85,8 @@ class CodegenLoader extends AssetLoader{
     "existed_email": "This email is already existed",
     "gender_required": "Please select your gender",
     "birthday_required": "Please select your birthday",
-    "invalid_quantity": "Invalid quantity"
+    "invalid_quantity": "Invalid quantity",
+    "invalid_url": "Invalid URL"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -268,7 +269,8 @@ static const Map<String,dynamic> vi = {
     "existed_email": "Email này đã được đăng ký",
     "gender_required": "Vui lòng chọn giới tính",
     "birthday_required": "Vui lòng chọn ngày sinh",
-    "invalid_quantity": "Số lượng không hợp lệ"
+    "invalid_quantity": "Số lượng không hợp lệ",
+    "invalid_url": "URL không hợp lệ"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
