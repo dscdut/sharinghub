@@ -16,6 +16,12 @@ class Service {
             this.OrgRepositoryService.deleteFile(file);
             throw new ForbiddenException('You don\'t have permission to edit this organization');
         }
+
+        if (!orgId && user.organization_ids.length > 0) {
+            this.OrgRepositoryService.deleteFile(file);
+            throw new ForbiddenException('You can only create one organization');
+        }
+
         const [{ id }] = await this.OrgRepositoryService.updateOrgTable(file, { ...orgDto, user_id: user.id, id: orgId });
 
         if (!user.organization_ids.includes(id)) {
