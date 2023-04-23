@@ -12,6 +12,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       address: json['address'] as String,
       specificAddress: json['specificAddress'] as String?,
+      isJoined: json['joined'] as bool?,
       description: json['description'] as String,
       startDate: const JsonSerializableDateTime()
           .fromJson(json['startDate'] as String),
@@ -28,9 +29,9 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       coordinate: (json['coordinate'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
-      organizationName: json['organizationName'] as String,
+      organizationName: json['organizationName'] as String?,
       organizationAvatar: json['organizationAvatar'] as String?,
-      organizationId: json['organizationId'] as int,
+      organizationId: json['organizationId'] as int?,
     );
 
 Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {

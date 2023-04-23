@@ -55,7 +55,7 @@ class ExploreItem extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
                       child: Text(
-                        item.organizationName,
+                        item.organizationName ?? '',
                         style: TextStyles.regularBody14,
                       ),
                     ),

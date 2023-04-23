@@ -26,20 +26,25 @@ class CampaignModel {
   final String? donationRequirement;
   final String? otherInformation;
   final FeedbackToCampaignDTO? feedback;
+  @JsonKey(name: 'joined', includeIfNull: false, includeToJson: false)
+  final bool? isJoined;
 
-  final String organizationName;
+  final String? organizationName;
   final String? organizationAvatar;
-  final int organizationId;
+  final int? organizationId;
 
-  bool get isOngoing => DateTime.now().isBeforeOrEqualTo(endDate);
-
-  bool get isEnded => DateTime.now().isAfter(endDate);
+bool get isUpcoming => startDate.isAfter(DateTime.now());
+  bool get isOngoing =>
+      startDate.isBefore(DateTime.now()) && endDate.isAfter(DateTime.now());
+  bool get isEnded => endDate.isBefore(DateTime.now());
 
   bool get hasFeedback => feedback != null;
 
-  String get statusContent => isOngoing
-      ? LocaleKeys.campaign_ongoing.tr()
-      : LocaleKeys.campaign_ended.tr();
+  String get statusContent => isUpcoming
+      ? LocaleKeys.profile_upcoming.tr()
+      : isOngoing
+          ? LocaleKeys.campaign_ongoing.tr()
+          : LocaleKeys.campaign_ended.tr();
 
   String get fullDate => '${startDate.toDisplay} - ${endDate.toDisplay}';
 
@@ -48,6 +53,7 @@ class CampaignModel {
     required this.name,
     required this.address,
     this.specificAddress,
+    required this.isJoined,
     required this.description,
     required this.startDate,
     required this.endDate,

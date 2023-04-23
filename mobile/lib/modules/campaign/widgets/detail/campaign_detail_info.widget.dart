@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
-import 'package:mobile/common/widgets/app_read_more_text.widget.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/campaign/widgets/detail/icon_title.widget.dart';
@@ -19,6 +19,31 @@ class CampaignDetailInfo extends StatelessWidget {
   final Widget _verticalSpacing = const SizedBox(
     height: 8,
   );
+
+  String _getCampaignStatusDisplay(CampaignModel campaign) {
+    if (campaign.isEnded) {
+      return '';
+    } else if (campaign.isUpcoming) {
+      return ' : ${campaign.startDate.toDisplay}';
+    } else {
+      return ' - ${campaign.endDate.toDisplay}';
+    }
+  }
+
+  TextStyle _getCampaignStatusTextStyle(CampaignModel campaign) {
+    final color = _getColorForCampaignStatus(campaign);
+    return TextStyles.s14BoldText.copyWith(color: color);
+  }
+
+  Color _getColorForCampaignStatus(CampaignModel campaign) {
+    if (campaign.isUpcoming) {
+      return Colors.orange;
+    } else if (campaign.isOngoing) {
+      return Colors.green;
+    } else {
+      return Colors.red;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,15 +70,13 @@ class CampaignDetailInfo extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: campaign.fullDate,
-                        style: TextStyles.s14RegularText,
+                        text: campaign.statusContent,
+                        style: _getCampaignStatusTextStyle(campaign),
                       ),
                       TextSpan(
-                        text:
-                            ' (${campaign.isOngoing ? LocaleKeys.campaign_ongoing.tr() : LocaleKeys.campaign_ended.tr()})',
-                        style: TextStyles.s14BoldText
-                            .copyWith(color: Colors.green),
-                      )
+                        text: _getCampaignStatusDisplay(campaign),
+                        style: TextStyles.s14RegularText,
+                      ),
                     ],
                   ),
                 ),
@@ -83,13 +106,6 @@ class CampaignDetailInfo extends StatelessWidget {
               ],
             ),
           ),
-          _verticalSpacing,
-          if (!campaign.isOngoing)
-            AppReadMoreText(
-              content:
-                  '${LocaleKeys.campaign_obtained_results.tr()}: Xây được 100 căn',
-              style: TextStyles.s14BoldText.copyWith(color: Colors.green),
-            )
         ],
       ),
     );
