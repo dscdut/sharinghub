@@ -40,6 +40,7 @@ abstract class AppRoutes {
 
   // Feedback
   static const String organizationFeedback = '/organizationFeedback';
+  static const String individualFeedback = '/individualFeedback';
 
   // Root
   static const String root = '/root';
@@ -113,6 +114,14 @@ abstract class AppRoutes {
           },
         );
       case organizationFeedback:
+        return MaterialPageRoute(
+          builder: (_) {
+            return FeedbackCampaignPage(
+              campaign: settings.arguments as CampaignModel,
+            );
+          },
+        );
+      case individualFeedback:
         return MaterialPageRoute(
           builder: (_) {
             return FeedbackCampaignPage(
