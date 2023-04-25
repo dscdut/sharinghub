@@ -7,4 +7,15 @@ class CampaignRegisterEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class CampaignRegisterSuccess extends CampaignRegisterEvent {}
+class CampaignRegisterSubmit extends CampaignRegisterEvent {
+  final int campaignID;
+
+  const CampaignRegisterSubmit({
+    required this.campaignID,
+  });
+
+  @override
+  List<Object?> get props => [
+        campaignID,
+      ];
+}

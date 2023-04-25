@@ -27,9 +27,9 @@ class CampaignModel {
   final String? otherInformation;
   final FeedbackToCampaignDTO? feedback;
 
-  final String organizationName;
+  final String? organizationName;
   final String? organizationAvatar;
-  final int organizationId;
+  final int? organizationId;
 
   bool get isOngoing => DateTime.now().isBeforeOrEqualTo(endDate);
 
