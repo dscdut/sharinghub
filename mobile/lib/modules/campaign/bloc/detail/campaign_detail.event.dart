@@ -15,5 +15,3 @@ class CampaignDetailGet extends CampaignDetailEvent {
   @override
   List<Object> get props => [campaignId];
 }
-
-class CampaignDetailJoin extends CampaignDetailEvent {}
