@@ -8,7 +8,6 @@ import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_donors.wi
 import 'package:mobile/modules/campaign/widgets/detail/campaign_feedback_button.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_request_join.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_info.widget.dart';
-import 'package:mobile/modules/campaign/widgets/detail/campaign_ended_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/image_and_description.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/organization_info.widget.dart';
 
