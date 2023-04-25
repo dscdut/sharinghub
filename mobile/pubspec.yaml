@@ -57,7 +57,7 @@ dependencies:
   equatable: ^2.0.5
   image_picker: 0.8.6+4
   readmore: ^2.2.0
-  flutter_svg: ^2.0.2
+  flutter_svg: ^2.0.5
   syncfusion_flutter_datepicker: ^20.4.52
   image_cropper: ^3.0.1
   path_provider: ^2.0.13
@@ -82,7 +82,7 @@ dev_dependencies:
   json_serializable: ^6.6.1
   build_runner: ^2.3.3
   flutter_flavorizr: ^2.1.5
-  flutter_gen_runner: ^5.2.0
+  flutter_gen_runner: ^5.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
