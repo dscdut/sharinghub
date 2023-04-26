@@ -1,6 +1,6 @@
 import { getTransaction } from 'core/database';
 import { logger } from 'core/utils';
-import { InternalServerException, NotFoundException, DuplicateException } from 'packages/httpException';
+import { InternalServerException, NotFoundException, DuplicateException, BadRequestException } from 'packages/httpException';
 import { Optional } from 'core/utils';
 import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../campaign.repository';
@@ -229,9 +229,11 @@ class Service {
     async registerVolunteer(campaign_id, user_id) {
         const trx = await getTransaction();
 
+        const campaign = await this.findOneById(campaign_id);
         // check if campaign exist
-        Optional.of(await this.findOneById(campaign_id))
-            .throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT));
+        if (!campaign) {
+            throw new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT);
+        }
 
         // check if campaign_id is already registered by user_id
         Optional.of(await this.userCampaignRepository.findOneByCampaignIdAndVolunteerId(
@@ -239,6 +241,11 @@ class Service {
             user_id,
         ))
             .throwIfPresent(new DuplicateException(MESSAGE.VOLUNTEER_ALREADY_REGISTERED));
+
+        // check if current date is before start date
+        if (new Date() > new Date(campaign.startDate)) {
+            throw new BadRequestException(MESSAGE.CAMPAIGN_TIME_INAPPROPRIATE);
+        }
 
         try {
             await this.userCampaignRepository.registerVolunteer(
