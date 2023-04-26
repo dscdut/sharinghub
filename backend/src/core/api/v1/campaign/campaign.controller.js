@@ -12,6 +12,7 @@ import { logger } from '../../../../packages/logger';
 import { CreateDonationDto, UpdateDonorsStatusDto } from '../../../modules/donation/dto';
 import { DonationService } from '../../../modules/donation/service/donation.service';
 import { DonationRecordRepositoryService } from '../../../modules/donation/service/donation-record-repository.service';
+import { JwtService } from '../../../modules/auth/service/jwt.service';
 
 class Controller {
     constructor() {
@@ -19,6 +20,7 @@ class Controller {
         this.feedbackService = FeedbackService;
         this.donationService = DonationService;
         this.donationRecordRepositoryService = DonationRecordRepositoryService
+        this.jwtService = JwtService;
     }
 
     findOneById = async req => {
@@ -43,12 +45,40 @@ class Controller {
 
         const maskedDonors = donations.map(donation => {
             return {
-                donorFullName: donation.donorFullName,
-                donorPhoneNumber: donation.donorPhoneNumber ? donation.donorPhoneNumber.split('').map((char, index) => index > 2 && index < donation.donorPhoneNumber.length - 1 ? '*' : char).join('') : null,
+                fullName: donation.fullName,
+                phoneNumber: donation.phoneNumber ? donation.phoneNumber.split('').map((char, index) => index > 2 && index < donation.phoneNumber.length - 1 ? '*' : char).join('') : null,
             }
         })
+        
+        let joined = false;
 
-        return ValidHttpResponse.toOkResponse({ ...data, feedback: feedback ? feedback : null, volunteers: maskedVolunteers.slice(0, 3), donors: maskedDonors.slice(0, 3)});
+        if (req.headers.authorization) {
+            const token = req.headers.authorization.split(' ')[1];
+
+            const { id } = this.jwtService.verify(token);
+
+            volunteers.forEach(volunteer => {
+                if (volunteer.id === id) {
+                    joined = true;
+                }
+            });
+
+            donations.forEach(donation => {
+                if (donation.donorId === id) {
+                    joined = true;
+                }
+            });
+        }
+
+        const response = { 
+            ...data,
+            joined,
+            feedback: feedback ? feedback : null,
+            volunteers: maskedVolunteers.slice(0, 3),
+            donors: maskedDonors.slice(0, 3)
+        }
+
+        return ValidHttpResponse.toOkResponse(response);
     }
 
     findAllByOrgId = async req => {
@@ -140,12 +170,21 @@ class Controller {
             throw new ForbiddenException(MESSAGE.NOT_BELONG_TO_ORGANIZATION);
         }
 
-        await this.service.deleteOne(
+        const message = await this.service.deleteOne(
             req.params.organizationId,
             req.params.campaignId,
         );
 
-        return ValidHttpResponse.toNoContentResponse();
+        return ValidHttpResponse.toOkResponse(message);
+    }
+
+    deleteOneWithoutAuth = async req => {
+        const message = await this.service.deleteOne(
+            req.params.organizationId,
+            req.params.campaignId,
+        );
+
+        return ValidHttpResponse.toOkResponse(message);
     }
 
     searchByQuery = async req => {

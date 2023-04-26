@@ -46,6 +46,10 @@ class $AssetsIconsGen {
   AssetGenImage get icSearch =>
       const AssetGenImage('assets/icons/ic_search.png');
 
+  /// File path: assets/icons/ic_search_dark.png
+  AssetGenImage get icSearchDark =>
+      const AssetGenImage('assets/icons/ic_search_dark.png');
+
   /// File path: assets/icons/ic_setting.png
   AssetGenImage get icSetting =>
       const AssetGenImage('assets/icons/ic_setting.png');
@@ -73,6 +77,7 @@ class $AssetsIconsGen {
         icLogout,
         icRemoveUser,
         icSearch,
+        icSearchDark,
         icSetting,
         icShare,
         icStar,
@@ -84,6 +89,14 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/img_default_campaign.png
+  AssetGenImage get imgDefaultCampaign =>
+      const AssetGenImage('assets/images/img_default_campaign.png');
+
+  /// File path: assets/images/img_default_campaign_square.png
+  AssetGenImage get imgDefaultCampaignSquare =>
+      const AssetGenImage('assets/images/img_default_campaign_square.png');
+
   /// File path: assets/images/img_defaut_avatar.png
   AssetGenImage get imgDefautAvatar =>
       const AssetGenImage('assets/images/img_defaut_avatar.png');
@@ -92,7 +105,8 @@ class $AssetsImagesGen {
   SvgGenImage get notFound => const SvgGenImage('assets/images/not_found.svg');
 
   /// List of all assets
-  List<dynamic> get values => [imgDefautAvatar, notFound];
+  List<dynamic> get values =>
+      [imgDefaultCampaign, imgDefaultCampaignSquare, imgDefautAvatar, notFound];
 }
 
 class $AssetsLocalesGen {
@@ -212,7 +226,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 
@@ -239,9 +262,9 @@ class SvgGenImage {
     bool excludeFromSemantics = false,
     SvgTheme theme = const SvgTheme(),
     ColorFilter? colorFilter,
+    Clip clipBehavior = Clip.hardEdge,
     @deprecated Color? color,
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
-    @deprecated Clip? clipBehavior,
     @deprecated bool cacheColorFilter = false,
   }) {
     return SvgPicture.asset(

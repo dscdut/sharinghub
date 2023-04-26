@@ -2,9 +2,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/common/constants/endpoints.dart';
 import 'package:mobile/common/helpers/dio.helper.dart';
-import 'package:mobile/data/datasources/campaign.mock.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
+import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 
 @lazySingleton
@@ -14,7 +14,12 @@ class CampaignDataSource {
   CampaignDataSource({required DioHelper dioHelper}) : _dioHelper = dioHelper;
 
   Future<List<CampaignModel>> getCampaigns() async {
-    return CampaignMock.getCampaigns();
+    final response = await _dioHelper.get(
+      Endpoints.campaigns,
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
   }
 
   Future<List<CampaignModel>> searchCampaigns(
@@ -34,10 +39,6 @@ class CampaignDataSource {
         .toList();
   }
 
-  Future<CampaignModel> getCampaignById(int id) async {
-    return (await CampaignMock.getCampaigns())[id];
-  }
-
   Future<void> setCampaign(SetCampaignDTO setCampaignParams) async {
     await _dioHelper.post(
       '${Endpoints.campaignByOrganization}/${setCampaignParams.organizationId}/campaigns',
@@ -48,7 +49,16 @@ class CampaignDataSource {
   Future<List<CampaignModel>> getCampaignsByLocation(
     LatLng wardLocation,
   ) async {
-    return CampaignMock.getCampaigns();
+    final response = await _dioHelper.get(
+      Endpoints.campaigns,
+      queryParameters: {
+        'lat': wardLocation.latitude,
+        'lng': wardLocation.longitude,
+      },
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
   }
 
   Future<List<CampaignModel>> getCampaignsByOrganizationId(
@@ -63,10 +73,24 @@ class CampaignDataSource {
   }
 
   Future<CampaignModel> getCampaignDetail(int campaignId) async {
-    return (await CampaignMock.getCampaigns())[0];
+    final response = await _dioHelper.get(
+      '${Endpoints.campaigns}/$campaignId',
+    );
+    return CampaignModel.fromJson(response.body);
   }
 
-  Future<void> joinCampaign(int campaignId) async {}
+  Future<void> joinCampaign(int campaignId) async {
+    _dioHelper.post(
+      '${Endpoints.campaigns}/$campaignId/volunteers',
+    );
+  }
 
   Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {}
+
+  Future<void> donateToCampaign(SetDonateDTO params) async {
+    await _dioHelper.post(
+      '${Endpoints.campaigns}/${params.campaignId}/donations',
+      formData: params.toJson(),
+    );
+  }
 }

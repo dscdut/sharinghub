@@ -47,7 +47,10 @@ class SummaryInfo extends StatelessWidget {
                 ),
               );
             } else {
-              Navigator.of(context).pushNamed(AppRoutes.userProfile);
+              Navigator.of(context).pushNamed(
+                AppRoutes.setIndividual,
+                arguments: state.user,
+              );
             }
           },
           behavior: HitTestBehavior.opaque,

@@ -64,6 +64,10 @@ abstract class  LocaleKeys {
   static const validator_campaign_avatar_uploaded = 'validator.campaign_avatar_uploaded';
   static const validator_organization_avatar_uploaded = 'validator.organization_avatar_uploaded';
   static const validator_existed_email = 'validator.existed_email';
+  static const validator_gender_required = 'validator.gender_required';
+  static const validator_birthday_required = 'validator.birthday_required';
+  static const validator_invalid_quantity = 'validator.invalid_quantity';
+  static const validator_invalid_url = 'validator.invalid_url';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';
@@ -93,8 +97,8 @@ abstract class  LocaleKeys {
   static const campaign_create_success = 'campaign.create_success';
   static const campaign_update_success = 'campaign.update_success';
   static const campaign_back_home = 'campaign.back_home';
-  static const campaign_campaign_name = 'campaign.campaign_name';
-  static const campaign_campaign_description = 'campaign.campaign_description';
+  static const campaign_name = 'campaign.name';
+  static const campaign_description = 'campaign.description';
   static const campaign_ward_district_province = 'campaign.ward_district_province';
   static const campaign_address = 'campaign.address';
   static const campaign_start_date = 'campaign.start_date';
@@ -117,6 +121,7 @@ abstract class  LocaleKeys {
   static const campaign_donator = 'campaign.donator';
   static const campaign_update_to = 'campaign.update_to';
   static const campaign_list_donator = 'campaign.list_donator';
+  static const campaign_artifact_empty = 'campaign.artifact_empty';
   static const campaign_list_volunteer = 'campaign.list_volunteer';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
@@ -138,9 +143,12 @@ abstract class  LocaleKeys {
   static const profile_delete_account = 'profile.delete_account';
   static const profile_gender_female = 'profile.gender_female';
   static const profile_gender_male = 'profile.gender_male';
+  static const profile_gender_other = 'profile.gender_other';
   static const profile_form_number = 'profile.form_number';
   static const profile_campaign_number = 'profile.campaign_number';
   static const profile_review_number = 'profile.review_number';
+  static const profile_gender = 'profile.gender';
+  static const profile_birthday = 'profile.birthday';
   static const profile = 'profile';
   static const map_error_get_markers = 'map.error_get_markers';
   static const map_location_error = 'map.location_error';
@@ -157,5 +165,10 @@ abstract class  LocaleKeys {
   static const feedback_location_rated = 'feedback.location_rated';
   static const feedback_success = 'feedback.success';
   static const feedback = 'feedback';
+  static const donate_thank_you = 'donate.thank_you';
+  static const donate_artifact_name = 'donate.artifact_name';
+  static const donate_artifact_quantity = 'donate.artifact_quantity';
+  static const donate_artifact_status = 'donate.artifact_status';
+  static const donate = 'donate';
 
 }

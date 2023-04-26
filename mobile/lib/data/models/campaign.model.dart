@@ -4,7 +4,6 @@ import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/common/utils/json.util.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
-import 'package:mobile/data/models/organization.model.dart';
 
 import 'package:mobile/generated/locale_keys.g.dart';
 
@@ -27,27 +26,34 @@ class CampaignModel {
   final String? donationRequirement;
   final String? otherInformation;
   final FeedbackToCampaignDTO? feedback;
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  final OrganizationModel? organization;
+  @JsonKey(name: 'joined', includeIfNull: false, includeToJson: false)
+  final bool? isJoined;
 
-  bool get isOngoing => DateTime.now().isBeforeOrEqualTo(endDate);
+  final String? organizationName;
+  final String? organizationAvatar;
+  final int? organizationId;
 
-  bool get isEnded => DateTime.now().isAfter(endDate);
+bool get isUpcoming => startDate.isAfter(DateTime.now());
+  bool get isOngoing =>
+      startDate.isBefore(DateTime.now()) && endDate.isAfter(DateTime.now());
+  bool get isEnded => endDate.isBefore(DateTime.now());
 
   bool get hasFeedback => feedback != null;
 
-  String get statusContent => isOngoing
-      ? LocaleKeys.campaign_ongoing.tr()
-      : LocaleKeys.campaign_ended.tr();
+  String get statusContent => isUpcoming
+      ? LocaleKeys.profile_upcoming.tr()
+      : isOngoing
+          ? LocaleKeys.campaign_ongoing.tr()
+          : LocaleKeys.campaign_ended.tr();
 
   String get fullDate => '${startDate.toDisplay} - ${endDate.toDisplay}';
 
   CampaignModel({
     this.id,
-    this.organization,
     required this.name,
     required this.address,
     this.specificAddress,
+    required this.isJoined,
     required this.description,
     required this.startDate,
     required this.endDate,
@@ -56,7 +62,10 @@ class CampaignModel {
     this.otherInformation,
     this.image,
     this.feedback,
-    required this.coordinate,
+    this.coordinate,
+    required this.organizationName,
+    this.organizationAvatar,
+    required this.organizationId,
   });
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) =>

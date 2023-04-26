@@ -27,7 +27,7 @@ class SetOrganizationAppbar extends StatelessWidget
         RoundedIconButton(
           icon: Icons.done_rounded,
           backgroundColor: Colors.transparent,
-        )
+        ),
       ],
     );
   }

@@ -1,21 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
+import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/campaign/bloc/detail/campaign_detail.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
 
 class CampaignRequestJoin extends StatelessWidget {
   const CampaignRequestJoin({
     super.key,
-    this.formLink,
-    this.artifactTypes,
+    required this.campaign,
   });
-
-  final String? formLink;
-  final String? artifactTypes;
+  final CampaignModel campaign;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +20,13 @@ class CampaignRequestJoin extends StatelessWidget {
         Expanded(
           child: AppRoundedButton(
             width: double.infinity,
-            isDisable: formLink == null,
+            isDisable: campaign.registerLink == null,
             onPressed: () {
               Navigator.pushNamed(
                 context,
                 AppRoutes.campaignRegister,
-                arguments: formLink,
+                arguments: campaign,
               );
-              context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
             },
             backgroundColor: ColorStyles.primary1,
             content: LocaleKeys.button_join.tr(),
@@ -43,13 +38,10 @@ class CampaignRequestJoin extends StatelessWidget {
         ),
         Expanded(
           child: AppRoundedButton(
-            isDisable: artifactTypes == null,
+            isDisable: campaign.donationRequirement == null,
             width: double.infinity,
-            onPressed: () {
-              context.read<CampaignDetailBloc>().add(CampaignDetailJoin());
-            },
+            onPressed: () {},
             backgroundColor: ColorStyles.primary1,
-            // isLoading: state.status == CampaignDetailStatus.joinLoading,
             content: LocaleKeys.button_donate.tr(),
           ),
         )

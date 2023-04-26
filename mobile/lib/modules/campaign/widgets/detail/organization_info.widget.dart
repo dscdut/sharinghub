@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/organization.model.dart';
+import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/campaign/widgets/detail/info_card.widget.dart';
 
@@ -14,18 +15,31 @@ class OrganizationInfo extends StatelessWidget {
     required this.organization,
   });
 
+  final _imageHeight = 70.0;
+
   @override
   Widget build(BuildContext context) {
     return InfoCard(
       child: Row(
         children: [
           ClipRRect(
-            child: Image.network(
-              organization.avatar!,
-              fit: BoxFit.cover,
-              width: 70,
-              height: 70,
-            ),
+            borderRadius: BorderRadius.circular(10),
+            child: organization.avatar == null
+                ? Assets.images.imgDefautAvatar.image(
+                    fit: BoxFit.cover,
+                    width: _imageHeight,
+                    height: _imageHeight,
+                  )
+                : Image.network(
+                    organization.avatar!,
+                    fit: BoxFit.cover,
+                    width: _imageHeight,
+                    height: _imageHeight,
+                  ),
+          ),
+          const VerticalDivider(
+            width: 8,
+            color: Colors.transparent,
           ),
           Expanded(
             child: Column(
@@ -34,14 +48,19 @@ class OrganizationInfo extends StatelessWidget {
               children: [
                 Text(
                   organization.name,
-                  style: TextStyles.s14MediumText,
+                  style: TextStyles.boldBody16,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
+                ),
+                const Divider(
+                  height: 4,
+                  color: Colors.transparent,
                 ),
                 Row(
                   children: [
                     Text(
-                      '${LocaleKeys.texts_rate.tr()}: ',
+                      '${LocaleKeys.texts_rate.tr()}: 4.5',
+                      style: TextStyles.regularBody14,
                     ),
                     const Icon(
                       Icons.star,

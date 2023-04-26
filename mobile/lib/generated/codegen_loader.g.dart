@@ -82,7 +82,11 @@ class CodegenLoader extends AssetLoader{
     "not_match_password": "Password and confirm password not match",
     "campaign_avatar_uploaded": "The campaign avatar must be uploaded",
     "organization_avatar_uploaded": "The organization avatar must be uploaded",
-    "existed_email": "This email is already existed"
+    "existed_email": "This email is already existed",
+    "gender_required": "Please select your gender",
+    "birthday_required": "Please select your birthday",
+    "invalid_quantity": "Invalid quantity",
+    "invalid_url": "Invalid URL"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -116,8 +120,8 @@ class CodegenLoader extends AssetLoader{
     "create_success": "Campaign created successfully",
     "update_success": "Campaign updated successfully",
     "back_home": "Back to home",
-    "campaign_name": "Campaign name",
-    "campaign_description": "Description",
+    "name": "Campaign name",
+    "description": "Description",
     "ward_district_province": "Ward, district, province, ...",
     "address": "Specific address",
     "start_date": "Start date",
@@ -140,6 +144,7 @@ class CodegenLoader extends AssetLoader{
     "donator": "Donator",
     "update_to": "Update to",
     "list_donator": "List of donators",
+    "artifact_empty": "No artifact need to donate",
     "list_volunteer": "List of volunteers"
   },
   "profile": {
@@ -162,9 +167,12 @@ class CodegenLoader extends AssetLoader{
     "delete_account": "Delete account",
     "gender_female": "Female",
     "gender_male": "Male",
+    "gender_other": "Other",
     "form_number": "{number} forms",
     "campaign_number": "{number} campaigns",
-    "review_number": "{number} reviews"
+    "review_number": "{number} reviews",
+    "gender": "Gender",
+    "birthday": "Birthday"
   },
   "map": {
     "error_get_markers": "Cannot load list of locations",
@@ -182,6 +190,12 @@ class CodegenLoader extends AssetLoader{
     "images_uploaded": "The campaign images must be uploaded",
     "location_rated": "Please rate the location",
     "success": "Send feedback successfully"
+  },
+  "donate": {
+    "thank_you": "Thank you for your donation!",
+    "artifact_name": "Artifact name",
+    "artifact_quantity": "Artifact quantity",
+    "artifact_status": "Artifact status"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -252,7 +266,11 @@ static const Map<String,dynamic> vi = {
     "not_match_password": "Mật khẩu xác nhận không trùng khớp",
     "campaign_avatar_uploaded": "Ảnh chiến dịch phải được đăng tải",
     "organization_avatar_uploaded": "Ảnh đại diện tổ chức phải được đăng tải",
-    "existed_email": "Email này đã được đăng ký"
+    "existed_email": "Email này đã được đăng ký",
+    "gender_required": "Vui lòng chọn giới tính",
+    "birthday_required": "Vui lòng chọn ngày sinh",
+    "invalid_quantity": "Số lượng không hợp lệ",
+    "invalid_url": "URL không hợp lệ"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -310,13 +328,14 @@ static const Map<String,dynamic> vi = {
     "donator": "Nhà hảo tâm",
     "update_to": "Cập nhật đến ngày",
     "list_donator": "Danh sách nhà hảo tâm",
+    "artifact_empty": "Dự án chưa cần quyên góp hiện vật",
     "list_volunteer": "Danh sách tình nguyện viên"
   },
   "profile": {
     "setting": "Cài đặt",
     "contact_info": "Thông tin liên hệ",
-    "personal_profile": "Hồ sơ cá nhân",
-    "organization_profile": "Hồ sơ tổ chức",
+    "personal": "Hồ sơ cá nhân",
+    "organization": "Hồ sơ tổ chức",
     "pending": "Chờ duyệt",
     "upcoming": "Sắp diễn ra",
     "ongoing": "Đang diễn ra",
@@ -332,9 +351,12 @@ static const Map<String,dynamic> vi = {
     "delete_account": "Xoá tài khoản",
     "gender_female": "Nữ",
     "gender_male": "Nam",
+    "gender_other": "Khác",
     "form_number": "{number} đơn",
     "campaign_number": "{number} dự án",
-    "review_number": "{number} đánh giá"
+    "review_number": "{number} đánh giá",
+    "gender": "Giới tính",
+    "birthday": "Ngày sinh"
   },
   "map": {
     "error_get_markers": "Không thể tải danh sách vị trí",
@@ -352,6 +374,12 @@ static const Map<String,dynamic> vi = {
     "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
     "location_rated": "Hãy đánh giá địa điểm",
     "success": "Gửi đánh giá thành công"
+  },
+  "donate": {
+    "thank_you": "Cảm ơn bạn đã quyên góp!",
+    "artifact_name": "Tên hiện vật",
+    "artifact_quantity": "Số lượng hiện vật",
+    "artifact_status": "Tình trạng hiện vật"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};
