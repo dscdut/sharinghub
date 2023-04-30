@@ -44,7 +44,30 @@ class Service {
             .throwIfNotPresent(new NotFoundException())
             .get();
 
-        return data;
+        const pendingVoluntaryCampaigns = await this.campaignRepository.findPendingVoluntaryCampaignsByUserId(id);
+
+        const pendingDonativeCampaigns = await this.campaignRepository.findPendingDonativeCampaignsByUserId(id);
+
+        const ongoingVoluntaryCampaignsByUserId = await this.campaignRepository.findParticipatedOngoingVoluntaryCampaignsByUserId(id);
+        
+        const ongoingDonativeCampaignsByUserId = await this.campaignRepository.findParticipatedOngoingDonativeCampaignsByUserId(id);
+
+        const endedVoluntaryCampaignByUserId = await this.campaignRepository.findParticipatedEndedVoluntaryCampaignsByUserId(id);
+        
+        const endedDonativeCampaignByUserId = await this.campaignRepository.findParticipatedEndedDonativeCampaignsByUserId(id);
+
+        const totalPendingCampaigns = pendingVoluntaryCampaigns.length + pendingDonativeCampaigns.length;
+
+        const totalOngoingCampaigns = ongoingVoluntaryCampaignsByUserId.length + ongoingDonativeCampaignsByUserId.length;
+
+        const totalFeedbacks = endedVoluntaryCampaignByUserId.filter(campaign => campaign.rate != null).length + endedDonativeCampaignByUserId.filter(campaign => campaign.rate != null).length;
+        
+        return {
+            data,
+            totalPendingCampaigns,
+            totalOngoingCampaigns,
+            totalFeedbacks
+        };
     }
 
     async upsertOne(UpdateUserDto, id) {

@@ -1,4 +1,5 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
+import { Status } from 'core/common/enum/user-campaign-status'
 
 class Repository extends DataRepository {
     findOneById(id) {
@@ -194,6 +195,134 @@ class Repository extends DataRepository {
                 'campaigns.image',
                 'users_campaigns.status',
                 { organizationName: 'organizations.name' },
+            );
+    }
+    
+    findPendingVoluntaryCampaignsByUserId(id) {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .join('users_campaigns', 'campaigns.id', '=', 'users_campaigns.campaign_id')
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .where('users_campaigns.user_id', '=', id)
+            .andWhere('users_campaigns.status', '=', Status.PENDING)
+            .andWhere('campaigns.start_date', '>=', new Date())
+            .select(
+                'campaigns.id',
+                'campaigns.name',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                'campaigns.image',
+                { organizationName: 'organizations.name' },
+            );
+    }
+
+    findPendingDonativeCampaignsByUserId(id) {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .join('donation_records', 'campaigns.id', '=', 'donation_records.campaign_id')
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .where('donation_records.donor_id', '=', id)
+            .andWhere('donation_records.status', '=', Status.PENDING)
+            .andWhere('campaigns.start_date', '>=', new Date())
+            .select(
+                'campaigns.id',
+                'campaigns.name',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                'campaigns.image',
+                { organizationName: 'organizations.name' },
+            );
+    }
+
+    findParticipatedOngoingVoluntaryCampaignsByUserId(id) {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .join('users_campaigns', 'campaigns.id', '=', 'users_campaigns.campaign_id')
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .where('users_campaigns.user_id', '=', id)
+            .andWhere('users_campaigns.status', '=', Status.APPROVED)
+            .andWhere('campaigns.start_date', '<=', new Date().toISOString())
+            .andWhere('campaigns.end_date', '>=', new Date().toISOString())
+            .select(
+                'campaigns.id',
+                'campaigns.name',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                'campaigns.image',
+                { organizationName: 'organizations.name' },
+            );
+    }
+
+    findParticipatedOngoingDonativeCampaignsByUserId(id) {
+        return this.query()
+        .whereNull('campaigns.deleted_at')
+        .join('donation_records', 'campaigns.id', '=', 'donation_records.campaign_id')
+        .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+        .where('donation_records.donor_id', '=', id)
+        .andWhere('donation_records.status', '=', Status.APPROVED)
+        .andWhere('campaigns.start_date', '<=', new Date().toISOString())
+        .andWhere('campaigns.end_date', '>=', new Date().toISOString())
+        .select(
+            'campaigns.id',
+            'campaigns.name',
+            { startDate: 'campaigns.start_date' },
+            { endDate: 'campaigns.end_date' },
+            'campaigns.address',
+            { specificAddress: 'campaigns.specific_address' },
+            'campaigns.image',
+            { organizationName: 'organizations.name' },
+        );
+    }
+
+    findParticipatedEndedVoluntaryCampaignsByUserId(id) {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .join('users_campaigns', 'campaigns.id', '=', 'users_campaigns.campaign_id')
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .leftJoin('organizations_reviews', 'organizations.id', '=', 'organizations_reviews.organization_id')
+            .where('users_campaigns.user_id', '=', id)
+            .andWhere('users_campaigns.status', '=', Status.APPROVED)
+            .andWhere('campaigns.end_date', '<', new Date().toISOString())
+            .select(
+                'campaigns.id',
+                'campaigns.name',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                'campaigns.image',
+                { organizationName: 'organizations.name' },
+                'organizations_reviews.rate',
+                'organizations_reviews.content',
+            );
+    }
+
+    findParticipatedEndedDonativeCampaignsByUserId(id) {
+        return this.query()
+            .whereNull('campaigns.deleted_at')
+            .join('donation_records', 'campaigns.id', '=', 'donation_records.campaign_id')
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .leftJoin('organizations_reviews', 'organizations.id', '=', 'organizations_reviews.organization_id')
+            .where('donation_records.donor_id', '=', id)
+            .andWhere('donation_records.status', '=', Status.APPROVED)
+            .andWhere('campaigns.end_date', '<', new Date().toISOString())
+            .select(
+                'campaigns.id',
+                'campaigns.name',
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                'campaigns.image',
+                { organizationName: 'organizations.name' },
+                'organizations_reviews.rate',
+                'organizations_reviews.content',
             );
     }
 }
