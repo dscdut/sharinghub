@@ -63,6 +63,7 @@ class Repository extends DataRepository {
                 'users.birthday',
                 'users.address',
                 'users.workplace',
+                'users.id',
             );
     }
 
