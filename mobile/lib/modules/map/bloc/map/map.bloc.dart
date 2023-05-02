@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
 import 'package:mobile/data/repositories/place.repository.dart';
@@ -12,6 +13,7 @@ import 'package:geolocator/geolocator.dart';
 
 part 'map.state.dart';
 part 'map.event.dart';
+part 'map.bloc.freezed.dart';
 
 class MapBloc extends Bloc<MapEvent, MapState> {
   final PlaceRepository _placeRepository;
@@ -20,7 +22,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     required PlaceRepository placeRepository,
   })  : _placeRepository = placeRepository,
         super(
-          const MapState.initial(),
+          MapState.initial(),
         ) {
     on<MapPermissionRequest>(_onRequestPermission);
     on<MapMarkersGet>(_onGetMarkers);
@@ -56,7 +58,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     }
 
     emiiter(
-      MapGetLocationSuccess(
+      state.copyWith(
         myLocation: await _getMyLocation(emiiter),
         markers: state.markers ?? const {},
       ),

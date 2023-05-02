@@ -24,10 +24,6 @@ class UserRepository {
     return _remoteDataSource.registerByEmail(params);
   }
 
-  Future<UserModel> getUserProfile() {
-    return _remoteDataSource.getUserProfile();
-  }
-
   UserModel? getUserInfo() {
     return _localDataSource.getUserInfo();
   }

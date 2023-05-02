@@ -6,9 +6,11 @@ import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'map_bottom_sheet.event.dart';
 part 'map_bottom_sheet.state.dart';
+part 'map_bottom_sheet.bloc.freezed.dart';
 
 class MapBottomsheetBloc
     extends Bloc<MapBottomSheetEvent, MapBottomSheetState> {
@@ -16,7 +18,7 @@ class MapBottomsheetBloc
 
   MapBottomsheetBloc({required CampaignRepository campaignRepository})
       : _campaignRepository = campaignRepository,
-        super(const MapBottomSheetState.initial()) {
+        super(MapBottomSheetState.initial()) {
     on<MapBottomSheetGetCampaigns>(_onGetCampaigns);
   }
 
@@ -25,7 +27,7 @@ class MapBottomsheetBloc
     Emitter<MapBottomSheetState> emit,
   ) async {
     emit(
-      const MapBottomSheetState.loading(),
+      MapBottomSheetState.loading(),
     );
 
     try {

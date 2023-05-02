@@ -10,10 +10,6 @@ class OrganizationRepository {
   OrganizationRepository({required OrganizationDataSource dataSource})
       : _dataSource = dataSource;
 
-  Future<List<OrganizationModel>> getOrganizations() async {
-    return _dataSource.getOrganizations();
-  }
-
   Future<List<OrganizationModel>> getMyOrganizations() {
     return _dataSource.getMyOrganizations();
   }

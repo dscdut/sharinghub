@@ -46,7 +46,7 @@ class MapPage extends StatelessWidget {
     BuildContext context,
     MapState state,
   ) async {
-    if (state is MapGetLocationSuccess) {
+    if (state.markers != null && context.mounted) {
       GoogleMapController googleMapController = await controller.future;
       googleMapController.animateCamera(
         CameraUpdate.newLatLngZoom(
