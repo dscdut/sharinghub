@@ -8,7 +8,7 @@ import { CreateDonationInterceptor, UpdateDonorStatusInterceptor } from 'core/mo
 export const DonationResolver = Module.builder()
     .addPrefix({
         prefixPath: '/v1',
-        tag: 'donation',
+        tag: 'donations',
         module: 'DonationModule',
     })
     .register([

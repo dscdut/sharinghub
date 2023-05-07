@@ -1,6 +1,6 @@
 import { getTransaction } from 'core/database';
 import { logger } from 'core/utils';
-import { InternalServerException, NotFoundException, DuplicateException, ForbiddenException } from 'packages/httpException';
+import { NotFoundException, BadRequestException, ForbiddenException } from 'packages/httpException';
 import { Optional } from 'core/utils';
 import { MESSAGE } from '../../campaign/services/message.enum';
 import { CampaignRepository } from '../../campaign/campaign.repository';
@@ -22,8 +22,13 @@ class Service {
 
     async createOrUpdateDonation({ campaignId, donationId }, user_id, RegisterDonorDto, { file, files }) {
         const images = file ? [file] : files ? files : [];
+        
         try {
-            Optional.of(await this.campaignService.findOneById(campaignId)).throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT));
+            const campaign = Optional.of(await this.campaignService.findOneById(campaignId)).throwIfNotPresent(new NotFoundException(MESSAGE.CAMPAIGN_NOT_FOUND_BY_CLIENT)).get();
+
+            if (new Date() > new Date(campaign.startDate)) {
+                throw new BadRequestException(MESSAGE.CAMPAIGN_ALREADY_STARTED);
+            }
 
             if (!donationId) {                
                 await this.donationRecordRepositoryService.createDonation(images, { ...RegisterDonorDto, campaign_id: campaignId, donor_id: user_id });
@@ -43,7 +48,7 @@ class Service {
         } catch (error) {
             this.donationRecordRepositoryService.deleteFile(images);
             logger.error(error.message);
-            throw new InternalServerException();
+            throw error;
         }
     }
 
