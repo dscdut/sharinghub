@@ -18,4 +18,5 @@ export const MESSAGE = {
     UPDATE_DONATION_SUCCESS: 'Updated donation successfully',
     UPDATE_DONATION_STATUS_SUCCESS: 'Updated donation status successfully',
     SET_PENDING_DONATIONS_STATUS_TO_REJECTED_SUCCESS: 'Set pending donations status to rejected successfully',
+    CAMPAIGN_ALREADY_STARTED: 'Campaign already started'
 };
