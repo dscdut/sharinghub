@@ -86,7 +86,10 @@ class CodegenLoader extends AssetLoader{
     "gender_required": "Please select your gender",
     "birthday_required": "Please select your birthday",
     "invalid_quantity": "Invalid quantity",
-    "invalid_url": "Invalid URL"
+    "invalid_url": "Invalid URL",
+    "location_rate": "Please rate the location",
+    "campaign_rate": "Please rate the campaign",
+    "organization_rate": "Please rate the organization"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -188,7 +191,6 @@ class CodegenLoader extends AssetLoader{
     "others": "Others",
     "images": "Images of the campaign",
     "images_uploaded": "The campaign images must be uploaded",
-    "location_rated": "Please rate the location",
     "success": "Send feedback successfully"
   },
   "donate": {
@@ -270,7 +272,10 @@ static const Map<String,dynamic> vi = {
     "gender_required": "Vui lòng chọn giới tính",
     "birthday_required": "Vui lòng chọn ngày sinh",
     "invalid_quantity": "Số lượng không hợp lệ",
-    "invalid_url": "URL không hợp lệ"
+    "invalid_url": "URL không hợp lệ",
+    "location_rate": "Hãy đánh giá địa điểm",
+    "campaign_rate": "Hãy đánh giá chiến dịch",
+    "organization_rate": "Hãy đánh giá tổ chức"
   },
   "search": {
     "search_input_placeholder": "Nhập tên tổ chức hoặc tên dự án",
@@ -372,7 +377,6 @@ static const Map<String,dynamic> vi = {
     "others": "Thông tin khác",
     "images": "Hình ảnh về chiến dịch",
     "images_uploaded": "Những hình ảnh về chiến dịch phải được đăng tải",
-    "location_rated": "Hãy đánh giá địa điểm",
     "success": "Gửi đánh giá thành công"
   },
   "donate": {

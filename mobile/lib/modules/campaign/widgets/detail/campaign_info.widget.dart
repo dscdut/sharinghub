@@ -33,16 +33,7 @@ class CampaignInfo extends StatelessWidget {
         },
       );
     } else if (campaign.isEnded) {
-      if (campaign.isJoined!) {
-        return Column(
-          children: [
-            _verticalSpacing,
-            CampaignFeedbackButton(campaign: campaign),
-          ],
-        );
-      } else {
-        return const SizedBox();
-      }
+      return CampaignFeedbackButton(campaign: campaign);
     } else {
       return const SizedBox();
     }
@@ -79,6 +70,7 @@ class CampaignInfo extends StatelessWidget {
             ),
             _verticalSpacing,
             const CampaignDetailDonorsWidget(),
+            _verticalSpacing,
             _buildEndContentCampaign(campaign),
           ],
         ),

@@ -3,10 +3,10 @@ import 'package:json_annotation/json_annotation.dart';
 part 'feedback_campaign.dto.g.dart';
 
 @JsonSerializable(
-  explicitToJson: true,
-  fieldRename: FieldRename.snake,
+  includeIfNull: false,
 )
 class FeedbackToCampaignDTO {
+  @JsonKey(name: 'image')
   List<dynamic>? images;
   int locationRate;
   String? traffic;
@@ -15,6 +15,8 @@ class FeedbackToCampaignDTO {
   String? residence;
   String? authorityCooperation;
   String? others;
+  @JsonKey(includeToJson: false)
+  int? campaignId;
 
   FeedbackToCampaignDTO({
     this.images,
@@ -25,12 +27,13 @@ class FeedbackToCampaignDTO {
     this.residence,
     this.authorityCooperation,
     this.others,
+    this.campaignId,
   });
-
-  Map<String, dynamic> toJson() => _$FeedbackToCampaignDTOToJson(this);
 
   factory FeedbackToCampaignDTO.fromJson(Map<String, dynamic> json) =>
       _$FeedbackToCampaignDTOFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FeedbackToCampaignDTOToJson(this);
 
   FeedbackToCampaignDTO copyWith({
     List<dynamic>? images,
@@ -41,6 +44,7 @@ class FeedbackToCampaignDTO {
     String? residence,
     String? authorityCooperation,
     String? others,
+    int? campaignId,
   }) {
     return FeedbackToCampaignDTO(
       images: images ?? this.images,
@@ -51,6 +55,7 @@ class FeedbackToCampaignDTO {
       residence: residence ?? this.residence,
       authorityCooperation: authorityCooperation ?? this.authorityCooperation,
       others: others ?? this.others,
+      campaignId: campaignId ?? this.campaignId,
     );
   }
 }

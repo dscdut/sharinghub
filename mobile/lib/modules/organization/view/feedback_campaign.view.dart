@@ -7,7 +7,6 @@ import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/utils/dialog.util.dart';
-import 'package:mobile/common/utils/file.util.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
@@ -123,11 +122,7 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
   }
 
   Future<void> _setFeedbackImages(List<File> files) async {
-    final List<dynamic> images = [];
-    for (File file in files) {
-      images.add(await FileUtil.toMultipartFile(file));
-    }
-    _feedbackImages = images;
+    _feedbackImages = files;
   }
 
   void _collectDataForFeedbackCampaign() {
@@ -140,6 +135,7 @@ class _FeedbackCampaignViewState extends State<_FeedbackCampaignView> {
       authorityCooperation: _authorityCooperationEditingController.text,
       others: _othersEditingController.text,
       images: _feedbackImages,
+      campaignId: widget.campaign.id,
     );
   }
 

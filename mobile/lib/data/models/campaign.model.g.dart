@@ -12,7 +12,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       address: json['address'] as String,
       specificAddress: json['specificAddress'] as String?,
-      isJoined: json['joined'] as bool?,
+      isUserJoined: json['joined'] as bool?,
       description: json['description'] as String,
       startDate: const JsonSerializableDateTime()
           .fromJson(json['startDate'] as String),
@@ -56,7 +56,6 @@ Map<String, dynamic> _$CampaignModelToJson(CampaignModel instance) {
   val['registerLink'] = instance.registerLink;
   val['donationRequirement'] = instance.donationRequirement;
   val['otherInformation'] = instance.otherInformation;
-  val['feedback'] = instance.feedback?.toJson();
   val['organizationName'] = instance.organizationName;
   val['organizationAvatar'] = instance.organizationAvatar;
   val['organizationId'] = instance.organizationId;

@@ -2,6 +2,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/remote/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
+import 'package:mobile/data/dtos/feedback_individual.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
@@ -55,6 +56,10 @@ class CampaignRepository {
 
   Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {
     return _dataSource.feedbackToCampaign(params);
+  }
+
+  Future<void> feedbackIndividual(FeedbackIndividualDTO params) async {
+    return _dataSource.feedbackIndividual(params);
   }
 
   Future<void> donateToCampaign(SetDonateDTO params) async {
