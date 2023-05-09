@@ -68,6 +68,9 @@ abstract class  LocaleKeys {
   static const validator_birthday_required = 'validator.birthday_required';
   static const validator_invalid_quantity = 'validator.invalid_quantity';
   static const validator_invalid_url = 'validator.invalid_url';
+  static const validator_location_rate = 'validator.location_rate';
+  static const validator_campaign_rate = 'validator.campaign_rate';
+  static const validator_organization_rate = 'validator.organization_rate';
   static const validator = 'validator';
   static const search_search_input_placeholder = 'search.search_input_placeholder';
   static const search_all = 'search.all';
@@ -162,7 +165,6 @@ abstract class  LocaleKeys {
   static const feedback_others = 'feedback.others';
   static const feedback_images = 'feedback.images';
   static const feedback_images_uploaded = 'feedback.images_uploaded';
-  static const feedback_location_rated = 'feedback.location_rated';
   static const feedback_success = 'feedback.success';
   static const feedback = 'feedback';
   static const donate_thank_you = 'donate.thank_you';

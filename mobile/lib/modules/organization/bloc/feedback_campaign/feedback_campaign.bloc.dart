@@ -44,7 +44,7 @@ class FeedbackCampaignBloc
       state.copyWith(
         status: HandleStatus.initial,
         rateError: event.organizationFeedback.locationRate == 0.0
-            ? Wrapped.value(LocaleKeys.feedback_location_rated.tr())
+            ? Wrapped.value(LocaleKeys.validator_location_rate.tr())
             : const Wrapped.value(null),
         imageError: event.organizationFeedback.images == null ||
                 event.organizationFeedback.images!.isEmpty

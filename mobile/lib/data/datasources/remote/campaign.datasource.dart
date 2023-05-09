@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mobile/common/constants/endpoints.dart';
 import 'package:mobile/common/helpers/dio.helper.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
+import 'package:mobile/data/dtos/feedback_individual.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
@@ -85,7 +86,17 @@ class CampaignDataSource {
     );
   }
 
-  Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {}
+  Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {
+    await _dioHelper.post(
+      '${Endpoints.campaigns}/${params.campaignId}',
+      formData: params.toJson(),
+    );
+  }
+
+  Future<void> feedbackIndividual(FeedbackIndividualDTO params) async {
+    //mock api
+    await Future.delayed(const Duration(seconds: 2));
+  }
 
   Future<void> donateToCampaign(SetDonateDTO params) async {
     await _dioHelper.post(

@@ -30,6 +30,12 @@ class DioHelper {
     for (var item in map.entries) {
       if (item.value is File) {
         map[item.key] = await FileUtil.toMultipartFile(item.value);
+      } else if (item.value is List<File>) {
+        final List<MultipartFile> files = [];
+        for (var file in item.value) {
+          files.add(await FileUtil.toMultipartFile(file));
+        }
+        map[item.key] = files;
       }
     }
 

@@ -25,10 +25,10 @@ class CampaignModel {
   final String? registerLink;
   final String? donationRequirement;
   final String? otherInformation;
+  @JsonKey(includeIfNull: false, includeToJson: false)
   final FeedbackToCampaignDTO? feedback;
   @JsonKey(name: 'joined', includeIfNull: false, includeToJson: false)
-  final bool? isJoined;
-
+  final bool? isUserJoined;
   final String? organizationName;
   final String? organizationAvatar;
   final int? organizationId;
@@ -53,7 +53,7 @@ bool get isUpcoming => startDate.isAfter(DateTime.now());
     required this.name,
     required this.address,
     this.specificAddress,
-    required this.isJoined,
+    this.isUserJoined,
     required this.description,
     required this.startDate,
     required this.endDate,
@@ -63,9 +63,9 @@ bool get isUpcoming => startDate.isAfter(DateTime.now());
     this.image,
     this.feedback,
     this.coordinate,
-    required this.organizationName,
+    this.organizationName,
     this.organizationAvatar,
-    required this.organizationId,
+    this.organizationId,
   });
 
   factory CampaignModel.fromJson(Map<String, dynamic> json) =>

@@ -15,26 +15,41 @@ class CampaignFeedbackButton extends StatelessWidget {
 
   final CampaignModel campaign;
 
-  @override
-  Widget build(BuildContext context) {
+  bool isOrgCreateCampaign(AuthState authState) {
+    return authState.status.isAuthenticatedOrganization &&
+        authState.currentOrganizationId == campaign.organizationId;
+  }
+
+  void _onFeedbackButtonPressed(BuildContext context) {
+    final String route = isOrgCreateCampaign(context.read<AuthBloc>().state)
+        ? AppRoutes.organizationFeedback
+        : AppRoutes.individualFeedback;
+
+    Navigator.of(context).pushNamed(
+      route,
+      arguments: campaign,
+    );
+  }
+
+  Widget _buildFeedbackButton(BuildContext context) {
     return AppRoundedButton(
       width: double.infinity,
-      onPressed: () {
-        context.read<AuthBloc>().state.status.isAuthenticatedOrganization
-            ? Navigator.pushNamed(
-                context,
-                AppRoutes.organizationFeedback,
-                arguments: campaign,
-              )
-            : Navigator.pushNamed(
-                context,
-                AppRoutes.individualFeedback,
-                arguments: campaign,
-              );
-      },
+      onPressed: () => _onFeedbackButtonPressed(context),
       content: campaign.hasFeedback
           ? LocaleKeys.button_edit_feedback.tr()
           : LocaleKeys.button_send_feedback.tr(),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return context.read<AuthBloc>().state.status.isAuthenticatedOrganization
+        ? context.read<AuthBloc>().state.currentOrganizationId ==
+                campaign.organizationId
+            ? _buildFeedbackButton(context)
+            : const SizedBox()
+        : campaign.isUserJoined!
+            ? _buildFeedbackButton(context)
+            : const SizedBox();
   }
 }

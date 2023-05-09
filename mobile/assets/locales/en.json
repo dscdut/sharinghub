@@ -70,7 +70,10 @@
     "gender_required": "Please select your gender",
     "birthday_required": "Please select your birthday",
     "invalid_quantity": "Invalid quantity",
-    "invalid_url": "Invalid URL"
+    "invalid_url": "Invalid URL",
+    "location_rate": "Please rate the location",
+    "campaign_rate": "Please rate the campaign",
+    "organization_rate": "Please rate the organization"
   },
   "search": {
     "search_input_placeholder": "Enter organization name or campaign name",
@@ -172,7 +175,6 @@
     "others": "Others",
     "images": "Images of the campaign",
     "images_uploaded": "The campaign images must be uploaded",
-    "location_rated": "Please rate the location",
     "success": "Send feedback successfully"
   },
   "donate": {
