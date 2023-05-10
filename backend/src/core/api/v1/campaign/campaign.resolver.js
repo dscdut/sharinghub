@@ -66,7 +66,7 @@ export const CampaignResolver = Module.builder()
             controller: CampaignController.searchByQuery,
         },
         {
-            route: '/campaigns/:campaignId',
+            route: '/campaigns/:campaignId/feedbacks',
             method: 'post',
             interceptors: [new MediaInterceptor(10), FeedbackInterceptor],
             body: 'CreateFeedbackDto',
@@ -76,7 +76,7 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/campaigns/:campaignId',
+            route: '/campaigns/:campaignId/feedbacks',
             method: 'put',
             interceptors: [new MediaInterceptor(10), FeedbackInterceptor],
             body: 'CreateFeedbackDto',
@@ -86,7 +86,7 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/campaigns/:campaignId',
+            route: '/campaigns/:campaignId/feedbacks',
             method: 'delete',
             controller: CampaignController.deleteFeedback,
             preAuthorization: true,
