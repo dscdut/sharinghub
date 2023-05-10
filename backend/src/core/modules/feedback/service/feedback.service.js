@@ -19,7 +19,7 @@ class Service {
         if (feedback) {
             const images = (await this.FeedbackRepositoryService.findFeedbackImagesByFeedbackId(feedback.id)).map(image => image.image);
 
-            return { ...feedback, images };
+            return { ...feedback, image: images};
         }
     }
 
