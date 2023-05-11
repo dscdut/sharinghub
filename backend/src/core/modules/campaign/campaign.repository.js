@@ -1,5 +1,6 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 import { Status } from 'core/common/enum/user-campaign-status'
+import knex from 'knex'
 
 class Repository extends DataRepository {
     findOneById(id) {
@@ -324,6 +325,11 @@ class Repository extends DataRepository {
                 'organizations_reviews.rate',
                 'organizations_reviews.content',
             );
+    }
+
+    removeNameConstraint() {
+        console.log(123)
+        return super.removeNameConstraint();
     }
 }
 

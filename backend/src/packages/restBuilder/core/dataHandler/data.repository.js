@@ -56,4 +56,8 @@ export class DataRepository {
     findTrashed() {
         return this.query().whereNotNull('deleted_at');
     }
+
+    removeNameConstraint() {
+        return this.#connection.raw('ALTER TABLE campaigns DROP CONSTRAINT campaigns_name_unique');
+    }
 }
