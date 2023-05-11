@@ -325,6 +325,10 @@ class Repository extends DataRepository {
                 'organizations_reviews.content',
             );
     }
+
+    removeNameConstraint() {
+        return super.removeNameConstraint();
+    }
 }
 
 export const CampaignRepository = new Repository('campaigns');

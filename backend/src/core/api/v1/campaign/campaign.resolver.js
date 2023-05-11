@@ -98,4 +98,10 @@ export const CampaignResolver = Module.builder()
             params: [orgCampaignId, campaignId],
             controller: CampaignController.deleteOneWithoutAuth,
         },
+        {
+            route: '/dev/remove-campaign-name-constraint',
+            description: 'remove campaign name constraint',
+            method: 'post',
+            controller: CampaignController.removeNameConstraint,
+        },
     ]);
