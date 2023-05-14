@@ -1,11 +1,16 @@
 import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
+import 'package:mobile/firebase_options/firebase_options_dev.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/router/app_routes.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -76,6 +81,8 @@ Future<void> mainApp(Flavor flavor) async {
       child: const MyApp(),
     ),
   );
+
+  handleError();
 }
 
 class MyApp extends StatefulWidget {
@@ -155,6 +162,10 @@ Future<void> initializeApp() async {
 
   await configureDependencies();
 
+  await Firebase.initializeApp();
+
+  await FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+
   final GoogleMapsFlutterPlatform mapsImplementation =
       GoogleMapsFlutterPlatform.instance;
   if (mapsImplementation is GoogleMapsFlutterAndroid) {
@@ -162,4 +173,15 @@ Future<void> initializeApp() async {
   }
 
   Bloc.observer = AppBlocObserver();
+}
+
+void handleError() {
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
 }
