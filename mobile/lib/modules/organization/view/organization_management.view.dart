@@ -14,7 +14,7 @@ import 'package:mobile/modules/organization/bloc/management/organization_managem
 import 'package:mobile/modules/organization/widgets/management/add_organization_fab.widget.dart';
 import 'package:mobile/modules/organization/widgets/management/list_organization.widget.dart';
 import 'package:mobile/modules/organization/widgets/management/organization_management_app_bar.widget.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class OrganizationManagementPage extends StatelessWidget {
   const OrganizationManagementPage({super.key});

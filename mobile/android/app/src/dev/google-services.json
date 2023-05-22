@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "632996193115-gpvq35shtg9pa5sd8n7f7d2qp0c9fus4.apps.googleusercontent.com",
+              "client_id": "632996193115-1thgv5q0fecqhdtqqlbavphq4rf826vj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.gdscdut.sharinghub"
+                "bundle_id": "com.gdscdut.sharinghub-dev"
               }
             }
           ]

@@ -3,7 +3,7 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/assets.gen.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class ItemSearchWidget extends StatelessWidget {
   const ItemSearchWidget({

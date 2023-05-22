@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart'
 ///
 /// Example:
 /// ```dart
-/// import 'firebase_options.dart';
+/// import 'firebase_options_staging.dart';
 /// // ...
 /// await Firebase.initializeApp(
 ///   options: DefaultFirebaseOptions.currentPlatform,
@@ -26,10 +26,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -58,5 +55,15 @@ class DefaultFirebaseOptions {
     messagingSenderId: '658319658591',
     projectId: 'sharinghub-6a0f9',
     storageBucket: 'sharinghub-6a0f9.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAIxl5Pwb42UbL00sDGaWVfIHd-TzkzAKI',
+    appId: '1:658319658591:ios:8a2a921952de20297515ea',
+    messagingSenderId: '658319658591',
+    projectId: 'sharinghub-6a0f9',
+    storageBucket: 'sharinghub-6a0f9.appspot.com',
+    iosClientId: '658319658591-h54510rvvgmq1cr947mlpqtts2s7mthg.apps.googleusercontent.com',
+    iosBundleId: 'com.gdscdut.sharinghub',
   );
 }

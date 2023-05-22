@@ -5,7 +5,7 @@ import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/auth.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class CampaignFeedbackButton extends StatelessWidget {
   const CampaignFeedbackButton({

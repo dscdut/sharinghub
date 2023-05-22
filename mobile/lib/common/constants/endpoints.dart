@@ -24,8 +24,8 @@ abstract class Endpoints {
   //     'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyD8y0Rb-Hg6n26z-MP30neOY3yxoBb-Ki0&components=country:vn&region=vn&types=geocode';
 
   static String autocompletePlace =
-      'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyD8y0Rb-Hg6n26z-MP30neOY3yxoBb-Ki0&components=country:vn&region=vn&types=administrative_area_level_3|administrative_area_level_2';
+      'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${AppFlavor.googleMapApiKey}&components=country:vn&region=vn&types=administrative_area_level_3|administrative_area_level_2';
 
   static String geoCode =
-      'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD8y0Rb-Hg6n26z-MP30neOY3yxoBb-Ki0';
+      'https://maps.googleapis.com/maps/api/geocode/json?key=${AppFlavor.googleMapApiKey}';
 }
