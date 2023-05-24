@@ -41,6 +41,7 @@ dependencies:
   google_maps_flutter_android: ^2.4.6
   permission_handler: ^10.2.0
   geolocator: ^9.0.2
+  
   #
   badges: ^3.1.1
   injectable: ^2.1.0
@@ -60,6 +61,8 @@ dependencies:
   flutter_svg: ^2.0.5
   syncfusion_flutter_datepicker: 20.4.52
   image_cropper: ^3.0.1
+  carousel_slider: ^4.2.1
+  
   path_provider: ^2.0.13
   http_parser: ^4.0.2
   mime: ^1.0.4
