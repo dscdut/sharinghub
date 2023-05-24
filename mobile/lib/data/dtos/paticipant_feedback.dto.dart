@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'feedback_individual.dto.g.dart';
+part 'paticipant_feedback.dto.g.dart';
 
 @JsonSerializable(
   includeIfNull: false,
 )
-class FeedbackIndividualDTO {
+class ParticipantFeedbackDTO {
   int campaignRate;
   String? campaignReview;
   int organizationRate;
@@ -13,7 +13,7 @@ class FeedbackIndividualDTO {
   @JsonKey(includeToJson: false)
   int? campaignId;
 
-  FeedbackIndividualDTO({
+  ParticipantFeedbackDTO({
     this.campaignRate = 0,
     this.campaignReview,
     this.organizationRate = 0,
@@ -21,19 +21,19 @@ class FeedbackIndividualDTO {
     this.campaignId,
   });
 
-  factory FeedbackIndividualDTO.fromJson(Map<String, dynamic> json) =>
-      _$FeedbackIndividualDTOFromJson(json);
+  factory ParticipantFeedbackDTO.fromJson(Map<String, dynamic> json) =>
+      _$ParticipantFeedbackDTOFromJson(json);
 
-  Map<String, dynamic> toJson() => _$FeedbackIndividualDTOToJson(this);
+  Map<String, dynamic> toJson() => _$ParticipantFeedbackDTOToJson(this);
 
-  FeedbackIndividualDTO copyWith({
+  ParticipantFeedbackDTO copyWith({
     int? campaignRate,
     String? campaignReview,
     int? organizationRate,
     String? organizationReview,
     int? campaignId,
   }) {
-    return FeedbackIndividualDTO(
+    return ParticipantFeedbackDTO(
       campaignRate: campaignRate ?? this.campaignRate,
       campaignReview: campaignReview ?? this.campaignReview,
       organizationRate: organizationRate ?? this.organizationRate,

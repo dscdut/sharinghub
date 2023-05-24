@@ -1,11 +1,11 @@
-part of 'feedback_campaign.bloc.dart';
+part of 'organization_feedback.bloc.dart';
 
-class FeedbackCampaignState extends Equatable {
+class OrganizationFeedbackState extends Equatable {
   final HandleStatus status;
   final String? rateError;
   final String? imageError;
 
-  const FeedbackCampaignState({
+  const OrganizationFeedbackState({
     this.status = HandleStatus.initial,
     this.rateError,
     this.imageError,
@@ -18,12 +18,12 @@ class FeedbackCampaignState extends Equatable {
         imageError,
       ];
 
-  FeedbackCampaignState copyWith({
+  OrganizationFeedbackState copyWith({
     HandleStatus? status,
     Wrapped<String?>? rateError,
     Wrapped<String?>? imageError,
   }) {
-    return FeedbackCampaignState(
+    return OrganizationFeedbackState(
       status: status ?? this.status,
       rateError: rateError == null ? this.rateError : rateError.value,
       imageError: imageError == null ? this.imageError : imageError.value,

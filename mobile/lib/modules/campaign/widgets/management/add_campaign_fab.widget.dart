@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/bloc/management/campaign_management.bloc.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class AddCampaignFAB extends StatelessWidget {
   const AddCampaignFAB({super.key});

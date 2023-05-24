@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/color_styles.dart';
-import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/profile/widgets/profile/list_status_shimmer.widget.dart';
 import 'package:mobile/modules/profile/bloc/profile/profile.bloc.dart';
@@ -30,11 +29,11 @@ class _ProfileView extends StatelessWidget {
     height: 20,
   );
 
-  dynamic _getProfileModel(BuildContext context) {
-    final UserModel userInfo = context.read<ProfileBloc>().state.user!;
+  // dynamic _getProfileModel(BuildContext context) {
+  //   final UserModel userInfo = context.read<ProfileBloc>().state.user!;
 
-    return userInfo.currentOrganization ?? userInfo;
-  }
+  //   return userInfo.currentOrganization ?? userInfo;
+  // }
 
   @override
   Widget build(BuildContext context) {

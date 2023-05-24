@@ -364,6 +364,15 @@ class Service {
             throw new InternalServerException();
         }
     }
+
+    removeNameConstraint() {
+        try {
+            return this.repository.removeNameConstraint();
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
 };
 
 export const CampaignService = new Service();

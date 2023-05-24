@@ -11,9 +11,9 @@ import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
 import 'package:mobile/common/widgets/show_or_pick_multiple_image.widget.dart';
 import 'package:mobile/common/widgets/star_rating.widget.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/organization/management.dart';
+import 'package:mobile/modules/organization/bloc/organization_feedback/organization_feedback.bloc.dart';
 
-class FeedbackCampaignForm extends StatelessWidget {
+class OrganizationFeedbackForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final int locationRate;
   final TextEditingController trafficEditingController;
@@ -26,7 +26,7 @@ class FeedbackCampaignForm extends StatelessWidget {
   final void Function(int rating) onLocationRateChanged;
   final List<dynamic>? imagePaths;
 
-  const FeedbackCampaignForm({
+  const OrganizationFeedbackForm({
     super.key,
     required this.formKey,
     required this.locationRate,
@@ -64,7 +64,7 @@ class FeedbackCampaignForm extends StatelessWidget {
             size: 40.0,
             onRatingChanged: onLocationRateChanged,
           ),
-          BlocBuilder<FeedbackCampaignBloc, FeedbackCampaignState>(
+          BlocBuilder<OrganizationFeedbackBloc, OrganizationFeedbackState>(
             builder: (context, state) {
               return Visibility(
                 visible: state.rateError != null,
@@ -134,7 +134,7 @@ class FeedbackCampaignForm extends StatelessWidget {
             ),
           ),
           _verticalSpacing,
-          BlocBuilder<FeedbackCampaignBloc, FeedbackCampaignState>(
+          BlocBuilder<OrganizationFeedbackBloc, OrganizationFeedbackState>(
             builder: (context, state) {
               return ShowOrPickMultipleImage(
                 setImages: setFeedbackImages,

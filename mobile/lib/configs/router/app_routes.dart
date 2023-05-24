@@ -9,7 +9,6 @@ import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/explore.dart';
-import 'package:mobile/modules/feedback_individual/feedback_individual.dart';
 import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
 import 'package:mobile/modules/profile/view/set_user_profile.view.dart';
@@ -41,7 +40,7 @@ abstract class AppRoutes {
 
   // Feedback
   static const String organizationFeedback = '/organizationFeedback';
-  static const String individualFeedback = '/individualFeedback';
+  static const String participantFeedback = '/participantFeedback';
 
   // Root
   static const String root = '/root';
@@ -117,15 +116,15 @@ abstract class AppRoutes {
       case organizationFeedback:
         return MaterialPageRoute(
           builder: (_) {
-            return FeedbackCampaignPage(
+            return OrganizationFeedbackPage(
               campaign: settings.arguments as CampaignModel,
             );
           },
         );
-      case individualFeedback:
+      case participantFeedback:
         return MaterialPageRoute(
           builder: (_) {
-            return FeedbackIndividualPage(
+            return ParticipantFeedbackPage(
               campaign: settings.arguments as CampaignModel,
             );
           },

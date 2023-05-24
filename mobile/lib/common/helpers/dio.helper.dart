@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -121,6 +122,10 @@ class DioHelper {
     Options? options,
     Map<String, dynamic>? formData,
   }) async {
+    if (formData != null) {
+      data = await _mapToFormData(formData);
+    }
+
     final Response response = await _dio.put(
       url,
       data: data,

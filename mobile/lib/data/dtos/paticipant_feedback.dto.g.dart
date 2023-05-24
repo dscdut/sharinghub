@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'feedback_individual.dto.dart';
+part of 'paticipant_feedback.dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-FeedbackIndividualDTO _$FeedbackIndividualDTOFromJson(
+ParticipantFeedbackDTO _$ParticipantFeedbackDTOFromJson(
         Map<String, dynamic> json) =>
-    FeedbackIndividualDTO(
+    ParticipantFeedbackDTO(
       campaignRate: json['campaignRate'] as int? ?? 0,
       campaignReview: json['campaignReview'] as String?,
       organizationRate: json['organizationRate'] as int? ?? 0,
@@ -16,8 +16,8 @@ FeedbackIndividualDTO _$FeedbackIndividualDTOFromJson(
       campaignId: json['campaignId'] as int?,
     );
 
-Map<String, dynamic> _$FeedbackIndividualDTOToJson(
-    FeedbackIndividualDTO instance) {
+Map<String, dynamic> _$ParticipantFeedbackDTOToJson(
+    ParticipantFeedbackDTO instance) {
   final val = <String, dynamic>{
     'campaignRate': instance.campaignRate,
   };

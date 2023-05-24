@@ -4,9 +4,9 @@ import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/validator.util.dart';
 import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
 import 'package:mobile/common/widgets/star_rating.widget.dart';
-import 'package:mobile/modules/feedback_individual/feedback_individual.dart';
+import 'package:mobile/modules/campaign/campaign.dart';
 
-class FeedbackIndividualForm extends StatelessWidget {
+class ParticipantFeedbackForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final int campRate;
   final int orgRate;
@@ -15,7 +15,7 @@ class FeedbackIndividualForm extends StatelessWidget {
   final void Function(int rating) onCampRateChanged;
   final void Function(int rating) onOrgRateChanged;
 
-  const FeedbackIndividualForm({
+  const ParticipantFeedbackForm({
     super.key,
     required this.formKey,
     required this.campRate,
@@ -34,7 +34,7 @@ class FeedbackIndividualForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: BlocBuilder<FeedbackIndividualBloc, FeedbackIndividualState>(
+      child: BlocBuilder<ParticipantFeedbackBloc, ParticipantFeedbackState>(
         builder: (context, state) {
           return Column(
             children: [
