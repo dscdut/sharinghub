@@ -12,7 +12,7 @@ import 'package:mobile/modules/auth/bloc/register/register.bloc.dart';
 import 'package:mobile/modules/auth/widgets/auth_navigate_option.widget.dart';
 import 'package:mobile/modules/auth/widgets/login/option_and_submit_button.widget.dart';
 import 'package:mobile/modules/auth/widgets/register/register_form.widget.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({

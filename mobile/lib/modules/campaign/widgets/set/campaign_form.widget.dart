@@ -12,7 +12,7 @@ import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/common/widgets/show_or_pick_image.widget.dart';
 import 'package:mobile/modules/campaign/bloc/set/set_campaign.bloc.dart';
 import 'package:mobile/modules/campaign/widgets/set/date_range_picker.widget.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class CampaignForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;

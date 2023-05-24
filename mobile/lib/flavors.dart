@@ -1,3 +1,5 @@
+import 'package:mobile/common/constants/env_keys.dart';
+
 enum Flavor {
   DEV,
   QA,
@@ -8,6 +10,9 @@ class AppFlavor {
   static Flavor? appFlavor;
 
   static String get name => appFlavor?.name ?? '';
+
+  static String get googleMapApiKey =>
+      const String.fromEnvironment(EnvKeys.googleMapApiKey);
 
   static String get title {
     switch (appFlavor) {
@@ -25,13 +30,13 @@ class AppFlavor {
   static String get apiBaseUrl {
     switch (appFlavor) {
       case Flavor.DEV:
-        return 'https://sharing-hub.gdsc.dev';
+        return const String.fromEnvironment(EnvKeys.baseUrl);
       case Flavor.QA:
-        return 'https://sharing-hub.gdsc.dev';
+        return const String.fromEnvironment(EnvKeys.baseUrl);
       case Flavor.STAGING:
-        return 'https://sharing-hub.gdsc.dev';
+        return const String.fromEnvironment(EnvKeys.baseUrl);
       default:
-        return 'https://sharing-hub.gdsc.dev';
+        return const String.fromEnvironment(EnvKeys.baseUrl);
     }
   }
 }

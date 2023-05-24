@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/widgets/avatar_info_card.widget.dart';
 import 'package:mobile/data/models/campaign.model.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class ListCampaigns extends StatelessWidget {
   final List<CampaignModel> campaigns;

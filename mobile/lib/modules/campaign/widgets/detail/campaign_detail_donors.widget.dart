@@ -4,7 +4,7 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/campaign/widgets/detail/info_card.widget.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class CampaignDetailDonorsWidget extends StatelessWidget {
   const CampaignDetailDonorsWidget({super.key});

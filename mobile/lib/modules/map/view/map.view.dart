@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
+import 'package:mobile/common/extensions/context.extension.dart';
+import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/data/repositories/place.repository.dart';
@@ -71,10 +73,12 @@ class _MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: BlocBuilder<MapBloc, MapState>(
-          builder: (bcontext, state) {
-            return Stack(
+      body: BlocBuilder<MapBloc, MapState>(
+        builder: (context, state) {
+          return SizedBox(
+            height: context.height,
+            width: context.width,
+            child: Stack(
               children: [
                 GoogleMap(
                   initialCameraPosition: const CameraPosition(
@@ -100,11 +104,16 @@ class _MapView extends StatelessWidget {
                           .toSet() ??
                       const {},
                 ),
-                const MapSearchButtonWidget()
+                Positioned(
+                  top: context.paddingTop,
+                  left: AppSize.horizontalSpace,
+                  right: AppSize.horizontalSpace,
+                  child: const MapSearchButtonWidget(),
+                )
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

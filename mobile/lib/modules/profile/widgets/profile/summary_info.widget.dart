@@ -6,7 +6,7 @@ import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class SummaryInfo extends StatelessWidget {
   const SummaryInfo({super.key});

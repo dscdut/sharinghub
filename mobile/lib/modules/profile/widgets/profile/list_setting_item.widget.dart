@@ -6,7 +6,7 @@ import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/profile/widgets/profile/setting_item.widget.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class ListSettingItem extends StatelessWidget {
   const ListSettingItem({super.key});

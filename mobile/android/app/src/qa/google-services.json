@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "676068519787",
+    "project_id": "sharinghub-qa",
+    "storage_bucket": "sharinghub-qa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676068519787:android:fc23834fd5658ffa05662e",
+        "android_client_info": {
+          "package_name": "com.gdscdut.sharinghub_qa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676068519787-2thdt7nlk33ij74iis7kb0hturktefff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbE_quiV4pNNXdOAH9F0GVjXz17JEd9PA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676068519787-2thdt7nlk33ij74iis7kb0hturktefff.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "676068519787-b6daq4m5ds73l393r7k0jeb909ttmf8i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gdscdut.sharinghub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
