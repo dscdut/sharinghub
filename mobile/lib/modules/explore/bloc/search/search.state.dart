@@ -4,6 +4,7 @@ class SearchState extends Equatable {
   final HandleStatus status;
   final String? error;
   final List<CampaignModel>? campaigns;
+  final String? keyword;
 
   // Province state
   final HandleStatus provinceStatus;
@@ -41,6 +42,7 @@ class SearchState extends Equatable {
     this.wardStatus,
     this.wards,
     this.wardIndex,
+    this.keyword,
   );
 
   factory SearchState.initial() => const SearchState(
@@ -56,6 +58,7 @@ class SearchState extends Equatable {
         HandleStatus.initial,
         [],
         -1,
+        null,
       );
 
   @override
@@ -72,6 +75,7 @@ class SearchState extends Equatable {
         wardStatus,
         wards,
         wardIndex,
+        keyword,
       ];
 
   SearchState copyWith({
@@ -87,6 +91,7 @@ class SearchState extends Equatable {
     HandleStatus? wardStatus,
     List<WardModel>? wards,
     int? wardIndex,
+    String? keyword,
   }) {
     return SearchState(
       status ?? this.status,
@@ -101,6 +106,7 @@ class SearchState extends Equatable {
       wardStatus ?? this.wardStatus,
       wards ?? this.wards,
       wardIndex ?? this.wardIndex,
+      keyword ?? this.keyword,
     );
   }
 }

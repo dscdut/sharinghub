@@ -2,6 +2,7 @@ import 'package:mobile/flavors.dart';
 
 abstract class Endpoints {
   static String apiUrl = '${AppFlavor.apiBaseUrl}/api/v1';
+  static String addressUrl = '${AppFlavor.addressURL}/api';
 
   static String login = '$apiUrl/auth/login';
   static String register = '$apiUrl/auth/register';
@@ -28,4 +29,7 @@ abstract class Endpoints {
 
   static String geoCode =
       'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyD8y0Rb-Hg6n26z-MP30neOY3yxoBb-Ki0';
+
+  static String province = '$addressUrl/p';
+  static String district = '$addressUrl/d';
 }

@@ -21,7 +21,7 @@ class CampaignRepository {
     int? provinceCode,
     int? districtCode,
     int? wardCode,
-    String keyword,
+    String? keyword,
   ) {
     return _dataSource.searchCampaigns(
       provinceCode,

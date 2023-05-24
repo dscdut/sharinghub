@@ -7,11 +7,11 @@ part of 'ward.model.dart';
 // **************************************************************************
 
 WardModel _$WardModelFromJson(Map<String, dynamic> json) => WardModel(
-      wardName: json['wardName'] as String,
-      wardCode: json['wardCode'] as int,
+      wardName: json['name'] as String,
+      wardCode: json['code'] as int,
     );
 
 Map<String, dynamic> _$WardModelToJson(WardModel instance) => <String, dynamic>{
-      'wardName': instance.wardName,
-      'wardCode': instance.wardCode,
+      'name': instance.wardName,
+      'code': instance.wardCode,
     };

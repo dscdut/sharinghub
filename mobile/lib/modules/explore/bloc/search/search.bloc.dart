@@ -23,6 +23,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         super(SearchState.initial()) {
     on<SearchListCampainsGet>(_onSearchSubmit);
 
+    //Keyword changed
+    on<SearchKeywordChanged>(_onKeywordChanged);
+
     // Province
     on<SearchListProvincesGet>(_onGetProvinces);
     on<SearchProvinceSelected>(_onProvinceSelected);
@@ -56,7 +59,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             (state.wardIndex > -1)
                 ? state.wards[state.wardIndex].wardCode
                 : null,
-            event.keyword, // check if dropdown not selected
+            state.keyword, // check if dropdown not selected
           ),
           status: HandleStatus.success,
         ),
@@ -125,7 +128,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       ),
     );
     try {
-      final result = await _addressRepository.getDistricts();
+      final result = await _addressRepository.getDistricts(
+        state.provinces[state.provinceIndex].provinceCode,
+      );
       result.insert(0, DistrictModel.all());
       emitter(
         state.copyWith(
@@ -154,6 +159,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         wardIndex: -1,
       ),
     );
+    add(const SearchListCampainsGet());
     add(SearchListWardsGet());
   }
 
@@ -183,7 +189,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       ),
     );
     try {
-      final result = await _addressRepository.getWards();
+      final result = await _addressRepository.getWards(
+        state.districts[state.districtIndex].districtCode,
+      );
       result.insert(0, WardModel.all());
       emitter(
         state.copyWith(
@@ -192,6 +200,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           wardIndex: 0,
         ),
       );
+      add(const SearchListCampainsGet());
     } catch (e) {
       emitter(
         state.copyWith(
@@ -200,5 +209,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         ),
       );
     }
+  }
+
+  void _onKeywordChanged(
+    SearchKeywordChanged event,
+    Emitter<SearchState> emitter,
+  ) {
+    emitter(
+      state.copyWith(
+        keyword: event.keyword,
+      ),
+    );
   }
 }
