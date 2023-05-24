@@ -4,7 +4,7 @@ import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/widgets/choose_role/description_choose_role.widget.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class ChooseRoleView extends StatelessWidget {
   const ChooseRoleView({super.key});

@@ -6,7 +6,7 @@ import 'package:mobile/common/widgets/common_error.widget.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class CampaignGetCommonError extends StatelessWidget {
   final bool isEmpty;

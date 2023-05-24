@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/modules/organization/bloc/management/organization_management.bloc.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class AddOrganizationFAB extends StatelessWidget {
   const AddOrganizationFAB({super.key});

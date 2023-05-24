@@ -5,7 +5,7 @@ import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/router/app_routes.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class MapSearchButtonWidget extends StatelessWidget {
   const MapSearchButtonWidget({
@@ -14,20 +14,16 @@ class MapSearchButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-      child: AppRoundedButton(
-        onPressed: () => Navigator.pushNamed(context, AppRoutes.search),
-        backgroundColor: Colors.white,
-        textStyle: TextStyles.regularBody14.copyWith(
-          color: ColorStyles.zodiacBlue,
-        ),
-        content: LocaleKeys.home_search.tr(),
-        width: double.infinity,
-        borderRadius: 12,
-        prefixIcon: Assets.icons.icSearchDark.image(
-          height: 24,
-        ),
+    return AppRoundedButton(
+      onPressed: () => Navigator.pushNamed(context, AppRoutes.search),
+      backgroundColor: Colors.white,
+      textStyle: TextStyles.regularBody14.copyWith(
+        color: ColorStyles.zodiacBlue,
+      ),
+      content: LocaleKeys.home_search.tr(),
+      borderRadius: 12,
+      prefixIcon: Assets.icons.icSearchDark.image(
+        height: 24,
       ),
     );
   }

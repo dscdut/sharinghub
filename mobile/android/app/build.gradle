@@ -30,6 +30,8 @@ def enableProguardInReleaseBuilds = true
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
@@ -40,7 +42,7 @@ android {
     productFlavors {
         dev {
             dimension "flavor-type"
-            applicationId "com.gdscdut.sharing_dev"
+            applicationId "com.gdscdut.sharinghub_dev"
             resValue "string", "app_name", "SharingHub DEV"
         }
         qa {
@@ -123,4 +125,7 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation platform('com.google.firebase:firebase-bom:32.0.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

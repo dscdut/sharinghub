@@ -43,6 +43,10 @@ Run:
 ```bash
 $ fvm flutter pub run flutter_flavorizr
 ```
+If you encounter the issue about "tmp script sh" when generate firebase service. You must run: 
+```bash
+$ fvm flutter pub run flutter_flavorizr -p assets:download,assets:extract,google:firebase,assets:clean
+```
 
 ## Generate Assets dart code from assets folder
 

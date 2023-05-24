@@ -320,6 +320,11 @@ class Controller {
         const data = await this.donationService.getDonors(req.params.organizationId, req.params.campaignId, req.user.payload);
         return ValidHttpResponse.toOkResponse(data);
     }
+
+    removeNameConstraint = async req => {
+        const data = await this.service.removeNameConstraint();
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const CampaignController = new Controller();
