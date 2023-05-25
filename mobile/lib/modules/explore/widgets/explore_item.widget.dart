@@ -1,9 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/configs/router/app_routes.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
+import 'package:mobile/modules/explore/widgets/infor_item_explore.widget.dart';
 
 class ExploreItem extends StatelessWidget {
   const ExploreItem({
@@ -24,69 +27,49 @@ class ExploreItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTap: () => _handleOntap(context),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(8)),
-              child: Stack(
-                children: [
-                  item.image == null
-                      ? Assets.images.imgDefaultCampaign.image(
-                          height: 170,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        )
-                      : Image.network(
-                          item.image ?? '',
-                          height: 170,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                  Positioned(
-                    top: 12,
-                    left: 12,
-                    child: Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: const BoxDecoration(
-                        color: ColorStyles.primary1,
-                        borderRadius: BorderRadius.all(Radius.circular(8)),
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+          color: ColorStyles.secondary1,
+        ),
+        child: GestureDetector(
+          onTap: () => _handleOntap(context),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
+                child: item.image == null
+                    ? Assets.images.imgDefaultCampaign.image(
+                        height: 220,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.network(
+                        item.image ?? '',
+                        height: 220,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
                       ),
-                      child: Text(
-                        item.organizationName ?? '',
-                        style: TextStyles.regularBody14,
-                      ),
-                    ),
-                  ),
-                ],
               ),
-            ),
-            const Divider(
-              height: 12,
-              color: Colors.transparent,
-            ),
-            Text(
-              item.name,
-              style: TextStyles.boldBody16.copyWith(
-                color: ColorStyles.zodiacBlue,
+              const Divider(
+                height: 12,
+                color: Colors.transparent,
               ),
-            ),
-            const Divider(
-              height: 4,
-              color: Colors.transparent,
-            ),
-            Text(
-              item.address,
-              style: TextStyles.regularBody14.copyWith(
-                color: ColorStyles.zodiacBlue,
+              Container(
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                ),
+                child: InforItemExploreWidget(
+                  item: item,
+                ),
               ),
-            ),
-            const Divider(
-              height: 8,
-            )
-          ],
+              const Divider(
+                height: 12,
+                color: Colors.transparent,
+              ),
+            ],
+          ),
         ),
       ),
     );

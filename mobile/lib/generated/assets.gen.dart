@@ -31,6 +31,10 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_annotation.png
+  AssetGenImage get icAnnotation =>
+      const AssetGenImage('assets/icons/ic_annotation.png');
+
   /// File path: assets/icons/ic_chat.png
   AssetGenImage get icChat => const AssetGenImage('assets/icons/ic_chat.png');
 
@@ -68,11 +72,16 @@ class $AssetsIconsGen {
   AssetGenImage get icSwitch =>
       const AssetGenImage('assets/icons/ic_switch.png');
 
+  /// File path: assets/icons/ic_user_group.png
+  AssetGenImage get icUserGroup =>
+      const AssetGenImage('assets/icons/ic_user_group.png');
+
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
   $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        icAnnotation,
         icChat,
         icLogout,
         icRemoveUser,
@@ -82,7 +91,8 @@ class $AssetsIconsGen {
         icShare,
         icStar,
         icSupport,
-        icSwitch
+        icSwitch,
+        icUserGroup
       ];
 }
 
