@@ -3,29 +3,29 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/utils/wrapped_value.dart';
-import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
+import 'package:mobile/data/dtos/organization_feedback.dto.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
-part 'feedback_campaign.event.dart';
-part 'feedback_campaign.state.dart';
+part 'organization_feedback.event.dart';
+part 'organization_feedback.state.dart';
 
-class FeedbackCampaignBloc
-    extends Bloc<FeedbackCampaignEvent, FeedbackCampaignState> {
+class OrganizationFeedbackBloc
+    extends Bloc<OrganizationFeedbackEvent, OrganizationFeedbackState> {
   final CampaignRepository _campaignRepository;
 
-  FeedbackCampaignBloc({
+  OrganizationFeedbackBloc({
     required CampaignRepository campaignRepository,
   })  : _campaignRepository = campaignRepository,
-        super(const FeedbackCampaignState()) {
-    on<FeedbackCampaignInit>(_onInitFeedbackCampaign);
-    on<FeedbackCampaignFormValidate>(_onValidateFeedbackCampaign);
-    on<FeedbackCampaignSubmit>(_onSubmitFeedbackCampaign);
+        super(const OrganizationFeedbackState()) {
+    on<OrganizationFeedbackInit>(_onInitOrganizationFeedback);
+    on<OrganizationFeedbackFormValidate>(_onValidateOrganizationFeedback);
+    on<OrganizationFeedbackSubmit>(_onSubmitOrganizationFeedback);
   }
 
-  Future<void> _onInitFeedbackCampaign(
-    FeedbackCampaignInit event,
-    Emitter<FeedbackCampaignState> emitter,
+  Future<void> _onInitOrganizationFeedback(
+    OrganizationFeedbackInit event,
+    Emitter<OrganizationFeedbackState> emitter,
   ) async {
     emitter(
       state.copyWith(
@@ -36,9 +36,9 @@ class FeedbackCampaignBloc
     );
   }
 
-  Future<void> _onValidateFeedbackCampaign(
-    FeedbackCampaignFormValidate event,
-    Emitter<FeedbackCampaignState> emitter,
+  Future<void> _onValidateOrganizationFeedback(
+    OrganizationFeedbackFormValidate event,
+    Emitter<OrganizationFeedbackState> emitter,
   ) async {
     emitter(
       state.copyWith(
@@ -54,9 +54,9 @@ class FeedbackCampaignBloc
     );
   }
 
-  Future<void> _onSubmitFeedbackCampaign(
-    FeedbackCampaignSubmit event,
-    Emitter<FeedbackCampaignState> emitter,
+  Future<void> _onSubmitOrganizationFeedback(
+    OrganizationFeedbackSubmit event,
+    Emitter<OrganizationFeedbackState> emitter,
   ) async {
     if (state.imageError == null && state.rateError == null) {
       emitter(
@@ -64,10 +64,15 @@ class FeedbackCampaignBloc
           status: HandleStatus.loading,
         ),
       );
-      
+
       try {
-        await _campaignRepository
-            .feedbackToCampaign(event.organizationFeedback);
+        if (!event.isUpdate) {
+          await _campaignRepository
+              .organizationFeedback(event.organizationFeedback);
+        } else {
+          await _campaignRepository
+              .updateOrganizationFeedback(event.organizationFeedback);
+        }
 
         emitter(
           state.copyWith(

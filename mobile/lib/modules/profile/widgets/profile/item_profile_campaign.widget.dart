@@ -29,7 +29,10 @@ class ItemProfileCampaignWidget extends StatelessWidget {
             icon,
             width: 25,
             height: 35,
-            color: ColorStyles.gray300,
+            colorFilter: const ColorFilter.mode(
+              ColorStyles.gray300,
+              BlendMode.srcIn,
+            ),
           ),
           _verticalSpacing,
           Text(

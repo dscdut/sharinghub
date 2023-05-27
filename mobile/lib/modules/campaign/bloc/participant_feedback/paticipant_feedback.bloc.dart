@@ -3,29 +3,29 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/utils/wrapped_value.dart';
-import 'package:mobile/data/dtos/feedback_individual.dto.dart';
+import 'package:mobile/data/dtos/paticipant_feedback.dto.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 
-part 'feedback_individual.event.dart';
-part 'feedback_individual.state.dart';
+part 'paticipant_feedback.event.dart';
+part 'paticipant_feedback.state.dart';
 
-class FeedbackIndividualBloc
-    extends Bloc<FeedbackIndividualEvent, FeedbackIndividualState> {
+class ParticipantFeedbackBloc
+    extends Bloc<ParticipantFeedbackEvent, ParticipantFeedbackState> {
   final CampaignRepository _campaignRepository;
 
-  FeedbackIndividualBloc({
+  ParticipantFeedbackBloc({
     required CampaignRepository campaignRepository,
   })  : _campaignRepository = campaignRepository,
-        super(const FeedbackIndividualState()) {
-    on<FeedbackIndividualInit>(_onInitFeedbackIndividual);
-    on<FeedbackIndividualFormValidate>(_onValidateFeedbackIndividual);
-    on<FeedbackIndividualSubmit>(_onSubmitFeedbackIndividual);
+        super(const ParticipantFeedbackState()) {
+    on<ParticipantFeedbackInit>(_onInitParticipantFeedback);
+    on<ParticipantFeedbackFormValidate>(_onValidateParticipantFeedback);
+    on<ParticipantFeedbackSubmit>(_onSubmitParticipantFeedback);
   }
 
-  Future<void> _onInitFeedbackIndividual(
-    FeedbackIndividualInit event,
-    Emitter<FeedbackIndividualState> emitter,
+  Future<void> _onInitParticipantFeedback(
+    ParticipantFeedbackInit event,
+    Emitter<ParticipantFeedbackState> emitter,
   ) async {
     emitter(
       state.copyWith(
@@ -36,9 +36,9 @@ class FeedbackIndividualBloc
     );
   }
 
-  Future<void> _onValidateFeedbackIndividual(
-    FeedbackIndividualFormValidate event,
-    Emitter<FeedbackIndividualState> emitter,
+  Future<void> _onValidateParticipantFeedback(
+    ParticipantFeedbackFormValidate event,
+    Emitter<ParticipantFeedbackState> emitter,
   ) async {
     emitter(
       state.copyWith(
@@ -53,9 +53,9 @@ class FeedbackIndividualBloc
     );
   }
 
-  Future<void> _onSubmitFeedbackIndividual(
-    FeedbackIndividualSubmit event,
-    Emitter<FeedbackIndividualState> emitter,
+  Future<void> _onSubmitParticipantFeedback(
+    ParticipantFeedbackSubmit event,
+    Emitter<ParticipantFeedbackState> emitter,
   ) async {
     if (state.campaignRateError == null &&
         state.organizationRateError == null) {
@@ -66,7 +66,7 @@ class FeedbackIndividualBloc
       );
 
       try {
-        await _campaignRepository.feedbackIndividual(event.individualFeedback);
+        await _campaignRepository.participantFeedback(event.individualFeedback);
 
         emitter(
           state.copyWith(

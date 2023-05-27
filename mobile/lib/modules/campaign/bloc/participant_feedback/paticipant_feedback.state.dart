@@ -1,11 +1,11 @@
-part of 'feedback_individual.bloc.dart';
+part of 'paticipant_feedback.bloc.dart';
 
-class FeedbackIndividualState extends Equatable {
+class ParticipantFeedbackState extends Equatable {
   final HandleStatus status;
   final String? campaignRateError;
   final String? organizationRateError;
 
-  const FeedbackIndividualState({
+  const ParticipantFeedbackState({
     this.status = HandleStatus.initial,
     this.campaignRateError,
     this.organizationRateError,
@@ -18,12 +18,12 @@ class FeedbackIndividualState extends Equatable {
         organizationRateError,
       ];
 
-  FeedbackIndividualState copyWith({
+  ParticipantFeedbackState copyWith({
     HandleStatus? status,
     Wrapped<String?>? campaignRateError,
     Wrapped<String?>? organizationRateError,
   }) {
-    return FeedbackIndividualState(
+    return ParticipantFeedbackState(
       status: status ?? this.status,
       campaignRateError: campaignRateError == null
           ? this.campaignRateError

@@ -8,24 +8,25 @@ import 'package:mobile/common/utils/dialog.util.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
-import 'package:mobile/data/dtos/feedback_individual.dto.dart';
+import 'package:mobile/data/dtos/paticipant_feedback.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
-import 'package:mobile/modules/feedback_individual/feedback_individual.dart';
+import 'package:mobile/modules/campaign/campaign.dart';
+import 'package:mobile/modules/campaign/widgets/participant_feedback/paticipant_feedback_form.widget.dart';
 
-class FeedbackIndividualPage extends StatelessWidget {
+class ParticipantFeedbackPage extends StatelessWidget {
   final CampaignModel campaign;
 
-  const FeedbackIndividualPage({
+  const ParticipantFeedbackPage({
     super.key,
     required this.campaign,
   });
 
-  void _listenFeedbackIndividualStateChanged(
+  void _listenParticipantFeedbackStateChanged(
     BuildContext context,
-    FeedbackIndividualState state,
+    ParticipantFeedbackState state,
   ) {
     if (state.status == HandleStatus.error) {
       DialogUtil.hideLoading(context);
@@ -56,37 +57,37 @@ class FeedbackIndividualPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => FeedbackIndividualBloc(
+      create: (_) => ParticipantFeedbackBloc(
         campaignRepository: getIt.get<CampaignRepository>(),
       ),
-      child: BlocListener<FeedbackIndividualBloc, FeedbackIndividualState>(
-        listener: _listenFeedbackIndividualStateChanged,
-        child: _FeedbackIndividualView(campaign: campaign),
+      child: BlocListener<ParticipantFeedbackBloc, ParticipantFeedbackState>(
+        listener: _listenParticipantFeedbackStateChanged,
+        child: _ParticipantFeedbackView(campaign: campaign),
       ),
     );
   }
 }
 
-class _FeedbackIndividualView extends StatefulWidget {
+class _ParticipantFeedbackView extends StatefulWidget {
   final CampaignModel campaign;
 
-  const _FeedbackIndividualView({
+  const _ParticipantFeedbackView({
     required this.campaign,
   });
 
   @override
-  State<_FeedbackIndividualView> createState() =>
-      _FeedbackIndividualViewState();
+  State<_ParticipantFeedbackView> createState() =>
+      _ParticipantFeedbackViewState();
 }
 
-class _FeedbackIndividualViewState extends State<_FeedbackIndividualView> {
-  FeedbackIndividualDTO feedbackIndividualDTO = FeedbackIndividualDTO();
+class _ParticipantFeedbackViewState extends State<_ParticipantFeedbackView> {
+  ParticipantFeedbackDTO feedbackIndividualDTO = ParticipantFeedbackDTO();
 
   @override
   void initState() {
     super.initState();
-    context.read<FeedbackIndividualBloc>().add(FeedbackIndividualInit());
-    _setFeedbackIndividualDTO();
+    context.read<ParticipantFeedbackBloc>().add(ParticipantFeedbackInit());
+    _setParticipantFeedbackDTO();
   }
 
   final _formKey = GlobalKey<FormState>();
@@ -95,13 +96,13 @@ class _FeedbackIndividualViewState extends State<_FeedbackIndividualView> {
   final _campaignEditingController = TextEditingController();
   final _orgEditingController = TextEditingController();
 
-  void _setFeedbackIndividualDTO() {
+  void _setParticipantFeedbackDTO() {
     if (widget.campaign.hasFeedback) {
-      _setFeedbackIndividualInfo();
+      _setParticipantFeedbackInfo();
     }
   }
 
-  void _setFeedbackIndividualInfo() {
+  void _setParticipantFeedbackInfo() {
     // _campRating = widget.campaign.feedback!.campaignRating!;
     // _orgRating = widget.campaign.feedback!.organizationRating!;
     // _campaignEditingController.text =
@@ -119,18 +120,18 @@ class _FeedbackIndividualViewState extends State<_FeedbackIndividualView> {
     );
   }
 
-  void _submitFeedbackIndividual(BuildContext context) {
+  void _submitParticipantFeedback(BuildContext context) {
     _collectDataForFeedbackCampaign();
 
-    context.read<FeedbackIndividualBloc>().add(
-          FeedbackIndividualFormValidate(
+    context.read<ParticipantFeedbackBloc>().add(
+          ParticipantFeedbackFormValidate(
             individualFeedback: feedbackIndividualDTO,
           ),
         );
 
     if (_formKey.currentState!.validate()) {
-      context.read<FeedbackIndividualBloc>().add(
-            FeedbackIndividualSubmit(
+      context.read<ParticipantFeedbackBloc>().add(
+            ParticipantFeedbackSubmit(
               individualFeedback: feedbackIndividualDTO,
             ),
           );
@@ -160,7 +161,7 @@ class _FeedbackIndividualViewState extends State<_FeedbackIndividualView> {
         physics: const ClampingScrollPhysics(),
         child: Column(
           children: [
-            FeedbackIndividualForm(
+            ParticipantFeedbackForm(
               formKey: _formKey,
               campRate: _campRating,
               orgRate: _orgRating,
@@ -173,7 +174,7 @@ class _FeedbackIndividualViewState extends State<_FeedbackIndividualView> {
               height: 30,
             ),
             AppRoundedButton(
-              onPressed: () => _submitFeedbackIndividual(context),
+              onPressed: () => _submitParticipantFeedback(context),
               width: double.infinity,
               content: LocaleKeys.button_finish.tr(),
             ),

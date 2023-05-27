@@ -14,6 +14,12 @@ enum ImageType {
   svgNetwork,
 }
 
+const List<String> _allowedExtensions = [
+  '.png',
+  '.jpg',
+  '.jpeg',
+];
+
 abstract class ImageUtil {
   static ImageType getImageType(String path) {
     switch (FileUtil.getFileExtension(path)) {
@@ -28,17 +34,10 @@ abstract class ImageUtil {
         } else {
           return ImageType.asset;
         }
-      case '.svg':
-        if (path.startsWith('http')) {
-          return ImageType.svgNetwork;
-        }
-
-        return ImageType.svg;
       default:
         if (path.startsWith('http')) {
           return ImageType.network;
         }
-
         return ImageType.asset;
     }
   }
@@ -85,15 +84,26 @@ abstract class ImageUtil {
   static Future<File?> pickImage(ImageSource source) async {
     final pickedFile = await ImagePicker().pickImage(source: source);
 
-    return pickedFile == null ? null : File(pickedFile.path);
+    return pickedFile == null
+        ? null
+        : _allowedExtensions
+                .contains(FileUtil.getFileExtension(pickedFile.path))
+            ? File(pickedFile.path)
+            : null;
   }
 
   static Future<List<File>?> pickMultipleImage() async {
-    final pickedFile = await ImagePicker().pickMultiImage();
+    final pickedFiles = await ImagePicker().pickMultiImage();
 
-    return pickedFile.isEmpty
+    return pickedFiles.isEmpty
         ? null
-        : pickedFile.map((e) => File(e.path)).toList();
+        : pickedFiles
+            .where(
+              (pickedFile) => _allowedExtensions
+                  .contains(FileUtil.getFileExtension(pickedFile.path)),
+            )
+            .map((pickedFile) => File(pickedFile.path))
+            .toList();
   }
 
   static Future<File?> pickAndCropImage(

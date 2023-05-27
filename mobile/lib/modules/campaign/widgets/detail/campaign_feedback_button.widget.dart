@@ -23,7 +23,7 @@ class CampaignFeedbackButton extends StatelessWidget {
   void _onFeedbackButtonPressed(BuildContext context) {
     final String route = isOrgCreateCampaign(context.read<AuthBloc>().state)
         ? AppRoutes.organizationFeedback
-        : AppRoutes.individualFeedback;
+        : AppRoutes.participantFeedback;
 
     Navigator.of(context).pushNamed(
       route,
