@@ -30,10 +30,10 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
         horizontal: 8,
       ),
       textInputAction: TextInputAction.search,
-      onChanged: (p0) {
+      onChanged: (value) {
         context.read<SearchBloc>().add(
               SearchKeywordChanged(
-                keyword: p0,
+                keyword: value,
               ),
             );
       },

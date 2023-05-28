@@ -41,15 +41,6 @@ class AppFlavor {
   }
 
   static String get addressURL {
-    switch (appFlavor) {
-      case Flavor.DEV:
-        return 'https://provinces.open-api.vn';
-      case Flavor.QA:
-        return 'https://provinces.open-api.vn';
-      case Flavor.STAGING:
-        return 'https://provinces.open-api.vn';
-      default:
-        return 'https://provinces.open-api.vn';
-    }
+    return const String.fromEnvironment(EnvKeys.localtionUrl);
   }
 }
