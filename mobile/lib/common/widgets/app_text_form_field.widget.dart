@@ -29,6 +29,7 @@ class AppTextFormField extends StatelessWidget {
   final IconData? prefixIcon;
 
   final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
 
   final String? Function(String?)? validator;
 
@@ -36,6 +37,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String)? onChanged;
   final VoidCallback? onTapPrefixIcon;
   final VoidCallback? onTapSuffixIcon;
+  final Function? onEditingComplete;
 
   final TextStyle? labelStyle;
 
@@ -75,6 +77,8 @@ class AppTextFormField extends StatelessWidget {
     this.focusNode,
     this.maxLines = 1,
     this.contentPadding = const EdgeInsets.symmetric(horizontal: 20),
+    this.textInputAction,
+    this.onEditingComplete,
   })  : labelStyle =
             TextStyles.s14RegularText.copyWith(color: ColorStyles.gray200),
         super(key: key);
@@ -84,7 +88,7 @@ class AppTextFormField extends StatelessWidget {
     return TextFormField(
       controller: textController,
       focusNode: focusNode,
-      textInputAction: TextInputAction.done,
+      textInputAction: textInputAction ?? TextInputAction.done,
       onChanged: onChanged,
       onTap: onTap,
       validator: validator,
@@ -95,6 +99,12 @@ class AppTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       initialValue: initialValue,
       maxLines: maxLines,
+      onEditingComplete: onEditingComplete == null
+          ? null
+          : () {
+              FocusScope.of(context).unfocus();
+              onEditingComplete!();
+            },
       style: TextStyles.regularBody14.copyWith(color: ColorStyles.zodiacBlue),
       textAlign: isCenterText ? TextAlign.center : TextAlign.start,
       decoration: InputDecoration(

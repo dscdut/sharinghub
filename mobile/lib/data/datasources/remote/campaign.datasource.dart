@@ -27,7 +27,7 @@ class CampaignDataSource {
     int? provinceCode,
     int? districtCode,
     int? wardCode,
-    String keyword,
+    String? keyword,
   ) async {
     final response = await _dioHelper.get(
       Endpoints.campaigns,

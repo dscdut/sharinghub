@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
-import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/common/widgets/custom_dropdown_button.widget.dart';
 import 'package:mobile/data/models/address/district.model.dart';
 import 'package:mobile/data/models/address/province.model.dart';
@@ -12,7 +10,6 @@ import 'package:mobile/data/models/address/ward.model.dart';
 import 'package:mobile/data/repositories/address.repository.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
-import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/explore/bloc/search/search.bloc.dart';
 import 'package:mobile/modules/explore/widgets/search_input.widget.dart';
@@ -31,7 +28,7 @@ class SearchPage extends StatelessWidget {
       child: BlocListener<SearchBloc, SearchState>(
         listenWhen: (previous, current) => previous != current,
         listener: (context, state) => _listenSearchState(context, state),
-        child: _SearchPage(),
+        child: const _SearchPage(),
       ),
     );
   }
@@ -40,67 +37,76 @@ class SearchPage extends StatelessWidget {
 }
 
 class _SearchPage extends StatelessWidget {
-  _SearchPage();
-  final TextEditingController _searchController = TextEditingController();
+  const _SearchPage();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          LocaleKeys.home_search.tr(),
-          style: TextStyles.regularHeading20.copyWith(color: Colors.white),
-        ),
+        title: const SearchInputWidget(),
         backgroundColor: ColorStyles.primary1,
+        leadingWidth: 32,
       ),
       body: BlocBuilder<SearchBloc, SearchState>(
         builder: (context, state) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SearchInputWidget(
-                searchController: _searchController,
-              ),
               const Divider(
                 height: 8,
                 color: Colors.transparent,
               ),
+              SizedBox(
+                height: 40,
+                child: Row(
+                  children: [
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      '${LocaleKeys.search_province.tr()}: ',
+                      style: TextStyles.regularBody14
+                          .copyWith(color: Colors.black54),
+                    ),
+                    Expanded(
+                      child: CustomDropdownButton(
+                        decoration: const BoxDecoration(),
+                        hint: Text(
+                          LocaleKeys.search_province.tr(),
+                          style: TextStyles.regularBody14
+                              .copyWith(color: Colors.black54),
+                        ),
+                        items: state.provinces.isNotEmpty
+                            ? state.provinces.map((e) {
+                                return DropdownMenuItem<ProvinceModel>(
+                                  value: e,
+                                  child: Text(
+                                    e.provinceName,
+                                    style: TextStyles.regularBody14
+                                        .copyWith(color: Colors.black54),
+                                  ),
+                                );
+                              }).toList()
+                            : [],
+                        onChange: (ProvinceModel value) => context
+                            .read<SearchBloc>()
+                            .add(
+                              SearchProvinceSelected(
+                                provinceCode: state.provinces.indexOf(value),
+                              ),
+                            ),
+                        color: Colors.black54,
+                        value: state.provinceIndex == -1
+                            ? null
+                            : state.provinces[state
+                                .provinceIndex], // null meaning for disable and show hint
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Row(
                 children: [
-                  // Province
-                  Expanded(
-                    child: CustomDropdownButton(
-                      hint: Text(
-                        LocaleKeys.search_province.tr(),
-                        style: TextStyles.regularBody14
-                            .copyWith(color: Colors.black54),
-                      ),
-                      items: state.provinces.isNotEmpty
-                          ? state.provinces.map((e) {
-                              return DropdownMenuItem<ProvinceModel>(
-                                value: e,
-                                child: Text(
-                                  e.provinceName,
-                                  style: TextStyles.regularBody14
-                                      .copyWith(color: Colors.black54),
-                                ),
-                              );
-                            }).toList()
-                          : [],
-                      onChange: (ProvinceModel value) =>
-                          context.read<SearchBloc>().add(
-                                SearchProvinceSelected(
-                                  provinceCode: state.provinces.indexOf(value),
-                                ),
-                              ),
-                      color: Colors.black54,
-                      value: state.provinceIndex == -1
-                          ? null
-                          : state.provinces[state
-                              .provinceIndex], // null meaning for disable and show hint
-                    ),
-                  ),
-
                   // District
                   Expanded(
                     child: CustomDropdownButton(
@@ -171,18 +177,6 @@ class _SearchPage extends StatelessWidget {
                 height: 8,
                 color: Colors.transparent,
               ),
-              AppRoundedButton(
-                onPressed: () => context.read<SearchBloc>().add(
-                      SearchListCampainsGet(
-                        keyword: _searchController.text,
-                      ),
-                    ),
-                width: double.infinity,
-                backgroundColor: ColorStyles.primary1,
-                content: LocaleKeys.home_search.tr(),
-                prefixIcon:
-                    Assets.icons.icSearch.image(width: AppSize.iconSize),
-              ),
               const Divider(
                 height: 12,
                 color: Colors.transparent,
@@ -192,9 +186,7 @@ class _SearchPage extends StatelessWidget {
                 status: state.status,
                 onSearch: () {
                   context.read<SearchBloc>().add(
-                        SearchListCampainsGet(
-                          keyword: _searchController.text,
-                        ),
+                        const SearchListCampainsGet(),
                       );
                 },
               )

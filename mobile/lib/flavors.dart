@@ -39,4 +39,8 @@ class AppFlavor {
         return const String.fromEnvironment(EnvKeys.baseUrl);
     }
   }
+
+  static String get addressURL {
+    return const String.fromEnvironment(EnvKeys.localtionUrl);
+  }
 }
