@@ -38,6 +38,7 @@ abstract class ColorStyles {
   static const Color background = Color(0xFFF9F9F9);
   static const Color antiFlashWhite = Color(0xFFEFF4F7);
   static Color scaffoldBackgroundColor = Colors.grey[50]!;
+  static const Color alert = Color(0xffE74C3C);
   // static const Color lavenderSilver = Color(0xFFFDEFEF);
 
   static const Color primary1 = Color(0xff8EC3B0);
