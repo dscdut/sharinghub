@@ -1,4 +1,5 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
+import { Status } from 'core/common/enum';
 
 class Repository extends DataRepository {
     findDonationByIdAndCampaignIdAndUserId(donationId, campaignId, userId) {
@@ -43,7 +44,22 @@ class Repository extends DataRepository {
                 'status'
             );
     }
-    
+
+    findAllApprovedDonationsByCampaignIdAndUserId(campaignId, userId) {
+        return this.query()
+        .where('donation_records.campaign_id', '=', campaignId)
+        .andWhere('donation_records.donor_id', '=', userId)
+        .andWhere('donation_records.status', '=', Status.APPROVED)
+        .select(
+            'id',
+            { campaignId: 'campaign_id' },
+            { donorId: 'donor_id' },
+            { itemName: 'item_name' },
+            { quantity: 'quantity' },
+            'status'
+        );
+    }
+
     createDonation(donation, trx = null) {
         return super.insert({ ...donation, status: 2}, trx).into('donation_records');
     }

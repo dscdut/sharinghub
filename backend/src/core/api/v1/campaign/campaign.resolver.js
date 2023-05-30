@@ -6,6 +6,7 @@ import { RecordIdInterceptor } from '../../../modules/interceptor/recordId/recor
 import { FeedbackInterceptor } from '../../../modules/feedback';
 import { MediaInterceptor } from 'core/modules/document';
 import { uploadMediaSwagger } from 'core/common/swagger';
+import { CreateUserFeedbackInterceptor } from 'core/modules/user_feedback';
 
 export const CampaignResolver = Module.builder()
     .addPrefix({
@@ -89,6 +90,38 @@ export const CampaignResolver = Module.builder()
             route: '/campaigns/:campaignId/feedbacks',
             method: 'delete',
             controller: CampaignController.deleteFeedback,
+            preAuthorization: true,
+        },
+        {
+            route: '/campaigns/:campaignId/user-feedbacks',
+            method: 'get',
+            params: [campaignId],
+            controller: CampaignController.getUserFeedbacks,
+            preAuthorization: false,
+        },
+        {
+            route: '/campaigns/:campaignId/user-feedbacks',
+            method: 'post',
+            interceptors: [CreateUserFeedbackInterceptor],
+            body: 'CreateUserFeedbackDto',
+            params: [campaignId],
+            controller: CampaignController.createOrUpdateUserFeedback,
+            preAuthorization: true,
+        },
+        {
+            route: '/campaigns/:campaignId/user-feedbacks',
+            method: 'put',
+            interceptors: [CreateUserFeedbackInterceptor],
+            body: 'CreateUserFeedbackDto',
+            params: [campaignId],
+            controller: CampaignController.createOrUpdateUserFeedback,
+            preAuthorization: true,
+        },
+        {
+            route: '/campaigns/:campaignId/user-feedbacks',
+            method: 'delete',
+            params: [campaignId],
+            controller: CampaignController.deleteUserFeedback,
             preAuthorization: true,
         },
         {
