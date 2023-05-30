@@ -1,4 +1,5 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
+import { Status } from 'core/common/enum/user-campaign-status'
 
 class Repository extends DataRepository {
     findOneByCampaignIdAndVolunteerId(campaign_id, user_id) {
@@ -51,6 +52,22 @@ class Repository extends DataRepository {
 
         if (trx) queryBuilder.transacting(trx);
         return queryBuilder;
+    }
+
+    findApprovedVolunteerByCampaignIdAndUserId(campaign_id, user_id) {
+        return this.query()
+            .whereNull('users_campaigns.deleted_at')
+            .where('users_campaigns.campaign_id', '=', campaign_id)
+            .andWhere('users_campaigns.user_id', '=', user_id)
+            .andWhere('users_campaigns.status', '=', Status.APPROVED)
+            .join('users', 'users.id', '=', 'users_campaigns.user_id')
+            .select([
+                'users.id',
+                { fullName: 'users.full_name' },
+                'users.email',
+                'users.birthday',
+                { phoneNumber: 'users.phone_number' },
+            ]);
     }
 }
 

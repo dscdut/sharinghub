@@ -13,6 +13,7 @@ import { CreateDonationDto, UpdateDonorsStatusDto } from '../../../modules/donat
 import { DonationService } from '../../../modules/donation/service/donation.service';
 import { DonationRecordRepositoryService } from '../../../modules/donation/service/donation-record-repository.service';
 import { JwtService } from '../../../modules/auth/service/jwt.service';
+import { UserFeedbackService, CreateUserFeedbackDto } from 'core/modules/user_feedback';
 
 class Controller {
     constructor() {
@@ -21,6 +22,7 @@ class Controller {
         this.donationService = DonationService;
         this.donationRecordRepositoryService = DonationRecordRepositoryService
         this.jwtService = JwtService;
+        this.userFeedbackService = UserFeedbackService;
     }
 
     findOneById = async req => {
@@ -278,6 +280,21 @@ class Controller {
 
     deleteFeedback = async req => {
         const data = await this.feedbackService.deleteFeedback(req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    createOrUpdateUserFeedback = async req => {
+        const data = await this.userFeedbackService.createOrUpdateUserFeedback(CreateUserFeedbackDto(req.body), req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    deleteUserFeedback = async req => {
+        const data = await this.userFeedbackService.deleteUserFeedback(req.user.payload, req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
+    getUserFeedbacks = async req => {
+        const data = await this.userFeedbackService.getUserFeedbacksByCampaignId(req.params);
         return ValidHttpResponse.toOkResponse(data);
     }
 
