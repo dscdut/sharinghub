@@ -41,15 +41,15 @@ abstract class ColorStyles {
   static const Color alert = Color(0xffE74C3C);
   // static const Color lavenderSilver = Color(0xFFFDEFEF);
 
-  static const Color primary1 = Color(0xff8EC3B0);
-  static const Color primary2 = Color(0xff9ED5C5);
+  static const Color primary1 = Color(0xff14D0C3);
+  static const Color primary2 = Color(0xffD0F6F3);
   static const Color primary3 = Color(0xffBCEAD5);
-  static const Color primary4 = Color(0xffDEF5E5);
+  static const Color primary4 = Color(0xffD9FEFC);
 
   static const Color secondary1 = Color(0xffF5F5F6);
   static const Color secondary2 = Color(0xffEBECED);
   static const Color secondary3 = Color(0xffEBECED);
   static const Color secondary4 = Color(0xffC2C3C7);
 
-  static const Color disableColor = Color(0xffC2C3C7);
+  static const Color disableColor = Color(0xffB4B4C3);
 }

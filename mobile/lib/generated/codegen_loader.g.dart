@@ -10,13 +10,13 @@ class CodegenLoader extends AssetLoader{
   const CodegenLoader();
 
   @override
-  Future<Map<String, dynamic>> load(String fullPath, Locale locale ) {
+  Future<Map<String, dynamic>?> load(String path, Locale locale) {
     return Future.value(mapLocales[locale.toString()]);
   }
 
   static const Map<String,dynamic> en = {
   "texts": {
-    "notification": "Notification",
+    "notification": "Notifications",
     "success": "Success",
     "error": "Error",
     "error_occur": "An error has occurred, please try again later",
@@ -53,10 +53,10 @@ class CodegenLoader extends AssetLoader{
     "edit_feedback": "Edit Feedback"
   },
   "root": {
-    "map": "Map",
+    "map": "Maps",
     "explore": "Explore",
-    "management": "Management",
-    "notification": "Notification",
+    "management": "My Campaigns",
+    "notification": "Notifications",
     "profile": "Profile"
   },
   "auth": {

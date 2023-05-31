@@ -104,13 +104,14 @@ class InforItemExploreWidget extends StatelessWidget {
               color: Colors.transparent,
             ),
             Flexible(
-                child: Text(
-              item.description,
-              style: TextStyles.regularBody14.copyWith(
-                color: ColorStyles.zodiacBlue,
+              child: Text(
+                item.description,
+                style: TextStyles.regularBody14.copyWith(
+                  color: ColorStyles.zodiacBlue,
+                ),
+                maxLines: 3,
               ),
-              maxLines: 3,
-            ))
+            )
           ],
         ),
       ],

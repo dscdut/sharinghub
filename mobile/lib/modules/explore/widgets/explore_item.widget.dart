@@ -1,11 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
-import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/configs/router/app_routes.dart';
-import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/explore/widgets/infor_item_explore.widget.dart';
 
 class ExploreItem extends StatelessWidget {

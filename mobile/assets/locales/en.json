@@ -1,6 +1,6 @@
 {
   "texts": {
-    "notification": "Notification",
+    "notification": "Notifications",
     "success": "Success",
     "error": "Error",
     "error_occur": "An error has occurred, please try again later",
@@ -37,10 +37,10 @@
     "edit_feedback": "Edit Feedback"
   },
   "root": {
-    "map": "Map",
+    "map": "Maps",
     "explore": "Explore",
-    "management": "Management",
-    "notification": "Notification",
+    "management": "My Campaigns",
+    "notification": "Notifications",
     "profile": "Profile"
   },
   "auth": {
