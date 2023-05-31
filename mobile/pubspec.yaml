@@ -150,6 +150,7 @@ flutter:
     - assets/icons/
     - assets/icons/launcher/
     - assets/icons/profile/
+    - assets/icons/bottom_navigation/
     - assets/images/
     - assets/locales/
 
