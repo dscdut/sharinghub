@@ -201,6 +201,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  convert_vietnamese:
+    dependency: "direct main"
+    description:
+      name: convert_vietnamese
+      sha256: "0d46cacffd2f5638d7548924fb6820d396f3585f420804343a88a161b31171e3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.9"
   cross_file:
     dependency: transitive
     description:

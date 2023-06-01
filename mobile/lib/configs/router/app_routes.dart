@@ -195,9 +195,14 @@ abstract class AppRoutes {
           },
         );
       case campaignDonation:
+        ArgumentWrapper3<int, List<UserModel>, List<UserModel>> data =
+            settings.arguments
+                as ArgumentWrapper3<int, List<UserModel>, List<UserModel>>;
         return MaterialPageRoute(
           builder: (_) => CampaignDonorsPage(
-            initIndex: settings.arguments as int,
+            initIndex: data.param1,
+            listDonors: data.param2,
+            listVolunteers: data.param3,
           ),
         );
       case locationSearch:
