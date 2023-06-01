@@ -69,7 +69,7 @@ class CampaignInfo extends StatelessWidget {
               ), // address, description, phone is not to show, so we can pass empty string
             ),
             _verticalSpacing,
-            const CampaignDetailDonorsWidget(),
+            CampaignDetailDonorsWidget(),
             _verticalSpacing,
             _buildEndContentCampaign(campaign),
           ],

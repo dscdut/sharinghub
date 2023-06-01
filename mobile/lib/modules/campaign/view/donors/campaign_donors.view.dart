@@ -3,17 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/theme/color_styles.dart';
+import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobile/modules/campaign/bloc/donors/campaign_donors.bloc.dart';
+import 'package:mobile/modules/campaign/widgets/donors/list_donors.widget.dart';
 
 class CampaignDonorsPage extends StatelessWidget {
   const CampaignDonorsPage({
     super.key,
     required this.initIndex,
+    required this.listDonors,
+    required this.listVolunteers,
   });
 
   final int initIndex;
+  final List<UserModel> listDonors;
+  final List<UserModel> listVolunteers;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,11 @@ class CampaignDonorsPage extends StatelessWidget {
       create: (_) => CampaignDonorsBloc(),
       child: BlocListener<CampaignDonorsBloc, CampaignDonorsState>(
         listener: _onListener,
-        child: _CampaignDonorsView(initIndex: initIndex),
+        child: _CampaignDonorsView(
+          initIndex: initIndex,
+          listDonors: listDonors,
+          listVolunteers: listVolunteers,
+        ),
       ),
     );
   }
@@ -35,9 +45,13 @@ class CampaignDonorsPage extends StatelessWidget {
 class _CampaignDonorsView extends StatefulWidget {
   const _CampaignDonorsView({
     required this.initIndex,
+    required this.listDonors,
+    required this.listVolunteers,
   });
 
   final int initIndex;
+  final List<UserModel> listDonors;
+  final List<UserModel> listVolunteers;
 
   @override
   State<_CampaignDonorsView> createState() => __CampaignDonorsView();
@@ -94,9 +108,16 @@ class __CampaignDonorsView extends State<_CampaignDonorsView>
           } else {
             return TabBarView(
               controller: _tabController,
-              children: const [
-                Center(child: Text('Tất cả')),
-                Center(child: Text('Đã xác nhận')),
+              children: [
+                //donors
+                ListDonorsWidget(
+                  users: widget.listDonors,
+                ),
+
+                //volunteers
+                ListDonorsWidget(
+                  users: widget.listVolunteers,
+                ),
               ],
             );
           }
