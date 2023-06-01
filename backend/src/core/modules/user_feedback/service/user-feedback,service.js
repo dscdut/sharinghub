@@ -50,17 +50,8 @@ class Service {
         }
     }
 
-    async getUserFeedbacksByCampaignId({ campaignId }) {
-        const userFeedbacks = await this.repository.findFeedbacksByCampaignId(campaignId);
-
-        return {
-            data: await Promise.all(userFeedbacks.map(async (feedback) => {
-                return {
-                    ...feedback,
-                    user: await this.userRepository.findById(feedback.userId)
-                }
-            }))
-        }
+    async getUserFeedbacksByCampaignId(campaignId) {
+       return this.repository.findFeedbacksByCampaignId(campaignId);
     }
 
     async getUserFeedbackByCampaignIdAndUserId( { campaignId, userId }) {

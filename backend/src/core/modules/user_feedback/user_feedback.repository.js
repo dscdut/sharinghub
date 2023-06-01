@@ -41,13 +41,24 @@ class Repository extends DataRepository {
     findFeedbacksByCampaignId(campaignId) {
         return this.query()
             .where('users_feedbacks.campaign_id', '=', campaignId)
+            .join('users', 'users.id', '=', 'users_feedbacks.user_id')
             .select([
                 { campaignId: 'users_feedbacks.campaign_id' },
-                { userId: 'users_feedbacks.user_id' },
                 { organizationRate: 'users_feedbacks.organization_rate' },
                 { organizationFeedback: 'users_feedbacks.organization_feedback' },
                 { campaignRate: 'users_feedbacks.campaign_rate' },
                 { campaignFeedback: 'users_feedbacks.campaign_feedback' },
+                { user: connection.raw(`json_build_object(
+                    'id', users.id, 
+                    'fullName', users.full_name, 
+                    'email', users.email, 
+                    'phoneNumber', users.phone_number,
+                    'avatar', users.avatar,
+                    'birthday', users.birthday,
+                    'address', users.address,
+                    'workplace', users.workplace,
+                    'gender', users.gender
+                )`)}
             ]);
     }
 
