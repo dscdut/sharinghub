@@ -298,6 +298,11 @@ class Controller {
         return ValidHttpResponse.toOkResponse(data);
     }
 
+    getUserFeedback = async req => {
+        const data = await this.userFeedbackService.getUserFeedbackByCampaignIdAndUserId(req.params);
+        return ValidHttpResponse.toOkResponse(data);
+    }
+
     createOrUpdateDonation = async req => {
         const data = await this.donationService.createOrUpdateDonation(req.params, req.user.payload.id, CreateDonationDto(req.body), req);
         return ValidHttpResponse.toOkResponse(data);

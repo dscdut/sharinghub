@@ -1,7 +1,7 @@
 import { Module } from 'packages/handler/Module';
 import { CoordinateCampaignInterceptor, CreateCampaignInterceptor } from 'core/modules/campaign/interceptor';
 import { CampaignController } from './campaign.controller';
-import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery } from '../../../common/swagger';
+import { orgCampaignId, campaignId, RecordId, NameQuery, LongitudeQuery, LatitudeQuery, userId } from '../../../common/swagger';
 import { RecordIdInterceptor } from '../../../modules/interceptor/recordId/record-id.interceptor';
 import { FeedbackInterceptor } from '../../../modules/feedback';
 import { MediaInterceptor } from 'core/modules/document';
@@ -97,6 +97,13 @@ export const CampaignResolver = Module.builder()
             method: 'get',
             params: [campaignId],
             controller: CampaignController.getUserFeedbacks,
+            preAuthorization: false,
+        },
+        {
+            route: '/campaigns/:campaignId/user-feedbacks/:userId',
+            method: 'get',
+            params: [campaignId, userId],
+            controller: CampaignController.getUserFeedback,
             preAuthorization: false,
         },
         {
