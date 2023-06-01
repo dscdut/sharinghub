@@ -72,9 +72,12 @@ class Controller {
             });
         }
 
+        const userFeedbacks = await this.userFeedbackService.getUserFeedbacksByCampaignId(data.id);
+
         const response = { 
             ...data,
             joined,
+            userFeedbacks,
             feedback: feedback ? feedback : null,
             volunteers: maskedVolunteers.slice(0, 3),
             donors: maskedDonors.slice(0, 3)
@@ -290,11 +293,6 @@ class Controller {
 
     deleteUserFeedback = async req => {
         const data = await this.userFeedbackService.deleteUserFeedback(req.user.payload, req.params);
-        return ValidHttpResponse.toOkResponse(data);
-    }
-
-    getUserFeedbacks = async req => {
-        const data = await this.userFeedbackService.getUserFeedbacksByCampaignId(req.params);
         return ValidHttpResponse.toOkResponse(data);
     }
 

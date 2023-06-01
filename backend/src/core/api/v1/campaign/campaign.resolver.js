@@ -93,13 +93,6 @@ export const CampaignResolver = Module.builder()
             preAuthorization: true,
         },
         {
-            route: '/campaigns/:campaignId/user-feedbacks',
-            method: 'get',
-            params: [campaignId],
-            controller: CampaignController.getUserFeedbacks,
-            preAuthorization: false,
-        },
-        {
             route: '/campaigns/:campaignId/user-feedbacks/:userId',
             method: 'get',
             params: [campaignId, userId],
