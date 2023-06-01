@@ -63,6 +63,16 @@ class Service {
         }
     }
 
+    async getUserFeedbackByCampaignIdAndUserId( { campaignId, userId }) {
+        const userFeedback = Optional.of(await this.repository.findFeedbackByCampaignIdAndUserId(campaignId, userId)).throwIfNotPresent(new NotFoundException('User feedback not found')).get();
+
+        return {
+            data: {
+                userFeedback
+            }
+        }
+    }
+    
     async deleteUserFeedback(user, { campaignId }) {
         Optional.of(await this.repository.findFeedbackByCampaignIdAndUserId(campaignId, user.id)).throwIfNotPresent(new NotFoundException('User feedback not found'));
 
