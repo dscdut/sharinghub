@@ -31,9 +31,6 @@ module.exports = {
             password: process.env.DB_PASS,
             database: process.env.DB_NAME,
             charset: 'utf8',
-            ssl: {
-                rejectUnauthorized: false,
-            },
         },
         migrations: {
             directory: `${__dirname}/../database/migrations`,
