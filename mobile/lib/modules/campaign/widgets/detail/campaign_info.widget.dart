@@ -24,7 +24,7 @@ class CampaignInfo extends StatelessWidget {
   );
 
   Widget _buildEndContentCampaign(CampaignModel campaign) {
-    if (campaign.isOngoing) {
+    if (campaign.isUpcoming) {
       return BlocBuilder<CampaignDetailBloc, CampaignDetailState>(
         builder: (context, state) {
           return CampaignRequestJoin(
