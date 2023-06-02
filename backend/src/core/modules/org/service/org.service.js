@@ -3,12 +3,14 @@ import { JwtService } from '../../auth/service/jwt.service';
 import { MESSAGE } from './message.enum';
 import { ForbiddenException } from '../../../../packages/httpException';
 import { FileSystemService } from '../../document/service/file-system.service';
+import { OrgRepository } from '../org.repository';
 
 class Service {
     constructor() {
         this.OrgRepositoryService = OrgRepositoryService;
         this.JwtService = JwtService;
         this.FileSystemService = FileSystemService;
+        this.repository = OrgRepository;
     }
 
     async updateOrgTable(file, orgDto, user, orgId) {
@@ -37,6 +39,14 @@ class Service {
         return {
             message: MESSAGE.UPDATE_ORG_SUCCESS,
         };
+    }
+
+    async getAllOrgs() {
+        return {
+            data: {
+                organizations: await this.repository.findAllOrgs()
+            }
+        }
     }
 
     async getMyOrgs(user) {

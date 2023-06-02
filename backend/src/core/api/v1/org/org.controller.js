@@ -7,6 +7,11 @@ class Controller {
         this.service = OrgService;
     }
 
+    getAllOrgs = async req => {
+        const data = await this.service.getAllOrgs();
+        return ValidHttpResponse.toOkResponse(data);
+    };
+
     createOrg = async req => {
         const data = await this.service.updateOrgTable(req.file, CreateOrgDto(req.body), req.user.payload);
         return ValidHttpResponse.toOkResponse(data);
