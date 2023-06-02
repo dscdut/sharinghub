@@ -95,6 +95,21 @@ class Repository extends DataRepository {
             reset_token_expiration_date: null,
         }).into('users');
     }
+
+    findAllUserNoOrg() {
+        return this.query().select([
+            'users.id',
+            'users.full_name',
+            'users.gender',
+            'users.birthday',
+            'users.avatar',
+            'users.email',
+            'users.phone_number',
+            'users.address',
+        ])
+            .leftJoin('organizations', 'users.id', 'organizations.user_id')
+            .whereNull('organizations.user_id');
+    }
 }
 
 export const UserRepository = new Repository('users');

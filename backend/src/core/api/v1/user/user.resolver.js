@@ -28,5 +28,11 @@ export const UserResolver = Module.builder()
             method: 'get',
             controller: UserController.findVoluntaryCampaignsByUserId,
             preAuthorization: true,
+        }, 
+        {
+            route: '/dont-have-org',
+            method: 'get',
+            controller: UserController.findAllUserNoOrg,
+            preAuthorization: true,
         }
     ]);
