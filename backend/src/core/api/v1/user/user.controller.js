@@ -21,6 +21,11 @@ class Controller {
         const data = await this.service.findVoluntaryCampaignsByUserId(req.user.payload.id);
         return ValidHttpResponse.toOkResponse(data);
     }
+
+    findAllUserNoOrg = async req => {
+        const data = await this.service.findAllUserNoOrg();
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const UserController = new Controller();

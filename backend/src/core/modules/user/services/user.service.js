@@ -97,6 +97,14 @@ class Service {
         const data = await this.campaignRepository.findVoluntaryCampaignsByUserId(id);
         return data;
     }
+
+    async findAllUserNoOrg() {
+        return {
+            data: {
+                user: await this.repository.findAllUserNoOrg()
+            }
+        }
+    }
 }
 
 export const UserService = new Service();
