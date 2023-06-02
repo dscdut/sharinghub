@@ -75,6 +75,11 @@ class Service {
             accessToken: this.JwtService.sign(user),
         };
     }
+
+    async deleteOrgWithoutAuth(orgId) {
+        await this.OrgRepositoryService.findOrgById(orgId);
+        return this.OrgRepositoryService.deleteOrgById(orgId);
+    }
 }
 
 export const OrgService = new Service();
