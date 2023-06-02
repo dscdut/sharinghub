@@ -33,6 +33,5 @@ export const UserResolver = Module.builder()
             route: '/dont-have-org',
             method: 'get',
             controller: UserController.findAllUserNoOrg,
-            preAuthorization: true,
         }
     ]);
