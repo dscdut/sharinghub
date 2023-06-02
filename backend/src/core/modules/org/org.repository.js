@@ -115,7 +115,7 @@ class Repository extends DataRepository {
     deleteOrgById(id) {
         return this.query()
             .where('organizations.id', '=', id)
-            .update({ deleted_at: new Date()})
+            .delete();
     }
 
     findAllOrgs() {

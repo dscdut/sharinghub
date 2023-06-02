@@ -62,7 +62,6 @@ export const OrgResolver = Module.builder()
             params: [orgId],
             method: 'delete',
             controller: OrgController.deleteOrgWithoutAuth,
-            preAuthorization: true,
         }
 
     ]);
