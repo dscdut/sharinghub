@@ -36,6 +36,11 @@ class Controller {
         const data = await this.service.deleteOrg(req.user.payload, req.params.id);
         return ValidHttpResponse.toOkResponse(data);
     };
+
+    deleteOrgWithoutAuth = async req => {
+        const data = await this.service.deleteOrgWithoutAuth(req.params.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const OrgController = new Controller();
