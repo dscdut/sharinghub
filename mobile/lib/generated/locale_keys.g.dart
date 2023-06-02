@@ -126,6 +126,7 @@ abstract class  LocaleKeys {
   static const campaign_list_donator = 'campaign.list_donator';
   static const campaign_artifact_empty = 'campaign.artifact_empty';
   static const campaign_list_volunteer = 'campaign.list_volunteer';
+  static const campaign_my_voluntary_campaigns = 'campaign.my_voluntary_campaigns';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
   static const profile_contact_info = 'profile.contact_info';

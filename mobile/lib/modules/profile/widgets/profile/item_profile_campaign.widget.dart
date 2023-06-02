@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
+import 'package:mobile/configs/router/app_routes.dart';
 
 class ItemProfileCampaignWidget extends StatelessWidget {
   const ItemProfileCampaignWidget({
@@ -9,11 +9,13 @@ class ItemProfileCampaignWidget extends StatelessWidget {
     required this.icon,
     required this.subTitle,
     required this.title,
+    required this.onTap,
   });
 
   final String icon;
   final String subTitle;
   final String title;
+  final Function()? onTap;
 
   final Widget _verticalSpacing = const SizedBox(
     height: 4,
@@ -22,16 +24,19 @@ class ItemProfileCampaignWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          AppRoutes.pendingCampaign,
+        );
+      },
       child: Column(
         children: [
-          SvgPicture.asset(
-            icon,
-            width: 25,
-            height: 35,
-            colorFilter: const ColorFilter.mode(
-              ColorStyles.gray300,
-              BlendMode.srcIn,
+          Text(
+            subTitle,
+            style: TextStyles.regularHeading34.copyWith(
+              color: ColorStyles.primary1,
+              fontWeight: FontWeight.bold,
             ),
           ),
           _verticalSpacing,
@@ -40,10 +45,6 @@ class ItemProfileCampaignWidget extends StatelessWidget {
             style: TextStyles.s14MediumText,
           ),
           _verticalSpacing,
-          Text(
-            subTitle,
-            style: TextStyles.s14RegularText,
-          ),
         ],
       ),
     );

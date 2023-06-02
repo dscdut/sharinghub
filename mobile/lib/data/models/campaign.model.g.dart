@@ -13,7 +13,7 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       address: json['address'] as String,
       specificAddress: json['specificAddress'] as String?,
       isUserJoined: json['joined'] as bool?,
-      description: json['description'] as String,
+      description: json['description'] as String?,
       startDate: const JsonSerializableDateTime()
           .fromJson(json['startDate'] as String),
       endDate:

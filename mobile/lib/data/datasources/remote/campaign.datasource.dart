@@ -113,4 +113,13 @@ class CampaignDataSource {
       formData: params.toJson(),
     );
   }
+
+  Future<List<CampaignModel>> getListVoluntaryCampaign() async {
+    final response = await _dioHelper.get(
+      Endpoints.myVoluntary,
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
+  }
 }

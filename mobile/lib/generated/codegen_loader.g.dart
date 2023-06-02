@@ -148,7 +148,8 @@ class CodegenLoader extends AssetLoader{
     "update_to": "Update to",
     "list_donator": "List of donators",
     "artifact_empty": "No artifact need to donate",
-    "list_volunteer": "List of volunteers"
+    "list_volunteer": "List of volunteers",
+    "my_voluntary_campaigns": "My voluntary campaigns"
   },
   "profile": {
     "setting": "Setting",
@@ -334,7 +335,8 @@ static const Map<String,dynamic> vi = {
     "update_to": "Cập nhật đến ngày",
     "list_donator": "Danh sách nhà hảo tâm",
     "artifact_empty": "Dự án chưa cần quyên góp hiện vật",
-    "list_volunteer": "Danh sách tình nguyện viên"
+    "list_volunteer": "Danh sách tình nguyện viên",
+    "my_voluntary_campaigns": "Chiến dịch tình nguyện của tôi"
   },
   "profile": {
     "setting": "Cài đặt",

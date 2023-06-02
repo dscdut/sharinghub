@@ -105,7 +105,7 @@ class InforItemExploreWidget extends StatelessWidget {
             ),
             Flexible(
               child: Text(
-                item.description,
+                item.description ?? '',
                 style: TextStyles.regularBody14.copyWith(
                   color: ColorStyles.zodiacBlue,
                 ),

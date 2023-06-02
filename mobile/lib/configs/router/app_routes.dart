@@ -11,6 +11,7 @@ import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/explore.dart';
 import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/view/pending_campaign.page.dart';
 import 'package:mobile/modules/profile/view/set_user_profile.view.dart';
 import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
@@ -33,6 +34,7 @@ abstract class AppRoutes {
   static const String locationSearch = '/locationSearch';
   static const String campaignDonation = '/campaignDonation';
   static const String donate = '/donate';
+  static const String pendingCampaign = '/pendingCampaign';
 
   // Auth
   static const String login = '/login';
@@ -221,6 +223,12 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) {
             return const OrganizationManagementPage();
+          },
+        );
+      case pendingCampaign:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const PendingCampaignPage();
           },
         );
       case setOrganization:

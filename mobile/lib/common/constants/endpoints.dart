@@ -18,15 +18,18 @@ abstract class Endpoints {
   static String campaignByOrganization = '$apiUrl/organizations';
   static String campaigns = '$apiUrl/campaigns';
 
+  // Volunteers
+  static String myVoluntary = '$apiUrl/users/my-voluntary-campaigns';
+
   // Coordinators
   static String coordinators = '$apiUrl/campaigns/coordinates';
 
   static String autocompletePlace =
       'https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${AppFlavor.googleMapApiKey}&components=country:vn&region=vn&types=administrative_area_level_3|administrative_area_level_2';
 
-  static String geoCode ='https://maps.googleapis.com/maps/api/geocode/json?key=${AppFlavor.googleMapApiKey}';
+  static String geoCode =
+      'https://maps.googleapis.com/maps/api/geocode/json?key=${AppFlavor.googleMapApiKey}';
 
   static String province = '$addressUrl/p';
   static String district = '$addressUrl/d';
-      
 }
