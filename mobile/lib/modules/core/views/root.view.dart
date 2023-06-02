@@ -53,7 +53,6 @@ class _RootView extends StatelessWidget {
           return previous.currentIndex != current.currentIndex;
         },
       ),
-      extendBody: true,
       bottomNavigationBar: const AppBottomNavigationBar(),
     );
   }
