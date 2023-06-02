@@ -14,6 +14,7 @@ import { DonationService } from '../../../modules/donation/service/donation.serv
 import { DonationRecordRepositoryService } from '../../../modules/donation/service/donation-record-repository.service';
 import { JwtService } from '../../../modules/auth/service/jwt.service';
 import { UserFeedbackService, CreateUserFeedbackDto } from 'core/modules/user_feedback';
+import { UserFeedbackRepository } from 'core/modules/user_feedback/user_feedback.repository';
 
 class Controller {
     constructor() {
@@ -23,6 +24,7 @@ class Controller {
         this.donationRecordRepositoryService = DonationRecordRepositoryService
         this.jwtService = JwtService;
         this.userFeedbackService = UserFeedbackService;
+        this.userFeedbackRepository = UserFeedbackRepository;
     }
 
     findOneById = async req => {
@@ -53,6 +55,7 @@ class Controller {
         })
         
         let joined = false;
+        let gaveFeedback = false;
 
         if (req.headers.authorization) {
             const token = req.headers.authorization.split(' ')[1];
@@ -70,6 +73,12 @@ class Controller {
                     joined = true;
                 }
             });
+
+            const userFeedback = await this.userFeedbackRepository.findFeedbackByCampaignIdAndUserId(data.id, id);
+
+            if (userFeedback) {
+                gaveFeedback = true;
+            }
         }
 
         const userFeedbacks = await this.userFeedbackService.getUserFeedbacksByCampaignId(data.id);
@@ -77,6 +86,7 @@ class Controller {
         const response = { 
             ...data,
             joined,
+            gaveFeedback,
             userFeedbacks,
             feedback: feedback ? feedback : null,
             volunteers: maskedVolunteers.slice(0, 3),
