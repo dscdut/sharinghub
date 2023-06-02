@@ -14,6 +14,11 @@ export const OrgResolver = Module.builder()
     .register([
         {
             route: '/',
+            method: 'get',
+            controller: OrgController.getAllOrgs,
+        },
+        {
+            route: '/',
             method: 'post',
             interceptors: [new MediaInterceptor(), CreateOrgInterceptor],
             params: [uploadMediaSwagger],
