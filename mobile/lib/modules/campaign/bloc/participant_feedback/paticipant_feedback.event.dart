@@ -10,23 +10,28 @@ abstract class ParticipantFeedbackEvent extends Equatable {
 class ParticipantFeedbackInit extends ParticipantFeedbackEvent {}
 
 class ParticipantFeedbackFormValidate extends ParticipantFeedbackEvent {
-  final ParticipantFeedbackDTO individualFeedback;
+  final ParticipantFeedbackDTO participantFeedbackDTO;
 
   const ParticipantFeedbackFormValidate({
-    required this.individualFeedback,
+    required this.participantFeedbackDTO,
   });
 
   @override
-  List<Object> get props => [individualFeedback];
+  List<Object> get props => [participantFeedbackDTO];
 }
 
 class ParticipantFeedbackSubmit extends ParticipantFeedbackEvent {
-  final ParticipantFeedbackDTO individualFeedback;
+  final ParticipantFeedbackDTO participantFeedback;
+  final bool isUpdate;
 
   const ParticipantFeedbackSubmit({
-    required this.individualFeedback,
+    required this.participantFeedback,
+    this.isUpdate = false,
   });
 
   @override
-  List<Object> get props => [individualFeedback];
+  List<Object> get props => [
+        participantFeedback,
+        isUpdate,
+      ];
 }

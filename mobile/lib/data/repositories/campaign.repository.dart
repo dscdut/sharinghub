@@ -1,13 +1,11 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/remote/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mobile/data/datasources/user.mock.dart';
 import 'package:mobile/data/dtos/paticipant_feedback.dto.dart';
 import 'package:mobile/data/dtos/organization_feedback.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
-import 'package:mobile/data/models/user.model.dart';
 
 @lazySingleton
 class CampaignRepository {
@@ -61,12 +59,19 @@ class CampaignRepository {
   }
 
   Future<void> updateOrganizationFeedback(
-      OrganizationFeedbackDTO params) async {
+    OrganizationFeedbackDTO params,
+  ) async {
     return _dataSource.updateOrganizationFeedback(params);
   }
 
   Future<void> participantFeedback(ParticipantFeedbackDTO params) async {
     return _dataSource.participantFeedback(params);
+  }
+
+  Future<void> updateParticipantFeedback(
+    ParticipantFeedbackDTO params,
+  ) async {
+    return _dataSource.updateParticipantFeedback(params);
   }
 
   Future<List<CampaignModel>> getMyVolunteer() async {

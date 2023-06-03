@@ -13,6 +13,7 @@ import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
+import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/campaign/widgets/participant_feedback/paticipant_feedback_form.widget.dart';
 
@@ -81,7 +82,7 @@ class _ParticipantFeedbackView extends StatefulWidget {
 }
 
 class _ParticipantFeedbackViewState extends State<_ParticipantFeedbackView> {
-  ParticipantFeedbackDTO feedbackIndividualDTO = ParticipantFeedbackDTO();
+  ParticipantFeedbackDTO participantFeedbackDTO = ParticipantFeedbackDTO();
 
   @override
   void initState() {
@@ -97,25 +98,27 @@ class _ParticipantFeedbackViewState extends State<_ParticipantFeedbackView> {
   final _orgEditingController = TextEditingController();
 
   void _setParticipantFeedbackDTO() {
-    if (widget.campaign.hasFeedback) {
+    if (widget.campaign.isUserGaveFeedback) {
       _setParticipantFeedbackInfo();
     }
   }
 
   void _setParticipantFeedbackInfo() {
-    // _campRating = widget.campaign.feedback!.campaignRating!;
-    // _orgRating = widget.campaign.feedback!.organizationRating!;
-    // _campaignEditingController.text =
-    //     widget.campaign. ?? '';
-    // _orgEditingController.text = widget.campaign. ?? '';
+    ParticipantFeedbackDTO user = widget.campaign.userFeedbacks
+        .where((e) => e.user!.id == context.read<AuthBloc>().state.user!.id)
+        .first;
+    _campRating = user.campaignRate;
+    _orgRating = user.organizationRate;
+    _campaignEditingController.text = user.campaignFeedback ?? '';
+    _orgEditingController.text = user.organizationFeedback ?? '';
   }
 
   void _collectDataForFeedbackCampaign() {
-    feedbackIndividualDTO = feedbackIndividualDTO.copyWith(
+    participantFeedbackDTO = participantFeedbackDTO.copyWith(
       campaignRate: _campRating,
-      campaignReview: _campaignEditingController.text,
+      campaignFeedback: _campaignEditingController.text,
       organizationRate: _orgRating,
-      organizationReview: _orgEditingController.text,
+      organizationFeedback: _orgEditingController.text,
       campaignId: widget.campaign.id,
     );
   }
@@ -125,14 +128,14 @@ class _ParticipantFeedbackViewState extends State<_ParticipantFeedbackView> {
 
     context.read<ParticipantFeedbackBloc>().add(
           ParticipantFeedbackFormValidate(
-            individualFeedback: feedbackIndividualDTO,
+            participantFeedbackDTO: participantFeedbackDTO,
           ),
         );
 
     if (_formKey.currentState!.validate()) {
       context.read<ParticipantFeedbackBloc>().add(
             ParticipantFeedbackSubmit(
-              individualFeedback: feedbackIndividualDTO,
+              participantFeedback: participantFeedbackDTO,
             ),
           );
     }

@@ -10,9 +10,12 @@ ParticipantFeedbackDTO _$ParticipantFeedbackDTOFromJson(
         Map<String, dynamic> json) =>
     ParticipantFeedbackDTO(
       campaignRate: json['campaignRate'] as int? ?? 0,
-      campaignReview: json['campaignReview'] as String?,
+      campaignFeedback: json['campaignFeedback'] as String?,
       organizationRate: json['organizationRate'] as int? ?? 0,
-      organizationReview: json['organizationReview'] as String?,
+      organizationFeedback: json['organizationFeedback'] as String?,
+      user: json['user'] == null
+          ? null
+          : UserModel.fromJson(json['user'] as Map<String, dynamic>),
       campaignId: json['campaignId'] as int?,
     );
 
@@ -28,8 +31,8 @@ Map<String, dynamic> _$ParticipantFeedbackDTOToJson(
     }
   }
 
-  writeNotNull('campaignReview', instance.campaignReview);
+  writeNotNull('organizationFeedback', instance.organizationFeedback);
   val['organizationRate'] = instance.organizationRate;
-  writeNotNull('organizationReview', instance.organizationReview);
+  writeNotNull('campaignFeedback', instance.campaignFeedback);
   return val;
 }
