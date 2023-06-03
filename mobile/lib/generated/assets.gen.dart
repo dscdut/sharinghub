@@ -41,6 +41,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_chat.png
   AssetGenImage get icChat => const AssetGenImage('assets/icons/ic_chat.png');
 
+  /// File path: assets/icons/ic_internet.png
+  AssetGenImage get icInternet =>
+      const AssetGenImage('assets/icons/ic_internet.png');
+
   /// File path: assets/icons/ic_logout.png
   AssetGenImage get icLogout =>
       const AssetGenImage('assets/icons/ic_logout.png');
@@ -86,6 +90,7 @@ class $AssetsIconsGen {
   List<AssetGenImage> get values => [
         icAnnotation,
         icChat,
+        icInternet,
         icLogout,
         icRemoveUser,
         icSearch,
@@ -114,12 +119,21 @@ class $AssetsImagesGen {
   AssetGenImage get imgDefautAvatar =>
       const AssetGenImage('assets/images/img_defaut_avatar.png');
 
+  /// File path: assets/images/img_logo.png
+  AssetGenImage get imgLogo =>
+      const AssetGenImage('assets/images/img_logo.png');
+
   /// File path: assets/images/not_found.svg
   SvgGenImage get notFound => const SvgGenImage('assets/images/not_found.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [imgDefaultCampaign, imgDefaultCampaignSquare, imgDefautAvatar, notFound];
+  List<dynamic> get values => [
+        imgDefaultCampaign,
+        imgDefaultCampaignSquare,
+        imgDefautAvatar,
+        imgLogo,
+        notFound
+      ];
 }
 
 class $AssetsLocalesGen {
