@@ -203,6 +203,10 @@ class CodegenLoader extends AssetLoader{
     "artifact_name": "Artifact name",
     "artifact_quantity": "Artifact quantity",
     "artifact_status": "Artifact status"
+  },
+  "notification": {
+    "all": "All",
+    "unread": "Unread"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -394,6 +398,10 @@ static const Map<String,dynamic> vi = {
     "artifact_name": "Tên hiện vật",
     "artifact_quantity": "Số lượng hiện vật",
     "artifact_status": "Tình trạng hiện vật"
+  },
+  "notification": {
+    "all": "Tất cả",
+    "unread": "Chưa đọc"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};
