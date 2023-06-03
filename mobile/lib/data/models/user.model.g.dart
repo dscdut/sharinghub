@@ -25,6 +25,9 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel(
           ? null
           : OrganizationModel.fromJson(
               json['currentOrganization'] as Map<String, dynamic>),
+      pendingCampaigns: json['totalPendingCampaigns'] as int? ?? 0,
+      ongoingCampaigns: json['totalOngoingCampaigns'] as int? ?? 0,
+      totalFeedbacks: json['totalFeedbacks'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
@@ -41,4 +44,7 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'projectCompleted': instance.projectCompleted,
       'projectOnGoing': instance.projectOnGoing,
       'currentOrganization': instance.currentOrganization?.toJson(),
+      'totalPendingCampaigns': instance.pendingCampaigns,
+      'totalOngoingCampaigns': instance.ongoingCampaigns,
+      'totalFeedbacks': instance.totalFeedbacks,
     };

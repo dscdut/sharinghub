@@ -78,6 +78,10 @@ class CampaignRepository {
     return _dataSource.getListVoluntaryCampaign();
   }
 
+  Future<List<CampaignModel>> getOrgCampaigns(int id) async {
+    return _dataSource.getOrgCapaigns(id);
+  }
+
   Future<void> donateToCampaign(SetDonateDTO params) async {
     return _dataSource.donateToCampaign(params);
   }
