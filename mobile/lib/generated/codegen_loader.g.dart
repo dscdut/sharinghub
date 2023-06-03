@@ -144,9 +144,9 @@ class CodegenLoader extends AssetLoader{
     "management": "Campaign Management",
     "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
     "see_more": "See more",
-    "donator": "Donator",
+    "donator": "Donor",
     "update_to": "Update to",
-    "list_donator": "List of donators",
+    "list_donator": "List of donors",
     "artifact_empty": "No artifact need to donate",
     "list_volunteer": "List of volunteers",
     "my_voluntary_campaigns": "My campaigns"

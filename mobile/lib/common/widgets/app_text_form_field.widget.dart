@@ -61,7 +61,7 @@ class AppTextFormField extends StatelessWidget {
     this.initialValue,
     this.borderRadius = 10,
     this.borderColor = ColorStyles.gray200,
-    this.focusedBorderColor = ColorStyles.blue400,
+    this.focusedBorderColor = ColorStyles.primary1,
     this.fillColor = Colors.transparent,
     this.hintColor = ColorStyles.gray200,
     this.prefixIconColor,

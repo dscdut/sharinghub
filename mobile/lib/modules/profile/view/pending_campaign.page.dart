@@ -6,6 +6,7 @@ import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
+import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/modules/profile/bloc/pending_campaign/pending_campaign_bloc.dart';
 import 'package:mobile/modules/profile/widgets/pending_campaign/list_pending_campaigns.widget.dart';
 
@@ -17,6 +18,7 @@ class PendingCampaignPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PendingCampaignBloc(
         campaignRepository: getIt.get<CampaignRepository>(),
+        authBloc: getIt.get<AuthBloc>(),
       ),
       child: BlocListener<PendingCampaignBloc, PendingCampaignState>(
         listener: _onListener,

@@ -123,6 +123,15 @@ class CampaignDataSource {
     );
   }
 
+  Future<List<CampaignModel>> getOrgCapaigns(int id) async {
+    final response = await _dioHelper.get(
+      '${Endpoints.campaignByOrganization}/$id/campaigns',
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
+  }
+
   Future<List<CampaignModel>> getListVoluntaryCampaign() async {
     final response = await _dioHelper.get(
       Endpoints.myVoluntary,
