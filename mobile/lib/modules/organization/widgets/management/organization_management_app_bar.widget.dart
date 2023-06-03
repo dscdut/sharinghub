@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
@@ -14,7 +13,7 @@ class OrganizationManagementAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return CustomAppBar(
       title: LocaleKeys.organization_management.tr(),
-      titleColor: ColorStyles.zodiacBlue,
+      titleColor: ColorStyles.primary1,
       backgroundColor: Colors.white,
       elevation: 0.5,
       actions: const [

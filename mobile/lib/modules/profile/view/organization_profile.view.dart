@@ -38,7 +38,7 @@ class _OrganizationProfileView extends StatelessWidget {
         title: '',
         backgroundColor: ColorStyles.background,
         elevation: 0.5,
-        titleColor: ColorStyles.zodiacBlue,
+        titleColor: ColorStyles.primary1,
       ),
       body: BlocBuilder<OrganizationProfileBloc, OrganizationProfileState>(
         builder: (context, state) {
@@ -48,7 +48,7 @@ class _OrganizationProfileView extends StatelessWidget {
             caseBuilders: {
               HandleStatus.loading: (_) => const Center(
                     child: LoadingDot(
-                      dotColor: ColorStyles.zodiacBlue,
+                      dotColor: ColorStyles.primary1,
                     ),
                   ),
               HandleStatus.error: (_) => const Center(child: CommonError()),

@@ -39,7 +39,7 @@ class _UserProfileView extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: LocaleKeys.profile_personal.tr(),
-        titleColor: ColorStyles.zodiacBlue,
+        titleColor: ColorStyles.primary1,
         backgroundColor: Colors.white,
         elevation: 0.5,
         actions: const [

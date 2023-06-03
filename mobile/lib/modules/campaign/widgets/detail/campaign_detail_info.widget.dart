@@ -60,7 +60,7 @@ class CampaignDetailInfo extends StatelessWidget {
             children: [
               const Icon(
                 Icons.event_outlined,
-                color: ColorStyles.zodiacBlue,
+                color: ColorStyles.primary1,
               ),
               const SizedBox(
                 width: 5,

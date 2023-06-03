@@ -29,6 +29,15 @@ class UserModel extends Equatable {
 
   bool get isOrganizationMode => currentOrganization != null;
 
+  @JsonKey(name: 'totalPendingCampaigns', defaultValue: 0)
+  final int? pendingCampaigns;
+
+  @JsonKey(name: 'totalOngoingCampaigns', defaultValue: 0)
+  final int? ongoingCampaigns;
+
+  @JsonKey(name: 'totalFeedbacks', defaultValue: 0)
+  final int? totalFeedbacks;
+
   const UserModel({
     required this.id,
     this.avatar,
@@ -43,6 +52,9 @@ class UserModel extends Equatable {
     this.projectCompleted,
     this.projectOnGoing,
     this.currentOrganization,
+    this.pendingCampaigns,
+    this.ongoingCampaigns,
+    this.totalFeedbacks,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

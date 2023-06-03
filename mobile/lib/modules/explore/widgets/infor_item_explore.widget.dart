@@ -35,7 +35,7 @@ class InforItemExploreWidget extends StatelessWidget {
               TextSpan(
                 text: item.name,
                 style: TextStyles.boldBody16.copyWith(
-                  color: ColorStyles.zodiacBlue,
+                  color: ColorStyles.primary1,
                 ),
               ),
               const TextSpan(
@@ -60,7 +60,7 @@ class InforItemExploreWidget extends StatelessWidget {
         Text(
           item.address,
           style: TextStyles.regularBody14.copyWith(
-            color: ColorStyles.zodiacBlue,
+            color: ColorStyles.primary1,
           ),
         ),
         const Divider(
@@ -81,7 +81,7 @@ class InforItemExploreWidget extends StatelessWidget {
             Text(
               item.organizationName ?? '',
               style: TextStyles.regularBody14.copyWith(
-                color: ColorStyles.zodiacBlue,
+                color: ColorStyles.primary1,
               ),
             )
           ],
@@ -107,7 +107,7 @@ class InforItemExploreWidget extends StatelessWidget {
               child: Text(
                 item.description ?? '',
                 style: TextStyles.regularBody14.copyWith(
-                  color: ColorStyles.zodiacBlue,
+                  color: ColorStyles.primary1,
                 ),
                 maxLines: 3,
               ),

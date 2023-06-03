@@ -40,7 +40,7 @@ class _GenderPickerState extends State<GenderPicker> {
             ),
           ),
           style: const TextStyle(
-            color: ColorStyles.zodiacBlue,
+            color: ColorStyles.primary1,
           ),
           value: _gender,
           underline: const SizedBox(),

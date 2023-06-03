@@ -153,7 +153,7 @@ class _ParticipantFeedbackViewState extends State<_ParticipantFeedbackView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        titleColor: ColorStyles.zodiacBlue,
+        titleColor: ColorStyles.primary1,
         title: widget.campaign.name,
         isCenterTitle: false,
         backgroundColor: Colors.white,

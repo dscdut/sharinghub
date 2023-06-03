@@ -89,7 +89,7 @@ class _CampaignRegisterFormPage extends StatelessWidget {
                     LocaleKeys.campaign_volunteer_register.tr(),
                     style: TextStyles.regularSubti18.copyWith(
                       decoration: TextDecoration.underline,
-                      color: ColorStyles.zodiacBlue,
+                      color: ColorStyles.primary1,
                     ),
                   ),
                 ),

@@ -21,7 +21,7 @@ class IconTitle extends StatelessWidget {
         Icon(
           icon,
           size: iconSize,
-          color: ColorStyles.zodiacBlue,
+          color: ColorStyles.primary1,
         ),
         const SizedBox(
           width: 5,

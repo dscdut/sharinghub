@@ -6,7 +6,7 @@ class AppBackButton extends StatelessWidget {
 
   const AppBackButton({
     super.key,
-    this.iconColor = ColorStyles.zodiacBlue,
+    this.iconColor = ColorStyles.primary1,
   });
 
   @override

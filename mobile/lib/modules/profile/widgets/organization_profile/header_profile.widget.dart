@@ -62,7 +62,7 @@ class HeaderProfile extends StatelessWidget {
           Assets.icons.icChat.image(
             width: 30,
             height: 30,
-            color: ColorStyles.zodiacBlue,
+            color: ColorStyles.primary1,
           ),
         ],
       ),

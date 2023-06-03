@@ -21,7 +21,7 @@ class SetOrganizationAppbar extends StatelessWidget
           ? LocaleKeys.profile_organization.tr()
           : LocaleKeys.organization_create.tr(),
       backgroundColor: Colors.white,
-      titleColor: ColorStyles.zodiacBlue,
+      titleColor: ColorStyles.primary1,
       elevation: 0.5,
       actions: const [
         RoundedIconButton(

@@ -112,7 +112,7 @@ class _DonateViewState extends State<_DonateView> {
     return Scaffold(
       appBar: CustomAppBar(
         title: LocaleKeys.button_donate.tr(),
-        titleColor: ColorStyles.zodiacBlue,
+        titleColor: ColorStyles.primary1,
         backgroundColor: Colors.white,
         elevation: 0.5,
       ),

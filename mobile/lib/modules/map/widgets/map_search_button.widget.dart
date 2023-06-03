@@ -18,7 +18,7 @@ class MapSearchButtonWidget extends StatelessWidget {
       onPressed: () => Navigator.pushNamed(context, AppRoutes.search),
       backgroundColor: Colors.white,
       textStyle: TextStyles.regularBody14.copyWith(
-        color: ColorStyles.zodiacBlue,
+        color: ColorStyles.primary1,
       ),
       content: LocaleKeys.home_search.tr(),
       borderRadius: 12,

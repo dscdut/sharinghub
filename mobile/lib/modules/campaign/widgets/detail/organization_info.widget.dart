@@ -74,7 +74,7 @@ class OrganizationInfo extends StatelessWidget {
           ),
           const Icon(
             Icons.message_outlined,
-            color: ColorStyles.zodiacBlue,
+            color: ColorStyles.primary1,
             size: 18,
           )
         ],

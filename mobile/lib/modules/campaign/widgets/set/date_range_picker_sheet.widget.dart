@@ -96,7 +96,7 @@ class _DateRangePickerSheetState extends State<DateRangePickerSheet> {
                 showTrailingAndLeadingDates: true,
                 firstDayOfWeek: 1,
               ),
-              todayHighlightColor: ColorStyles.zodiacBlue,
+              todayHighlightColor: ColorStyles.primary1,
               onSelectionChanged: _onSelectionChanged,
             ),
           ),

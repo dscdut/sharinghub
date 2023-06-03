@@ -95,7 +95,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
                       style: TextStyles.s14RegularText.copyWith(
                         color: startDate == null
                             ? ColorStyles.gray200
-                            : ColorStyles.zodiacBlue,
+                            : ColorStyles.primary1,
                       ),
                     ),
                     const Icon(
@@ -107,7 +107,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
                       style: TextStyles.s14RegularText.copyWith(
                         color: endDate == null
                             ? ColorStyles.gray200
-                            : ColorStyles.zodiacBlue,
+                            : ColorStyles.primary1,
                       ),
                     )
                   ],

@@ -13,7 +13,7 @@ class CampaignManagementAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return CustomAppBar(
       title: LocaleKeys.campaign_management.tr(),
-      titleColor: ColorStyles.zodiacBlue,
+      titleColor: ColorStyles.primary1,
       backgroundColor: Colors.white,
       elevation: 0.5,
       isCenterTitle: false,

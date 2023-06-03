@@ -172,7 +172,7 @@ class _OrganizationFeedbackViewState extends State<_OrganizationFeedbackView> {
         title: widget.campaign.name,
         isCenterTitle: false,
         backgroundColor: Colors.white,
-        titleColor: ColorStyles.zodiacBlue,
+        titleColor: ColorStyles.primary1,
         elevation: 0.5,
       ),
       body: SingleChildScrollView(

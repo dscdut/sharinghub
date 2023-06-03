@@ -30,7 +30,7 @@ class RoundedIconButton extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        color: ColorStyles.zodiacBlue,
+        color: ColorStyles.primary1,
         size: 19,
       ),
     );
