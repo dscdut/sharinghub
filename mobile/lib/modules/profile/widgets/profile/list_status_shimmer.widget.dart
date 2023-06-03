@@ -18,7 +18,7 @@ class ListStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     return isLoading
         ? Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(3, (index) {
               return Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
@@ -51,7 +51,7 @@ class ListStatus extends StatelessWidget {
             }),
           )
         : Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ItemProfileCampaignWidget(
                 icon: Assets.icons.profile.pending.path,

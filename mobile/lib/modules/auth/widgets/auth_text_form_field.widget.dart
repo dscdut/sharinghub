@@ -32,7 +32,7 @@ class _AuthTextFormFieldState extends State<AuthTextFormField> {
     return AppTextFormField(
       validator: widget.validator,
       textController: widget.textController,
-      borderColor: ColorStyles.primary1,
+      borderColor: ColorStyles.disableColor,
       suffixIcon: widget.isPasswordField
           ? (_isObscure ? Icons.visibility_off : Icons.visibility)
           : null,
@@ -46,7 +46,6 @@ class _AuthTextFormFieldState extends State<AuthTextFormField> {
       labelText: widget.hintText,
       hintColor: Colors.black26,
       keyboardType: widget.keyboardType,
-      focusedBorderColor: ColorStyles.primary1,
       errorText: widget.errorText,
     );
   }

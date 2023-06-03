@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/theme/app_size.dart';
-import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/utils/dialog.util.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
@@ -171,8 +170,6 @@ class _OrganizationFeedbackViewState extends State<_OrganizationFeedbackView> {
       appBar: CustomAppBar(
         title: widget.campaign.name,
         isCenterTitle: false,
-        backgroundColor: Colors.white,
-        titleColor: ColorStyles.zodiacBlue,
         elevation: 0.5,
       ),
       body: SingleChildScrollView(

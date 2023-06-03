@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/explore/bloc/home/explore.bloc.dart';
-import 'package:mobile/modules/explore/widgets/explore_appbar.widget.dart';
 import 'package:mobile/modules/explore/widgets/explore_dropdown.widget.dart';
 import 'package:mobile/modules/explore/widgets/explore_list_campaign.widget.dart';
 
@@ -30,7 +32,9 @@ class _ExploreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const ExploreAppbarWidget(),
+      appBar: CustomAppBar(
+        title: LocaleKeys.root_explore.tr(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: RefreshIndicator(

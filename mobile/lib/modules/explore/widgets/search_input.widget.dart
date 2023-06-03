@@ -23,7 +23,6 @@ class _SearchInputWidgetState extends State<SearchInputWidget> {
       textController: searchController,
       hintText: LocaleKeys.search_search_input_placeholder.tr(),
       borderColor: ColorStyles.primary1,
-      focusedBorderColor: ColorStyles.primary1,
       extendField: false,
       fillColor: Colors.white,
       contentPadding: const EdgeInsets.symmetric(

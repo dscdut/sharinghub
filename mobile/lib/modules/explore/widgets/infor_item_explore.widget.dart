@@ -38,14 +38,20 @@ class InforItemExploreWidget extends StatelessWidget {
                   color: ColorStyles.zodiacBlue,
                 ),
               ),
-              const TextSpan(
-                text: '   ',
+              TextSpan(
+                text: ' - ',
+                style: TextStyles.boldBody16.copyWith(
+                  color: ColorStyles.zodiacBlue,
+                ),
               ),
               TextSpan(
                 text: _campaignStatus,
                 style: TextStyles.boldBody16.copyWith(
-                  color:
-                      item.isEnded ? ColorStyles.alert : ColorStyles.primary1,
+                  color: item.isEnded
+                      ? ColorStyles.alert
+                      : item.isOngoing
+                          ? ColorStyles.primary1
+                          : Colors.amber,
                 ),
               )
             ],

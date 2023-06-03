@@ -48,10 +48,12 @@ class _StarRatingState extends State<StarRating> {
     }
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _rating = index + 1;
-        });
-        widget.onRatingChanged?.call(_rating);
+        if (widget.onRatingChanged != null) {
+          setState(() {
+            _rating = index + 1;
+          });
+          widget.onRatingChanged?.call(_rating);
+        }
       },
       child: icon,
     );
