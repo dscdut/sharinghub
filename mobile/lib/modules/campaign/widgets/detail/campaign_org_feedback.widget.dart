@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile/common/extensions/dynamic.extension.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/widgets/show_multiple_image.widget.dart';
@@ -70,8 +71,7 @@ class CampaignOrgFeedback extends StatelessWidget {
             style: TextStyles.boldBody16,
           ),
           verticalSpacing,
-          if (campaign.feedback?.images != null &&
-              campaign.feedback!.images!.isNotEmpty)
+          if (campaign.feedback?.images.isNotNullOrEmpty == true)
             ShowMultipleImage(images: campaign.feedback!.images!)
         ],
       ),
