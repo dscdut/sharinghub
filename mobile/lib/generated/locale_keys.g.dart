@@ -177,5 +177,8 @@ abstract class  LocaleKeys {
   static const donate_artifact_quantity = 'donate.artifact_quantity';
   static const donate_artifact_status = 'donate.artifact_status';
   static const donate = 'donate';
+  static const notification_all = 'notification.all';
+  static const notification_unread = 'notification.unread';
+  static const notification = 'notification';
 
 }

@@ -187,5 +187,9 @@
     "artifact_name": "Tên hiện vật",
     "artifact_quantity": "Số lượng hiện vật",
     "artifact_status": "Tình trạng hiện vật"
+  },
+  "notification": {
+    "all": "Tất cả",
+    "unread": "Chưa đọc"
   }
 }

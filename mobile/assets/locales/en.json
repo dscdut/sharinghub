@@ -187,5 +187,9 @@
     "artifact_name": "Artifact name",
     "artifact_quantity": "Artifact quantity",
     "artifact_status": "Artifact status"
+  },
+  "notification": {
+    "all": "All",
+    "unread": "Unread"
   }
 }

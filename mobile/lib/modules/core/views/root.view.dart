@@ -44,7 +44,7 @@ class _RootView extends StatelessWidget {
                   .status
                   .isAuthenticatedOrganization)
                 const CampaignManagementPage(),
-              const NotificationPage(),
+              const NotificationPage(initIndex: 0),
               const ProfilePage(),
             ],
           );

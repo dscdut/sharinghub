@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/theme/color_styles.dart';
+import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/data/models/user.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:flutter/cupertino.dart';
@@ -87,15 +88,16 @@ class __CampaignDonorsView extends State<_CampaignDonorsView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ColorStyles.primary1,
-        title: Text(title),
+      appBar: CustomAppBar(
+        title: title,
+        toolbarHeight: kToolbarHeight + 40,
         bottom: TabBar(
           tabs: [
             Tab(text: '${LocaleKeys.campaign_donator.tr()}s'),
             Tab(text: '${LocaleKeys.campaign_volunteer.tr()}s'),
           ],
-          indicatorColor: Colors.white,
+          indicatorColor: ColorStyles.zodiacBlue,
+          labelColor: ColorStyles.zodiacBlue,
           controller: _tabController,
         ),
       ),
