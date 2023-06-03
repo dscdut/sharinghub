@@ -30,6 +30,12 @@ export const UserResolver = Module.builder()
             preAuthorization: true,
         }, 
         {
+            route: '/my-donations',
+            method: 'get',
+            controller: UserController.findAllDonationsByUserId,
+            preAuthorization: true,
+        }, 
+        {
             route: '/dont-have-org',
             method: 'get',
             controller: UserController.findAllUserNoOrg,

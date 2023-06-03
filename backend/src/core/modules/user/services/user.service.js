@@ -6,13 +6,14 @@ import { NotFoundException, DuplicateException, BadRequestException } from '../.
 import { UserRepository } from '../user.repository';
 import { MESSAGE } from './message.enum';
 import { CampaignRepository } from '../../../modules/campaign/campaign.repository';
-
+import { DonationRecordRepository } from 'core/modules/donation/donation-record.repository';
 class Service {
     constructor() {
         this.repository = UserRepository;
         this.userRoleRepository = UserRoleRepository;
         this.campaignRepository = CampaignRepository;
         this.bcryptService = BcryptService;
+        this.donationRecordRepository = DonationRecordRepository;
     }
 
     async createOne(createUserDto) {
@@ -104,6 +105,11 @@ class Service {
                 user: await this.repository.findAllUserNoOrg()
             }
         }
+    }
+
+    async findAllDonationsByUserId(id) {
+        const data = await this.donationRecordRepository.findAllDonationsByUserId(id);
+        return data;
     }
 }
 
