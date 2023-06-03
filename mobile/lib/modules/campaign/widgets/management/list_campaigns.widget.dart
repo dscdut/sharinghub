@@ -24,7 +24,7 @@ class ListCampaigns extends StatelessWidget {
 
         return AvatarInfoCard(
           avatar: currentCampaign.image,
-          description: currentCampaign.description,
+          description: currentCampaign.description ?? '',
           title: currentCampaign.name,
           onTap: () {
             Navigator.of(context).pushNamed(

@@ -53,7 +53,7 @@ class CampaignInfo extends StatelessWidget {
           children: [
             ImageAndDescription(
               image: campaign.image,
-              description: campaign.description,
+              description: campaign.description ?? '',
             ),
             _verticalSpacing,
             CampaignDetailInfo(campaign: campaign),

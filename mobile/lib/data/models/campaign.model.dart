@@ -19,7 +19,7 @@ class CampaignModel {
   final String address;
   final String? specificAddress;
   final Map<String, double>? coordinate;
-  final String description;
+  final String? description;
   final DateTime startDate;
   final DateTime endDate;
   final String? registerLink;
@@ -33,7 +33,7 @@ class CampaignModel {
   final String? organizationAvatar;
   final int? organizationId;
 
-bool get isUpcoming => startDate.isAfter(DateTime.now());
+  bool get isUpcoming => startDate.isAfter(DateTime.now());
   bool get isOngoing =>
       startDate.isBefore(DateTime.now()) && endDate.isAfter(DateTime.now());
   bool get isEnded => endDate.isBefore(DateTime.now());

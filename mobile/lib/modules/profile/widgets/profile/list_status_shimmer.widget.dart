@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/generated/assets.gen.dart';
@@ -56,21 +55,21 @@ class ListStatus extends StatelessWidget {
             children: [
               ItemProfileCampaignWidget(
                 icon: Assets.icons.profile.pending.path,
-                subTitle: LocaleKeys.profile_form_number
-                    .tr(namedArgs: {'number': '12'}),
+                subTitle: '12',
                 title: LocaleKeys.profile_pending.tr(),
+                onTap: () {},
               ),
               ItemProfileCampaignWidget(
                 icon: Assets.icons.profile.ongoing.path,
-                subTitle: LocaleKeys.profile_campaign_number
-                    .tr(namedArgs: {'number': '12'}),
+                subTitle: '12',
                 title: LocaleKeys.profile_participating.tr(),
+                onTap: () {},
               ),
               ItemProfileCampaignWidget(
                 icon: Assets.icons.profile.done.path,
-                subTitle: LocaleKeys.profile_campaign_number
-                    .tr(namedArgs: {'number': '20'}),
+                subTitle: '20',
                 title: LocaleKeys.profile_done.tr(),
+                onTap: () {},
               ),
             ],
           );

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
@@ -34,6 +35,7 @@ class CampaignFeedbackButton extends StatelessWidget {
   Widget _buildFeedbackButton(BuildContext context) {
     return AppRoundedButton(
       width: double.infinity,
+      backgroundColor: ColorStyles.primary1,
       onPressed: () => _onFeedbackButtonPressed(context),
       content: campaign.hasFeedback
           ? LocaleKeys.button_edit_feedback.tr()
