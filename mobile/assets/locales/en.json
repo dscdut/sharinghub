@@ -88,7 +88,8 @@
     "search": "Search",
     "sort_by": "Sort by: ",
     "newest": "Newest",
-    "nearest": "Nearest"
+    "nearest": "Nearest",
+    "enter_keyword": "Enter some keywords"
   },
   "organization": {
     "list_empty": "You don't have any organizations, let's try creating new one!",
@@ -133,7 +134,10 @@
     "list_donator": "List of donors",
     "artifact_empty": "No artifact need to donate",
     "list_volunteer": "List of volunteers",
-    "my_voluntary_campaigns": "My campaigns"
+    "my_voluntary_campaigns": "My campaigns",
+    "location_review": "Location review",
+    "images": "Campaign images",
+    "waiting_for_organization_feedback": "Waiting for organization feedback"
   },
   "profile": {
     "setting": "Setting",

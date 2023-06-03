@@ -43,9 +43,11 @@ class PendingCampaignBloc
       } else {
         campaigns = await _campaignRepository.getMyVolunteer();
       }
-      emiter(PendingCampaignState.success(
-        campaigns: campaigns,
-      ));
+      emiter(
+        PendingCampaignState.success(
+          campaigns: campaigns,
+        ),
+      );
       emiter(PendingCampaignState.success(campaigns: campaigns));
     } catch (e) {
       emiter(

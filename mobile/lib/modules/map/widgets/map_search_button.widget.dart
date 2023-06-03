@@ -14,16 +14,31 @@ class MapSearchButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppRoundedButton(
-      onPressed: () => Navigator.pushNamed(context, AppRoutes.search),
-      backgroundColor: Colors.white,
-      textStyle: TextStyles.regularBody14.copyWith(
-        color: ColorStyles.zodiacBlue,
-      ),
-      content: LocaleKeys.home_search.tr(),
-      borderRadius: 12,
-      prefixIcon: Assets.icons.icSearchDark.image(
-        height: 24,
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.15),
+              blurRadius: 20,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: AppRoundedButton(
+          width: double.infinity,
+          onPressed: () => Navigator.pushNamed(context, AppRoutes.search),
+          backgroundColor: Colors.white,
+          textStyle: TextStyles.regularBody14.copyWith(
+            color: ColorStyles.zodiacBlue,
+          ),
+          content: LocaleKeys.home_enter_keyword.tr(),
+          borderRadius: 15,
+          prefixIcon: Assets.icons.icSearchDark.image(
+            height: 24,
+          ),
+        ),
       ),
     );
   }

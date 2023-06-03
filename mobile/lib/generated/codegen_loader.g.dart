@@ -104,7 +104,8 @@ class CodegenLoader extends AssetLoader{
     "search": "Search",
     "sort_by": "Sort by: ",
     "newest": "Newest",
-    "nearest": "Nearest"
+    "nearest": "Nearest",
+    "enter_keyword": "Enter some keywords"
   },
   "organization": {
     "list_empty": "You don't have any organizations, let's try creating new one!",
@@ -149,7 +150,10 @@ class CodegenLoader extends AssetLoader{
     "list_donator": "List of donors",
     "artifact_empty": "No artifact need to donate",
     "list_volunteer": "List of volunteers",
-    "my_voluntary_campaigns": "My campaigns"
+    "my_voluntary_campaigns": "My campaigns",
+    "location_review": "Location review",
+    "images": "Campaign images",
+    "waiting_for_organization_feedback": "Waiting for organization feedback"
   },
   "profile": {
     "setting": "Setting",
@@ -291,7 +295,8 @@ static const Map<String,dynamic> vi = {
     "search": "Tìm kiếm",
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
-    "nearest": "Gần nhất"
+    "nearest": "Gần nhất",
+    "enter_keyword": "Nhập từ khóa"
   },
   "organization": {
     "list_empty": "Bạn chưa có tổ chức nào, hãy thử tạo một tổ chức!",
@@ -336,7 +341,10 @@ static const Map<String,dynamic> vi = {
     "list_donator": "Danh sách nhà hảo tâm",
     "artifact_empty": "Dự án chưa cần quyên góp hiện vật",
     "list_volunteer": "Danh sách tình nguyện viên",
-    "my_voluntary_campaigns": "Dự án của tôi"
+    "my_voluntary_campaigns": "Dự án của tôi",
+    "location_review": "Đánh giá địa điểm",
+    "images": "Hình ảnh về chiến dịch",
+    "waiting_for_organization_feedback": "Đang chờ đánh giá từ tổ chức"
   },
   "profile": {
     "setting": "Cài đặt",

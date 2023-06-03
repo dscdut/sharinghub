@@ -32,7 +32,15 @@ class _SplashView extends StatelessWidget {
           children: [
             const Spacer(),
             Center(
-              child: Assets.icons.launcher.appIcon.image(),
+              child: Assets.images.imgLogo.image(
+                height: 300,
+                width: 300,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'SharingHub',
+              style: TextStyles.boldBody16.copyWith(fontSize: 30),
             ),
             const Spacer(),
             const Text(

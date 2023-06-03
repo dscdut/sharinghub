@@ -62,7 +62,7 @@ abstract class ImageUtil {
           toolbarColor: Colors.black,
           toolbarTitle: '',
           hideBottomControls: true,
-          toolbarWidgetColor: ColorStyles.blue400,
+          toolbarWidgetColor: ColorStyles.primary1,
           initAspectRatio: CropAspectRatioPreset.original,
           lockAspectRatio: false,
         ),

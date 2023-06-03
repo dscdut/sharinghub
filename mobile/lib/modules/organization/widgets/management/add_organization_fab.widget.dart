@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/modules/organization/bloc/management/organization_management.bloc.dart';
 import 'package:mobile/configs/router/app_routes.dart';
 
@@ -13,6 +14,8 @@ class AddOrganizationFAB extends StatelessWidget {
         return Visibility(
           visible: state.status.isSuccess && state.organizations.isNotEmpty,
           child: FloatingActionButton(
+            backgroundColor: ColorStyles.primary1,
+            foregroundColor: Colors.black,
             onPressed: () {
               Navigator.of(context).pushNamed(
                 AppRoutes.setOrganization,

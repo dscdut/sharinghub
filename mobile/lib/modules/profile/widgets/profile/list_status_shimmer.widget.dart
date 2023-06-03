@@ -57,7 +57,7 @@ class ListStatus extends StatelessWidget {
         return isLoading
             ? _getShimmerLoading()
             : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ItemProfileCampaignWidget(
                     icon: Assets.icons.profile.pending.path,

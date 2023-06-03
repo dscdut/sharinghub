@@ -1,16 +1,18 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/utils/conditional_render.util.dart';
+import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/bloc/management/campaign_management.bloc.dart';
 import 'package:mobile/modules/campaign/widgets/management/add_campaign_fab.widget.dart';
 import 'package:mobile/modules/campaign/widgets/management/campaign_get_common_error.widget.dart';
 import 'package:mobile/modules/campaign/widgets/management/list_campaigns.widget.dart';
-import 'package:mobile/modules/campaign/widgets/management/organization_management_app_bar.widget.dart';
 
 class CampaignManagementPage extends StatelessWidget {
   const CampaignManagementPage({super.key});
@@ -33,7 +35,7 @@ class _CampaignManagementView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CampaignManagementAppBar(),
+      appBar: CustomAppBar(title: LocaleKeys.campaign_management.tr()),
       body: BlocBuilder<CampaignManagementBloc, CampaignManagementState>(
         builder: (context, state) {
           return ConditionalRenderUtil.single(

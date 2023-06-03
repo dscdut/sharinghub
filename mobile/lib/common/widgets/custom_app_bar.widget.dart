@@ -19,14 +19,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? bottom;
   final List<Widget> actions;
 
+  final Color leadingColor;
   final Function()? onLeadingAction;
 
   const CustomAppBar({
     super.key,
     this.isCenterTitle = true,
     this.automaticallyImplyLeading = true,
-    this.backgroundColor = ColorStyles.primary1,
-    this.titleColor = Colors.white,
+    this.backgroundColor = ColorStyles.primary4,
+    this.titleColor = Colors.black,
+    this.leadingColor = ColorStyles.primary1,
     this.toolbarHeight = 60,
     this.titleSpacing = 15,
     this.elevation = 0,
@@ -39,29 +41,47 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: isCenterTitle,
-      backgroundColor: backgroundColor,
-      elevation: elevation,
-      toolbarHeight: toolbarHeight,
-      titleSpacing: titleSpacing,
-      automaticallyImplyLeading: false,
-      title: Text(
-        title,
-        style: TextStyles.boldText.copyWith(color: titleColor, fontSize: 16),
+    return Container(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 30,
+            offset: const Offset(0, 10),
+          ),
+        ],
       ),
-      bottom: bottom != null
-          ? PreferredSize(
-              preferredSize: Size.fromHeight(bottomSize),
-              child: bottom!,
-            )
-          : null,
-      actions: actions,
-      leading: (automaticallyImplyLeading && Navigator.of(context).canPop())
-          ? AppBackButton(
-              iconColor: titleColor,
-            )
-          : null,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+        child: AppBar(
+          centerTitle: isCenterTitle,
+          backgroundColor: backgroundColor,
+          elevation: elevation,
+          toolbarHeight: toolbarHeight,
+          titleSpacing: titleSpacing,
+          automaticallyImplyLeading: false,
+          title: Text(
+            title,
+            style:
+                TextStyles.boldText.copyWith(color: titleColor, fontSize: 16),
+          ),
+          bottom: bottom != null
+              ? PreferredSize(
+                  preferredSize: Size.fromHeight(bottomSize),
+                  child: bottom!,
+                )
+              : null,
+          actions: actions,
+          leading: (automaticallyImplyLeading && Navigator.of(context).canPop())
+              ? AppBackButton(
+                  iconColor: leadingColor,
+                )
+              : null,
+        ),
+      ),
     );
   }
 

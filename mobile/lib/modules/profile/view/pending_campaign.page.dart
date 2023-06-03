@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile/common/theme/color_styles.dart';
+import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/di/di.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
@@ -36,11 +36,8 @@ class _PendingCampaignView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          LocaleKeys.campaign_my_voluntary_campaigns.tr(),
-        ),
-        backgroundColor: ColorStyles.primary1,
+      appBar: CustomAppBar(
+        title: LocaleKeys.campaign_my_voluntary_campaigns.tr(),
       ),
       body: BlocBuilder<PendingCampaignBloc, PendingCampaignState>(
         builder: (context, state) {

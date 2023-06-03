@@ -35,7 +35,7 @@ class AppRoundedButton extends StatelessWidget {
     this.height = 48,
     this.borderRadius = 10,
     this.elevation = 0,
-    this.backgroundColor = ColorStyles.blue400,
+    this.backgroundColor = ColorStyles.primary1,
     this.disableBackgroundColor = ColorStyles.gray300,
     this.shadowColor,
     required this.content,
