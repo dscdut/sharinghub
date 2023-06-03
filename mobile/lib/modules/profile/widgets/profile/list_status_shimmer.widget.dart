@@ -16,44 +16,46 @@ class ListStatus extends StatelessWidget {
     height: 4,
   );
 
+  Widget _getShimmerLoading() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(3, (index) {
+          return Shimmer.fromColors(
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!,
+            child: Column(
+              children: [
+                Container(
+                  width: 30,
+                  height: 35,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                _verticalSpacing,
+                Container(
+                  width: 60,
+                  height: 10,
+                  color: Colors.white,
+                ),
+                _verticalSpacing,
+                Container(
+                  width: 40,
+                  height: 10,
+                  color: Colors.white,
+                )
+              ],
+            ),
+          );
+        }),
+      );
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return isLoading
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(3, (index) {
-                  return Shimmer.fromColors(
-                    baseColor: Colors.grey[300]!,
-                    highlightColor: Colors.grey[100]!,
-                    child: Column(
-                      children: [
-                        Container(
-                          width: 30,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        _verticalSpacing,
-                        Container(
-                          width: 60,
-                          height: 10,
-                          color: Colors.white,
-                        ),
-                        _verticalSpacing,
-                        Container(
-                          width: 40,
-                          height: 10,
-                          color: Colors.white,
-                        )
-                      ],
-                    ),
-                  );
-                }),
-              )
+            ? _getShimmerLoading()
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
