@@ -12,7 +12,8 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       address: json['address'] as String,
       specificAddress: json['specificAddress'] as String?,
-      isUserJoined: json['joined'] as bool?,
+      isUserJoined: json['joined'] as bool? ?? false,
+      isUserGaveFeedback: json['gaveFeedback'] as bool? ?? false,
       description: json['description'] as String?,
       startDate: const JsonSerializableDateTime()
           .fromJson(json['startDate'] as String),
@@ -22,6 +23,11 @@ CampaignModel _$CampaignModelFromJson(Map<String, dynamic> json) =>
       donationRequirement: json['donationRequirement'] as String?,
       otherInformation: json['otherInformation'] as String?,
       image: json['image'] as String?,
+      userFeedbacks: (json['userFeedbacks'] as List<dynamic>?)
+              ?.map((e) =>
+                  ParticipantFeedbackDTO.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       feedback: json['feedback'] == null
           ? null
           : FeedbackToCampaignDTO.fromJson(

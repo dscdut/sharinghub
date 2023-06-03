@@ -30,5 +30,8 @@ class OrganizationFeedbackSubmit extends OrganizationFeedbackEvent {
   });
 
   @override
-  List<Object> get props => [organizationFeedback];
+  List<Object> get props => [
+        organizationFeedback,
+        isUpdate,
+      ];
 }

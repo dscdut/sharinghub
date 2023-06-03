@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:mobile/data/models/user.model.dart';
 
 part 'paticipant_feedback.dto.g.dart';
 
@@ -7,17 +8,20 @@ part 'paticipant_feedback.dto.g.dart';
 )
 class ParticipantFeedbackDTO {
   int campaignRate;
-  String? campaignReview;
+  String? organizationFeedback;
   int organizationRate;
-  String? organizationReview;
+  String? campaignFeedback;
+  @JsonKey(includeToJson: false)
+  UserModel? user;
   @JsonKey(includeToJson: false)
   int? campaignId;
 
   ParticipantFeedbackDTO({
     this.campaignRate = 0,
-    this.campaignReview,
+    this.campaignFeedback,
     this.organizationRate = 0,
-    this.organizationReview,
+    this.organizationFeedback,
+    this.user,
     this.campaignId,
   });
 
@@ -28,16 +32,16 @@ class ParticipantFeedbackDTO {
 
   ParticipantFeedbackDTO copyWith({
     int? campaignRate,
-    String? campaignReview,
+    String? campaignFeedback,
     int? organizationRate,
-    String? organizationReview,
+    String? organizationFeedback,
     int? campaignId,
   }) {
     return ParticipantFeedbackDTO(
       campaignRate: campaignRate ?? this.campaignRate,
-      campaignReview: campaignReview ?? this.campaignReview,
+      campaignFeedback: campaignFeedback ?? this.campaignFeedback,
       organizationRate: organizationRate ?? this.organizationRate,
-      organizationReview: organizationReview ?? this.organizationReview,
+      organizationFeedback: organizationFeedback ?? this.organizationFeedback,
       campaignId: campaignId ?? this.campaignId,
     );
   }

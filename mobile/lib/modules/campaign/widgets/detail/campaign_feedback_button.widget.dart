@@ -21,6 +21,15 @@ class CampaignFeedbackButton extends StatelessWidget {
         authState.currentOrganizationId == campaign.organizationId;
   }
 
+  bool hasOrgFeedback(AuthState authState) {
+    return authState.status.isAuthenticatedOrganization && campaign.hasFeedback;
+  }
+
+  bool hasParticipantFeedback(AuthState authState) {
+    return !authState.status.isAuthenticatedOrganization &&
+        campaign.isUserGaveFeedback;
+  }
+
   void _onFeedbackButtonPressed(BuildContext context) {
     final String route = isOrgCreateCampaign(context.read<AuthBloc>().state)
         ? AppRoutes.organizationFeedback
@@ -37,7 +46,8 @@ class CampaignFeedbackButton extends StatelessWidget {
       width: double.infinity,
       backgroundColor: ColorStyles.primary1,
       onPressed: () => _onFeedbackButtonPressed(context),
-      content: campaign.hasFeedback
+      content: hasOrgFeedback(context.read<AuthBloc>().state) ||
+              hasParticipantFeedback(context.read<AuthBloc>().state)
           ? LocaleKeys.button_edit_feedback.tr()
           : LocaleKeys.button_send_feedback.tr(),
     );
@@ -50,7 +60,7 @@ class CampaignFeedbackButton extends StatelessWidget {
                 campaign.organizationId
             ? _buildFeedbackButton(context)
             : const SizedBox()
-        : campaign.isUserJoined!
+        : campaign.isUserJoined
             ? _buildFeedbackButton(context)
             : const SizedBox();
   }

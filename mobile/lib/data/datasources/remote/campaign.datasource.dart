@@ -103,8 +103,17 @@ class CampaignDataSource {
   }
 
   Future<void> participantFeedback(ParticipantFeedbackDTO params) async {
-    //mock api
-    await Future.delayed(const Duration(seconds: 2));
+    await _dioHelper.post(
+      '${Endpoints.campaigns}/${params.campaignId}/user-feedbacks',
+      data: params.toJson(),
+    );
+  }
+
+  Future<void> updateParticipantFeedback(ParticipantFeedbackDTO params) async {
+    await _dioHelper.put(
+      '${Endpoints.campaigns}/${params.campaignId}/user-feedbacks',
+      data: params.toJson(),
+    );
   }
 
   Future<void> donateToCampaign(SetDonateDTO params) async {

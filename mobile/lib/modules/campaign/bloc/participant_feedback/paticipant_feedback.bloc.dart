@@ -43,10 +43,10 @@ class ParticipantFeedbackBloc
     emitter(
       state.copyWith(
         status: HandleStatus.initial,
-        campaignRateError: event.individualFeedback.campaignRate == 0.0
+        campaignRateError: event.participantFeedbackDTO.campaignRate == 0.0
             ? Wrapped.value(LocaleKeys.validator_campaign_rate.tr())
             : const Wrapped.value(null),
-        organizationRateError: event.individualFeedback.organizationRate == 0.0
+        organizationRateError: event.participantFeedbackDTO.organizationRate == 0.0
             ? Wrapped.value(LocaleKeys.validator_organization_rate.tr())
             : const Wrapped.value(null),
       ),
@@ -66,7 +66,14 @@ class ParticipantFeedbackBloc
       );
 
       try {
-        await _campaignRepository.participantFeedback(event.individualFeedback);
+        if (!event.isUpdate) {
+          await _campaignRepository
+              .participantFeedback(event.participantFeedback);
+        } else {
+          await _campaignRepository
+              .updateParticipantFeedback(event.participantFeedback);
+        }
+        await _campaignRepository.participantFeedback(event.participantFeedback);
 
         emitter(
           state.copyWith(
