@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/widgets/app_text_form_field.widget.dart';
 
 class AuthTextFormField extends StatefulWidget {
@@ -31,7 +32,7 @@ class _AuthTextFormFieldState extends State<AuthTextFormField> {
     return AppTextFormField(
       validator: widget.validator,
       textController: widget.textController,
-      borderColor: Colors.black26,
+      borderColor: ColorStyles.primary1,
       suffixIcon: widget.isPasswordField
           ? (_isObscure ? Icons.visibility_off : Icons.visibility)
           : null,
@@ -40,10 +41,12 @@ class _AuthTextFormFieldState extends State<AuthTextFormField> {
           _isObscure = !_isObscure;
         });
       },
+      suffixIconColor: ColorStyles.primary1,
       isObscure: widget.isPasswordField && _isObscure,
-      hintText: widget.hintText,
+      labelText: widget.hintText,
       hintColor: Colors.black26,
       keyboardType: widget.keyboardType,
+      focusedBorderColor: ColorStyles.primary1,
       errorText: widget.errorText,
     );
   }

@@ -38,6 +38,7 @@ class OptionsAndSubmitButton extends StatelessWidget {
               : LocaleKeys.auth_sign_up.tr(),
           width: double.infinity,
           isLoading: isLoading,
+          backgroundColor: ColorStyles.primary1,
         ),
       ],
     );
