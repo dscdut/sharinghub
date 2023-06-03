@@ -61,7 +61,10 @@ class _CampaignManagementView extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const AddCampaignFAB(),
+      floatingActionButton: const Padding(
+        padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
+        child: AddCampaignFAB(),
+      ),
     );
   }
 }
