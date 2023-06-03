@@ -26,6 +26,11 @@ class Controller {
         const data = await this.service.findAllUserNoOrg();
         return ValidHttpResponse.toOkResponse(data);
     }
+
+    findAllDonationsByUserId = async req => {
+        const data = await this.service.findAllDonationsByUserId(req.user.payload.id);
+        return ValidHttpResponse.toOkResponse(data);
+    }
 }
 
 export const UserController = new Controller();

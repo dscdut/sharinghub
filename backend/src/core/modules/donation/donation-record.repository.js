@@ -1,5 +1,6 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 import { Status } from 'core/common/enum';
+import connection from 'core/database';
 
 class Repository extends DataRepository {
     findDonationByIdAndCampaignIdAndUserId(donationId, campaignId, userId) {
@@ -133,6 +134,32 @@ class Repository extends DataRepository {
                 { donorId: 'donor_id' },
                 { fullName: 'users.full_name' },
                 { phoneNumber: 'users.phone_number' },
+            );
+    }
+
+    findAllDonationsByUserId(userId) {
+        console.log(userId)
+        return this.query()
+            .where('donation_records.donor_id', '=', userId)
+            .join('campaigns', 'donation_records.campaign_id', 'campaigns.id')
+            .select(
+                'donation_records.id',
+                { donorId: 'donor_id' },
+                { itemName: 'item_name' },
+                { quantity: 'quantity' },
+                'status',
+                { campaign: connection.raw(`json_build_object(
+                    'id', campaigns.id, 
+                    'name', campaigns.name, 
+                    'image', campaigns.image, 
+                    'description', campaigns.description,
+                    'address', campaigns.address,
+                    'specificAddress', campaigns.specific_address,
+                    'startDate', campaigns.start_date,
+                    'endDate', campaigns.end_date,
+                    'donationRequirement', campaigns.donation_requirement,
+                    'coordinate', 'campaigns.coordinate'
+                )`)}
             );
     }
 }
