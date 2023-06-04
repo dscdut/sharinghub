@@ -36,32 +36,42 @@ class _CampaignManagementView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: LocaleKeys.campaign_management.tr()),
-      body: BlocBuilder<CampaignManagementBloc, CampaignManagementState>(
-        builder: (context, state) {
-          return ConditionalRenderUtil.single(
-            context,
-            value: state.status,
-            caseBuilders: {
-              HandleStatus.loading: (_) => const Center(
-                    child: CupertinoActivityIndicator(),
-                  ),
-              HandleStatus.error: (_) =>
-                  const Center(child: CampaignGetCommonError()),
-              HandleStatus.initial: (_) => const SizedBox(),
-            },
-            fallbackBuilder: (_) {
-              if (state.campaigns.isEmpty) {
-                return Center(
-                  child: CampaignGetCommonError(
-                    isEmpty: state.campaigns.isEmpty,
-                  ),
-                );
-              }
-
-              return ListCampaigns(campaigns: state.campaigns);
-            },
-          );
+      body: RefreshIndicator(
+        onRefresh: () async {
+          context.read<CampaignManagementBloc>().add(
+                const CampaignManagementGet(),
+              );
         },
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
+          child: BlocBuilder<CampaignManagementBloc, CampaignManagementState>(
+            builder: (context, state) {
+              return ConditionalRenderUtil.single(
+                context,
+                value: state.status,
+                caseBuilders: {
+                  HandleStatus.loading: (_) => const Center(
+                        child: CupertinoActivityIndicator(),
+                      ),
+                  HandleStatus.error: (_) =>
+                      const Center(child: CampaignGetCommonError()),
+                  HandleStatus.initial: (_) => const SizedBox(),
+                },
+                fallbackBuilder: (_) {
+                  if (state.campaigns.isEmpty) {
+                    return Center(
+                      child: CampaignGetCommonError(
+                        isEmpty: state.campaigns.isEmpty,
+                      ),
+                    );
+                  }
+      
+                  return ListCampaigns(campaigns: state.campaigns);
+                },
+              );
+            },
+          ),
+        ),
       ),
       floatingActionButton: const Padding(
         padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight + 5),
