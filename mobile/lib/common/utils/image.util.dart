@@ -50,9 +50,9 @@ abstract class ImageUtil {
   }) async {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: imageFile.path,
-      compressQuality: 70,
+      // compressQuality: 70,
       aspectRatio: CropAspectRatio(ratioX: width ?? 1.0, ratioY: height ?? 1.0),
-      compressFormat: ImageCompressFormat.png,
+      // compressFormat: ImageCompressFormat.png,
       aspectRatioPresets: [
         CropAspectRatioPreset.square,
       ],
