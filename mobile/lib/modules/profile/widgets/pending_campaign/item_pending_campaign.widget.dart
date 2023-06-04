@@ -34,6 +34,7 @@ class ItemPendingCampaignWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         padding: const EdgeInsets.all(8),
+        width: MediaQuery.of(context).size.width,
         child: Row(
           children: [
             campaign.image.isNullOrEmpty
@@ -78,12 +79,17 @@ class ItemPendingCampaignWidget extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  campaign.address,
-                  style: TextStyles.regularBody14.copyWith(
-                    color: ColorStyles.disableColor,
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 176,
+                  child: Text(
+                    campaign.address,
+                    style: TextStyles.regularBody14.copyWith(
+                      color: ColorStyles.disableColor,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
+                )
               ],
             )
           ],
