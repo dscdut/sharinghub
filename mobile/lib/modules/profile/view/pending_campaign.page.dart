@@ -18,7 +18,7 @@ class PendingCampaignPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PendingCampaignBloc(
         campaignRepository: getIt.get<CampaignRepository>(),
-        authBloc: getIt.get<AuthBloc>(),
+        authBloc: context.read<AuthBloc>(),
       ),
       child: BlocListener<PendingCampaignBloc, PendingCampaignState>(
         listener: _onListener,
