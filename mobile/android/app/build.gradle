@@ -97,10 +97,10 @@ android {
                 keyAlias System.getenv()["CM_KEY_ALIAS"]
                 keyPassword System.getenv()["CM_KEY_PASSWORD"]
             } else {
-                keyAlias 'androiddebugkey'
-                keyPassword 'android'
-                storeFile file('debug.keystore')
-                storePassword 'android'
+                keyAlias localProperties.getProperty('keyAlias')
+                keyPassword localProperties.getProperty('keyPassword')
+                storeFile localProperties.getProperty('storeFile') ? file(localProperties.getProperty('storeFile')) : null
+                storePassword localProperties.getProperty('storePassword')
             }
         }
     }
