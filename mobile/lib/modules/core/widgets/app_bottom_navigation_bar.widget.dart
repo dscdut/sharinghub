@@ -37,8 +37,7 @@ class AppBottomNavigationBar extends StatelessWidget {
       ),
       child: BlocBuilder<RootBloc, RootState>(
         builder: (context, state) {
-          return Container(
-            height: kBottomNavigationBarHeight + 5,
+          return DecoratedBox(
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
