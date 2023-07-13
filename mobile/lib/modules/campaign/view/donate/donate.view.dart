@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/common/constants/handle_status.enum.dart';
 import 'package:mobile/common/extensions/context.extension.dart';
 import 'package:mobile/common/theme/app_size.dart';
-import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/utils/dialog.util.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
@@ -112,8 +111,6 @@ class _DonateViewState extends State<_DonateView> {
     return Scaffold(
       appBar: CustomAppBar(
         title: LocaleKeys.button_donate.tr(),
-        titleColor: ColorStyles.zodiacBlue,
-        backgroundColor: Colors.white,
         elevation: 0.5,
       ),
       body: SingleChildScrollView(

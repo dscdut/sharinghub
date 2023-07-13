@@ -84,12 +84,12 @@ class _DateRangePickerSheetState extends State<DateRangePickerSheet> {
                 textAlign: TextAlign.center,
                 textStyle: TextStyles.s17BoldText,
               ),
-              startRangeSelectionColor: ColorStyles.blue400,
-              endRangeSelectionColor: ColorStyles.blue400,
+              startRangeSelectionColor: ColorStyles.primary1,
+              endRangeSelectionColor: ColorStyles.primary1,
               selectionTextStyle:
                   TextStyles.s14MediumText.copyWith(color: Colors.white),
-              rangeTextStyle:
-                  TextStyles.s14MediumText.copyWith(color: ColorStyles.blue400),
+              rangeTextStyle: TextStyles.s14MediumText
+                  .copyWith(color: ColorStyles.primary1),
               selectionRadius: 20,
               headerHeight: 45,
               monthViewSettings: const DateRangePickerMonthViewSettings(

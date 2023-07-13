@@ -15,11 +15,13 @@ class AddressRepository {
     return _dataSource.getPronvinces();
   }
 
-  Future<List<DistrictModel>> getDistricts() {
-    return _dataSource.getDistricts();
+  Future<List<DistrictModel>> getDistricts(int provinceCode) {
+    return _dataSource.getDistricts(
+      provinceCode,
+    );
   }
 
-  Future<List<WardModel>> getWards() {
-    return _dataSource.getWards();
+  Future<List<WardModel>> getWards(int districtCode) {
+    return _dataSource.getWards(districtCode);
   }
 }

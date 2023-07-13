@@ -9,9 +9,9 @@ import 'package:mobile/modules/campaign/view/set/location_search.view.dart';
 import 'package:mobile/modules/core/views/root.view.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/explore/explore.dart';
-import 'package:mobile/modules/feedback_individual/feedback_individual.dart';
 import 'package:mobile/modules/organization/management.dart';
 import 'package:mobile/modules/profile/profile.dart';
+import 'package:mobile/modules/profile/view/pending_campaign.page.dart';
 import 'package:mobile/modules/profile/view/set_user_profile.view.dart';
 import 'package:mobile/modules/profile/view/user_profile.view.dart';
 import 'package:mobile/modules/splash/splash.dart';
@@ -34,6 +34,7 @@ abstract class AppRoutes {
   static const String locationSearch = '/locationSearch';
   static const String campaignDonation = '/campaignDonation';
   static const String donate = '/donate';
+  static const String pendingCampaign = '/pendingCampaign';
 
   // Auth
   static const String login = '/login';
@@ -41,7 +42,7 @@ abstract class AppRoutes {
 
   // Feedback
   static const String organizationFeedback = '/organizationFeedback';
-  static const String individualFeedback = '/individualFeedback';
+  static const String participantFeedback = '/participantFeedback';
 
   // Root
   static const String root = '/root';
@@ -117,15 +118,15 @@ abstract class AppRoutes {
       case organizationFeedback:
         return MaterialPageRoute(
           builder: (_) {
-            return FeedbackCampaignPage(
+            return OrganizationFeedbackPage(
               campaign: settings.arguments as CampaignModel,
             );
           },
         );
-      case individualFeedback:
+      case participantFeedback:
         return MaterialPageRoute(
           builder: (_) {
-            return FeedbackIndividualPage(
+            return ParticipantFeedbackPage(
               campaign: settings.arguments as CampaignModel,
             );
           },
@@ -196,9 +197,14 @@ abstract class AppRoutes {
           },
         );
       case campaignDonation:
+        ArgumentWrapper3<int, List<UserModel>, List<UserModel>> data =
+            settings.arguments
+                as ArgumentWrapper3<int, List<UserModel>, List<UserModel>>;
         return MaterialPageRoute(
           builder: (_) => CampaignDonorsPage(
-            initIndex: settings.arguments as int,
+            initIndex: data.param1,
+            listDonors: data.param2,
+            listVolunteers: data.param3,
           ),
         );
       case locationSearch:
@@ -217,6 +223,12 @@ abstract class AppRoutes {
         return MaterialPageRoute(
           builder: (_) {
             return const OrganizationManagementPage();
+          },
+        );
+      case pendingCampaign:
+        return MaterialPageRoute(
+          builder: (_) {
+            return const PendingCampaignPage();
           },
         );
       case setOrganization:

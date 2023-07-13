@@ -67,7 +67,7 @@ class _ShowOrPickMultipleImageState extends State<ShowOrPickMultipleImage> {
         }
       });
 
-      widget.setImages!(imagePaths!.map((e) => File(e!)).toList());
+      widget.setImages?.call(imagePaths!.map((e) => File(e!)).toList());
     }
   }
 

@@ -2,6 +2,7 @@ import 'package:mobile/flavors.dart';
 
 abstract class Endpoints {
   static String apiUrl = '${AppFlavor.apiBaseUrl}/api/v1';
+  static String addressUrl = '${AppFlavor.addressURL}/api';
 
   static String login = '$apiUrl/auth/login';
   static String register = '$apiUrl/auth/register';
@@ -17,6 +18,9 @@ abstract class Endpoints {
   static String campaignByOrganization = '$apiUrl/organizations';
   static String campaigns = '$apiUrl/campaigns';
 
+  // Volunteers
+  static String myVoluntary = '$apiUrl/users/my-voluntary-campaigns';
+
   // Coordinators
   static String coordinators = '$apiUrl/campaigns/coordinates';
 
@@ -25,4 +29,7 @@ abstract class Endpoints {
 
   static String geoCode =
       'https://maps.googleapis.com/maps/api/geocode/json?key=${AppFlavor.googleMapApiKey}';
+
+  static String province = '$addressUrl/p';
+  static String district = '$addressUrl/d';
 }

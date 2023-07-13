@@ -9,6 +9,7 @@ class CustomDropdownButton<T> extends StatelessWidget {
     required this.onChange,
     required this.items,
     this.hint,
+    this.decoration,
   });
 
   final Color color;
@@ -16,17 +17,22 @@ class CustomDropdownButton<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final T value;
   final Widget? hint;
+  final BoxDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: color,
-        ),
+      alignment: Alignment.centerLeft,
+      decoration: decoration ??
+          BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: color,
+            ),
+          ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 2),
       margin: const EdgeInsets.all(2),
       child: DropdownButtonHideUnderline(
         child: DropdownButton(
