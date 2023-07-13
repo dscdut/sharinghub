@@ -6,12 +6,14 @@ import 'package:mobile/common/theme/text_styles.dart';
 import 'package:mobile/common/utils/toast.util.dart';
 import 'package:mobile/data/repositories/user.repository.dart';
 import 'package:mobile/di/di.dart';
+import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/auth/bloc/auth/auth.bloc.dart';
 import 'package:mobile/modules/auth/bloc/login/login.bloc.dart';
 import 'package:mobile/modules/auth/widgets/auth_navigate_option.widget.dart';
 import 'package:mobile/modules/auth/widgets/login/login_form.widget.dart';
 import 'package:mobile/modules/auth/widgets/login/option_and_submit_button.widget.dart';
+import 'package:mobile/modules/auth/widgets/login/switch_language_button.widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -78,7 +80,18 @@ class _LoginView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Spacer(),
+                const SizedBox(
+                  height: 50,
+                ),
+                const SwitchLanguageButtonWidget(),
+                const SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Assets.images.imgLogo.image(width: 100, height: 100),
+                ),
+                const SizedBox(height: 40),
                 Align(
                   child: Text(
                     LocaleKeys.auth_login.tr(),

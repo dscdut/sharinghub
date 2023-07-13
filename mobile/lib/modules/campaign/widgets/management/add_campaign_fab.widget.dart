@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/modules/auth/auth.dart';
 import 'package:mobile/modules/campaign/bloc/management/campaign_management.bloc.dart';
 import 'package:mobile/configs/router/app_routes.dart';
@@ -14,6 +15,8 @@ class AddCampaignFAB extends StatelessWidget {
         return Visibility(
           visible: state.status.isSuccess && state.campaigns.isNotEmpty,
           child: FloatingActionButton(
+            backgroundColor: ColorStyles.primary4,
+            foregroundColor: Colors.black,
             onPressed: () {
               Navigator.of(context).pushNamed(
                 AppRoutes.setCampaign,

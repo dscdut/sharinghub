@@ -10,13 +10,13 @@ class CodegenLoader extends AssetLoader{
   const CodegenLoader();
 
   @override
-  Future<Map<String, dynamic>> load(String fullPath, Locale locale ) {
+  Future<Map<String, dynamic>?> load(String path, Locale locale) {
     return Future.value(mapLocales[locale.toString()]);
   }
 
   static const Map<String,dynamic> en = {
   "texts": {
-    "notification": "Notification",
+    "notification": "Notifications",
     "success": "Success",
     "error": "Error",
     "error_occur": "An error has occurred, please try again later",
@@ -53,10 +53,10 @@ class CodegenLoader extends AssetLoader{
     "edit_feedback": "Edit Feedback"
   },
   "root": {
-    "map": "Map",
+    "map": "Maps",
     "explore": "Explore",
-    "management": "Management",
-    "notification": "Notification",
+    "management": "My Campaigns",
+    "notification": "Notifications",
     "profile": "Profile"
   },
   "auth": {
@@ -104,7 +104,8 @@ class CodegenLoader extends AssetLoader{
     "search": "Search",
     "sort_by": "Sort by: ",
     "newest": "Newest",
-    "nearest": "Nearest"
+    "nearest": "Nearest",
+    "enter_keyword": "Enter some keywords"
   },
   "organization": {
     "list_empty": "You don't have any organizations, let's try creating new one!",
@@ -144,11 +145,15 @@ class CodegenLoader extends AssetLoader{
     "management": "Campaign Management",
     "empty_list": "Your organization doesn't have any campaigns, let's try creating new one!",
     "see_more": "See more",
-    "donator": "Donator",
+    "donator": "Donor",
     "update_to": "Update to",
-    "list_donator": "List of donators",
+    "list_donator": "List of donors",
     "artifact_empty": "No artifact need to donate",
-    "list_volunteer": "List of volunteers"
+    "list_volunteer": "List of volunteers",
+    "my_voluntary_campaigns": "My campaigns",
+    "location_review": "Location review",
+    "images": "Campaign images",
+    "waiting_for_organization_feedback": "Waiting for organization feedback"
   },
   "profile": {
     "setting": "Setting",
@@ -198,6 +203,10 @@ class CodegenLoader extends AssetLoader{
     "artifact_name": "Artifact name",
     "artifact_quantity": "Artifact quantity",
     "artifact_status": "Artifact status"
+  },
+  "notification": {
+    "all": "All",
+    "unread": "Unread"
   }
 };
 static const Map<String,dynamic> vi = {
@@ -290,7 +299,8 @@ static const Map<String,dynamic> vi = {
     "search": "Tìm kiếm",
     "sort_by": "Sắp xếp theo: ",
     "newest": "Mới nhất",
-    "nearest": "Gần nhất"
+    "nearest": "Gần nhất",
+    "enter_keyword": "Nhập từ khóa"
   },
   "organization": {
     "list_empty": "Bạn chưa có tổ chức nào, hãy thử tạo một tổ chức!",
@@ -334,7 +344,11 @@ static const Map<String,dynamic> vi = {
     "update_to": "Cập nhật đến ngày",
     "list_donator": "Danh sách nhà hảo tâm",
     "artifact_empty": "Dự án chưa cần quyên góp hiện vật",
-    "list_volunteer": "Danh sách tình nguyện viên"
+    "list_volunteer": "Danh sách tình nguyện viên",
+    "my_voluntary_campaigns": "Dự án của tôi",
+    "location_review": "Đánh giá địa điểm",
+    "images": "Hình ảnh về chiến dịch",
+    "waiting_for_organization_feedback": "Đang chờ đánh giá từ tổ chức"
   },
   "profile": {
     "setting": "Cài đặt",
@@ -384,6 +398,10 @@ static const Map<String,dynamic> vi = {
     "artifact_name": "Tên hiện vật",
     "artifact_quantity": "Số lượng hiện vật",
     "artifact_status": "Tình trạng hiện vật"
+  },
+  "notification": {
+    "all": "Tất cả",
+    "unread": "Chưa đọc"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "vi": vi};

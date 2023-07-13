@@ -1,8 +1,8 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/data/datasources/remote/campaign.datasource.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
-import 'package:mobile/data/dtos/feedback_individual.dto.dart';
+import 'package:mobile/data/dtos/paticipant_feedback.dto.dart';
+import 'package:mobile/data/dtos/organization_feedback.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
@@ -22,7 +22,7 @@ class CampaignRepository {
     int? provinceCode,
     int? districtCode,
     int? wardCode,
-    String keyword,
+    String? keyword,
   ) {
     return _dataSource.searchCampaigns(
       provinceCode,
@@ -54,12 +54,32 @@ class CampaignRepository {
     return _dataSource.joinCampaign(campaignId);
   }
 
-  Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {
-    return _dataSource.feedbackToCampaign(params);
+  Future<void> organizationFeedback(OrganizationFeedbackDTO params) async {
+    return _dataSource.organizationFeedback(params);
   }
 
-  Future<void> feedbackIndividual(FeedbackIndividualDTO params) async {
-    return _dataSource.feedbackIndividual(params);
+  Future<void> updateOrganizationFeedback(
+    OrganizationFeedbackDTO params,
+  ) async {
+    return _dataSource.updateOrganizationFeedback(params);
+  }
+
+  Future<void> participantFeedback(ParticipantFeedbackDTO params) async {
+    return _dataSource.participantFeedback(params);
+  }
+
+  Future<void> updateParticipantFeedback(
+    ParticipantFeedbackDTO params,
+  ) async {
+    return _dataSource.updateParticipantFeedback(params);
+  }
+
+  Future<List<CampaignModel>> getMyVolunteer() async {
+    return _dataSource.getListVoluntaryCampaign();
+  }
+
+  Future<List<CampaignModel>> getOrgCampaigns(int id) async {
+    return _dataSource.getOrgCapaigns(id);
   }
 
   Future<void> donateToCampaign(SetDonateDTO params) async {

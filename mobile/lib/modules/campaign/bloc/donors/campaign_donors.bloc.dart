@@ -17,7 +17,7 @@ class CampaignDonorsBloc
     Emitter<CampaignDonorsState> emit,
   ) async {
     emit(state.copyWith(status: HandleStatus.loading));
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     emit(state.copyWith(status: HandleStatus.success));
   }
 }

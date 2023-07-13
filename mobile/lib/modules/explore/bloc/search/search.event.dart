@@ -8,12 +8,10 @@ class SearchEvent extends Equatable {
 }
 
 class SearchListCampainsGet extends SearchEvent {
-  final String keyword;
-
-  const SearchListCampainsGet({required this.keyword});
+  const SearchListCampainsGet();
 
   @override
-  List<Object?> get props => [keyword];
+  List<Object?> get props => [];
 }
 
 // Province
@@ -59,4 +57,15 @@ class SearchWardSelected extends SearchEvent {
 
   @override
   List<Object?> get props => [wardCode];
+}
+
+class SearchKeywordChanged extends SearchEvent {
+  final String keyword;
+
+  const SearchKeywordChanged({
+    required this.keyword,
+  });
+
+  @override
+  List<Object?> get props => [keyword];
 }

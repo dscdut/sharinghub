@@ -31,8 +31,19 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  $AssetsIconsBottomNavigationGen get bottomNavigation =>
+      const $AssetsIconsBottomNavigationGen();
+
+  /// File path: assets/icons/ic_annotation.png
+  AssetGenImage get icAnnotation =>
+      const AssetGenImage('assets/icons/ic_annotation.png');
+
   /// File path: assets/icons/ic_chat.png
   AssetGenImage get icChat => const AssetGenImage('assets/icons/ic_chat.png');
+
+  /// File path: assets/icons/ic_internet.png
+  AssetGenImage get icInternet =>
+      const AssetGenImage('assets/icons/ic_internet.png');
 
   /// File path: assets/icons/ic_logout.png
   AssetGenImage get icLogout =>
@@ -68,12 +79,18 @@ class $AssetsIconsGen {
   AssetGenImage get icSwitch =>
       const AssetGenImage('assets/icons/ic_switch.png');
 
+  /// File path: assets/icons/ic_user_group.png
+  AssetGenImage get icUserGroup =>
+      const AssetGenImage('assets/icons/ic_user_group.png');
+
   $AssetsIconsLauncherGen get launcher => const $AssetsIconsLauncherGen();
   $AssetsIconsProfileGen get profile => const $AssetsIconsProfileGen();
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        icAnnotation,
         icChat,
+        icInternet,
         icLogout,
         icRemoveUser,
         icSearch,
@@ -82,7 +99,8 @@ class $AssetsIconsGen {
         icShare,
         icStar,
         icSupport,
-        icSwitch
+        icSwitch,
+        icUserGroup
       ];
 }
 
@@ -101,12 +119,21 @@ class $AssetsImagesGen {
   AssetGenImage get imgDefautAvatar =>
       const AssetGenImage('assets/images/img_defaut_avatar.png');
 
+  /// File path: assets/images/img_logo.png
+  AssetGenImage get imgLogo =>
+      const AssetGenImage('assets/images/img_logo.png');
+
   /// File path: assets/images/not_found.svg
   SvgGenImage get notFound => const SvgGenImage('assets/images/not_found.svg');
 
   /// List of all assets
-  List<dynamic> get values =>
-      [imgDefaultCampaign, imgDefaultCampaignSquare, imgDefautAvatar, notFound];
+  List<dynamic> get values => [
+        imgDefaultCampaign,
+        imgDefaultCampaignSquare,
+        imgDefautAvatar,
+        imgLogo,
+        notFound
+      ];
 }
 
 class $AssetsLocalesGen {
@@ -120,6 +147,34 @@ class $AssetsLocalesGen {
 
   /// List of all assets
   List<String> get values => [en, vi];
+}
+
+class $AssetsIconsBottomNavigationGen {
+  const $AssetsIconsBottomNavigationGen();
+
+  /// File path: assets/icons/bottom_navigation/explore.svg
+  SvgGenImage get explore =>
+      const SvgGenImage('assets/icons/bottom_navigation/explore.svg');
+
+  /// File path: assets/icons/bottom_navigation/maps.svg
+  SvgGenImage get maps =>
+      const SvgGenImage('assets/icons/bottom_navigation/maps.svg');
+
+  /// File path: assets/icons/bottom_navigation/my_campaigns.svg
+  SvgGenImage get myCampaigns =>
+      const SvgGenImage('assets/icons/bottom_navigation/my_campaigns.svg');
+
+  /// File path: assets/icons/bottom_navigation/notifications.svg
+  SvgGenImage get notifications =>
+      const SvgGenImage('assets/icons/bottom_navigation/notifications.svg');
+
+  /// File path: assets/icons/bottom_navigation/profile.svg
+  SvgGenImage get profile =>
+      const SvgGenImage('assets/icons/bottom_navigation/profile.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values =>
+      [explore, maps, myCampaigns, notifications, profile];
 }
 
 class $AssetsIconsLauncherGen {

@@ -17,14 +17,12 @@ class CampaignDetailAppbar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return CustomAppBar(
       title: campaignName,
-      backgroundColor: Colors.white,
-      titleColor: ColorStyles.zodiacBlue,
       elevation: 1,
       actions: [
         PopupMenuButton(
           icon: const Icon(
             Icons.more_vert_rounded,
-            color: ColorStyles.zodiacBlue,
+            color: ColorStyles.primary1,
           ),
           itemBuilder: (_) {
             return <PopupMenuEntry<int>>[

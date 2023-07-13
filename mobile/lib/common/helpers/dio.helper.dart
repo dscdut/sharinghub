@@ -121,6 +121,10 @@ class DioHelper {
     Options? options,
     Map<String, dynamic>? formData,
   }) async {
+    if (formData != null) {
+      data = await _mapToFormData(formData);
+    }
+
     final Response response = await _dio.put(
       url,
       data: data,

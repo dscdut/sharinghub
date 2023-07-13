@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
+import 'package:mobile/common/widgets/star_rating.widget.dart';
 import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/generated/assets.gen.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
@@ -48,7 +49,8 @@ class OrganizationInfo extends StatelessWidget {
               children: [
                 Text(
                   organization.name,
-                  style: TextStyles.boldBody16,
+                  style: TextStyles.boldBody16
+                      .copyWith(color: ColorStyles.primary1),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -59,13 +61,13 @@ class OrganizationInfo extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '${LocaleKeys.texts_rate.tr()}: 4.5',
+                      '${LocaleKeys.texts_rate.tr()}: ',
                       style: TextStyles.regularBody14,
                     ),
-                    const Icon(
-                      Icons.star,
-                      size: 20,
-                      color: Colors.yellow,
+                    const StarRating(
+                      rating: 4,
+                      size: 16,
+                      color: ColorStyles.zodiacBlue,
                     )
                   ],
                 )

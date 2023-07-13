@@ -3,8 +3,8 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:mobile/common/extensions/date_time.extension.dart';
 import 'package:mobile/common/utils/json.util.dart';
 import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
+import 'package:mobile/data/dtos/paticipant_feedback.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
-
 import 'package:mobile/generated/locale_keys.g.dart';
 
 part 'campaign.model.g.dart';
@@ -19,7 +19,7 @@ class CampaignModel {
   final String address;
   final String? specificAddress;
   final Map<String, double>? coordinate;
-  final String description;
+  final String? description;
   final DateTime startDate;
   final DateTime endDate;
   final String? registerLink;
@@ -27,13 +27,17 @@ class CampaignModel {
   final String? otherInformation;
   @JsonKey(includeIfNull: false, includeToJson: false)
   final FeedbackToCampaignDTO? feedback;
-  @JsonKey(name: 'joined', includeIfNull: false, includeToJson: false)
-  final bool? isUserJoined;
+  @JsonKey(name: 'joined', includeToJson: false)
+  final bool isUserJoined;
+  @JsonKey(name: 'gaveFeedback', includeToJson: false)
+  final bool isUserGaveFeedback;
+  @JsonKey(includeToJson: false)
+  final List<ParticipantFeedbackDTO> userFeedbacks;
   final String? organizationName;
   final String? organizationAvatar;
   final int? organizationId;
 
-bool get isUpcoming => startDate.isAfter(DateTime.now());
+  bool get isUpcoming => startDate.isAfter(DateTime.now());
   bool get isOngoing =>
       startDate.isBefore(DateTime.now()) && endDate.isAfter(DateTime.now());
   bool get isEnded => endDate.isBefore(DateTime.now());
@@ -53,7 +57,8 @@ bool get isUpcoming => startDate.isAfter(DateTime.now());
     required this.name,
     required this.address,
     this.specificAddress,
-    this.isUserJoined,
+    this.isUserJoined = false,
+    this.isUserGaveFeedback = false,
     required this.description,
     required this.startDate,
     required this.endDate,
@@ -61,6 +66,7 @@ bool get isUpcoming => startDate.isAfter(DateTime.now());
     this.donationRequirement,
     this.otherInformation,
     this.image,
+    this.userFeedbacks = const [],
     this.feedback,
     this.coordinate,
     this.organizationName,

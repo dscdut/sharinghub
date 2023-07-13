@@ -6,6 +6,7 @@ import 'package:mobile/data/models/organization.model.dart';
 import 'package:mobile/modules/campaign/campaign.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_donors.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_feedback_button.widget.dart';
+import 'package:mobile/modules/campaign/widgets/detail/campaign_org_feedback.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_request_join.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/campaign_detail_info.widget.dart';
 import 'package:mobile/modules/campaign/widgets/detail/image_and_description.widget.dart';
@@ -24,7 +25,7 @@ class CampaignInfo extends StatelessWidget {
   );
 
   Widget _buildEndContentCampaign(CampaignModel campaign) {
-    if (campaign.isOngoing) {
+    if (campaign.isUpcoming) {
       return BlocBuilder<CampaignDetailBloc, CampaignDetailState>(
         builder: (context, state) {
           return CampaignRequestJoin(
@@ -53,7 +54,7 @@ class CampaignInfo extends StatelessWidget {
           children: [
             ImageAndDescription(
               image: campaign.image,
-              description: campaign.description,
+              description: campaign.description ?? '',
             ),
             _verticalSpacing,
             CampaignDetailInfo(campaign: campaign),
@@ -69,7 +70,9 @@ class CampaignInfo extends StatelessWidget {
               ), // address, description, phone is not to show, so we can pass empty string
             ),
             _verticalSpacing,
-            const CampaignDetailDonorsWidget(),
+            if (!campaign.isEnded) CampaignDetailDonorsWidget(),
+            if (campaign.isEnded && campaign.hasFeedback)
+              CampaignOrgFeedback(campaign: campaign),
             _verticalSpacing,
             _buildEndContentCampaign(campaign),
           ],

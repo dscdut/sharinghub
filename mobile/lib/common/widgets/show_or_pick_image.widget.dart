@@ -197,7 +197,7 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
                       fit: BoxFit.cover,
                     ),
                   );
-                }
+                },
               },
               fallbackBuilder: (_) => Center(
                 child: Icon(

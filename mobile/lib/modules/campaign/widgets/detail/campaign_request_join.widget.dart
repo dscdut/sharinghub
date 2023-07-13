@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/widgets/app_rounded_button.widget.dart';
 import 'package:mobile/data/models/campaign.model.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
@@ -28,7 +27,6 @@ class CampaignRequestJoin extends StatelessWidget {
                 arguments: campaign,
               );
             },
-            backgroundColor: ColorStyles.primary1,
             content: LocaleKeys.button_join.tr(),
           ),
         ),
@@ -40,8 +38,13 @@ class CampaignRequestJoin extends StatelessWidget {
           child: AppRoundedButton(
             isDisable: campaign.donationRequirement == null,
             width: double.infinity,
-            onPressed: () {},
-            backgroundColor: ColorStyles.primary1,
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.donate,
+                arguments: campaign.id,
+              );
+            },
             content: LocaleKeys.button_donate.tr(),
           ),
         )

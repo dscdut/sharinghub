@@ -38,8 +38,10 @@ class AppReadMoreText extends StatelessWidget {
       trimCollapsedText: LocaleKeys.texts_read_more.tr(),
       trimExpandedText: LocaleKeys.texts_hide_info.tr(),
       style: style ?? TextStyles.regularText,
-      lessStyle: TextStyles.s14RegularText.copyWith(color: ColorStyles.blue300),
-      moreStyle: TextStyles.s14RegularText.copyWith(color: ColorStyles.blue300),
+      lessStyle:
+          TextStyles.s14RegularText.copyWith(color: ColorStyles.primary1),
+      moreStyle:
+          TextStyles.s14RegularText.copyWith(color: ColorStyles.primary1),
     );
   }
 }

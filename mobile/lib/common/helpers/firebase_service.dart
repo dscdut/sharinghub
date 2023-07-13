@@ -2,11 +2,11 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mobile/flavors.dart';
 import 'package:mobile/generated/firebase_options/firebase_options_dev.dart'
-    as FirebaseOptionDev;
+    as firebase_option_dev;
 import 'package:mobile/generated/firebase_options/firebase_options_qa.dart'
-    as FirebaseOptionQA;
+    as firebase_option_qa;
 import 'package:mobile/generated/firebase_options/firebase_options_staging.dart'
-    as FirebaseOptionStaging;
+    as firebase_option_staging;
 
 abstract class FirebaseService {
   static FirebaseAnalytics analytic = FirebaseAnalytics.instance;
@@ -14,12 +14,12 @@ abstract class FirebaseService {
   static FirebaseOptions _getFirebaseOptions() {
     switch (AppFlavor.appFlavor) {
       case Flavor.QA:
-        return FirebaseOptionQA.DefaultFirebaseOptions.currentPlatform;
+        return firebase_option_qa.DefaultFirebaseOptions.currentPlatform;
       case Flavor.STAGING:
-        return FirebaseOptionStaging.DefaultFirebaseOptions.currentPlatform;
+        return firebase_option_staging.DefaultFirebaseOptions.currentPlatform;
       case Flavor.DEV:
       default:
-        return FirebaseOptionDev.DefaultFirebaseOptions.currentPlatform;
+        return firebase_option_dev.DefaultFirebaseOptions.currentPlatform;
     }
   }
 

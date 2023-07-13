@@ -4,12 +4,14 @@ import 'package:mobile/common/theme/color_styles.dart';
 class RoundedIconButton extends StatelessWidget {
   final IconData icon;
   final double size;
+  final Color iconColor;
   final Color backgroundColor;
 
   const RoundedIconButton({
     super.key,
     required this.icon,
     this.size = 35,
+    this.iconColor = ColorStyles.primary1,
     this.backgroundColor = ColorStyles.gray100,
   });
 
@@ -30,7 +32,7 @@ class RoundedIconButton extends StatelessWidget {
       ),
       child: Icon(
         icon,
-        color: ColorStyles.zodiacBlue,
+        color: iconColor,
         size: 19,
       ),
     );

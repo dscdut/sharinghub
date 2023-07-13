@@ -84,6 +84,7 @@ abstract class  LocaleKeys {
   static const home_sort_by = 'home.sort_by';
   static const home_newest = 'home.newest';
   static const home_nearest = 'home.nearest';
+  static const home_enter_keyword = 'home.enter_keyword';
   static const home = 'home';
   static const organization_list_empty = 'organization.list_empty';
   static const organization_create = 'organization.create';
@@ -126,6 +127,10 @@ abstract class  LocaleKeys {
   static const campaign_list_donator = 'campaign.list_donator';
   static const campaign_artifact_empty = 'campaign.artifact_empty';
   static const campaign_list_volunteer = 'campaign.list_volunteer';
+  static const campaign_my_voluntary_campaigns = 'campaign.my_voluntary_campaigns';
+  static const campaign_location_review = 'campaign.location_review';
+  static const campaign_images = 'campaign.images';
+  static const campaign_waiting_for_organization_feedback = 'campaign.waiting_for_organization_feedback';
   static const campaign = 'campaign';
   static const profile_setting = 'profile.setting';
   static const profile_contact_info = 'profile.contact_info';
@@ -172,5 +177,8 @@ abstract class  LocaleKeys {
   static const donate_artifact_quantity = 'donate.artifact_quantity';
   static const donate_artifact_status = 'donate.artifact_status';
   static const donate = 'donate';
+  static const notification_all = 'notification.all';
+  static const notification_unread = 'notification.unread';
+  static const notification = 'notification';
 
 }

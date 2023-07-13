@@ -2,8 +2,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile/common/constants/endpoints.dart';
 import 'package:mobile/common/helpers/dio.helper.dart';
-import 'package:mobile/data/dtos/feedback_campaign.dto.dart';
-import 'package:mobile/data/dtos/feedback_individual.dto.dart';
+import 'package:mobile/data/dtos/paticipant_feedback.dto.dart';
+import 'package:mobile/data/dtos/organization_feedback.dto.dart';
 import 'package:mobile/data/dtos/set_campaign.dto.dart';
 import 'package:mobile/data/dtos/set_donate.dto.dart';
 import 'package:mobile/data/models/campaign.model.dart';
@@ -27,7 +27,7 @@ class CampaignDataSource {
     int? provinceCode,
     int? districtCode,
     int? wardCode,
-    String keyword,
+    String? keyword,
   ) async {
     final response = await _dioHelper.get(
       Endpoints.campaigns,
@@ -86,16 +86,34 @@ class CampaignDataSource {
     );
   }
 
-  Future<void> feedbackToCampaign(FeedbackToCampaignDTO params) async {
+  Future<void> organizationFeedback(OrganizationFeedbackDTO params) async {
     await _dioHelper.post(
-      '${Endpoints.campaigns}/${params.campaignId}',
+      '${Endpoints.campaigns}/${params.campaignId}/feedbacks',
       formData: params.toJson(),
     );
   }
 
-  Future<void> feedbackIndividual(FeedbackIndividualDTO params) async {
-    //mock api
-    await Future.delayed(const Duration(seconds: 2));
+  Future<void> updateOrganizationFeedback(
+    OrganizationFeedbackDTO params,
+  ) async {
+    await _dioHelper.put(
+      '${Endpoints.campaigns}/${params.campaignId}/feedbacks',
+      formData: params.toJson(),
+    );
+  }
+
+  Future<void> participantFeedback(ParticipantFeedbackDTO params) async {
+    await _dioHelper.post(
+      '${Endpoints.campaigns}/${params.campaignId}/user-feedbacks',
+      data: params.toJson(),
+    );
+  }
+
+  Future<void> updateParticipantFeedback(ParticipantFeedbackDTO params) async {
+    await _dioHelper.put(
+      '${Endpoints.campaigns}/${params.campaignId}/user-feedbacks',
+      data: params.toJson(),
+    );
   }
 
   Future<void> donateToCampaign(SetDonateDTO params) async {
@@ -103,5 +121,23 @@ class CampaignDataSource {
       '${Endpoints.campaigns}/${params.campaignId}/donations',
       formData: params.toJson(),
     );
+  }
+
+  Future<List<CampaignModel>> getOrgCapaigns(int id) async {
+    final response = await _dioHelper.get(
+      '${Endpoints.campaignByOrganization}/$id/campaigns',
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
+  }
+
+  Future<List<CampaignModel>> getListVoluntaryCampaign() async {
+    final response = await _dioHelper.get(
+      Endpoints.myVoluntary,
+    );
+    return response.body
+        .map<CampaignModel>((e) => CampaignModel.fromJson(e))
+        .toList();
   }
 }

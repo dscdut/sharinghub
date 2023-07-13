@@ -42,7 +42,7 @@ class AuthNavigateOption extends StatelessWidget {
                 ? LocaleKeys.auth_login.tr()
                 : LocaleKeys.auth_sign_up.tr(),
             style: TextStyles.mediumText
-                .copyWith(fontSize: 16, color: ColorStyles.red500),
+                .copyWith(fontSize: 16, color: ColorStyles.primary1),
           ),
         )
       ],

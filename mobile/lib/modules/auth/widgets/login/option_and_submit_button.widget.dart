@@ -27,7 +27,7 @@ class OptionsAndSubmitButton extends StatelessWidget {
           Text(
             LocaleKeys.auth_forgot_password.tr(),
             style: TextStyles.mediumText.copyWith(
-              color: ColorStyles.red500,
+              color: ColorStyles.primary1,
             ),
           ),
         const SizedBox(height: 20),

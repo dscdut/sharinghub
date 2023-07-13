@@ -6,7 +6,10 @@ part 'ward.model.g.dart';
 
 @JsonSerializable()
 class WardModel {
+  @JsonKey(name: 'name')
   final String wardName;
+
+  @JsonKey(name: 'code')
   final int wardCode;
 
   const WardModel({

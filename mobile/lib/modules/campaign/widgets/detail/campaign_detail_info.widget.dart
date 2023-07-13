@@ -21,13 +21,7 @@ class CampaignDetailInfo extends StatelessWidget {
   );
 
   String _getCampaignStatusDisplay(CampaignModel campaign) {
-    if (campaign.isEnded) {
-      return '';
-    } else if (campaign.isUpcoming) {
-      return ' : ${campaign.startDate.toDisplay}';
-    } else {
-      return ' - ${campaign.endDate.toDisplay}';
-    }
+    return ' ${campaign.startDate.toDisplay} - ${campaign.endDate.toDisplay}';
   }
 
   TextStyle _getCampaignStatusTextStyle(CampaignModel campaign) {

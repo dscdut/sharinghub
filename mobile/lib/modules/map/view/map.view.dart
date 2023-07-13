@@ -1,15 +1,17 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mobile/common/constants/constants.dart';
 import 'package:mobile/common/extensions/context.extension.dart';
-import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/utils/toast.util.dart';
+import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/data/repositories/campaign.repository.dart';
 import 'package:mobile/data/repositories/place.repository.dart';
 import 'package:mobile/di/di.dart';
+import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/map/bloc/bottom_sheet_bloc/map_bottom_sheet.bloc.dart';
 import 'package:mobile/modules/map/bloc/map/map.bloc.dart';
 import 'package:mobile/modules/map/widgets/map_bottom_sheet.widget.dart';
@@ -73,44 +75,40 @@ class _MapView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+        title: LocaleKeys.home_search.tr(),
+        bottom: const MapSearchButtonWidget(),
+        toolbarHeight: kToolbarHeight + 60,
+      ),
+      extendBodyBehindAppBar: true,
       body: BlocBuilder<MapBloc, MapState>(
         builder: (context, state) {
           return SizedBox(
             height: context.height,
             width: context.width,
-            child: Stack(
-              children: [
-                GoogleMap(
-                  initialCameraPosition: const CameraPosition(
-                    target: defaultLocation,
-                    zoom: 5,
-                  ),
-                  onMapCreated: (gController) {
-                    controller.complete(gController);
-                  },
-                  mapToolbarEnabled: false,
-                  zoomControlsEnabled: false,
-                  buildingsEnabled: false,
-                  markers: state.markers
-                          ?.map(
-                            (e) => Marker(
-                              markerId: e.markerId,
-                              position: e.position,
-                              onTap: () {
-                                _onClickMarker(context, e.position);
-                              },
-                            ),
-                          )
-                          .toSet() ??
-                      const {},
-                ),
-                Positioned(
-                  top: context.paddingTop,
-                  left: AppSize.horizontalSpace,
-                  right: AppSize.horizontalSpace,
-                  child: const MapSearchButtonWidget(),
-                )
-              ],
+            child: GoogleMap(
+              initialCameraPosition: const CameraPosition(
+                target: defaultLocation,
+                zoom: 5,
+              ),
+              onMapCreated: (gController) {
+                controller.complete(gController);
+              },
+              mapToolbarEnabled: false,
+              zoomControlsEnabled: false,
+              buildingsEnabled: false,
+              markers: state.markers
+                      ?.map(
+                        (e) => Marker(
+                          markerId: e.markerId,
+                          position: e.position,
+                          onTap: () {
+                            _onClickMarker(context, e.position);
+                          },
+                        ),
+                      )
+                      .toSet() ??
+                  const {},
             ),
           );
         },

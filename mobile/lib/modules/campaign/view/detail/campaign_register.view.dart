@@ -108,7 +108,6 @@ class _CampaignRegisterFormPage extends StatelessWidget {
                 },
                 isLoading: state.status.isLoading,
                 width: double.infinity,
-                backgroundColor: ColorStyles.primary1,
                 content: LocaleKeys.campaign_complete.tr(),
               )
             ],

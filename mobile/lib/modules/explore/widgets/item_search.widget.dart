@@ -97,7 +97,7 @@ class ItemSearchWidget extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
-                      item.description,
+                      item.description ?? '',
                       style: TextStyles.regularCaption12,
                       maxLines: 3,
                     ),
