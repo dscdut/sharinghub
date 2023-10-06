@@ -109,7 +109,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
                             ? ColorStyles.gray200
                             : ColorStyles.zodiacBlue,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

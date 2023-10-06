@@ -72,7 +72,7 @@ class UserModel extends Equatable {
         email,
         birthDay,
         address,
-        workSpace
+        workSpace,
       ];
 
   UserModel copyWith({

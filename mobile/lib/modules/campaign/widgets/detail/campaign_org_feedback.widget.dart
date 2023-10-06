@@ -72,7 +72,7 @@ class CampaignOrgFeedback extends StatelessWidget {
           ),
           verticalSpacing,
           if (campaign.feedback?.images.isNotNullOrEmpty == true)
-            ShowMultipleImage(images: campaign.feedback!.images!)
+            ShowMultipleImage(images: campaign.feedback!.images!),
         ],
       ),
     );

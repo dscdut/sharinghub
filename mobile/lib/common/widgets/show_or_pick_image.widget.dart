@@ -87,7 +87,7 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
                     Text(
                       LocaleKeys.texts_camera.tr(),
                       style: TextStyles.s17RegularText,
-                    )
+                    ),
                   ],
                 ),
                 onPressed: () async {
@@ -145,7 +145,7 @@ class _ShowOrPickImageState extends State<ShowOrPickImage> {
               ),
               SizedBox(
                 height: context.paddingBottom,
-              )
+              ),
             ],
           );
         },

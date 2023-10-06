@@ -3,7 +3,7 @@ import 'package:mobile/common/theme/app_size.dart';
 import 'package:mobile/common/theme/color_styles.dart';
 import 'package:mobile/common/theme/text_styles.dart';
 
-class ExploreAppbarWidget extends StatelessWidget with PreferredSizeWidget {
+class ExploreAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const ExploreAppbarWidget({super.key});
 
   @override

@@ -33,7 +33,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       );
 
       emit(RegisterSuccess());
-    } on DioError catch (dioError) {
+    } on DioException catch (dioError) {
       if (dioError.response?.statusCode == 409) {
         emit(
           RegisterNotSuccess(

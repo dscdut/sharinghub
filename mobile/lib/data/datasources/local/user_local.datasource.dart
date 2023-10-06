@@ -34,7 +34,7 @@ class UserLocalDataSource {
     } else {
       await Future.wait([
         _userBox.put(HiveKeys.accessToken, response.accessToken),
-        _userBox.put(HiveKeys.user, jsonEncode(response.user))
+        _userBox.put(HiveKeys.user, jsonEncode(response.user)),
       ]);
     }
   }

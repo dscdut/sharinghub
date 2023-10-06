@@ -71,10 +71,10 @@ class AvatarInfoCard extends StatelessWidget {
                         fontSize: 13,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

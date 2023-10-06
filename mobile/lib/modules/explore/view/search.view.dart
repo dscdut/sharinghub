@@ -189,7 +189,7 @@ class _SearchPage extends StatelessWidget {
                         const SearchListCampainsGet(),
                       );
                 },
-              )
+              ),
             ],
           ),
         ),

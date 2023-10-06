@@ -88,15 +88,15 @@ class CampaignItem extends StatelessWidget {
                               ? ColorStyles.green400
                               : ColorStyles.red400,
                         ),
-                      )
+                      ),
                     ],
                   ),
                   Text(
                     currentCampaign.organizationName ?? '',
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

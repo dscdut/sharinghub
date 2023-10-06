@@ -47,7 +47,7 @@ class CampaignRequestJoin extends StatelessWidget {
             },
             content: LocaleKeys.button_donate.tr(),
           ),
-        )
+        ),
       ],
     );
   }

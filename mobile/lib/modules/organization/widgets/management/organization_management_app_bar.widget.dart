@@ -17,7 +17,7 @@ class OrganizationManagementAppBar extends StatelessWidget
         RoundedIconButton(icon: Icons.search),
         SizedBox(
           width: 5,
-        )
+        ),
       ],
     );
   }

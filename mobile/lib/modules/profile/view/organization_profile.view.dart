@@ -52,7 +52,7 @@ class _OrganizationProfileView extends StatelessWidget {
                     ),
                   ),
               HandleStatus.error: (_) => const Center(child: CommonError()),
-              HandleStatus.initial: (_) => const SizedBox()
+              HandleStatus.initial: (_) => const SizedBox(),
             },
             fallbackBuilder: (_) {
               return OrganizationInfo(

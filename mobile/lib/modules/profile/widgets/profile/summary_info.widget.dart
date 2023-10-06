@@ -87,9 +87,9 @@ class SummaryInfo extends StatelessWidget {
                   Text(
                     _getSubTitle(state.user!),
                     style: TextStyles.s14RegularText,
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         );

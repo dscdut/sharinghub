@@ -122,7 +122,7 @@ class _ShowOrPickMultipleImageState extends State<ShowOrPickMultipleImage> {
               ),
               SizedBox(
                 height: context.paddingBottom,
-              )
+              ),
             ],
           );
         },

@@ -43,7 +43,7 @@ class ListStatus extends StatelessWidget {
                   width: 40,
                   height: 10,
                   color: Colors.white,
-                )
+                ),
               ],
             ),
           );

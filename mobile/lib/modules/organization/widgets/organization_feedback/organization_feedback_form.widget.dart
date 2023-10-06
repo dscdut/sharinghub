@@ -145,7 +145,7 @@ class OrganizationFeedbackForm extends StatelessWidget {
                 error: state.imageError,
               );
             },
-          )
+          ),
         ],
       ),
     );

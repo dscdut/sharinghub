@@ -50,7 +50,7 @@ class CampaignBottomSheet extends StatelessWidget {
                               return ListMarkerCampaigns(
                                 campaigns: state.campaigns,
                               );
-                            }
+                            },
                           },
                           fallbackBuilder: (_) => const SizedBox(),
                         );
@@ -59,7 +59,7 @@ class CampaignBottomSheet extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         );
       },

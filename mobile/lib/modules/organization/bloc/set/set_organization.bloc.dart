@@ -57,7 +57,7 @@ class SetOrganizationBloc
       _organizationManagementBloc?.add(OrganizationManagementGet());
 
       emit(state.copyWith(status: HandleStatus.success));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       // Handle case when organization name or phone is duplicated
       if (e.response?.statusCode == 409) {
         emit(

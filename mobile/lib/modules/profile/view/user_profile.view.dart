@@ -43,7 +43,7 @@ class _UserProfileView extends StatelessWidget {
           RoundedIconButton(icon: Icons.done),
           SizedBox(
             width: 5,
-          )
+          ),
         ],
       ),
       body: const SizedBox(),

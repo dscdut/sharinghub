@@ -126,7 +126,7 @@ class _RegisterView extends StatelessWidget {
                   },
                 ),
                 const Spacer(),
-                const AuthNavigateOption()
+                const AuthNavigateOption(),
               ],
             ),
           ),

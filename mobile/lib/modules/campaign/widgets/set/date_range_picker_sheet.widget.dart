@@ -111,7 +111,7 @@ class _DateRangePickerSheetState extends State<DateRangePickerSheet> {
           ),
           SizedBox(
             height: context.paddingBottom + 10,
-          )
+          ),
         ],
       ),
     );

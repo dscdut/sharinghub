@@ -84,7 +84,7 @@ class ItemSearchWidget extends StatelessWidget {
                         const Text(
                           'Trường Đại học Bách Khoa Hà Nội',
                           style: TextStyles.regularSubti16,
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -104,7 +104,7 @@ class ItemSearchWidget extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

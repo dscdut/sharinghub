@@ -38,7 +38,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         AuthUserAuthInfoSet(loginResponse),
       );
       emit(LoginSuccess());
-    } on DioError catch (err) {
+    } on DioException catch (err) {
       if (err.response?.statusCode == 401) {
         emit(
           LoginNotSuccess(

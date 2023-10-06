@@ -35,7 +35,7 @@ class MapPage extends StatelessWidget {
           create: (context) => MapBottomsheetBloc(
             campaignRepository: getIt.get<CampaignRepository>(),
           ),
-        )
+        ),
       ],
       child: BlocListener<MapBloc, MapState>(
         listener: (context, state) => _listenMapStateChanged(context, state),

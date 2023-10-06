@@ -68,9 +68,9 @@ class OrganizationInfo extends StatelessWidget {
                       rating: 4,
                       size: 16,
                       color: ColorStyles.zodiacBlue,
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -78,7 +78,7 @@ class OrganizationInfo extends StatelessWidget {
             Icons.message_outlined,
             color: ColorStyles.zodiacBlue,
             size: 18,
-          )
+          ),
         ],
       ),
     );

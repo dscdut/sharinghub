@@ -44,9 +44,9 @@ class SummaryInfoShimmer extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(60),
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

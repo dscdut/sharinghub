@@ -46,7 +46,7 @@ class _SplashView extends StatelessWidget {
             const Text(
               'Powered by GDSC-DUT',
               style: TextStyles.s14RegularText,
-            )
+            ),
           ],
         ),
       ),

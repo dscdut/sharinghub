@@ -53,7 +53,7 @@ class InforItemExploreWidget extends StatelessWidget {
                           ? ColorStyles.primary1
                           : Colors.amber,
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -89,7 +89,7 @@ class InforItemExploreWidget extends StatelessWidget {
               style: TextStyles.regularBody14.copyWith(
                 color: ColorStyles.zodiacBlue,
               ),
-            )
+            ),
           ],
         ),
         const Divider(
@@ -117,7 +117,7 @@ class InforItemExploreWidget extends StatelessWidget {
                 ),
                 maxLines: 3,
               ),
-            )
+            ),
           ],
         ),
       ],

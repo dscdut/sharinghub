@@ -6,6 +6,6 @@ abstract class AppShadow {
       blurRadius: 12,
       offset: const Offset(0, 2),
       color: Colors.black.withOpacity(0.1),
-    )
+    ),
   ];
 }

@@ -54,7 +54,7 @@ class ChooseRoleView extends StatelessWidget {
                     onPressed: () {
                       _navigateToRegister(context, false);
                     },
-                  )
+                  ),
                 ],
               ),
             ),

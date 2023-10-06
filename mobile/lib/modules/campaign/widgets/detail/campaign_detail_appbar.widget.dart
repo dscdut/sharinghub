@@ -5,7 +5,7 @@ import 'package:mobile/common/widgets/custom_app_bar.widget.dart';
 import 'package:mobile/generated/locale_keys.g.dart';
 import 'package:mobile/modules/campaign/widgets/detail/icon_title.widget.dart';
 
-class CampaignDetailAppbar extends StatelessWidget with PreferredSizeWidget {
+class CampaignDetailAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String campaignName;
 
   const CampaignDetailAppbar({
@@ -44,7 +44,7 @@ class CampaignDetailAppbar extends StatelessWidget with PreferredSizeWidget {
               ),
             ];
           },
-        )
+        ),
       ],
     );
   }

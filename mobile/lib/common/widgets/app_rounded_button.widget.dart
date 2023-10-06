@@ -122,7 +122,7 @@ class AppRoundedButton extends StatelessWidget {
                               const SizedBox(
                                 width: 15,
                               ),
-                              suffixIcon!
+                              suffixIcon!,
                             ],
                           ),
                       ],

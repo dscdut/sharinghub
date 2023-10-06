@@ -126,7 +126,7 @@ class AppBottomNavigationBar extends StatelessWidget {
                       ),
                     ),
                     label: LocaleKeys.root_profile.tr(),
-                  )
+                  ),
                 ],
               ),
             ),

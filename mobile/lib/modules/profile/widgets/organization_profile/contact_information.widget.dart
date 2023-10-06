@@ -25,7 +25,7 @@ class ContactInformation extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        IconTitle(icon: Icons.call_rounded, title: organization.phoneNumber)
+        IconTitle(icon: Icons.call_rounded, title: organization.phoneNumber),
       ],
     );
   }

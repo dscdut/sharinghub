@@ -158,7 +158,7 @@ abstract class AppRoutes {
                 ),
                 BlocProvider.value(
                   value: argumentWrapper.param3,
-                )
+                ),
               ],
               child: SetCampaignPage(
                 campaign: argumentWrapper.param1,

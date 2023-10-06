@@ -44,7 +44,7 @@ class AuthNavigateOption extends StatelessWidget {
             style: TextStyles.mediumText
                 .copyWith(fontSize: 16, color: ColorStyles.primary1),
           ),
-        )
+        ),
       ],
     );
   }

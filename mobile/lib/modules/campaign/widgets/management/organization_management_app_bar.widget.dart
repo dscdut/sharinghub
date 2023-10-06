@@ -20,7 +20,7 @@ class CampaignManagementAppBar extends StatelessWidget
         RoundedIconButton(icon: Icons.filter_list),
         SizedBox(
           width: 5,
-        )
+        ),
       ],
     );
   }

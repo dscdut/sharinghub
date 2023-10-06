@@ -109,7 +109,7 @@ class _CampaignRegisterFormPage extends StatelessWidget {
                 isLoading: state.status.isLoading,
                 width: double.infinity,
                 content: LocaleKeys.campaign_complete.tr(),
-              )
+              ),
             ],
           ),
         ),

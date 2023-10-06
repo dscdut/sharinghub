@@ -45,9 +45,9 @@ class CommonError extends StatelessWidget {
               AppRoundedButton(
                 onPressed: action!,
                 content: labelAction ?? LocaleKeys.button_confirm.tr(),
-              )
+              ),
             ],
-          )
+          ),
       ],
     );
   }

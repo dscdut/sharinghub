@@ -23,7 +23,7 @@ class SetUserAppbar extends StatelessWidget implements PreferredSizeWidget {
         RoundedIconButton(
           icon: Icons.done_rounded,
           backgroundColor: Colors.transparent,
-        )
+        ),
       ],
     );
   }
