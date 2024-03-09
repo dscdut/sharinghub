@@ -9,11 +9,11 @@ exports.up = knex => knex.schema.alterTable('donation_records', table => {
  * @param { import("knex").Knex } knex
  */
 exports.down = knex => knex.schema.alterTable('donation_records', table => {
-    table.int('quantity').alter();
-    table.integer('donor_id').unsigned().notNullable();
+    table.integer('quantity').alter();
+    table.integer('unit_id').notNullable();
     table
-        .foreign('donor_id')
+        .foreign('unit_id')
         .references('id')
-        .inTable('users')
+        .inTable('units')
         .onDelete('CASCADE');
 });
