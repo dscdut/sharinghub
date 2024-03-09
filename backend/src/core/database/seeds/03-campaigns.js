@@ -32,6 +32,9 @@ exports.seed = async function (knex) {
                 lat: 16.0678,
                 lng: 108.2208,
             },
+            ward: 'Hòa Minh',
+            district: 'Hải Châu',
+            city: 'Đà Nẵng',
         },
         {
             name: 'Hỗ trợ trẻ em bị bỏ rơi',
@@ -47,6 +50,9 @@ exports.seed = async function (knex) {
                 lat: 16.4678,
                 lng: 107.6208,
             },
+            ward: 'Phong Điền',
+            district: 'Thừa Thiên Huế',
+            city: 'Huế',
         },
     ]);
 };

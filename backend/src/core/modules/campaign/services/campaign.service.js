@@ -66,7 +66,7 @@ class Service {
             new Date(createCampaignDto.start_date)
             > new Date(createCampaignDto.end_date)
         ) {
-            throw new InternalServerException(
+            throw new BadRequestException(
                 'Start date must be before end date',
             );
         }
@@ -76,14 +76,24 @@ class Service {
             new Date(createCampaignDto.start_date) < new Date()
             || new Date(createCampaignDto.end_date) < new Date()
         ) {
-            throw new InternalServerException(
+            throw new BadRequestException(
                 'Start date and end date must be after today',
             );
         }
 
         try {
-            const data = {
-                ...createCampaignDto,
+            const campaignModel = {
+                name: createCampaignDto.name,
+                specific_address: createCampaignDto.specific_address,
+                description: createCampaignDto.description,
+                start_date: createCampaignDto.start_date,
+                end_date: createCampaignDto.end_date,
+                register_link: createCampaignDto.register_link,
+                donation_requirement: createCampaignDto.donation_requirement,
+                ward: createCampaignDto.location.ward,
+                district: createCampaignDto.location.district,
+                city: createCampaignDto.location.city,
+                address: `${createCampaignDto.location.ward}, ${createCampaignDto.location.district}, ${createCampaignDto.location.city}`,
                 organization_id,
                 coordinate: {
                     lat: parseFloat(createCampaignDto.coordinate.lat),
@@ -91,10 +101,10 @@ class Service {
                 }
             };
 
-            const createdCampaign = await this.repository.insert(data);
+            const createdCampaign = await this.repository.insert(campaignModel);
 
             if (file) {
-                await this.updateOne(organization_id, createdCampaign[0].id, data, file);
+                await this.updateOne(organization_id, createdCampaign[0].id, campaignModel, file);
             }
 
             return {
@@ -135,7 +145,7 @@ class Service {
             new Date(createCampaignDto.start_date) < new Date() ||
             new Date(createCampaignDto.end_date) < new Date()
         ) {
-            throw new InternalServerException(
+            throw new BadRequestException(
                 'Start date and end date must be after today',
             );
         }
@@ -146,7 +156,17 @@ class Service {
             const updatedCampaign = await this.repository.updateOne(
                 campaign_id,
                 {
-                    ...createCampaignDto,
+                    name: createCampaignDto.name,
+                    specific_address: createCampaignDto.specific_address,
+                    description: createCampaignDto.description,
+                    start_date: createCampaignDto.start_date,
+                    end_date: createCampaignDto.end_date,
+                    register_link: createCampaignDto.register_link,
+                    donation_requirement: createCampaignDto.donation_requirement,
+                    ward: createCampaignDto.location.ward,
+                    district: createCampaignDto.location.district,
+                    city: createCampaignDto.location.city,
+                    address: `${createCampaignDto.location.ward}, ${createCampaignDto.location.district}, ${createCampaignDto.location.city}`,
                     image: url,
                     coordinate: {
                         lat: parseFloat(createCampaignDto.coordinate.lat),

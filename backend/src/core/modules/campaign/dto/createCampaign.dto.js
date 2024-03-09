@@ -3,10 +3,23 @@ import { SwaggerDocument } from 'packages/swagger';
 
 ApiDocument.addModel('CreateCampaignDto', {
     name: SwaggerDocument.ApiProperty({ type: 'string' }),
-    address: SwaggerDocument.ApiProperty({ type: 'string' }),
     specificAddress: SwaggerDocument.ApiProperty({
         type: 'string',
         required: false,
+    }),
+    location: SwaggerDocument.ApiProperty({ 
+        type: 'object',
+        required: false,
+        properties: {
+            ward: SwaggerDocument.ApiProperty({ type: 'string' }),
+            district: SwaggerDocument.ApiProperty({ type: 'string' }),
+            city: SwaggerDocument.ApiProperty({ type: 'string' }),
+        },
+        example: {
+            ward: "Hoa Minh",
+            district: "Lien Chieu",
+            city: "Da Nang"
+        },
     }),
     coordinate: SwaggerDocument.ApiProperty({
         type: 'object',
@@ -45,7 +58,7 @@ ApiDocument.addModel('CreateCampaignDto', {
 export const CreateCampaignDto = body => ({
     name: body.name,
     image: body.image,
-    address: body.address,
+    location: body.location,
     specific_address: body.specificAddress,
     coordinate: body.coordinate,
     description: body.description,
