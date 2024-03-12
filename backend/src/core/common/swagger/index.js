@@ -11,3 +11,7 @@ export * from './campaign-id';
 export * from './volunteer-id';
 export * from './donation-id';
 export * from './user-id';
+export * from './ward-query';
+export * from './district-query';
+export * from './city-query';
+export * from './campaign-sort-query';

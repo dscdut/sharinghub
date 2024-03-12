@@ -8,6 +8,8 @@ import { UserCampaignRepository } from '../../user_campaign/user_campaign.reposi
 import { Status } from '../../../common/enum';
 import { UserRepository } from '../../../modules/user/user.repository';
 import { FileSystemService, MediaService } from 'core/modules/document';
+import { CampaignNamePartialMatchSpecification, CampaignWardSpecification, CampaignDistrictSpecification, CampaignCitySpecification, CampaignCoordinateSpecification } from '../specifications';
+import { TrueSpecification } from 'core/common/specifications';
 
 class Service {
     constructor() {
@@ -388,6 +390,43 @@ class Service {
     removeNameConstraint() {
         try {
             return this.repository.removeNameConstraint();
+        } catch (error) {
+            logger.error(error.message);
+            throw new InternalServerException();
+        }
+    }
+
+    searchByQuery(query) {
+
+        var specification = new TrueSpecification();
+        
+        if (query.name) {
+            var campaignNameSpecification = new CampaignNamePartialMatchSpecification(query.name);
+            specification = specification.and(campaignNameSpecification);
+        }
+
+        if (query.ward) {
+            var campaignWardSpecification = new CampaignWardSpecification(query.ward);
+            specification = specification.and(campaignWardSpecification);
+        }
+
+        if (query.district) {
+            var campaignDistrictSpecification = new CampaignDistrictSpecification(query.district);
+            specification = specification.and(campaignDistrictSpecification);
+        }
+
+        if (query.city) {
+            var campaignCitySpecification = new CampaignCitySpecification(query.city);
+            specification = specification.and(campaignCitySpecification);
+        }
+
+        if (query.lat && query.lng) {
+            var campaignCoordinateSpecification = new CampaignCoordinateSpecification(query.lat, query.lng);
+            specification = specification.and(campaignCoordinateSpecification);
+        }
+
+        try {
+            return this.repository.findByQuery(specification, query.isSortedByStatus);
         } catch (error) {
             logger.error(error.message);
             throw new InternalServerException();
