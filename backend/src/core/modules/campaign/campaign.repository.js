@@ -1,5 +1,6 @@
 import { DataRepository } from 'packages/restBuilder/core/dataHandler/data.repository';
 import { Status } from 'core/common/enum/user-campaign-status'
+import connection from 'core/database';
 
 class Repository extends DataRepository {
     findOneById(id) {
@@ -328,6 +329,48 @@ class Repository extends DataRepository {
 
     removeNameConstraint() {
         return super.removeNameConstraint();
+    }
+
+    findByQuery(specification, isSortedByStatus = false) {
+        var sql = specification.toSql();
+        var query = sql[0];
+        var params = sql[1];
+
+        var query = this.query()
+            .join('organizations', 'campaigns.organization_id', '=', 'organizations.id')
+            .whereNull('campaigns.deleted_at')
+            .whereRaw(query, params)
+            .select([
+                'campaigns.id',
+                'campaigns.name',
+                'campaigns.image',
+                'campaigns.description',
+                'campaigns.address',
+                { specificAddress: 'campaigns.specific_address' },
+                { startDate: 'campaigns.start_date' },
+                { endDate: 'campaigns.end_date' },
+                'campaigns.coordinate',
+                { donationRequirement: 'campaigns.donation_requirement' },
+                { organizationId: 'campaigns.organization_id' },
+                { organizationName: 'organizations.name' },
+                { location: connection.raw(`json_build_object(
+                    'ward', campaigns.ward, 
+                    'district', campaigns.district, 
+                    'city', campaigns.city
+                )`)}
+            ]);
+
+        if (isSortedByStatus === 'true') {
+            query = query.orderByRaw(`
+                CASE
+                    WHEN campaigns.start_date > NOW() AND campaigns.end_date > NOW() THEN 1  -- UPCOMING
+                    WHEN campaigns.start_date < NOW() AND campaigns.end_date < NOW() THEN 2  -- PASSED
+                    ELSE 2  -- IN PROGRESS
+                END
+            `);
+        }
+        
+        return query;
     }
 }
 
