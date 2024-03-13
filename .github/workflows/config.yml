@@ -30,6 +30,8 @@ jobs:
         runs-on: self-hosted
 
         steps:
+            - name: run migrations
+              run: cd backend && npm run knex migrate:latest
             - name: Copy .env file
               run: cp ~/env/.env backend/.env
 
