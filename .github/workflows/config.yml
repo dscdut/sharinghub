@@ -1,0 +1,40 @@
+name: Build and Deploy
+on:
+    push:
+        paths:
+            - '**.js'
+        branches:
+            - develop
+    pull_request:
+        types: [opened, synchronize]
+        branches:
+            - develop
+jobs:
+    build:
+        runs-on: self-hosted
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '16.x'
+
+            - name: Install dependencies
+              run: cd backend && npm ci
+
+    deploy:
+        needs: build
+        runs-on: self-hosted
+
+        steps:
+            - name: Copy .env file
+              run: cp ~/env/.env backend/.env
+
+            - name: Restart api server
+              run: cd backend && pm2 restart api --update-env
+
+            - name: Notify success deployment
+              run: echo "Deployment complete"
