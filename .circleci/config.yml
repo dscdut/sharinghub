@@ -1,64 +1,64 @@
-version: 2.1
-aliases:
-  - &restore-cache
-    restore_cache:
-      keys:
-        - v1-dependencies-
-        # fallback to using the latest cache if no exact match is found
-        - v1-dependencies-
-  - &install-deps
-    run:
-      name: Install dependencies
-      command: npm i
+# version: 2.1
+# aliases:
+#     - &restore-cache
+#       restore_cache:
+#           keys:
+#               - v1-dependencies-
+#               # fallback to using the latest cache if no exact match is found
+#               - v1-dependencies-
+#     - &install-deps
+#       run:
+#           name: Install dependencies
+#           command: npm i
 
-orbs:
-  node: circleci/node@3.0.0
+# orbs:
+#     node: circleci/node@3.0.0
 
-jobs:
-  build:
-    environment:
-      DOCKER_IMAGE: ichhoa129/discord-bot
-      DOCKER_TAG: latest
-    working_directory: ~/sharinghub/backend
-    docker:
-      - image: circleci/node:14
-      - image: docker:17.09.1-ce-git
-    steps:
-      - checkout
-      - setup_remote_docker
-      - *restore-cache
-      - run: npm cache clear --force
-      - run:
-          name: Update NPM version
-          command: 'sudo npm install -g npm@latest'
-      - *install-deps
-      - save_cache:
-          key: v1-dependencies-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
+# jobs:
+#     build:
+#         environment:
+#             DOCKER_IMAGE: ichhoa129/discord-bot
+#             DOCKER_TAG: latest
+#         working_directory: ~/sharinghub/backend
+#         docker:
+#             - image: circleci/node:14
+#             - image: docker:17.09.1-ce-git
+#         steps:
+#             - checkout
+#             - setup_remote_docker
+#             - *restore-cache
+#             - run: npm cache clear --force
+#             - run:
+#                   name: Update NPM version
+#                   command: 'sudo npm install -g npm@latest'
+#             - *install-deps
+#             - save_cache:
+#                   key: v1-dependencies-{{ checksum "package.json" }}
+#                   paths:
+#                       - ./node_modules
 
-  deploy:
-    machine:
-      enabled: true
-    working_directory: ~/sharinghub/backend
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
-      - run:
-          name: Deploy via ssh
-          command: |
-            echo Starting to deploy server
-            ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout develop && git pull && chmod 777 ./deploy.sh && ./deploy.sh'
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - develop
+#     deploy:
+#         machine:
+#             enabled: true
+#         working_directory: ~/sharinghub/backend
+#         steps:
+#             - add_ssh_keys:
+#                   fingerprints:
+#                       - '39:84:cb:5e:ca:8e:c1:71:f6:19:ad:0c:bc:0f:78:21'
+#             - run:
+#                   name: Deploy via ssh
+#                   command: |
+#                       echo Starting to deploy server
+#                       ssh -v $SSH_USER@$SSH_HOST 'cd sharinghub/backend && git checkout develop && git pull && chmod 777 ./deploy.sh && ./deploy.sh'
+# workflows:
+#     version: 2
+#     build-and-deploy:
+#         jobs:
+#             - build
+#             - deploy:
+#                   requires:
+#                       - build
+#                   filters:
+#                       branches:
+#                           only:
+#                               - develop
